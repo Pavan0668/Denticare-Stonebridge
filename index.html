@@ -15,138 +15,224 @@
         var gtm4wp_datalayer_name = "dataLayer";
         var dataLayer = dataLayer || [];
     </script>
-      <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-<style>
-    .btn-behance.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #4a8aff; }
-    .btn-behance.btn-social-icon-text i {
-      background: #1769ff;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
 
-.btn-dribbble.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #ef7aa7; }
-    .btn-dribbble.btn-social-icon-text i {
-      background: #ea4c89;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <style>
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            /* Adjust the spacing between icons */
+        }
 
- .btn-reddit.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #ff6a33; }
-    .btn-reddit.btn-social-icon-text i {
-      background: #ff4500;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            /* Adjust the size as needed */
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth color transition */
+        }
 
+        .social-icon i {
+            font-size: 20px;
+            /* Adjust the icon size as needed */
+        }
 
-.btn.btn-social-icon, .fc button.btn-social-icon, .ajax-upload-dragdrop .btn-social-icon.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-social-icon.swal2-styled, .wizard > .actions a.btn-social-icon {
-    width: 50px;
-    height: 50px;
-    padding: 0; }
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+    </style>
+    <style>
+        .btBelowLogoArea {
+            background-color: white;
+        }
 
+        .btLogoArea {
+            background-color: lightskyblue;
+        }
 
+        .btn-behance.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #4a8aff;
+        }
 
+        .btn-behance.btn-social-icon-text i {
+            background: #1769ff;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
 
- .btn-twitter.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #59bce7; }
-    .btn-twitter.btn-social-icon-text i {
-      background: #2caae1;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .btn-dribbble.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #ef7aa7;
+        }
 
-
-
-
-.btn-facebook.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #4e6ebd; }
-    .btn-facebook.btn-social-icon-text i {
-      background: #3b579d;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
- .btn-google.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #e47163; }
-
-    .btn-google.btn-social-icon-text i {
-      background: #dc4a38;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
-
- .btn-linkedin.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #0198e8; }
-    .btn-linkedin.btn-social-icon-text i {
-      background: #0177b5;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .btn-dribbble.btn-social-icon-text i {
+            background: #ea4c89;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
 
 
-.btn-pinterest.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #e04046; }
-    .btn-pinterest.btn-social-icon-text i {
-      background: #cc2127;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .btn-reddit.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #ff6a33;
+        }
 
- .btn-youtube.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #ea5955; }
-    .btn-youtube.btn-social-icon-text i {
-      background: #e52d27;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .btn-reddit.btn-social-icon-text i {
+            background: #ff4500;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
 
 
-.btn-github.btn-social-icon-text {
-    padding: 0 1.5rem 0 0;
-    background: #4d4d4d; }
-    .btn-github.btn-social-icon-text i {
-      background: #333333;
-      padding: .75rem;
-      display: inline-block;
-      margin-right: 1.5rem; }
+        .btn.btn-social-icon,
+        .fc button.btn-social-icon,
+        .ajax-upload-dragdrop .btn-social-icon.ajax-file-upload,
+        .swal2-modal .swal2-buttonswrapper .btn-social-icon.swal2-styled,
+        .wizard>.actions a.btn-social-icon {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+        }
 
 
-.btn-outline-facebook {
-  border: 1px solid #3b579d;
-  color: #3b579d; }
-  .btn-outline-facebook:hover {
-    background: #3b579d;
-    color: #ffffff; }
-
-.btn-outline-twitter {
-  border: 1px solid #2caae1;
-  color: #2caae1; }
-  .btn-outline-twitter:hover {
-    background: #2caae1;
-    color: #ffffff; }
-
-.btn-outline-linkedin {
-  border: 1px solid #0177b5;
-  color: #0177b5; }
-  .btn-outline-linkedin:hover {
-    background: #0177b5;
-    color: #ffffff; }
 
 
-</style>
+        .btn-twitter.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #59bce7;
+        }
+
+        .btn-twitter.btn-social-icon-text i {
+            background: #2caae1;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+
+
+
+        .btn-facebook.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #4e6ebd;
+        }
+
+        .btn-facebook.btn-social-icon-text i {
+            background: #3b579d;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+        .btn-google.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #e47163;
+        }
+
+        .btn-google.btn-social-icon-text i {
+            background: #dc4a38;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+        .btn-linkedin.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #0198e8;
+        }
+
+        .btn-linkedin.btn-social-icon-text i {
+            background: #0177b5;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+
+        .btn-pinterest.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #e04046;
+        }
+
+        .btn-pinterest.btn-social-icon-text i {
+            background: #cc2127;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+        .btn-youtube.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #ea5955;
+        }
+
+        .btn-youtube.btn-social-icon-text i {
+            background: #e52d27;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+
+        .btn-github.btn-social-icon-text {
+            padding: 0 1.5rem 0 0;
+            background: #4d4d4d;
+        }
+
+        .btn-github.btn-social-icon-text i {
+            background: #333333;
+            padding: .75rem;
+            display: inline-block;
+            margin-right: 1.5rem;
+        }
+
+
+        .btn-outline-facebook {
+            border: 1px solid #3b579d;
+            color: #3b579d;
+        }
+
+        .btn-outline-facebook:hover {
+            background: #3b579d;
+            color: #ffffff;
+        }
+
+        .btn-outline-twitter {
+            border: 1px solid #2caae1;
+            color: #2caae1;
+        }
+
+        .btn-outline-twitter:hover {
+            background: #2caae1;
+            color: #ffffff;
+        }
+
+        .btn-outline-linkedin {
+            border: 1px solid #0177b5;
+            color: #0177b5;
+        }
+
+        .btn-outline-linkedin:hover {
+            background: #0177b5;
+            color: #ffffff;
+        }
+    </style>
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
@@ -248,6 +334,7 @@
         :where(.is-layout-flex) {
             gap: 0.5em;
         }
+
 
         :where(.is-layout-grid) {
             gap: 0.5em;
@@ -12727,17 +12814,26 @@
                                                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <span class="bt_bb_icon_holder">
-                                                                                                <i class="fas fa-tooth"></i>  </span>
-                                                                                            <div class="bt_bb_service_content">
-                                                                                                <div class="bt_bb_service_content_title">
+                                                                                            <span
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-tooth"></i>
+                                                                                            </span>
+                                                                                            <div
+                                                                                                class="bt_bb_service_content">
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_title">
                                                                                                     <u>Whitening</u>
                                                                                                 </div>
-                                                                                                <div class="bt_bb_service_content_text">
-                                                                                                    Completely iterate covalent strategic theme areas via accurate e-markets.
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_text">
+                                                                                                    Completely iterate
+                                                                                                    covalent strategic
+                                                                                                    theme areas via
+                                                                                                    accurate e-markets.
                                                                                                 </div>
                                                                                             </div>
-                                                                                            
+
                                                                                         </div>
                                                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small bt_bb_hidden_sm bt_bb_hidden_md bt_bb_hidden_lg"
                                                                                             data-bt-override-class="null">
@@ -12756,17 +12852,28 @@
                                                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <span class="bt_bb_icon_holder">
-                                                                                                <i class="fas fa-teeth"></i>  </span>
-                                                                                            <div class="bt_bb_service_content">
-                                                                                                <div class="bt_bb_service_content_title">
+                                                                                            <span
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-teeth"></i>
+                                                                                            </span>
+                                                                                            <div
+                                                                                                class="bt_bb_service_content">
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_title">
                                                                                                     <u>Prosthesis</u>
                                                                                                 </div>
-                                                                                                <div class="bt_bb_service_content_text">
-                                                                                                    Holistically foster superior methodologies without market-driven best practices.
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_text">
+                                                                                                    Holistically foster
+                                                                                                    superior
+                                                                                                    methodologies
+                                                                                                    without
+                                                                                                    market-driven best
+                                                                                                    practices.
                                                                                                 </div>
                                                                                             </div>
-                                                                                            
+
                                                                                         </div>
                                                                                         <div
                                                                                             class="bt_bb_column_inner_highlight">
@@ -12893,7 +13000,12 @@
                                                                                             style="; --primary-color:
                                                                                             #422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <a href="#" target="_self" title="Full Protection" class="bt_bb_icon_holder">  <i class="fas fa-shield"></i>  </a>
+                                                                                            <a href="#" target="_self"
+                                                                                                title="Full Protection"
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-shield"></i>
+                                                                                            </a>
 
                                                                                             <div
                                                                                                 class="bt_bb_service_content">
@@ -12928,9 +13040,12 @@
                                                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <a href="#" target="_self" title="Complete Service"
-   class="bt_bb_icon_holder">
-   <i class="fas fa-check"></i>  </a>
+                                                                                            <a href="#" target="_self"
+                                                                                                title="Complete Service"
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-check"></i>
+                                                                                            </a>
 
                                                                                             <div
                                                                                                 class="bt_bb_service_content">
@@ -13073,17 +13188,27 @@
                                                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <span class="bt_bb_icon_holder">
-                                                                                                <i class="fas fa-screwdriver"></i>  </span>
-                                                                                            <div class="bt_bb_service_content">
-                                                                                                <div class="bt_bb_service_content_title">
+                                                                                            <span
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-screwdriver"></i>
+                                                                                            </span>
+                                                                                            <div
+                                                                                                class="bt_bb_service_content">
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_title">
                                                                                                     <u>Implants</u>
                                                                                                 </div>
-                                                                                                <div class="bt_bb_service_content_text">
-                                                                                                    Dramatically maintain clicks and mortar solutions without functional solutions.
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_text">
+                                                                                                    Dramatically
+                                                                                                    maintain clicks and
+                                                                                                    mortar solutions
+                                                                                                    without functional
+                                                                                                    solutions.
                                                                                                 </div>
                                                                                             </div>
-                                                                                            
+
                                                                                         </div>
                                                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small bt_bb_hidden_sm bt_bb_hidden_md bt_bb_hidden_lg"
                                                                                             data-bt-override-class="null">
@@ -13102,17 +13227,26 @@
                                                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                                                             data-bt-override-class="{}">
-                                                                                            <span class="bt_bb_icon_holder">
-                                                                                                <i class="fas fa-balance-scale"></i>  </span>
-                                                                                            <div class="bt_bb_service_content">
-                                                                                                <div class="bt_bb_service_content_title">
+                                                                                            <span
+                                                                                                class="bt_bb_icon_holder">
+                                                                                                <i
+                                                                                                    class="fas fa-balance-scale"></i>
+                                                                                            </span>
+                                                                                            <div
+                                                                                                class="bt_bb_service_content">
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_title">
                                                                                                     <u>Alignment</u>
                                                                                                 </div>
-                                                                                                <div class="bt_bb_service_content_text">
-                                                                                                    Dynamically innovate resource leveling service for state of the art customer.
+                                                                                                <div
+                                                                                                    class="bt_bb_service_content_text">
+                                                                                                    Dynamically innovate
+                                                                                                    resource leveling
+                                                                                                    service for state of
+                                                                                                    the art customer.
                                                                                                 </div>
                                                                                             </div>
-                                                                                            
+
                                                                                         </div>
                                                                                         <div
                                                                                             class="bt_bb_column_inner_highlight">
@@ -13265,7 +13399,8 @@
                                                                         <div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_always bt_bb_content_align_middle"
                                                                             data-bt-override-class="{}"><span><img
                                                                                     decoding="async" width="759"
-                                                                                    height="780" src="https://dentalkrafts.com/img/appointment.svg"
+                                                                                    height="780"
+                                                                                    src="https://dentalkrafts.com/img/appointment.svg"
                                                                                     class="attachment-full size-full"
                                                                                     alt="https://dentalkrafts.com/img/appointment.svg"
                                                                                     data-full_image_src="https://dentalkrafts.com/img/appointment.svg"
@@ -13350,10 +13485,27 @@
                                                                                                                 Your
                                                                                                                 Dentist
                                                                                                             </option>
-                                                                                                            <option selected="">Select Doctor</option>
-                                        <option value="1">Dr. Rishi Panchal</option>
-                                        <option value="2">Dr. Monica Katyal</option>
-                                        <option value="3">Dr. Sue</option>
+                                                                                                            <option
+                                                                                                                selected="">
+                                                                                                                Select
+                                                                                                                Doctor
+                                                                                                            </option>
+                                                                                                            <option
+                                                                                                                value="1">
+                                                                                                                Dr.
+                                                                                                                Rishi
+                                                                                                                Panchal
+                                                                                                            </option>
+                                                                                                            <option
+                                                                                                                value="2">
+                                                                                                                Dr.
+                                                                                                                Monica
+                                                                                                                Katyal
+                                                                                                            </option>
+                                                                                                            <option
+                                                                                                                value="3">
+                                                                                                                Dr. Sue
+                                                                                                            </option>
                                                                                                         </select></span>
                                                                                                 </p>
                                                                                             </div>
@@ -13531,14 +13683,14 @@
                                                         style="background-color:rgba(242, 242, 242, 1);">
                                                         <div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
                                                             data-bt-override-class="{}"><a href="#" target="_self"
-                                                                title="Dr. Rishi Panchal"><img loading="lazy" decoding="async"
-                                                                    width="800" height="800"
-                                                                    src="https://pavan0668.github.io/stonebridgedentistry/img/team-1.jpg"
+                                                                title="Dr. Rishi Panchal"><img loading="lazy"
+                                                                    decoding="async" width="800" height="800"
+                                                                    src="../img/team-1.jpg"
                                                                     class="attachment-full size-full"
-                                                                    alt="https://pavan0668.github.io/stonebridgedentistry/img/team-1.jpg"
-                                                                    data-full_image_src="https://pavan0668.github.io/stonebridgedentistry/img/team-1.jpg"
+                                                                    alt="../img/team-1.jpg"
+                                                                    data-full_image_src="../img/team-1.jpg"
                                                                     title="Dr. Rishi Panchal"
-                                                                    srcset="https://pavan0668.github.io/stonebridgedentistry/img/team-1.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-100x100.jpg 100w"
+                                                                    srcset="../img/team-1.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-01-100x100.jpg 100w"
                                                                     sizes="(max-width: 800px) 100vw, 800px" /></a>
                                                             <div class="bt_bb_image_content"
                                                                 style="background-color: rgba(255, 255, 255, 0.3);">
@@ -13566,7 +13718,9 @@
                                                             class="bt_bb_headline bt_bb_dash_bottom bt_bb_subheadline bt_bb_size_medium bt_bb_align_inherit bt_bb_dash_type_none"
                                                             data-bt-override-class="{}">
                                                             <h4 style="font-size:1.875rem" class="bt_bb_headline_tag">
-                                                                <span class="bt_bb_headline_content"><span><u>Dr. Rishi Panchal</u></span></span></h4>
+                                                                <span class="bt_bb_headline_content"><span><u>Dr. Rishi
+                                                                            Panchal</u></span></span>
+                                                            </h4>
                                                             <div class="bt_bb_headline_subheadline">Senior Orthodontist
                                                             </div>
                                                         </header>
@@ -13579,18 +13733,21 @@
                                                         </div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                             data-bt-override-class="null"></div>
-                                                            <button type="button" class="btn btn-social-icon btn-outline-facebook">
-                                                                <i class="fab fa-facebook-f"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-twitter">
-                                                                <i class="fab fa-twitter"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-linkedin">
-                                                                <i class="fab fa-linkedin-in"></i>
-                                                            </button>
-                                                            
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-facebook">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-twitter">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-linkedin">
+                                                            <i class="fab fa-linkedin-in"></i>
+                                                        </button>
+
                                                         <div class="bt_bb_separator bt_bb_border_style_none"
                                                             data-bt-override-class="null"></div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
@@ -13606,12 +13763,12 @@
                                                             data-bt-override-class="{}"><a href="#" target="_self"
                                                                 title="Dr. Monica Katyal"><img loading="lazy"
                                                                     decoding="async" width="800" height="800"
-                                                                    src="https://pavan0668.github.io/stonebridgedentistry/img/Monica%20Katyal.jpg"
+                                                                    src="https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg"
                                                                     class="attachment-full size-full"
-                                                                    alt="https://pavan0668.github.io/stonebridgedentistry/img/Monica%20Katyal.jpg"
-                                                                    data-full_image_src="https://pavan0668.github.io/stonebridgedentistry/img/Monica%20Katyal.jpg"
+                                                                    alt="https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg"
+                                                                    data-full_image_src="https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg"
                                                                     title="Dr. Monica Katyal"
-                                                                    srcset="https://pavan0668.github.io/stonebridgedentistry/img/Monica%20Katyal.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-02-100x100.jpg 100w"
+                                                                    srcset="https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 800w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 640w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 160w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 768w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 320w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 300w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 600w, https://static.wixstatic.com/media/a4e5eb_f356aa4c3ad64900ac559cb474c66484~mv2.jpg/v1/crop/x_6,y_0,w_739,h_1050/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Monica%20Katyal.jpg 100w"
                                                                     sizes="(max-width: 800px) 100vw, 800px" /></a>
                                                             <div class="bt_bb_image_content"
                                                                 style="background-color: rgba(255, 255, 255, 0.3);">
@@ -13639,30 +13796,37 @@
                                                             class="bt_bb_headline bt_bb_dash_bottom bt_bb_subheadline bt_bb_size_medium bt_bb_align_inherit bt_bb_dash_type_none"
                                                             data-bt-override-class="{}">
                                                             <h4 style="font-size:1.875rem" class="bt_bb_headline_tag">
-                                                                <span class="bt_bb_headline_content"><span><u>Dr. Monica Katyal</u></span></span></h4>
+                                                                <span class="bt_bb_headline_content"><span><u>Dr. Monica
+                                                                            Katyal</u></span></span>
+                                                            </h4>
                                                             <div class="bt_bb_headline_subheadline">Pediatric Dentist
                                                             </div>
                                                         </header>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
-                                                            data-bt-override-class="null"></div>
+                                                            data-bt-override-class="null">
+                                                        </div>
                                                         <div class="bt_bb_text">
                                                             <p>Enthusiastically mesh long-term high-impact
                                                                 infrastructures vis-a-vis efficient customer service
                                                                 leadership rather than prospective experiences.</p>
                                                         </div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
-                                                            data-bt-override-class="null"></div>
-                                                            <button type="button" class="btn btn-social-icon btn-outline-facebook">
-                                                                <i class="fab fa-facebook-f"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-twitter">
-                                                                <i class="fab fa-twitter"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-linkedin">
-                                                                <i class="fab fa-linkedin-in"></i>
-                                                            </button>
+                                                            data-bt-override-class="null">
+                                                        </div>
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-facebook">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-twitter">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-linkedin">
+                                                            <i class="fab fa-linkedin-in"></i>
+                                                        </button>
                                                         <div class="bt_bb_separator bt_bb_border_style_none"
                                                             data-bt-override-class="null"></div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
@@ -13676,14 +13840,14 @@
                                                         style="background-color:rgba(242, 242, 242, 1);">
                                                         <div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
                                                             data-bt-override-class="{}"><a href="#" target="_self"
-                                                                title="Sue"><img loading="lazy"
-                                                                    decoding="async" width="800" height="800"
-                                                                    src="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2790.jpg"
+                                                                title="Sue"><img loading="lazy" decoding="async"
+                                                                    width="800" height="800"
+                                                                    src="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg"
                                                                     class="attachment-full size-full"
-                                                                    alt="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2790.jpg"
-                                                                    data-full_image_src="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2790.jpg"
+                                                                    alt="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg"
+                                                                    data-full_image_src="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg"
                                                                     title="Sue"
-                                                                    srcset="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2790.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-100x100.jpg 100w"
+                                                                    srcset="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-03-100x100.jpg 100w"
                                                                     sizes="(max-width: 800px) 100vw, 800px" /></a>
                                                             <div class="bt_bb_image_content"
                                                                 style="background-color: rgba(255, 255, 255, 0.3);">
@@ -13711,7 +13875,9 @@
                                                             class="bt_bb_headline bt_bb_dash_bottom bt_bb_subheadline bt_bb_size_medium bt_bb_align_inherit bt_bb_dash_type_none"
                                                             data-bt-override-class="{}">
                                                             <h4 style="font-size:1.875rem" class="bt_bb_headline_tag">
-                                                                <span class="bt_bb_headline_content"><span><u>Sue</u></span></span></h4>
+                                                                <span
+                                                                    class="bt_bb_headline_content"><span><u>Sue</u></span></span>
+                                                            </h4>
                                                             <div class="bt_bb_headline_subheadline">Senior
                                                                 Prosthodontist</div>
                                                         </header>
@@ -13724,17 +13890,20 @@
                                                         </div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                             data-bt-override-class="null"></div>
-                                                            <button type="button" class="btn btn-social-icon btn-outline-facebook">
-                                                                <i class="fab fa-facebook-f"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-twitter">
-                                                                <i class="fab fa-twitter"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-linkedin">
-                                                                <i class="fab fa-linkedin-in"></i>
-                                                            </button>
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-facebook">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-twitter">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-linkedin">
+                                                            <i class="fab fa-linkedin-in"></i>
+                                                        </button>
                                                         <div class="bt_bb_separator bt_bb_border_style_none"
                                                             data-bt-override-class="null"></div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
@@ -13748,14 +13917,14 @@
                                                         style="background-color:rgba(242, 242, 242, 1);">
                                                         <div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
                                                             data-bt-override-class="{}"><a href="#" target="_self"
-                                                                title="Roxanne"><img loading="lazy"
-                                                                    decoding="async" width="800" height="800"
-                                                                    src="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2866_JPG.jpg"
+                                                                title="Roxanne"><img loading="lazy" decoding="async"
+                                                                    width="800" height="800"
+                                                                    src="https://static.wixstatic.com/media/a4e5eb_dfbdd77ce60346c69bf6fcaad2f78352~mv2.jpg/v1/crop/x_5,y_0,w_704,h_1000/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2866_JPG.jpg"
                                                                     class="attachment-full size-full"
-                                                                    alt="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2866_JPG.jpg"
-                                                                    data-full_image_src="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2866_JPG.jpg"
+                                                                    alt="https://static.wixstatic.com/media/a4e5eb_dfbdd77ce60346c69bf6fcaad2f78352~mv2.jpg/v1/crop/x_5,y_0,w_704,h_1000/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2866_JPG.jpg"
+                                                                    data-full_image_src="https://static.wixstatic.com/media/a4e5eb_dfbdd77ce60346c69bf6fcaad2f78352~mv2.jpg/v1/crop/x_5,y_0,w_704,h_1000/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2866_JPG.jpg"
                                                                     title="Roxanne"
-                                                                    srcset="https://pavan0668.github.io/stonebridgedentistry/img/IMG_2866_JPG.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-100x100.jpg 100w"
+                                                                    srcset="https://static.wixstatic.com/media/a4e5eb_dfbdd77ce60346c69bf6fcaad2f78352~mv2.jpg/v1/crop/x_5,y_0,w_704,h_1000/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2866_JPG.jpg 800w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-640x640.jpg 640w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-160x160.jpg 160w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-768x768.jpg 768w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-320x320.jpg 320w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-300x300.jpg 300w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-600x600.jpg 600w, https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/people-04-100x100.jpg 100w"
                                                                     sizes="(max-width: 800px) 100vw, 800px" /></a>
                                                             <div class="bt_bb_image_content"
                                                                 style="background-color: rgba(255, 255, 255, 0.3);">
@@ -13783,29 +13952,34 @@
                                                             class="bt_bb_headline bt_bb_dash_bottom bt_bb_subheadline bt_bb_size_medium bt_bb_align_inherit bt_bb_dash_type_none"
                                                             data-bt-override-class="{}">
                                                             <h4 style="font-size:1.875rem" class="bt_bb_headline_tag">
-                                                                <span class="bt_bb_headline_content"><span><u>Roxanne</u></span></span></h4>
+                                                                <span
+                                                                    class="bt_bb_headline_content"><span><u>Roxanne</u></span></span>
+                                                            </h4>
                                                             <div class="bt_bb_headline_subheadline">Dental Nurse</div>
                                                         </header>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                             data-bt-override-class="null"></div>
                                                         <div class="bt_bb_text">
                                                             <p>Uniquely deploy cross-unit benefits with wireless testing
-                                                                procedures. Build backward compatible 
+                                                                procedures. Build backward compatible
                                                                 whereas tactical paradigms.</p>
                                                         </div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                             data-bt-override-class="null"></div>
-                                                            <button type="button" class="btn btn-social-icon btn-outline-facebook">
-                                                                <i class="fab fa-facebook-f"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-twitter">
-                                                                <i class="fab fa-twitter"></i>
-                                                            </button>
-                                                            
-                                                            <button type="button" class="btn btn-social-icon btn-outline-linkedin">
-                                                                <i class="fab fa-linkedin-in"></i>
-                                                            </button>
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-facebook">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-twitter">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </button>
+
+                                                        <button type="button"
+                                                            class="btn btn-social-icon btn-outline-linkedin">
+                                                            <i class="fab fa-linkedin-in"></i>
+                                                        </button>
                                                         <div class="bt_bb_separator bt_bb_border_style_none"
                                                             data-bt-override-class="null"></div>
                                                         <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
@@ -13823,12 +13997,16 @@
                             data-bt-override-class="null">
                             <div class="bt_bb_background_image_holder_wrapper">
                                 <div class="bt_bb_background_image_holder btLazyLoadBackground bt_bb_parallax"
+                                    style="background-color: lightskyblue; height: 100%; width: 100%;">
+                                </div>
+
+                                <!-- <div class="bt_bb_background_image_holder btLazyLoadBackground bt_bb_parallax"
                                     data-background_image_src="https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/03/background-doctor.jpg"
                                     data-parallax="0.1" data-parallax-offset="0" data-parallax-zoom-start="1"
                                     data-parallax-zoom-end="1" data-parallax-blur-start="0" data-parallax-blur-end="0"
                                     data-parallax-opacity-start="1" data-parallax-opacity-end="1"
                                     style=" background-image: url(&#039;https://denticare.bold-themes.com/allen/wp-content/plugins/bold-page-builder/img/blank.gif&#039;);">
-                                </div>
+                                </div> -->
                             </div>
                             <div class="bt_bb_port">
                                 <div class="bt_bb_cell">
@@ -13948,16 +14126,17 @@
                                                                                             <option
                                                                                                 value="Allen Fischer">
                                                                                                 Allen Fischer</option>
-                                                                                            <option value="Dr. Rishi Panchal">
-                                                                                                Dr. Rishi Panchal</option>
+                                                                                            <option
+                                                                                                value="Dr. Rishi Panchal">
+                                                                                                Dr. Rishi Panchal
+                                                                                            </option>
                                                                                             <option
                                                                                                 value="Dr. Monica Katyal">
-                                                                                                Dr. Monica Katyal</option>
-                                                                                            <option
-                                                                                                value="Sue">
+                                                                                                Dr. Monica Katyal
+                                                                                            </option>
+                                                                                            <option value="Sue">
                                                                                                 Sue</option>
-                                                                                            <option
-                                                                                                value="Roxanne">
+                                                                                            <option value="Roxanne">
                                                                                                 Roxanne</option>
                                                                                         </select></span>
                                                                                 </p>
@@ -14027,7 +14206,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_3 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#FF793E; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-tooth"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-tooth"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">General
                                                                     Dentistry</div>
@@ -14045,7 +14225,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-syringe"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-syringe"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Implants</div>
                                                                 <div class="bt_bb_service_content_text">Leverage other
@@ -14062,7 +14243,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_3 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#FF793E; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-stethoscope"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-stethoscope"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Dental Surgery
                                                                 </div>
@@ -14080,7 +14262,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-user-md"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-user-md"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Alignment</div>
                                                                 <div class="bt_bb_service_content_text">User generated
@@ -14101,7 +14284,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-hospital-symbol"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-hospital-symbol"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Whitening</div>
                                                                 <div class="bt_bb_service_content_text">Incubate
@@ -14118,7 +14302,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_3 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#FF793E; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-notes-medical"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-notes-medical"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Teeth Braces
                                                                 </div>
@@ -14136,7 +14321,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-heartbeat"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-heartbeat"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Prosthesis
                                                                 </div>
@@ -14154,7 +14340,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_3 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#FF793E; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fas fa-capsules"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fas fa-capsules"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Teeth
                                                                     Protection</div>
@@ -14253,14 +14440,10 @@
                                                     <h3>Location</h3>
                                                     <div class="map">
                                                         <iframe
-                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.178224662296!2d-80.0066375!3d44.5243263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2fb6b6e8dd17b155!2sStonebridge%20Dentistry!5e0!3m2!1sen!2sus!4v1698996050131!5m2!1sen!2sin&markers=color:red%7Clabel:S%7C44.5243263,-80.0066375"
+                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2844.5519456949146!2d-80.0092124246058!3d44.52433009565658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a83d53bb6efef%3A0xff83ab9925fd3a36!2sStonebridge%20Dentistry!5e0!3m2!1sen!2sin!4v1718860622063!5m2!1sen!2sin"
                                                             width="600" height="450" style="border:0;"
                                                             allowfullscreen="" loading="lazy"
                                                             referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                                        <!-- View Larger Map Link -->
-                                                        <p><a href="https://www.google.com/maps/place/Stonebridge+Dentistry/@44.5243263,-80.0066375,17z/data=!3m1!5s0x882a817f06848449:0x2fb6b6e8dd17b155!4m14!1m7!3m6!1s0x882a83d53bb6efef:0xff83ab9925fd3a36!2sStonebridge+Dentistry!8m2!3d44.5243263!4d-80.0066375!16s%2Fg%2F11b70h1pc8!3m5!1s0x882a83d53bb6efef:0xff83ab9925fd3a36!8m2!3d44.5243263!4d-80.0066375!16s%2Fg%2F11b70h1pc8?entry=ttu"
-                                                                target="_blank">View Stonebridge Dentistry on
-                                                                Map</a></p>
                                                     </div>
                                                 </div>
                                                 <div class="bt_bb_column col-xxl-5 col-xl-5 bt_bb_vertical_align_middle bt_bb_align_left bt_bb_padding_double bt_bb_animation_fade_in animate"
@@ -14338,7 +14521,8 @@
                                                                         <div class="bt_bb_working_hours_inner_content">
                                                                             8AM-9PM</div>
                                                                         <div class="bt_bb_working_hours_inner_link"><a
-                                                                                href="book-appointment" title="Book">Book</a></div>
+                                                                                href="book-appointment"
+                                                                                title="Book">Book</a></div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="bt_bb_working_hours_inner_row">
@@ -14395,7 +14579,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                                                class="bt_bb_icon_holder"><i class="fa fa-phone"
+                                                                    aria-hidden="true"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Emergency Phone
                                                                 </div>
@@ -14414,7 +14599,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fa fa-address-card" aria-hidden="true"></i>
+                                                                class="bt_bb_icon_holder"><i class="fa fa-address-card"
+                                                                    aria-hidden="true"></i>
                                                             </span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Address</div>
@@ -14433,7 +14619,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fa-solid fa-book"></i></span>
+                                                                class="bt_bb_icon_holder"><i
+                                                                    class="fa-solid fa-book"></i></span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Book By Phone
                                                                 </div>
@@ -14452,7 +14639,8 @@
                                                         <div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_large bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                             style="; --primary-color:#422774; --secondary-color:#191919;"
                                                             data-bt-override-class="{}"><span
-                                                                class="bt_bb_icon_holder"><i class="fa fa-envelope" aria-hidden="true"></i>
+                                                                class="bt_bb_icon_holder"><i class="fa fa-envelope"
+                                                                    aria-hidden="true"></i>
                                                             </span>
                                                             <div class="bt_bb_service_content">
                                                                 <div class="bt_bb_service_content_title">Email Us</div>
@@ -14483,12 +14671,16 @@
                     style=";background-color:#f2f2f2;background-position:15% 55%;background-size:95%;"
                     data-bt-override-class="null">
                     <div class="bt_bb_background_image_holder_wrapper">
-                        <div class="bt_bb_background_image_holder btLazyLoadBackground"
+                        <div class="bt_bb_background_image_holder btLazyLoadBackground bt_bb_parallax"
+                            style="background-color: lightskyblue; height: 100%; width: 100%;">
+                        </div>
+
+                        <!-- <div class="bt_bb_background_image_holder btLazyLoadBackground"
                             data-background_image_src="https://denticare.bold-themes.com/allen/wp-content/uploads/sites/16/2020/01/bgn-footer-left.png"
                             data-parallax-zoom-start="1" data-parallax-zoom-end="1" data-parallax-blur-start="0"
                             data-parallax-blur-end="0" data-parallax-opacity-start="1" data-parallax-opacity-end="1"
                             style=" background-image: url(&#039;https://denticare.bold-themes.com/allen/wp-content/plugins/bold-page-builder/img/blank.gif&#039;);">
-                        </div>
+                        </div> -->
                     </div>
                     <div class="bt_bb_port">
                         <div class="bt_bb_cell">
@@ -14517,25 +14709,31 @@
                                                 <div class="bt_bb_icon bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
                                                     style="; --primary-color:#422774; --secondary-color:#191919;"
                                                     data-bt-override-class="{}"><a href="tel:4152055550" target="_self"
-                                                        title="(705) 422-2490" 
-                                                        class="bt_bb_icon_holder"><i class="fa fa-phone" aria-hidden="true"></i>                                                        <span>(705) 422-2490</span></a></div>
+                                                        title="(705) 422-2490" class="bt_bb_icon_holder"><i
+                                                            class="fa fa-phone" aria-hidden="true"></i> <span>(705)
+                                                            422-2490</span></a></div>
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                     data-bt-override-class="null"></div>
-                                                <div class="bt_bb_icon bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
-                                                    style="; --primary-color:#422774; --secondary-color:#191919;"
-                                                    data-bt-override-class="{}"><a
-                                                        href="mailto:emergencies@denticare.com" target="_self"
-                                                        title="emergencies@denticare.com"
-                                                        class="bt_bb_icon_holder"><i class="fa fa-envelope" aria-hidden="true"></i><span>emergencies@denticare.com</span></a>
+                                                <div class="bt_bb_icon"
+                                                    style="--primary-color:#422774; --secondary-color:#191919;"
+                                                    data-bt-override-class="{}">
+                                                    <a href="mailto:reception.stonebridgedentistry@gmail.com"
+                                                        target="_self" title="reception.stonebridgedentistry@gmail.com"
+                                                        onclick="this.textContent='reception.stonebridgedentistry@gmail.com'; return true;">
+                                                        <span><i class="fas fa-envelope"></i> Email Us</span>
+                                                    </a>
                                                 </div>
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
                                                     data-bt-override-class="null"></div>
-                                                <div class="bt_bb_icon bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_align_inherit"
-                                                    style="; --primary-color:#422774; --secondary-color:#191919;"
-                                                    data-bt-override-class="{}"><a href="http://www.denticare.com"
-                                                        target="_blank" title="denticare.com"
-                                                        class="bt_bb_icon_holder"><i class="fa fa-globe" aria-hidden="true"></i>
-                                                        <span>denticare.com</span></a></div>
+                                                <div class="bt_bb_icon"
+                                                    style="--primary-color:#422774; --secondary-color:#191919;"
+                                                    data-bt-override-class="{}">
+                                                    <a href="https://www.stonebridgedentistry.ca/" target="_blank"
+                                                        title="https://www.stonebridgedentistry.ca/">
+                                                        <span><i
+                                                                class="fas fa-globe"></i>stonebridgedentistry.ca/</span>
+                                                    </a>
+                                                </div>
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal"
                                                     data-bt-override-class="null"></div>
                                             </div>
@@ -14558,28 +14756,26 @@
                                                         <ul id="menu-footer-about" class="menu">
                                                             <li id="menu-item-452"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452">
-                                                                <a
-                                                                    href="https://denticare.bold-themes.com/allen/about-us/team/">Our
-                                                                    Dental Team</a></li>
+                                                                <a href="Team.html">Our
+                                                                    Dental Team</a>
+                                                            </li>
                                                             <li id="menu-item-453"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453">
-                                                                <a
-                                                                    href="https://denticare.bold-themes.com/allen/services/pricing/">Pricing
-                                                                    &#038; Pricelist</a></li>
+                                                                <a href="Pricing-Plan.html">Pricing
+                                                                    &#038; Pricelist</a>
+                                                            </li>
                                                             <li id="menu-item-1422"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422">
-                                                                <a
-                                                                    href="https://denticare.bold-themes.com/allen/services/solutions/">Solutions</a>
+                                                                <a href="Testimonials.html">Testimonials</a>
                                                             </li>
                                                             <li id="menu-item-456"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-456">
-                                                                <a
-                                                                    href="https://denticare.bold-themes.com/allen/services/">Dental
-                                                                    Services</a></li>
+                                                                <a href="Services.html">Dental
+                                                                    Services</a>
+                                                            </li>
                                                             <li id="menu-item-457"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-457">
-                                                                <a
-                                                                    href="https://denticare.bold-themes.com/allen/about-us/clients/">Clients</a>
+                                                                <a href="About-Us.html">About</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -14690,7 +14886,7 @@
                                                 </div>
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
                                                     data-bt-override-class="null"></div>
-                                                <div class="bt_bb_icon btIcoFacebook bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
+                                                <!-- <div class="bt_bb_icon btIcoFacebook bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
                                                     style="; --primary-color:#ffffff; --secondary-color:#422774;"
                                                     data-bt-override-class="{}"><a
                                                         href="https://www.facebook.com/boldthemes/" target="_blank"
@@ -14711,7 +14907,28 @@
                                                     style="; --primary-color:#ffffff; --secondary-color:#422774;"
                                                     data-bt-override-class="{}"><a href="#" target="_blank"
                                                         data-ico-fontawesome5brands="&#xf231;"
-                                                        class="bt_bb_icon_holder"></a></div>
+                                                        class="bt_bb_icon_holder"></a></div> -->
+                                                <div class="social-icons">
+                                                    <a href="https://www.facebook.com/boldthemes/" target="_blank"
+                                                        class="social-icon"
+                                                        style="--primary-color:#ffffff; --secondary-color:#422774;">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </a>
+                                                    <a href="https://twitter.com/bold_themes" target="_blank"
+                                                        class="social-icon"
+                                                        style="--primary-color:#ffffff; --secondary-color:#422774;">
+                                                        <i class="fab fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" target="_blank" class="social-icon"
+                                                        style="--primary-color:#ffffff; --secondary-color:#422774;">
+                                                        <i class="fab fa-linkedin-in"></i>
+                                                    </a>
+                                                    <a href="#" target="_blank" class="social-icon"
+                                                        style="--primary-color:#ffffff; --secondary-color:#422774;">
+                                                        <i class="fab fa-pinterest"></i>
+                                                    </a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -14736,7 +14953,7 @@
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
                                                     data-bt-override-class="null"></div>
                                                 <div class="bt_bb_text">
-                                                   
+
                                                 </div>
                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
                                                     data-bt-override-class="null"></div>
@@ -14755,7 +14972,8 @@
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-445">
                                                                 <a
                                                                     href="https://denticare.bold-themes.com/allen/about-us/">ABOUT
-                                                                    US</a></li>
+                                                                    US</a>
+                                                            </li>
                                                             <li id="menu-item-446"
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-446">
                                                                 <a
@@ -14783,7 +15001,8 @@
                                                             </li>
                                                             <li id="menu-item-451"
                                                                 class="bt_bb_back_to_top menu-item menu-item-type-custom menu-item-object-custom menu-item-451">
-                                                                <a href="#top">BACK TO TOP</a></li>
+                                                                <a href="#top">BACK TO TOP</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -14814,7 +15033,8 @@
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-445">
                                                                 <a
                                                                     href="https://denticare.bold-themes.com/allen/about-us/">ABOUT
-                                                                    US</a></li>
+                                                                    US</a>
+                                                            </li>
                                                             <li
                                                                 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-446">
                                                                 <a
@@ -14842,7 +15062,8 @@
                                                             </li>
                                                             <li
                                                                 class="bt_bb_back_to_top menu-item menu-item-type-custom menu-item-object-custom menu-item-451">
-                                                                <a href="#top">BACK TO TOP</a></li>
+                                                                <a href="#top">BACK TO TOP</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
