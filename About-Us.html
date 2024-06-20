@@ -15,23 +15,26 @@
 				opacity: 0;
 				transform: translateY(20px);
 			}
+
 			to {
 				opacity: 1;
 				transform: translateY(0);
 			}
 		}
-	
+
 		/* Apply animation to the cards */
 		.card {
-			opacity: 0; /* Initial opacity to hide the cards */
-			animation: fadeIn 0.5s ease-in-out forwards; /* Use forwards to keep the final state after animation */
+			opacity: 0;
+			/* Initial opacity to hide the cards */
+			animation: fadeIn 0.5s ease-in-out forwards;
+			/* Use forwards to keep the final state after animation */
 		}
 	</style>
 	<script>
 		// Function to trigger the animation for each card
 		function animateCards() {
 			const cards = document.querySelectorAll('.card');
-	
+
 			cards.forEach((card, index) => {
 				// Delay each card's animation by multiplying index with 150ms
 				setTimeout(() => {
@@ -39,7 +42,7 @@
 				}, index * 150);
 			});
 		}
-	
+
 		// Wait for the DOM content to be loaded
 		document.addEventListener('DOMContentLoaded', () => {
 			// Trigger the animation once the DOM content is loaded
@@ -154,7 +157,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
-	
+
 	<meta name='robots' content='max-image-preview:large' />
 
 	<!-- Google Tag Manager for WordPress by gtm4wp.com -->
@@ -12822,7 +12825,8 @@
 							</div><!-- port -->
 						</section>
 						<section class="container service-section">
-							<div class="row mt-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 gy-4 justify-content-between" id="cardRow">
+							<div class="row mt-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-1 gy-4 justify-content-between"
+								id="cardRow">
 								<div class="col">
 									<div class="card h-100">
 										<img src="img/asset 3.jpeg" class="card-img-top" alt="...">
@@ -13307,7 +13311,8 @@
 															data-bt-override-class="{}"><a href="#" target="_self"
 																class="bt_bb_link" title="View All Testimonials"><span
 																	class="bt_bb_button_text">View All
-																	Testimonials</span><span class="bt_bb_icon_holder"></span></a></div>
+																	Testimonials</span><span
+																	class="bt_bb_icon_holder"></span></a></div>
 													</div>
 												</div>
 												<div class="bt_bb_column col-xxl-4 col-xl-4 bt_bb_vertical_align_middle bt_bb_align_right bt_bb_padding_normal bt_bb_animation_fade_in animate"
@@ -13988,8 +13993,7 @@
 																		<div class="bt_bb_working_hours_inner_content">
 																			8AM-9PM</div>
 																		<div class="bt_bb_working_hours_inner_link"><a
-																				href="book-appointment
-" title="Book">Book</a></div>
+																				href="book-appointment" title="Book">Book</a></div>
 																	</div>
 																</div>
 																<div class="bt_bb_working_hours_inner_row">
@@ -13999,8 +14003,7 @@
 																		<div class="bt_bb_working_hours_inner_content">
 																			8AM-9PM</div>
 																		<div class="bt_bb_working_hours_inner_link"><a
-																				href="book-appointment
-" title="Book">Book</a></div>
+																				href="book-appointment" title="Book">Book</a></div>
 																	</div>
 																</div>
 																<div class="bt_bb_working_hours_inner_row">
@@ -14010,8 +14013,7 @@
 																		<div class="bt_bb_working_hours_inner_content">
 																			9AM-6:30PM</div>
 																		<div class="bt_bb_working_hours_inner_link"><a
-																				href="book-appointment
-" title="Book">Book</a></div>
+																				href="book-appointment" title="Book">Book</a></div>
 																	</div>
 																</div>
 																<div class="bt_bb_working_hours_inner_row">
@@ -14021,8 +14023,7 @@
 																		<div class="bt_bb_working_hours_inner_content">
 																			8AM-9PM</div>
 																		<div class="bt_bb_working_hours_inner_link"><a
-																				href="book-appointment
-" title="Book">Book</a></div>
+																				href="book-appointment" title="Book">Book</a></div>
 																	</div>
 																</div>
 																<div class="bt_bb_working_hours_inner_row">
@@ -14032,8 +14033,7 @@
 																		<div class="bt_bb_working_hours_inner_content">
 																			8AM-9PM</div>
 																		<div class="bt_bb_working_hours_inner_link"><a
-																				href="book-appointment
-" title="Book">Book</a></div>
+																				href="book-appointment" title="Book">Book</a></div>
 																	</div>
 																</div>
 																<div class="bt_bb_working_hours_inner_row">
@@ -14063,7 +14063,7 @@
 															data-bt-override-class="{}"><a href="#" target="_self"
 																class="bt_bb_link" title="Suggest Checkup Time"><span
 																	class="bt_bb_button_text">Suggest Checkup
-																	Time</span><span 
+																	Time</span><span
 																	class="bt_bb_icon_holder"></span></a></div>
 														<div class="bt_bb_separator bt_bb_border_style_none"
 															data-bt-override-class="null"></div>
@@ -14121,25 +14121,39 @@
 													<p>A team of dentists working to ensure you receive the best
 														treatment.</p>
 												</div>
-												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small" data-bt-override-class="null"></div>
-<div class="bt_bb_icon" style="--primary-color:#422774; --secondary-color:#191919;" data-bt-override-class="{}">
-    <a href="tel:4152055550" target="_self" title="415-205-5550">
-        <span><i class="fas fa-phone"></i>(705) 422-2490</span>
-    </a>
-</div>
-<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small" data-bt-override-class="null"></div>
-<div class="bt_bb_icon" style="--primary-color:#422774; --secondary-color:#191919;" data-bt-override-class="{}">
-    <a href="mailto:reception.stonebridgedentistry@gmail.com" target="_self" title="reception.stonebridgedentistry@gmail.com" onclick="this.textContent='reception.stonebridgedentistry@gmail.com'; return true;">
-		<span><i class="fas fa-envelope"></i> Email Us</span>
-	  </a>	  
-</div>
-<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small" data-bt-override-class="null"></div>
-<div class="bt_bb_icon" style="--primary-color:#422774; --secondary-color:#191919;" data-bt-override-class="{}">
-    <a href="https://www.stonebridgedentistry.ca/" target="_blank" title="https://www.stonebridgedentistry.ca/">
-        <span><i class="fas fa-globe"></i>stonebridgedentistry.ca/</span>
-    </a>
-</div>
-<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal" data-bt-override-class="null"></div>
+												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
+													data-bt-override-class="null"></div>
+												<div class="bt_bb_icon"
+													style="--primary-color:#422774; --secondary-color:#191919;"
+													data-bt-override-class="{}">
+													<a href="tel:4152055550" target="_self" title="415-205-5550">
+														<span><i class="fas fa-phone"></i>(705) 422-2490</span>
+													</a>
+												</div>
+												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
+													data-bt-override-class="null"></div>
+												<div class="bt_bb_icon"
+													style="--primary-color:#422774; --secondary-color:#191919;"
+													data-bt-override-class="{}">
+													<a href="mailto:reception.stonebridgedentistry@gmail.com"
+														target="_self" title="reception.stonebridgedentistry@gmail.com"
+														onclick="this.textContent='reception.stonebridgedentistry@gmail.com'; return true;">
+														<span><i class="fas fa-envelope"></i> Email Us</span>
+													</a>
+												</div>
+												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
+													data-bt-override-class="null"></div>
+												<div class="bt_bb_icon"
+													style="--primary-color:#422774; --secondary-color:#191919;"
+													data-bt-override-class="{}">
+													<a href="https://www.stonebridgedentistry.ca/" target="_blank"
+														title="https://www.stonebridgedentistry.ca/">
+														<span><i
+																class="fas fa-globe"></i>stonebridgedentistry.ca/</span>
+													</a>
+												</div>
+												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal"
+													data-bt-override-class="null"></div>
 
 											</div>
 										</div>
@@ -14159,32 +14173,30 @@
 												<div class="bt_bb_custom_menu bt_bb_direction_vertical">
 													<div class="menu-footer-about-container">
 														<ul id="menu-footer-about" class="menu">
-                                                            <li id="menu-item-452"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452">
-                                                                <a
-                                                                    href="Team.html">Our
-                                                                    Dental Team</a></li>
-                                                            <li id="menu-item-453"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453">
-                                                                <a
-                                                                    href="Pricing-Plan.html">Pricing
-                                                                    &#038; Pricelist</a></li>
-                                                            <li id="menu-item-1422"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422">
-                                                                <a
-                                                                    href="Testimonials.html">Testimonials</a>
-                                                            </li>
-                                                            <li id="menu-item-456"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-456">
-                                                                <a
-                                                                    href="Services.html">Dental
-                                                                    Services</a></li>
-                                                            <li id="menu-item-457"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-457">
-                                                                <a
-                                                                    href="About-Us.html">About</a>
-                                                            </li>
-                                                        </ul>
+															<li id="menu-item-452"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452">
+																<a href="Team.html">Our
+																	Dental Team</a>
+															</li>
+															<li id="menu-item-453"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453">
+																<a href="Pricing-Plan.html">Pricing
+																	&#038; Pricelist</a>
+															</li>
+															<li id="menu-item-1422"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422">
+																<a href="Testimonials.html">Testimonials</a>
+															</li>
+															<li id="menu-item-456"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-456">
+																<a href="Services.html">Dental
+																	Services</a>
+															</li>
+															<li id="menu-item-457"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-457">
+																<a href="About-Us.html">About</a>
+															</li>
+														</ul>
 													</div>
 												</div>
 												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal"
@@ -14235,7 +14247,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Patient Care
 																								<strong><u>2017</u></strong></span></span>
 																					</h6>
@@ -14246,7 +14259,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Practice &amp; Team
 																								<strong><u>2016</u></strong></span></span>
 																					</h6>
@@ -14257,7 +14271,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Patient Care
 																								<strong><u>2014</u></strong></span></span>
 																					</h6>
