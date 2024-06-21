@@ -59,6 +59,8 @@
 			animateCards();
 		});
 	</script>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<style>
 		.bt_bb_icon_holder {
 			display: inline-flex;
@@ -105,12 +107,12 @@
 		.circle-bg {
 			fill: none;
 			stroke: #181818;
-			stroke-width: 4;
+			stroke-width: 2;
 		}
 
 		.circle {
 			fill: none;
-			stroke-width: 4;
+			stroke-width: 2; /* Adjusted stroke-width for thinner arc */
 			stroke-linecap: round;
 			stroke: #2663b1;
 			transition: stroke-dasharray 1.4s ease-out;
@@ -122,6 +124,40 @@
 			}
 		}
 	</style>
+
+<style>
+	.social-icons {
+		display: flex;
+		gap: 10px;
+		/* Adjust the spacing between icons */
+	}
+
+	.social-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		/* Adjust the size as needed */
+		height: 40px;
+		background-color: var(--secondary-color);
+		color: var(--primary-color);
+		border-radius: 50%;
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 0.3s, color 0.3s;
+		/* Smooth color transition */
+	}
+
+	.social-icon i {
+		font-size: 20px;
+		/* Adjust the icon size as needed */
+	}
+
+	.social-icon:hover {
+		background-color: var(--primary-color);
+		color: var(--secondary-color);
+	}
+</style>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
@@ -14321,28 +14357,49 @@
 												</div>
 												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
 													data-bt-override-class="null"></div>
-												<div class="bt_bb_icon btIcoFacebook bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a
-														href="https://www.facebook.com/boldthemes/" target="_blank"
-														data-ico-fontawesome5brands="" class="bt_bb_icon_holder"></a>
+												<!-- <div class="bt_bb_icon btIcoFacebook bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
+														style="; --primary-color:#ffffff; --secondary-color:#422774;"
+														data-bt-override-class="{}"><a
+															href="https://www.facebook.com/boldthemes/" target="_blank"
+															data-ico-fontawesome5brands="&#xf39e;"
+															class="bt_bb_icon_holder"></a></div>
+													<div class="bt_bb_icon btIcoTwitter bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
+														style="; --primary-color:#ffffff; --secondary-color:#422774;"
+														data-bt-override-class="{}"><a
+															href="https://twitter.com/bold_themes" target="_blank"
+															data-ico-fontawesome5brands="&#xf099;"
+															class="bt_bb_icon_holder"></a></div>
+													<div class="bt_bb_icon btIcoLinkedin bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
+														style="; --primary-color:#ffffff; --secondary-color:#422774;"
+														data-bt-override-class="{}"><a href="#" target="_blank"
+															data-ico-fontawesome5brands="&#xf0e1;"
+															class="bt_bb_icon_holder"></a></div>
+													<div class="bt_bb_icon btIcoPinterest bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
+														style="; --primary-color:#ffffff; --secondary-color:#422774;"
+														data-bt-override-class="{}"><a href="#" target="_blank"
+															data-ico-fontawesome5brands="&#xf231;"
+															class="bt_bb_icon_holder"></a></div> -->
+												<div class="social-icons">
+													<a href="https://www.facebook.com/boldthemes/" target="_blank"
+														class="social-icon"
+														style="--primary-color:#ffffff; --secondary-color:#422774;">
+														<i class="fab fa-facebook-f"></i>
+													</a>
+													<a href="https://twitter.com/bold_themes" target="_blank"
+														class="social-icon"
+														style="--primary-color:#ffffff; --secondary-color:#422774;">
+														<i class="fab fa-twitter"></i>
+													</a>
+													<a href="#" target="_blank" class="social-icon"
+														style="--primary-color:#ffffff; --secondary-color:#422774;">
+														<i class="fab fa-linkedin-in"></i>
+													</a>
+													<a href="#" target="_blank" class="social-icon"
+														style="--primary-color:#ffffff; --secondary-color:#422774;">
+														<i class="fab fa-pinterest"></i>
+													</a>
 												</div>
-												<div class="bt_bb_icon btIcoTwitter bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a
-														href="https://twitter.com/bold_themes" target="_blank"
-														data-ico-fontawesome5brands="" class="bt_bb_icon_holder"></a>
-												</div>
-												<div class="bt_bb_icon btIcoLinkedin bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a href="#" target="_blank"
-														data-ico-fontawesome5brands="" class="bt_bb_icon_holder"></a>
-												</div>
-												<div class="bt_bb_icon btIcoPinterest bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a href="#" target="_blank"
-														data-ico-fontawesome5brands="" class="bt_bb_icon_holder"></a>
-												</div>
+	
 											</div>
 										</div>
 									</div>
