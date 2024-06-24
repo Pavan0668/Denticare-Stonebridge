@@ -16,20 +16,54 @@
 		var dataLayer = dataLayer || [];
 	</script>
 
+	<style>
+		.btBelowLogoArea {
+			background-color: white;
+		}
+
+		.btLogoArea {
+			background-color: lightskyblue;
+		}
+	</style>
+
 <style>
-	.btBelowLogoArea {
-		background-color: white;
+	.social-icons {
+		display: flex;
+		gap: 10px;
+		/* Adjust the spacing between icons */
 	}
 
-	.btLogoArea {
-		background-color: lightskyblue;
+	.social-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		/* Adjust the size as needed */
+		height: 40px;
+		background-color: var(--secondary-color);
+		color: var(--primary-color);
+		border-radius: 50%;
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 0.3s, color 0.3s;
+		/* Smooth color transition */
+	}
+
+	.social-icon i {
+		font-size: 20px;
+		/* Adjust the icon size as needed */
+	}
+
+	.social-icon:hover {
+		background-color: var(--primary-color);
+		color: var(--secondary-color);
 	}
 </style>
-<link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-<link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-<link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-<link rel="shortcut icon" href="../../assets/images/favicon.png" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+	<link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+	<link rel="shortcut icon" href="../../assets/images/favicon.png" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@400;500;700&display=swap" rel="stylesheet">
@@ -67,131 +101,175 @@
 	</style>
 	<style>
 		.btn-behance.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #4a8aff; }
+			padding: 0 1.5rem 0 0;
+			background: #4a8aff;
+		}
+
 		.btn-behance.btn-social-icon-text i {
-		  background: #1769ff;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	.btn-dribbble.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #ef7aa7; }
+			background: #1769ff;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		.btn-dribbble.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #ef7aa7;
+		}
+
 		.btn-dribbble.btn-social-icon-text i {
-		  background: #ea4c89;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	 .btn-reddit.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #ff6a33; }
+			background: #ea4c89;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+		.btn-reddit.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #ff6a33;
+		}
+
 		.btn-reddit.btn-social-icon-text i {
-		  background: #ff4500;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	.btn.btn-social-icon, .fc button.btn-social-icon, .ajax-upload-dragdrop .btn-social-icon.ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-social-icon.swal2-styled, .wizard > .actions a.btn-social-icon {
-		width: 50px;
-		height: 50px;
-		padding: 0; }
-	
-	
-	
-	
-	 .btn-twitter.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #59bce7; }
+			background: #ff4500;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+		.btn.btn-social-icon,
+		.fc button.btn-social-icon,
+		.ajax-upload-dragdrop .btn-social-icon.ajax-file-upload,
+		.swal2-modal .swal2-buttonswrapper .btn-social-icon.swal2-styled,
+		.wizard>.actions a.btn-social-icon {
+			width: 50px;
+			height: 50px;
+			padding: 0;
+		}
+
+
+
+
+		.btn-twitter.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #59bce7;
+		}
+
 		.btn-twitter.btn-social-icon-text i {
-		  background: #2caae1;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	
-	
-	.btn-facebook.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #4e6ebd; }
+			background: #2caae1;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+
+
+		.btn-facebook.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #4e6ebd;
+		}
+
 		.btn-facebook.btn-social-icon-text i {
-		  background: #3b579d;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	 .btn-google.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #e47163; }
-	
+			background: #3b579d;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		.btn-google.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #e47163;
+		}
+
 		.btn-google.btn-social-icon-text i {
-		  background: #dc4a38;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	 .btn-linkedin.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #0198e8; }
+			background: #dc4a38;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		.btn-linkedin.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #0198e8;
+		}
+
 		.btn-linkedin.btn-social-icon-text i {
-		  background: #0177b5;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	.btn-pinterest.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #e04046; }
+			background: #0177b5;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+		.btn-pinterest.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #e04046;
+		}
+
 		.btn-pinterest.btn-social-icon-text i {
-		  background: #cc2127;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	 .btn-youtube.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #ea5955; }
+			background: #cc2127;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+		.btn-youtube.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #ea5955;
+		}
+
 		.btn-youtube.btn-social-icon-text i {
-		  background: #e52d27;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	.btn-github.btn-social-icon-text {
-		padding: 0 1.5rem 0 0;
-		background: #4d4d4d; }
+			background: #e52d27;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+		.btn-github.btn-social-icon-text {
+			padding: 0 1.5rem 0 0;
+			background: #4d4d4d;
+		}
+
 		.btn-github.btn-social-icon-text i {
-		  background: #333333;
-		  padding: .75rem;
-		  display: inline-block;
-		  margin-right: 1.5rem; }
-	
-	
-	.btn-outline-facebook {
-	  border: 1px solid #3b579d;
-	  color: #3b579d; }
-	  .btn-outline-facebook:hover {
-		background: #3b579d;
-		color: #ffffff; }
-	
-	.btn-outline-twitter {
-	  border: 1px solid #2caae1;
-	  color: #2caae1; }
-	  .btn-outline-twitter:hover {
-		background: #2caae1;
-		color: #ffffff; }
-	
-	.btn-outline-linkedin {
-	  border: 1px solid #0177b5;
-	  color: #0177b5; }
-	  .btn-outline-linkedin:hover {
-		background: #0177b5;
-		color: #ffffff; }
+			background: #333333;
+			padding: .75rem;
+			display: inline-block;
+			margin-right: 1.5rem;
+		}
+
+
+		.btn-outline-facebook {
+			border: 1px solid #3b579d;
+			color: #3b579d;
+		}
+
+		.btn-outline-facebook:hover {
+			background: #3b579d;
+			color: #ffffff;
+		}
+
+		.btn-outline-twitter {
+			border: 1px solid #2caae1;
+			color: #2caae1;
+		}
+
+		.btn-outline-twitter:hover {
+			background: #2caae1;
+			color: #ffffff;
+		}
+
+		.btn-outline-linkedin {
+			border: 1px solid #0177b5;
+			color: #0177b5;
+		}
+
+		.btn-outline-linkedin:hover {
+			background: #0177b5;
+			color: #ffffff;
+		}
 	</style>
 	<link rel='stylesheet' id='wp-block-library-css'
 		href='https://denticare.bold-themes.com/allen/wp-includes/css/dist/block-library/style.min.css?ver=6.5.3'
@@ -12607,7 +12685,7 @@
 				<div class="btBelowLogoArea btClear">
 					<div class="port">
 						<div class="menuPort">
-	
+
 							<nav>
 								<ul id="menu-primary-menu" class="menu">
 									<li id="menu-item-319"
@@ -12637,10 +12715,10 @@
 										class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-356">
 										<a href="Pricing-Plan.html">Pricing</a>
 									</li>
-	
+
 								</ul>
 							</nav>
-	
+
 						</div><!-- .menuPort -->
 					</div><!-- /port -->
 				</div><!-- /menuHolder / btBelowLogoArea -->
@@ -12745,7 +12823,8 @@
 											<div class="bt_bb_row bt_bb_column_gap_10" style="margin-bottom: -20px;"
 												data-bt-override-class="{}">
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_text_indent bt_bb_animation_fade_in bt_bb_animation_move_up animate"
-													style="margin-bottom: 20px;" data-width="3" data-bt-override-class="{}">
+													style="margin-bottom: 20px;" data-width="3"
+													data-bt-override-class="{}">
 													<div class="bt_bb_column_content"
 														style="background-color:rgba(242, 242, 242, 1);">
 														<div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
@@ -12788,7 +12867,8 @@
 																<span class="bt_bb_headline_content"><span><u>Dr. Rishi
 																			Panchal</u></span></span>
 															</h4>
-															<div class="bt_bb_headline_subheadline" style="color: black;">Senior Orthodontist
+															<div class="bt_bb_headline_subheadline"
+																style="color: black;">Senior Orthodontist
 															</div>
 														</header>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
@@ -12804,17 +12884,17 @@
 															class="btn btn-social-icon btn-outline-facebook">
 															<i class="fab fa-facebook-f"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-twitter">
 															<i class="fab fa-twitter"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-linkedin">
 															<i class="fab fa-linkedin-in"></i>
 														</button>
-	
+
 														<div class="bt_bb_separator bt_bb_border_style_none"
 															data-bt-override-class="null"></div>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
@@ -12822,7 +12902,8 @@
 													</div>
 												</div>
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_text_indent bt_bb_animation_fade_in bt_bb_animation_move_up animate"
-													style="margin-bottom: 20px;" data-width="3" data-bt-override-class="{}">
+													style="margin-bottom: 20px;" data-width="3"
+													data-bt-override-class="{}">
 													<div class="bt_bb_column_content"
 														style="background-color:rgba(242, 242, 242, 1);">
 														<div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
@@ -12865,7 +12946,8 @@
 																<span class="bt_bb_headline_content"><span><u>Dr. Monica
 																			Katyal</u></span></span>
 															</h4>
-															<div class="bt_bb_headline_subheadline" style="color: black;" >Pediatric Dentist
+															<div class="bt_bb_headline_subheadline"
+																style="color: black;">Pediatric Dentist
 															</div>
 														</header>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
@@ -12883,12 +12965,12 @@
 															class="btn btn-social-icon btn-outline-facebook">
 															<i class="fab fa-facebook-f"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-twitter">
 															<i class="fab fa-twitter"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-linkedin">
 															<i class="fab fa-linkedin-in"></i>
@@ -12900,13 +12982,14 @@
 													</div>
 												</div>
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_text_indent bt_bb_animation_fade_in bt_bb_animation_move_up animate"
-													style="margin-bottom: 20px;" data-width="3" data-bt-override-class="{}">
+													style="margin-bottom: 20px;" data-width="3"
+													data-bt-override-class="{}">
 													<div class="bt_bb_column_content"
 														style="background-color:rgba(242, 242, 242, 1);">
 														<div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
 															data-bt-override-class="{}"><a href="#" target="_self"
-																title="Sue"><img loading="lazy" decoding="async" width="800"
-																	height="800"
+																title="Sue"><img loading="lazy" decoding="async"
+																	width="800" height="800"
 																	src="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg"
 																	class="attachment-full size-full"
 																	alt="https://static.wixstatic.com/media/a4e5eb_893a8b854c3749148ba43c2b1f91bc3d~mv2.jpg/v1/crop/x_25,y_0,w_3277,h_4656/fill/w_278,h_395,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_2790.jpg"
@@ -12943,7 +13026,8 @@
 																<span
 																	class="bt_bb_headline_content"><span><u>Sue</u></span></span>
 															</h4>
-															<div class="bt_bb_headline_subheadline" style="color: black;">Senior
+															<div class="bt_bb_headline_subheadline"
+																style="color: black;">Senior
 																Prosthodontist</div>
 														</header>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
@@ -12959,12 +13043,12 @@
 															class="btn btn-social-icon btn-outline-facebook">
 															<i class="fab fa-facebook-f"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-twitter">
 															<i class="fab fa-twitter"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-linkedin">
 															<i class="fab fa-linkedin-in"></i>
@@ -12976,7 +13060,8 @@
 													</div>
 												</div>
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_text_indent bt_bb_animation_fade_in bt_bb_animation_move_up animate"
-													style="margin-bottom: 20px;" data-width="3" data-bt-override-class="{}">
+													style="margin-bottom: 20px;" data-width="3"
+													data-bt-override-class="{}">
 													<div class="bt_bb_column_content"
 														style="background-color:rgba(242, 242, 242, 1);">
 														<div class="bt_bb_image bt_bb_shape_square bt_bb_target_self bt_bb_align_inherit bt_bb_hover_style_simple bt_bb_content_display_show-on-hover bt_bb_content_align_bottom bt_bb_content_exists"
@@ -13019,7 +13104,8 @@
 																<span
 																	class="bt_bb_headline_content"><span><u>Roxanne</u></span></span>
 															</h4>
-															<div class="bt_bb_headline_subheadline" style="color: black;">Dental Nurse</div>
+															<div class="bt_bb_headline_subheadline"
+																style="color: black;">Dental Nurse</div>
 														</header>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small"
 															data-bt-override-class="null"></div>
@@ -13034,12 +13120,12 @@
 															class="btn btn-social-icon btn-outline-facebook">
 															<i class="fab fa-facebook-f"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-twitter">
 															<i class="fab fa-twitter"></i>
 														</button>
-	
+
 														<button type="button"
 															class="btn btn-social-icon btn-outline-linkedin">
 															<i class="fab fa-linkedin-in"></i>
@@ -13404,10 +13490,13 @@
 													data-bt-override-class="{}">
 													<div class="bt_bb_column_content">
 														<div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xlarge bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
-															style="; --primary-color:#0e54ae; --secondary-color:#191919;" data-bt-override-class="{}">
-															<span class="bt_bb_icon_holder"><i class="fas fa-phone"></i></span>
+															style="; --primary-color:#0e54ae; --secondary-color:#191919;"
+															data-bt-override-class="{}">
+															<span class="bt_bb_icon_holder"><i
+																	class="fas fa-phone"></i></span>
 															<div class="bt_bb_service_content">
-																<div class="bt_bb_service_content_title">Emergency Phone</div>
+																<div class="bt_bb_service_content_title">Emergency Phone
+																</div>
 																<div class="bt_bb_service_content_text">
 																	415-205-5550<br />
 																	Call us Anytime 24/7
@@ -13416,7 +13505,7 @@
 														</div>
 														<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_small bt_bb_hidden_md bt_bb_hidden_lg"
 															data-bt-override-class="null"></div>
-													</div>													
+													</div>
 												</div>
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_middle bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
 													style="border-right: 1px solid rgba(34,34,34,.1);" data-width="3"
@@ -13425,7 +13514,8 @@
 														<div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xlarge bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
 															style="; --primary-color:#0e54ae; --secondary-color:#191919;"
 															data-bt-override-class="{}"><span
-																class="bt_bb_icon_holder"><i class="fab fa-canadian-maple-leaf"></i></span>
+																class="bt_bb_icon_holder"><i
+																	class="fab fa-canadian-maple-leaf"></i></span>
 															<div class="bt_bb_service_content">
 																<div class="bt_bb_service_content_title">Address</div>
 																<div class="bt_bb_service_content_text">500 Linden Ave,
@@ -13444,7 +13534,8 @@
 														<div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xlarge bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
 															style="; --primary-color:#0e54ae; --secondary-color:#191919;"
 															data-bt-override-class="{}"><span
-																class="bt_bb_icon_holder"><i class="fa-solid fa-book"></i></span>
+																class="bt_bb_icon_holder"><i
+																	class="fa-solid fa-book"></i></span>
 															<div class="bt_bb_service_content">
 																<div class="bt_bb_service_content_title">Book By Phone
 																</div>
@@ -13463,7 +13554,8 @@
 														<div class="bt_bb_service bt_bb_color_scheme_7 bt_bb_style_borderless bt_bb_size_xlarge bt_bb_shape_circle bt_bb_target_self bt_bb_align_inherit"
 															style="; --primary-color:#0e54ae; --secondary-color:#191919;"
 															data-bt-override-class="{}"><span
-																class="bt_bb_icon_holder"><i class="fa fa-envelope" aria-hidden="true"></i>
+																class="bt_bb_icon_holder"><i class="fa fa-envelope"
+																	aria-hidden="true"></i>
 															</span>
 															<div class="bt_bb_service_content">
 																<div class="bt_bb_service_content_title">Email Us</div>
@@ -13501,7 +13593,8 @@
 																data-map-type="interactive" data-zoom="15"
 																data-init-finished="false"
 																data-custom-style="WwogICAgewogICAgICAgICJmZWF0dXJlVHlwZSI6ICJhZG1pbmlzdHJhdGl2ZSIsCiAgICAgICAgImVsZW1lbnRUeXBlIjogImxhYmVscy50ZXh0LmZpbGwiLAogICAgICAgICJzdHlsZXJzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29sb3IiOiAiIzQ0NDQ0NCIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICAgImZlYXR1cmVUeXBlIjogImxhbmRzY2FwZSIsCiAgICAgICAgImVsZW1lbnRUeXBlIjogImFsbCIsCiAgICAgICAgInN0eWxlcnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJjb2xvciI6ICIjZjJmMmYyIgogICAgICAgICAgICB9CiAgICAgICAgXQogICAgfSwKICAgIHsKICAgICAgICAiZmVhdHVyZVR5cGUiOiAicG9pIiwKICAgICAgICAiZWxlbWVudFR5cGUiOiAiYWxsIiwKICAgICAgICAic3R5bGVycyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInZpc2liaWxpdHkiOiAib2ZmIgogICAgICAgICAgICB9CiAgICAgICAgXQogICAgfSwKICAgIHsKICAgICAgICAiZmVhdHVyZVR5cGUiOiAicm9hZCIsCiAgICAgICAgImVsZW1lbnRUeXBlIjogImFsbCIsCiAgICAgICAgInN0eWxlcnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJzYXR1cmF0aW9uIjogLTEwMAogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibGlnaHRuZXNzIjogNDUKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICAgImZlYXR1cmVUeXBlIjogInJvYWQuaGlnaHdheSIsCiAgICAgICAgImVsZW1lbnRUeXBlIjogImFsbCIsCiAgICAgICAgInN0eWxlcnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJ2aXNpYmlsaXR5IjogInNpbXBsaWZpZWQiCiAgICAgICAgICAgIH0KICAgICAgICBdCiAgICB9LAogICAgewogICAgICAgICJmZWF0dXJlVHlwZSI6ICJyb2FkLmFydGVyaWFsIiwKICAgICAgICAiZWxlbWVudFR5cGUiOiAibGFiZWxzLmljb24iLAogICAgICAgICJzdHlsZXJzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAidmlzaWJpbGl0eSI6ICJvZmYiCiAgICAgICAgICAgIH0KICAgICAgICBdCiAgICB9LAogICAgewogICAgICAgICJmZWF0dXJlVHlwZSI6ICJ0cmFuc2l0IiwKICAgICAgICAiZWxlbWVudFR5cGUiOiAiYWxsIiwKICAgICAgICAic3R5bGVycyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInZpc2liaWxpdHkiOiAib2ZmIgogICAgICAgICAgICB9CiAgICAgICAgXQogICAgfSwKICAgIHsKICAgICAgICAiZmVhdHVyZVR5cGUiOiAid2F0ZXIiLAogICAgICAgICJlbGVtZW50VHlwZSI6ICJhbGwiLAogICAgICAgICJzdHlsZXJzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAiY29sb3IiOiAiIzBlNTRhZSIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInZpc2liaWxpdHkiOiAib24iCiAgICAgICAgICAgIH0KICAgICAgICBdCiAgICB9Cl0=">
-															</div><span
+															</div>
+															<span
 																class="bt_bb_google_maps_content_toggler bt_bb_map_content_toggler"></span>
 															<div class="bt_bb_google_maps_content bt_bb_map_content">
 																<div
@@ -13558,7 +13651,8 @@
 																						<div
 																							class="bt_bb_working_hours_inner_link">
 																							<a href="book-appointment
-" title="Book">Book</a></div>
+" title="Book">Book</a>
+																						</div>
 																					</div>
 																				</div>
 																				<div
@@ -13574,7 +13668,8 @@
 																						<div
 																							class="bt_bb_working_hours_inner_link">
 																							<a href="book-appointment
-" title="Book">Book</a></div>
+" title="Book">Book</a>
+																						</div>
 																					</div>
 																				</div>
 																				<div
@@ -13590,7 +13685,8 @@
 																						<div
 																							class="bt_bb_working_hours_inner_link">
 																							<a href="book-appointment
-" title="Book">Book</a></div>
+" title="Book">Book</a>
+																						</div>
 																					</div>
 																				</div>
 																				<div
@@ -13606,7 +13702,8 @@
 																						<div
 																							class="bt_bb_working_hours_inner_link">
 																							<a href="book-appointment
-" title="Book">Book</a></div>
+" title="Book">Book</a>
+																						</div>
 																					</div>
 																				</div>
 																				<div
@@ -13622,7 +13719,8 @@
 																						<div
 																							class="bt_bb_working_hours_inner_link">
 																							<a href="book-appointment
-" title="Book">Book</a></div>
+" title="Book">Book</a>
+																						</div>
 																					</div>
 																				</div>
 																				<div
@@ -13739,32 +13837,30 @@
 												<div class="bt_bb_custom_menu bt_bb_direction_vertical">
 													<div class="menu-footer-about-container">
 														<ul id="menu-footer-about" class="menu">
-                                                            <li id="menu-item-452"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452">
-                                                                <a
-                                                                    href="Team.html">Our
-                                                                    Dental Team</a></li>
-                                                            <li id="menu-item-453"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453">
-                                                                <a
-                                                                    href="Pricing-Plan.html">Pricing
-                                                                    &#038; Pricelist</a></li>
-                                                            <li id="menu-item-1422"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422">
-                                                                <a
-                                                                    href="Testimonials.html">Testimonials</a>
-                                                            </li>
-                                                            <li id="menu-item-456"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-456">
-                                                                <a
-                                                                    href="Services.html">Dental
-                                                                    Services</a></li>
-                                                            <li id="menu-item-457"
-                                                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-457">
-                                                                <a
-                                                                    href="About-Us.html">About</a>
-                                                            </li>
-                                                        </ul>
+															<li id="menu-item-452"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-452">
+																<a href="Team.html">Our
+																	Dental Team</a>
+															</li>
+															<li id="menu-item-453"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-453">
+																<a href="Pricing-Plan.html">Pricing
+																	&#038; Pricelist</a>
+															</li>
+															<li id="menu-item-1422"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1422">
+																<a href="Testimonials.html">Testimonials</a>
+															</li>
+															<li id="menu-item-456"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-456">
+																<a href="Services.html">Dental
+																	Services</a>
+															</li>
+															<li id="menu-item-457"
+																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-457">
+																<a href="About-Us.html">About</a>
+															</li>
+														</ul>
 													</div>
 												</div>
 												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal"
@@ -13814,7 +13910,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Patient Care
 																								<strong><u>2017</u></strong></span></span>
 																					</h6>
@@ -13825,7 +13922,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Practice & Team
 																								<strong><u>2016</u></strong></span></span>
 																					</h6>
@@ -13836,7 +13934,8 @@
 																					class="bt_bb_headline bt_bb_dash_none bt_bb_size_extrasmall bt_bb_align_inherit bt_bb_dash_type_none"
 																					data-bt-override-class="{}">
 																					<h6 class="bt_bb_headline_tag"><span
-																							class="bt_bb_headline_content"><span style="color: #000;">Best
+																							class="bt_bb_headline_content"><span
+																								style="color: #000;">Best
 																								Patient Care
 																								<strong><u>2014</u></strong></span></span>
 																					</h6>
@@ -13873,28 +13972,26 @@
 												</div>
 												<div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_extra_small bt_bb_bottom_spacing_small"
 													data-bt-override-class="null"></div>
-												<div class="bt_bb_icon btIcoFacebook bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a
-														href="https://www.facebook.com/boldthemes/" target="_blank"
-														data-ico-fontawesome5brands="&#xf39e;"
-														class="bt_bb_icon_holder"></a></div>
-												<div class="bt_bb_icon btIcoTwitter bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a
-														href="https://twitter.com/bold_themes" target="_blank"
-														data-ico-fontawesome5brands="&#xf099;"
-														class="bt_bb_icon_holder"></a></div>
-												<div class="bt_bb_icon btIcoLinkedin bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a href="#" target="_blank"
-														data-ico-fontawesome5brands="&#xf0e1;"
-														class="bt_bb_icon_holder"></a></div>
-												<div class="bt_bb_icon btIcoPinterest bt_bb_color_scheme_11 bt_bb_style_filled bt_bb_size_xsmall bt_bb_shape_circle bt_bb_target_blank bt_bb_text_empty bt_bb_align_inherit"
-													style="; --primary-color:#ffffff; --secondary-color:#422774;"
-													data-bt-override-class="{}"><a href="#" target="_blank"
-														data-ico-fontawesome5brands="&#xf231;"
-														class="bt_bb_icon_holder"></a></div>
+													<div class="social-icons">
+														<a href="https://www.facebook.com/boldthemes/" target="_blank"
+															class="social-icon"
+															style="--primary-color:#ffffff; --secondary-color:#422774;">
+															<i class="fab fa-facebook-f"></i>
+														</a>
+														<a href="https://twitter.com/bold_themes" target="_blank"
+															class="social-icon"
+															style="--primary-color:#ffffff; --secondary-color:#422774;">
+															<i class="fab fa-twitter"></i>
+														</a>
+														<a href="#" target="_blank" class="social-icon"
+															style="--primary-color:#ffffff; --secondary-color:#422774;">
+															<i class="fab fa-linkedin-in"></i>
+														</a>
+														<a href="#" target="_blank" class="social-icon"
+															style="--primary-color:#ffffff; --secondary-color:#422774;">
+															<i class="fab fa-pinterest"></i>
+														</a>
+													</div>
 											</div>
 										</div>
 									</div>
@@ -13939,7 +14036,8 @@
 																class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-445">
 																<a
 																	href="https://denticare.bold-themes.com/allen/about-us/">ABOUT
-																	US</a></li>
+																	US</a>
+															</li>
 															<li id="menu-item-446"
 																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-446">
 																<a
@@ -13967,7 +14065,8 @@
 															</li>
 															<li id="menu-item-451"
 																class="bt_bb_back_to_top menu-item menu-item-type-custom menu-item-object-custom menu-item-451">
-																<a href="#top">BACK TO TOP</a></li>
+																<a href="#top">BACK TO TOP</a>
+															</li>
 														</ul>
 													</div>
 												</div>
@@ -13998,7 +14097,8 @@
 																class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-445">
 																<a
 																	href="https://denticare.bold-themes.com/allen/about-us/">ABOUT
-																	US</a></li>
+																	US</a>
+															</li>
 															<li
 																class="menu-item menu-item-type-post_type menu-item-object-page menu-item-446">
 																<a
@@ -14026,7 +14126,8 @@
 															</li>
 															<li
 																class="bt_bb_back_to_top menu-item menu-item-type-custom menu-item-object-custom menu-item-451">
-																<a href="#top">BACK TO TOP</a></li>
+																<a href="#top">BACK TO TOP</a>
+															</li>
 														</ul>
 													</div>
 												</div>
@@ -14041,7 +14142,7 @@
 					</div><!-- port -->
 				</section>
 			</div>
-			<footer class="btLightSkin"></footer>
+			<!-- <footer class="btLightSkin"></footer> -->
 		</div><!-- /btSiteFooter -->
 
 	</div><!-- /pageWrap -->
