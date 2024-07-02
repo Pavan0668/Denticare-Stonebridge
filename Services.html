@@ -30,6 +30,97 @@
 	}
 </style>
 <style>
+	.section-800x800 {
+		padding: 0;
+		background-color: #f8f9fa;
+	}
+
+	.card {
+		border: none;
+		background-color: transparent;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		margin: 0;
+	}
+
+	.card:hover .card-body {
+		transform: scale(1.05);
+		transition: transform 0.3s ease-in-out;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
+
+	.card-body {
+		transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+		position: relative;
+		height: 200px;
+		background-size: cover;
+		background-position: center;
+		border-radius: 0;
+		overflow: hidden;
+	}
+
+	.overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, 0.6);
+		color: #fff;
+		padding: 10px;
+	}
+
+	.overlay h4 {
+		margin-bottom: 5px;
+	}
+
+	.overlay p {
+		font-size: 14px;
+		margin-bottom: 0;
+	}
+
+	.rounded-text {
+		background-color: #007bff;
+		color: #fff;
+		text-align: center;
+		padding: 20px;
+		height: 100%;
+		border-bottom-right-radius: 200px;
+	}
+
+	.content {
+		padding: 20px;
+	}
+
+	.content h3,
+	.content h6 {
+		text-align: center;
+	}
+
+	.content h3 {
+		font-size: 28px;
+		margin-bottom: 10px;
+	}
+
+	.content h6 {
+		font-size: 16px;
+		color: #6c757d;
+		margin-bottom: 0;
+	}
+
+	.row.no-gutters {
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+	.row.no-gutters>[class^="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.row {
+		margin-bottom: 0;
+	}
+</style>
+<style>
 	.progress-circle-wrapper {
 		position: relative;
 	}
@@ -12919,7 +13010,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="bt_bb_row_wrapper">
+										 <div class="bt_bb_row_wrapper">
 											<div class="bt_bb_row" data-bt-override-class="{}">
 												<div class="bt_bb_column col-xxl-12 col-xl-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in animate"
 													data-width="12" data-bt-override-class="{}">
@@ -12930,7 +13021,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="bt_bb_row_wrapper">
+										<!--<div class="bt_bb_row_wrapper">
 											<div class="bt_bb_row bt_bb_column_gap_10" data-bt-override-class="{}">
 												<div class="bt_bb_column col-xxl-3 col-xl-3 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
 													data-width="3" data-bt-override-class="{}">
@@ -13126,7 +13217,112 @@
 													</div>
 												</div>
 											</div>
+										</div> -->
+
+										<div class="container">
+											<section class="container-fluid section-800x800">
+												<div class="row no-gutters">
+													<div class="col-md-6">
+														<div class="content">
+															<h3>Dentistry for Today’s Lifestyle</h3>
+															<h6>We Have All Your Dental Needs Covered</h6>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/free-photo/dental-implants-surgery-concept-pen-tool-created-clipping-path-included-jpeg-easy-composite_460848-10711.jpg?ga=GA1.1.666626520.1719305325&semt=sph');">
+																<div class="overlay">
+																	<h4>01. Comprehensive Exams</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/free-photo/dentist-making-professional-teeth-cleaning-withb-cotton-female-young-patient-dental-office_496169-907.jpg?ga=GA1.1.666626520.1719305325&semt=sph');">
+																<div class="overlay">
+																	<h4>02. Hygiene Services</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row no-gutters">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/free-photo/dentist-examining-patient-s-teeth_1098-568.jpg?t=st=1719910374~exp=1719913974~hmac=2015aa6360d50f014ac05d78a9d4ac7392d3c48f0b5d2940807d552ff4ef54cf&w=740');">
+																<div class="overlay">
+																	<h4>03. Tooth coloured fillings</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/free-photo/smiling-female-patient-sitting-chair-showing-thumb-up-dental-clinic_23-2147879168.jpg?t=st=1719910389~exp=1719913989~hmac=e12cfca9ad9a9ea8698d1cf09353208038d3ec2646908f5dc3722a812ae02dee&w=360');">
+																<div class="overlay">
+																	<h4>04. Crowns and Bridges</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/free-photo/dentist-examining-female-patient-teeth_107420-65309.jpg?t=st=1719910442~exp=1719914042~hmac=fc65f1db1b10f6529a28939b034ae7c64586dded9d4d8e095ca48e2844cd2daf&w=740');">
+																<div class="overlay">
+																	<h4>05. Root Canal Treatments</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/premium-photo/young-adult-pretty-woman-dentist-concept_1194-436518.jpg?w=740');">
+																<div class="overlay">
+																	<h4>06. Dentures</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row no-gutters">
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/premium-photo/dentistry-little-girl_1303-8430.jpg?w=740');">
+																<div class="overlay">
+																	<h4>07. Orthodontics</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3">
+														<div class="card">
+															<div class="card-body" style="background-image: url('https://img.freepik.com/premium-photo/close-up-dental-model-dental-office-dentist-hands-holding-jaw-with-toothbrush_449849-28535.jpg?w=826');">
+																<div class="overlay">
+																	<h4>08. Invisalign</h4>
+																	<p>This is a short description elaborating the service you have mentioned above.</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="rounded-text">
+															<p>Mobile Number: (705) 422-2490</p>
+															<p>Call us today to book an appointment!</p>
+														</div>
+													</div>
+												</div>
+											</section>
 										</div>
+
+
 									</div>
 									<!-- cell_inner -->
 								</div>
