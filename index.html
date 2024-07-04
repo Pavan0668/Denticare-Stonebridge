@@ -13359,7 +13359,7 @@
                                                         data-bt-override-class="null"></div>
                                                     <div class="bt_bb_text btAccentQuote" style="color: #FFF;">
                                                         <blockquote>
-                                                            <p>My family trusts Dr Fischer completely, he’s been
+                                                            <p>My family trusts Dr Rishi completely, he’s been
                                                                 with us for years and as helped us on numerous
                                                                 occasions</p>
                                                         </blockquote>
@@ -13462,7 +13462,7 @@
                                                                                         value="" />
                                                                                 </div>
                                                                                 <div class="bt_bb_cf7_form">
-                                                                                    <div class="bt_bb_cf7_row">
+                                                                                    <!-- <div class="bt_bb_cf7_row">
                                                                                         <div class="bt_bb_cf7_element">
                                                                                             <p><span class="wpcf7-form-control-wrap"
                                                                                                     data-name="customer-email"><input
@@ -13514,10 +13514,10 @@
                                                                                                     </select></span>
                                                                                             </p>
                                                                                         </div>
-                                                                                    </div>
+                                                                                    </div>-->
                                                                                     <div class="bt_bb_cf7_row">
                                                                                         <div class="bt_bb_cf7_element">
-                                                                                            <p><span class="wpcf7-form-control-wrap"
+                                                                                            <!-- <p><span class="wpcf7-form-control-wrap"
                                                                                                     data-name="date-638"><input
                                                                                                         class="wpcf7-form-control wpcf7-date wpcf7-validates-as-required wpcf7-validates-as-date"
                                                                                                         aria-required="true"
@@ -13526,17 +13526,28 @@
                                                                                                         value=""
                                                                                                         type="date"
                                                                                                         name="date-638" /></span>
-                                                                                            </p>
+                                                                                            </p> -->
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="bt_bb_cf7_button bt_bb_cf7_button_larger bt_bb_accent_submit bt_bb_closer_button bt_bb_full_width">
-                                                                                        <p><input
-                                                                                                class="wpcf7-form-control wpcf7-submit has-spinner"
-                                                                                                type="submit"
-                                                                                                value="Book Your Dentist" />
+                                                                                    </div> 
+                                                                                    <div class="bt_bb_cf7_button bt_bb_cf7_button_larger bt_bb_accent_submit bt_bb_closer_button bt_bb_full_width">
+                                                                                        <p>
+                                                                                            <a href="img/Stonebridge Dentistry 1.pdf" download="Stonebridge Dentistry.pdf" class="wpcf7-form-control wpcf7-submit has-spinner"
+                                                                                               style="display: inline-block; width: 100%; text-align: center;">
+                                                                                                Download Form
+                                                                                            </a>
                                                                                         </p>
                                                                                     </div>
+                                                                                    
+                                                                                    <br><br>
+                                                                                    
+                                                                                    <div class="bt_bb_cf7_button bt_bb_cf7_button_larger bt_bb_accent_submit bt_bb_closer_button bt_bb_full_width">
+                                                                                        <p>
+                                                                                            <a href="BookOnline.html" target="_blank" class="wpcf7-form-control wpcf7-submit has-spinner"
+                                                                                               style="display: inline-block; width: 100%; text-align: center;">
+                                                                                                Book Online Appointment
+                                                                                            </a>
+                                                                                        </p>
+                                                                                    </div>                                                                                                                                                                       
                                                                                 </div>
                                                                                 <div class="wpcf7-response-output"
                                                                                     aria-hidden="true"></div>
@@ -13819,7 +13830,7 @@
                                     <div class="info">
                                         <span>We are here for you</span>
                                         <h3>Book Appointment</h3>
-                                        <button href="#" class="boxed-btn3">Book Appointment</button>
+                                        <button class="boxed-btn3" onclick="redirectToBookingPage()">Book Appointment</button>
                                     </div>
                                     <div class="info_button text-center mt-3">
                                     </div>
@@ -13831,8 +13842,8 @@
                                         <i class="flaticon-call"></i>
                                     </div>
                                     <div class="info">
-                                        <span>Emergency Medical Care</span>
-                                        <h3>+1-465 4545</h3>
+                                        <span>Customer Care</span>
+                                        <h3>(705) 422-2490</h3>
                                     </div>
                                 </div>
                             </div>
@@ -13840,7 +13851,11 @@
                     </div>
                 </div>
             </div>
-
+            <script>
+                function redirectToBookingPage() {
+                    window.location.href = "BookOnline.html";
+                }
+            </script>
 
     <!-- Emergency_contact end -->
             </section>
