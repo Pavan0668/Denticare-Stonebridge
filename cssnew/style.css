@@ -64,9 +64,18 @@
   z-index: 87;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure space between items */
+  justify-content: center;
   text-align: center;
   padding: 20px;
+}
+
+.Emergency_contact .Emergency_contact_inner .single_emergency.left-side .info,
+.Emergency_contact .Emergency_contact_inner .single_emergency.right-side .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .Emergency_contact .Emergency_contact_inner .single_emergency .icon {
@@ -74,10 +83,6 @@
   line-height: 1;
   color: #fff;
   margin-bottom: 10px;
-}
-
-.Emergency_contact .Emergency_contact_inner .single_emergency .info {
-  text-align: center;
 }
 
 .Emergency_contact .Emergency_contact_inner .single_emergency .info span {
