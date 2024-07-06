@@ -108,10 +108,13 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
+  border: #fff;
 }
 
 .boxed-btn3:hover {
   background-color: #007acc;
+  color: black;
 }
 
 @media (max-width: 767px) {
