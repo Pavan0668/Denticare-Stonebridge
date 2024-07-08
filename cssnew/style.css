@@ -107,15 +107,16 @@
   border-radius: 5px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
   text-decoration: none;
-  border: #fff;
+  border: none; /* Corrected from border: #fff; */
 }
 
 .boxed-btn3:hover {
   background-color: #007acc;
-  color: black;
+  color: #007acc;
 }
+
 
 @media (max-width: 767px) {
   .Emergency_contact .Emergency_contact_inner .single_emergency {
