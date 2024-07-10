@@ -13045,7 +13045,8 @@
             </div><!-- / inner header for scrolling -->
         </header><!-- /.mainHeader -->
         <div class="btContentWrap btClear">
-            <section class="bt_bb_sectionn gutter bt_bb_vertical_align_top btPageHeadline bt_bb_background_image bt_bb_background_overlay_light_solid bt_bb_parallax btLightSkin"
+            <section
+                class="bt_bb_sectionn gutter bt_bb_vertical_align_top btPageHeadline bt_bb_background_image bt_bb_background_overlay_light_solid bt_bb_parallax btLightSkin"
                 style="background-image:url(img/dentistshowing.jpg); height: 200px; display: flex; justify-content: center; align-items: center; color: white;">
                 <div style="text-align: center;">
                     <header class="bt_bb_headline bt_bb_superheadline_outside bt_bb_subheadline bt_bb_size_large"
@@ -13227,16 +13228,101 @@
                                 </ul>
                             </div>
                         </div>
-                        <p style="font-size: 12px; margin-top: 10px;">Our office is happy to file claims electronically on your behalf, so that in many cases, we will receive your insurance reimbursement.<br>
-                            As such, payment of your dental visit is expected at the time of service should there be any balances.<br>
-                            Please let your front desk staff know ahead of time, in the event that you are unable to make payment when it is due, so that other options can be discussed with you at that time.</p>
-                        </section>
-                    </form>
-                    <hr>
-                </div>
-                <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Book Appointment</button>
-    <br>
+                    </section>
+                    <section class="section">
+                        <h2>Consent, Signature and Date</h2>
+                        <p>GENERAL RELEASE: I, the undersigned,
+                            certify that the information contained in the medical
+                            and dental history Is correct to the best of my knowledge.
+                            I consent to the release of medical information from my
+                            medical doctor, or other health care providers, if required
+                            by this dental office. I authorize this dental office to perform
+                            diagnostic procedures as may be required to determine
+                            necessary treatment. I understand that payment for
+                            my dental treatment Is due at the time of service,
+                            unless otherwise arranged for in advance with office
+                            management. I understand that I am responsible for
+                            my account with this dental office, and that all
+                            of my dependents, and I will not allow payments to
+                            be in arrears.</p>
+                        <p><b>We need to have your consent to begin communicating with you
+                                by text or email.</b><br>
+                            Email and text messaging allows us to communicate efficiently
+                            for the benefit of our patients. At the same time, we recognize
+                            addressed to the wrong person or accessed improperly while
+                            in storage or during transmission.
+                            HIPAA requires that providers
+                            take reasonable steps to protect against these risks but
+                            acknowledges that a balance must be struck between the need
+                            to secure personal information and the need to ensure that
+                            clinicians can efficiently exchange important patient
+                            care information. Stonebridge Dentistry has implemented
+                            such measures through obtaining informed consent from
+                            patients using any potentially unencrypted electronic
+                            format.</p>
+                        <br>
+                        <p>By signing this form, you give consent to our office to communicate with you via:</p>
+                        <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+                            <form id="contact-form" style="width: 100%; display: flex;">
+                                <div style="flex: 1; padding: 10px; border-right: 1px solid #000;">
+                                    <div class="form-group" style="margin-bottom: 10px;">
+                                        <div
+                                            style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
+                                            <input type="checkbox" id="communication-text" name="communication-method"
+                                                value="Mobile No." style="margin-right: 10px;">
+                                            <label for="communication-text">Mobile No.</label>
+                                        </div>
+                                        <div
+                                            style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
+                                            <input type="checkbox" id="communication-email" name="communication-method"
+                                                value="email" style="margin-right: 10px;">
+                                            <label for="communication-email">Email</label>
+                                        </div>
+                                        <div
+                                            style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
+                                            <input type="checkbox" id="Both-email" name="Both-method" value="Both"
+                                                style="margin-right: 10px;">
+                                            <label for="Both-email">Both text & Email address</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="flex: 1; padding: 10px;">
+                                    <div class="form-group" style="margin-bottom: 10px;">
+                                        <div style="border: 1px solid black; padding: 5px; margin-bottom: 5px;">
+                                            <!-- <label for="mobile-number" style="width: 150px; display: inline-block;">Mobile Number:</label> -->
+                                            <input type="tel" id="mobile-number" name="mobile-number"
+                                                placeholder="Text your mobile number"
+                                                style="width: calc(100% - 160px);">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div style="border: 1px solid black; padding: 5px;">
+                                            <!-- <label for="email-address" style="width: 150px; display: inline-block;">Email Address:</label> -->
+                                            <input type="email" id="email-address" name="email-address"
+                                                placeholder="Email your email address"
+                                                style="width: calc(100% - 160px);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="signature-section">
+                            <div>
+                                <label>Signature</label><input type="text">
+                            </div>
+                            <div>
+                                <label>Print Name</label><input type="text">
+                            </div>
+                            <div>
+                                <label>Date</label><input type="text" placeholder="D / M / Y">
+                            </div>
+                        </div>
+                    </section>
+                </form>
+                <hr>
             </div>
+            <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Book Appointment</button>
+<br>
         </div>
     <script>
         function printAppointmentDetails() {
