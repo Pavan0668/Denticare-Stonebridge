@@ -297,7 +297,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         // When the button is clicked
         $("#btnsbmtrprt").click(function() {
@@ -411,7 +411,7 @@
             doc.save('appointment-details.pdf');
         });
     });
-</script>
+</script> -->
 
 
 
@@ -470,100 +470,202 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        document.getElementById('btnsbmtrprt').addEventListener('click', function() {
-          // Alert to indicate that the button is clicked and script is triggered
-          alert('Button clicked! Generating PDF.');
-      
-          // Collect form data
-          const formData = {
-            firstName: document.querySelector('input[placeholder="First"]').value,
-            initial: document.querySelector('input[placeholder="Initial"]').value,
-            lastName: document.querySelector('input[placeholder="Last"]').value,
-            street: document.querySelector('input[placeholder="Street"]').value,
-            apt: document.querySelector('input[placeholder="Apt"]').value,
-            city: document.querySelector('input[placeholder="City"]').value,
-            prov: document.querySelector('input[placeholder="Prov"]').value,
-            postalCode: document.querySelector('input[placeholder="Postal Code"]').value,
-            cell: document.querySelector('input[placeholder="Cell#"]').value,
-            home: document.querySelector('input[placeholder="Home#"]').value,
-            dob: document.querySelector('input[placeholder="D / M / Y"]').value,
-            email: document.querySelector('input[placeholder="Email"]').value,
-            spouse: document.querySelector('input[placeholder="Name of spouse/Parents/Guardian"]').value,
-            emergencyContact: document.querySelector('input[placeholder="Emergency contact"]').value,
-            emergencyPhone: document.querySelector('input[placeholder="Phone#"]').value,
-            familyPhysician: document.querySelector('input[placeholder="Name of family Physician"]').value,
-            physicianPhone: document.querySelector('input[placeholder="Phone"]').value,
-            lastPhysical: document.querySelector('input[placeholder="Date of last physical"]').value,
-            referral: document.querySelector('input[placeholder="Who can we thank for referring you?"]').value,
-            primarySubscriberName: document.querySelectorAll('.insurance-column input')[0].value,
-            primaryPolicyNumber: document.querySelectorAll('.insurance-column input')[1].value,
-            primaryIdNumber: document.querySelectorAll('.insurance-column input')[2].value,
-            primarySubscriberDob: document.querySelectorAll('.insurance-column input')[3].value,
-            primaryEmployer: document.querySelectorAll('.insurance-column input')[4].value,
-            primaryInsCo: document.querySelectorAll('.insurance-column input')[5].value,
-            primaryRelationship: document.querySelectorAll('.insurance-column input')[6].value,
-            secondarySubscriberName: document.querySelectorAll('.insurance-column input')[7].value,
-            secondaryPolicyNumber: document.querySelectorAll('.insurance-column input')[8].value,
-            secondaryIdNumber: document.querySelectorAll('.insurance-column input')[9].value,
-            secondarySubscriberDob: document.querySelectorAll('.insurance-column input')[10].value,
-            secondaryEmployer: document.querySelectorAll('.insurance-column input')[11].value,
-            secondaryInsCo: document.querySelectorAll('.insurance-column input')[12].value,
-            secondaryRelationship: document.querySelectorAll('.insurance-column input')[13].value,
-            signature: document.querySelectorAll('.signature-section input')[0].value,
-            printName: document.querySelectorAll('.signature-section input')[1].value,
-            date: document.querySelectorAll('.signature-section input')[2].value
-          };
-      
-          // Generate PDF
-          const { jsPDF } = window.jspdf;
-          const doc = new jsPDF();
-      
-          doc.setFontSize(12);
-      
-          doc.text('Appointment Details', 10, 10);
-      
-          doc.text('Patient Information:', 10, 20);
-          doc.text(`Name: ${formData.firstName} ${formData.initial} ${formData.lastName}`, 10, 30);
-          doc.text(`Address: ${formData.street}, Apt ${formData.apt}, ${formData.city}, ${formData.prov}, ${formData.postalCode}`, 10, 40);
-          doc.text(`Cell#: ${formData.cell}`, 10, 50);
-          doc.text(`Home#: ${formData.home}`, 10, 60);
-          doc.text(`Date of Birth: ${formData.dob}`, 10, 70);
-          doc.text(`Email: ${formData.email}`, 10, 80);
-          doc.text(`Name of Spouse/Parents/Guardian: ${formData.spouse}`, 10, 90);
-          doc.text(`Emergency Contact: ${formData.emergencyContact}`, 10, 100);
-          doc.text(`Phone#: ${formData.emergencyPhone}`, 10, 110);
-      
-          doc.text('Financial Information:', 10, 130);
-          doc.text(`Primary Insurance - Subscriber Name: ${formData.primarySubscriberName}`, 10, 140);
-          doc.text(`Policy#: ${formData.primaryPolicyNumber}`, 10, 150);
-          doc.text(`Id#: ${formData.primaryIdNumber}`, 10, 160);
-          doc.text(`Subscriber DOB: ${formData.primarySubscriberDob}`, 10, 170);
-          doc.text(`Employer: ${formData.primaryEmployer}`, 10, 180);
-          doc.text(`Ins Co.: ${formData.primaryInsCo}`, 10, 190);
-          doc.text(`Relationship: ${formData.primaryRelationship}`, 10, 200);
-      
-          doc.text(`Secondary Insurance - Subscriber Name: ${formData.secondarySubscriberName}`, 10, 210);
-          doc.text(`Policy#: ${formData.secondaryPolicyNumber}`, 10, 220);
-          doc.text(`Id#: ${formData.secondaryIdNumber}`, 10, 230);
-          doc.text(`Subscriber DOB: ${formData.secondarySubscriberDob}`, 10, 240);
-          doc.text(`Employer: ${formData.secondaryEmployer}`, 10, 250);
-          doc.text(`Ins Co.: ${formData.secondaryInsCo}`, 10, 260);
-          doc.text(`Relationship: ${formData.secondaryRelationship}`, 10, 270);
-      
-          doc.text('Consent, Signature, and Date:', 10, 290);
-          doc.text(`Signature: ${formData.signature}`, 10, 300);
-          doc.text(`Print Name: ${formData.printName}`, 10, 310);
-          doc.text(`Date: ${formData.date}`, 10, 320);
-      
-          doc.save('appointment-details.pdf');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    
+<!-- Include jsPDF AutoTable plugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.17/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#btnsbmtrprt").click(function () {
+            alert('Button clicked! Generating PDF.');
+
+            const formData = {
+                firstName: $("input[placeholder='First']").val(),
+                initial: $("input[placeholder='Initial']").val(),
+                lastName: $("input[placeholder='Last']").val(),
+                street: $("input[placeholder='Street']").val(),
+                apt: $("input[placeholder='Apt']").val(),
+                city: $("input[placeholder='City']").val(),
+                prov: $("input[placeholder='Prov']").val(),
+                postalCode: $("input[placeholder='Postal Code']").val(),
+                cell: $("input[placeholder='Cell#']").val(),
+                home: $("input[placeholder='Home#']").val(),
+                dob: $("input[placeholder='D / M / Y']").val(),
+                email: $("input[placeholder='Email']").val(),
+                spouse: $("input[placeholder='Name of spouse/Parents/Guardian']").val(),
+                emergencyContact: $("input[placeholder='Emergency contact']").val(),
+                emergencyPhone: $("input[placeholder='Phone#']").val(),
+                primarySubscriberName: $(".table:nth-of-type(1) input").eq(0).val(),
+                primaryPolicyNumber: $(".table:nth-of-type(1) input").eq(1).val(),
+                primaryIdNumber: $(".table:nth-of-type(1) input").eq(2).val(),
+                primarySubscriberDob: $(".table:nth-of-type(1) input").eq(3).val(),
+                primaryEmployer: $(".table:nth-of-type(1) input").eq(4).val(),
+                primaryInsCo: $(".table:nth-of-type(1) input").eq(5).val(),
+                primaryRelationship: $(".table:nth-of-type(1) input").eq(6).val(),
+                secondarySubscriberName: $(".table:nth-of-type(2) input").eq(0).val(),
+                secondaryPolicyNumber: $(".table:nth-of-type(2) input").eq(1).val(),
+                secondaryIdNumber: $(".table:nth-of-type(2) input").eq(2).val(),
+                secondarySubscriberDob: $(".table:nth-of-type(2) input").eq(3).val(),
+                secondaryEmployer: $(".table:nth-of-type(2) input").eq(4).val(),
+                secondaryInsCo: $(".table:nth-of-type(2) input").eq(5).val(),
+                secondaryRelationship: $(".table:nth-of-type(2) input").eq(6).val(),
+                signature: $(".signature-section input[type='text']").eq(0).val(),
+                printName: $(".signature-section input[type='text']").eq(1).val(),
+                date: $(".signature-section input[type='text']").eq(2).val()
+            };
+
+            const physicianName = $('#physician-name').val();
+            const physicianPhone = $('#physician-phone').val();
+            const lastPhysicalDate = $('#last-physical-date').val();
+            const medicalCondition = $('#medical-condition').val();
+            const medicationDrug = $('#medication-drug').val();
+            const medicationReason = $('#medication-reason').val();
+            const supplement = $('#supplement').val();
+            const supplementReason = $('#supplement-reason').val();
+            const drugAllergies = $('#drug-allergies').val();
+            const latexAllergies = $('#latex-allergies').val();
+            const bruiseBleed = $('#bruise-bleed').val();
+            const antibiotics = $('#antibiotics').val();
+            const antibioticsReason = $('#antibiotics-reason').val();
+            const medicalConditions = Array.from($('input[name="medical-condition"]:checked')).map(checkbox => checkbox.value);
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            alert('Button clicked! Initiating PDF.');
+
+            const logoPath = 'img/asset 0.png';
+            const logoWidth = 50;
+            const logoHeight = 20;
+            doc.addImage(logoPath, 'PNG', 10, 10, logoWidth, logoHeight, { align: 'right' });
+
+            const headerTitle = 'Stone Bridge Dentistry';
+            doc.setFontSize(14);
+            doc.text(headerTitle, doc.internal.pageSize.getWidth() / 2, 20, { align: 'left' });
+
+            const addressContent = `1 Market Lane, Unit 9\nWasaga Beach, On\nL9Z 0B6\nreception.stonebridgedentistry@gmail.com\nTel: 705-422-2490   Fax: 705-422-2493\n\n `;
+            doc.setFontSize(10);
+            doc.text(addressContent, 10, 40);
+
+            doc.setFontSize(14);
+            doc.text('NEW PATIENT FORM', 60, 70, { align: 'center' });
+
+            alert('Button clicked! Header section of PDF.');
+
+            doc.setFontSize(12);
+            doc.text(`Name: ${formData.firstName} ${formData.initial} ${formData.lastName}`, 10, 80);
+            doc.text(`Address: ${formData.street}, Apt ${formData.apt}, ${formData.city}, ${formData.prov}, ${formData.postalCode}`, 10, 90);
+            doc.text(`Cell#: ${formData.cell}`, 10, 100);
+            doc.text(`Home#: ${formData.home}`, 10, 110);
+            doc.text(`Date of Birth: ${formData.dob}`, 10, 120);
+            doc.text(`Email: ${formData.email}`, 10, 130);
+            doc.text(`Name of Spouse/Parents/Guardian: ${formData.spouse}`, 10, 140);
+            doc.text(`Emergency Contact: ${formData.emergencyContact}`, 10, 150);
+            doc.text(`Phone#: ${formData.emergencyPhone}`, 10, 160);
+
+            alert('Button clicked! Patient information section of PDF.');
+
+            doc.setFontSize(12);
+            doc.text('Financial Information:', 10, 180);
+            doc.autoTable({
+                startY: 190,
+                head: [['Primary Insurance', '', '', '', '', '', '']],
+                body: [
+                    [
+                        'Subscriber Name:', formData.primarySubscriberName, 'Policy#:', formData.primaryPolicyNumber,
+                        'Ins Co.:', formData.primaryInsCo, 'Relationship:', formData.primaryRelationship
+                    ],
+                    [
+                        'ID#:', formData.primaryIdNumber, 'Subscriber DOB:', formData.primarySubscriberDob,
+                        'Employer:', formData.primaryEmployer, '', ''
+                    ],
+                    [
+                        'Secondary Insurance', '', '', '', '', '', ''
+                    ],
+                    [
+                        'Subscriber Name:', formData.secondarySubscriberName, 'Policy#:', formData.secondaryPolicyNumber,
+                        'Ins Co.:', formData.secondaryInsCo, 'Relationship:', formData.secondaryRelationship
+                    ],
+                    [
+                        'ID#:', formData.secondaryIdNumber, 'Subscriber DOB:', formData.secondarySubscriberDob,
+                        'Employer:', formData.secondaryEmployer, '', ''
+                    ]
+                ]
+            });
+
+            alert('Button clicked! Financial information section of PDF.');
+
+            // Medical Conditions Section
+            doc.setFontSize(14);
+            doc.text('Patient Medical Conditions', doc.internal.pageSize.getWidth() / 2, doc.autoTable.previous.finalY + 20, { align: 'center' });
+
+            const medicalConditionsTable = {
+                head: [['Medical Condition 1', 'Medical Condition 2', 'Medical Condition 3']],
+                body: []
+            };
+
+            for (let i = 0; i < medicalConditions.length; i += 3) {
+                medicalConditionsTable.body.push([
+                    medicalConditions[i] ? `☐ ${medicalConditions[i]}` : '',
+                    medicalConditions[i + 1] ? `☐ ${medicalConditions[i + 1]}` : '',
+                    medicalConditions[i + 2] ? `☐ ${medicalConditions[i + 2]}` : ''
+                ]);
+            }
+
+            doc.autoTable({
+                startY: doc.autoTable.previous.finalY + 30,
+                head: medicalConditionsTable.head,
+                body: medicalConditionsTable.body,
+                theme: 'grid',
+                styles: {
+                    cellPadding: 3,
+                    fontSize: 10,
+                    valign: 'middle'
+                }
+            });
+
+            alert('Button clicked! Medical conditions section of PDF.');
+
+            doc.setFontSize(12);
+            doc.text('Medical History (Confidential as per PIPEDA legislation):', 10, doc.autoTable.previous.finalY + 10);
+            doc.text(`Name of family Physician: ${physicianName}`, 10, doc.autoTable.previous.finalY + 20);
+            doc.text(`Phone: ${physicianPhone}`, 10, doc.autoTable.previous.finalY + 30);
+            doc.text(`Date of last physical: ${lastPhysicalDate}`, 10, doc.autoTable.previous.finalY + 40);
+            doc.text(`Are you being treated for any medical condition? If so, which? ${medicalCondition}`, 10, doc.autoTable.previous.finalY + 50);
+            doc.text(`Are you taking any drugs or medications at this time? Drug: ${medicationDrug} Reason: ${medicationReason}`, 10, doc.autoTable.previous.finalY + 60);
+            doc.text(`Are you taking any Herbal or Vitamin Supplements? Supplement: ${supplement} Reason: ${supplementReason}`, 10, doc.autoTable.previous.finalY + 70);
+            doc.text(`Do you have any drug allergies or adverse effects? (Penicillin/Sulfa/Other) ${drugAllergies}`, 10, doc.autoTable.previous.finalY + 80);
+            doc.text(`Do you have any Latex Allergies? ${latexAllergies}`, 10, doc.autoTable.previous.finalY + 90);
+            doc.text(`Do you bleed or bruise easily? ${bruiseBleed}`, 10, doc.autoTable.previous.finalY + 100);
+            doc.text(`Have you ever taken any antibiotics before any medical or dental procedures? ${antibiotics} Reason: ${antibioticsReason}`, 10, doc.autoTable.previous.finalY + 110);
+
+            alert('Button clicked! Medical history section of PDF.');
+
+            doc.setFontSize(12);
+            doc.text('Signature: ', 10, doc.autoTable.previous.finalY + 130);
+            doc.text(`Patient/Guardian Signature: ${formData.signature}`, 10, doc.autoTable.previous.finalY + 140);
+            doc.text(`Print Name: ${formData.printName}`, 10, doc.autoTable.previous.finalY + 150);
+            doc.text(`Date: ${formData.date}`, 10, doc.autoTable.previous.finalY + 160);
+
+            alert('Button clicked! Signature section of PDF.');
+
+            doc.save('new_patient_form.pdf');
         });
-      </script>
-      
-      
-    <!-- End Google Tag Manager for WordPress by gtm4wp.com -->
-    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+    });
+</script>
+
+
+
+
+
+
+
+
+
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
     <link rel="alternate" type="application/rss+xml" title="Allen &raquo; Feed"
         href="https://denticare.bold-themes.com/allen/feed/" />
     <link rel="alternate" type="application/rss+xml" title="Allen &raquo; Comments Feed"
@@ -13060,7 +13162,7 @@
                 </div>
             </section>
             <br><br>
-            <div class="container">
+            <div class="container" id="medical-form">
                 <header class="header">
                     <h1>Stone Bridge Dentistry</h1>
                     <p>1 Market Lane, Unit 9<br>Wasaga Beach, On<br>L9Z 0B6</p>
@@ -13151,84 +13253,78 @@
                         <h2>Medical History (Confidential as per PIPEDA legislation)</h2>
                         <div class="inline-group">
                             <label>Name of family Physician</label>
-                            <input type="text">
+                            <input type="text" id="physician-name">
                             <label>Phone</label>
-                            <input type="text">
+                            <input type="text" id="physician-phone">
                             <label>Date of last physical</label>
-                            <input type="text">
+                            <input type="text" id="last-physical-date">
                         </div>
-                        <label>Are you being treated for any medical condition? If so, which?</label><input type="text">
+                        <label>Are you being treated for any medical condition? If so, which?</label><input type="text" id="medical-condition">
                         <label>Are you taking any drugs or medications at this time?</label>
-                        <label>Drug:</label><input type="text">
-                        <label>Reason:</label><input type="text">
+                        <label>Drug:</label><input type="text" id="medication-drug">
+                        <label>Reason:</label><input type="text" id="medication-reason">
                         <label>Are you taking any Herbal or Vitamin Supplements?</label>
-                        <label>Supplement:</label><input type="text">
-                        <label>Reason:</label><input type="text">
-                        <label>Do you have any drug allergies or adverse effects? (Penicillin, Sulfonamide, Aspirin,
-                            Codeine, Local
-                            Anesthetic)</label><input type="text">
-                        <label>Any Latex, Nickel, or General Anesthesia Allergies?</label><input type="text">
-                        <label>Do you bruise easily or bleed for a long time following an injury or
-                            surgery?</label><input type="text">
-                        <label>Have you ever been advised to take antibiotics before dental treatment? Yes/No</label>
-                        <label>If yes, why?</label><input type="text">
+                        <label>Supplement:</label><input type="text" id="supplement">
+                        <label>Reason:</label><input type="text" id="supplement-reason">
+                        <label>Do you have any drug allergies or adverse effects? (Penicillin, Sulfonamide, Aspirin, Codeine, Local Anesthetic)</label><input type="text" id="drug-allergies">
+                        <label>Any Latex, Nickel, or General Anesthesia Allergies?</label><input type="text" id="latex-allergies">
+                        <label>Do you bruise easily or bleed for a long time following an injury or surgery?</label><input type="text" id="bruise-bleed">
+                        <label>Have you ever been advised to take antibiotics before dental treatment? Yes/No</label><input type="text" id="antibiotics">
+                        <label>If yes, why?</label><input type="text" id="antibiotics-reason">
                         <label>Do you have or have you had any of the following?</label>
                         <div class="table">
                             <div class="column">
                                 <ul>
-                                    <li><input type="checkbox" name="artificial_joints"> Artificial Joints </li>
-                                    <li><input type="checkbox" name="anemia"> Anemia </li>
-                                    <li><input type="checkbox" name="bone_density"> Bone Density </li>
-                                    <li><input type="checkbox" name="blood_thinner"> Blood Thinner </li>
-                                    <li><input type="checkbox" name="cancer"> Cancer </li>
-                                    <li><input type="checkbox" name="radiation"> Radiation </li>
-                                    <li><input type="checkbox" name="chemotherapy"> Chemotherapy </li>
-                                    <li><input type="checkbox" name="diabetic"> Diabetic </li>
-                                    <li><input type="checkbox" name="infective"> Infective </li>
-                                    <li><input type="checkbox" name="endocarditis"> Endocarditis </li>
-                                    <li><input type="checkbox" name="hep_abc"> Hep A/B/C </li>
-                                    <li><input type="checkbox" name="hiv_positive"> H.I.V Positive </li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Artificial Joints"> Artificial Joints </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Anemia"> Anemia </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Bone Density"> Bone Density </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Blood Thinner"> Blood Thinner </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Cancer"> Cancer </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Radiation"> Radiation </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Chemotherapy"> Chemotherapy </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Diabetic"> Diabetic </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Infective"> Infective </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Endocarditis"> Endocarditis </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hep A/B/C"> Hep A/B/C </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="HIV Positive"> H.I.V Positive </label></li>
                                 </ul>
                             </div>
                             <div class="column">
                                 <ul>
-                                    <li><input type="checkbox" name="hemophilia"> Hemophilia </li>
-                                    <li><input type="checkbox" name="blood_pressure"> Blood Pressure H / L </li>
-                                    <li><input type="checkbox" name="pace_maker"> Pace Maker </li>
-                                    <li><input type="checkbox" name="stroke"> Stroke </li>
-                                    <li><input type="checkbox" name="heart_issues"> Heart Issues </li>
-                                    <li><input type="checkbox" name="asthma"> Asthma </li>
-                                    <li><input type="checkbox" name="circulation"> Circulation </li>
-                                    <li><input type="checkbox" name="problems"> Problems </li>
-                                    <li><input type="checkbox" name="cortisone_steroids"> Cortisone/Steroids </li>
-                                    <li><input type="checkbox" name="drug_alcohol"> Drug/Alcohol </li>
-                                    <li><input type="checkbox" name="dependency"> Dependency </li>
-                                    <li><input type="checkbox" name="eating_disorder"> Eating Disorder </li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hemophilia"> Hemophilia </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Blood Pressure H/L"> Blood Pressure H / L </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Pace Maker"> Pace Maker </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Stroke"> Stroke </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Heart Issues"> Heart Issues </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Asthma"> Asthma </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Circulation Problems"> Circulation Problems </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Cortisone/Steroids"> Cortisone/Steroids </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Drug/Alcohol Dependency"> Drug/Alcohol Dependency </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Eating Disorder"> Eating Disorder </label></li>
                                 </ul>
                             </div>
                             <div class="column">
                                 <ul>
-                                    <li><input type="checkbox" name="epilepsy"> Epilepsy </li>
-                                    <li><input type="checkbox" name="glaucoma"> Glaucoma </li>
-                                    <li><input type="checkbox" name="head_neck_injury"> Head/Neck injury </li>
-                                    <li><input type="checkbox" name="herpes"> Herpes </li>
-                                    <li><input type="checkbox" name="hodgkin_disease"> Hodgkin Disease </li>
-                                    <li><input type="checkbox" name="hyperglycemia"> Hyperglycemia </li>
-                                    <li><input type="checkbox" name="jaundice"> Jaundice </li>
-                                    <li><input type="checkbox" name="kidney_disease"> Kidney Disease </li>
-                                    <li><input type="checkbox" name="liver_disease"> Liver Disease </li>
-                                    <li><input type="checkbox" name="lung_disease"> Lung Disease </li>
-                                    <li><input type="checkbox" name="malignant"> Malignant </li>
-                                    <li><input type="checkbox" name="hypothermia"> Hypothermia </li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Epilepsy"> Epilepsy </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Glaucoma"> Glaucoma </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Head/Neck Injury"> Head/Neck injury </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Herpes"> Herpes </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hodgkin Disease"> Hodgkin Disease </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hyperglycemia"> Hyperglycemia </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Jaundice"> Jaundice </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Kidney Disease"> Kidney Disease </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Liver Disease"> Liver Disease </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Lung Disease"> Lung Disease </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Malignant"> Malignant </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hypothermia"> Hypothermia </label></li>
                                 </ul>
-                            </div>
-                            <div class="column">
                                 <ul style="text-decoration: underline;">
-                                    List Recent Surgeries or hospital visits:
+                                    <li>List recent surgeries or hospital visits.</li>
                                 </ul>
                             </div>
                         </div>
                     </section>
+            
                     <section class="section">
                         <h2>Consent, Signature and Date</h2>
                         <p>GENERAL RELEASE: I, the undersigned,
@@ -13284,6 +13380,12 @@
                                                 style="margin-right: 10px;">
                                             <label for="Both-email">Both text & Email address</label>
                                         </div>
+                                        <div
+                                            style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
+                                            <input type="checkbox" id="Both-email" name="Both-method" value="Both"
+                                                style="margin-right: 10px;">
+                                            <label for="Both-email">Neither Text nor Email</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div style="flex: 1; padding: 10px;">
@@ -13324,16 +13426,34 @@
             <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Book Appointment</button>
 <br>
         </div>
-    <script>
-        function printAppointmentDetails() {
-    var printContent = document.getElementById("btContentWrap").innerHTML;
-    var originalContent = document.body.innerHTML;
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = originalContent;
-}
-
-    </script>
+        <script>
+            // Function to generate PDF
+            function generatePDF() {
+                // Create a new jsPDF instance
+                var doc = new jsPDF();
+        
+                // Get HTML content to be converted to PDF
+                var element = document.getElementById("btContentWrap");
+        
+                // Options for the PDF
+                var options = {
+                    margin: 10,
+                    filename: 'appointment_details.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+        
+                // Use html2pdf library to generate PDF
+                html2pdf().from(element).set(options).save();
+        
+                // Show alert for click identification
+                alert('PDF generated!');
+            }
+        
+            // Event listener for the button click
+            document.getElementById('btnGeneratePDF').addEventListener('click', generatePDF);
+        </script>
     
         <!-- <script>
             document.getElementById('printPDF').addEventListener('click', function (e) {
