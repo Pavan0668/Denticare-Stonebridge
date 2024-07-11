@@ -478,204 +478,463 @@
 
 <script>
     $(document).ready(function () {
-        $("#btnsbmtrprt").click(function () {
+        $("#btnsbmtrprt").click(function (event) {
+            event.preventDefault();
             alert('Button clicked! Generating PDF.');
 
-            const formData = {
-                firstName: $("input[placeholder='First']").val(),
-                initial: $("input[placeholder='Initial']").val(),
-                lastName: $("input[placeholder='Last']").val(),
-                street: $("input[placeholder='Street']").val(),
-                apt: $("input[placeholder='Apt']").val(),
-                city: $("input[placeholder='City']").val(),
-                prov: $("input[placeholder='Prov']").val(),
-                postalCode: $("input[placeholder='Postal Code']").val(),
-                cell: $("input[placeholder='Cell#']").val(),
-                home: $("input[placeholder='Home#']").val(),
-                dob: $("input[placeholder='D / M / Y']").val(),
-                email: $("input[placeholder='Email']").val(),
-                spouse: $("input[placeholder='Name of spouse/Parents/Guardian']").val(),
-                emergencyContact: $("input[placeholder='Emergency contact']").val(),
-                emergencyPhone: $("input[placeholder='Phone#']").val(),
-                primarySubscriberName: $(".table:nth-of-type(1) input").eq(0).val(),
-                primaryPolicyNumber: $(".table:nth-of-type(1) input").eq(1).val(),
-                primaryIdNumber: $(".table:nth-of-type(1) input").eq(2).val(),
-                primarySubscriberDob: $(".table:nth-of-type(1) input").eq(3).val(),
-                primaryEmployer: $(".table:nth-of-type(1) input").eq(4).val(),
-                primaryInsCo: $(".table:nth-of-type(1) input").eq(5).val(),
-                primaryRelationship: $(".table:nth-of-type(1) input").eq(6).val(),
-                secondarySubscriberName: $(".table:nth-of-type(2) input").eq(0).val(),
-                secondaryPolicyNumber: $(".table:nth-of-type(2) input").eq(1).val(),
-                secondaryIdNumber: $(".table:nth-of-type(2) input").eq(2).val(),
-                secondarySubscriberDob: $(".table:nth-of-type(2) input").eq(3).val(),
-                secondaryEmployer: $(".table:nth-of-type(2) input").eq(4).val(),
-                secondaryInsCo: $(".table:nth-of-type(2) input").eq(5).val(),
-                secondaryRelationship: $(".table:nth-of-type(2) input").eq(6).val(),
-                signature: $(".signature-section input[type='text']").eq(0).val(),
-                printName: $(".signature-section input[type='text']").eq(1).val(),
-                date: $(".signature-section input[type='text']").eq(2).val()
-            };
+            try {
+                const formData = {
+                    title: $("input[name='title']:checked").val() || "",
+                    firstName: $("input[placeholder='First']").val() || "",
+                    initial: $("input[placeholder='Initial']").val() || "",
+                    lastName: $("input[placeholder='Last']").val() || "",
+                    street: $("input[placeholder='Street']").val() || "",
+                    apt: $("input[placeholder='Apt']").val() || "",
+                    city: $("input[placeholder='City']").val() || "",
+                    prov: $("input[placeholder='Prov']").val() || "",
+                    postalCode: $("input[placeholder='Postal Code']").val() || "",
+                    cell: $("input[id='cell-ID']").val() || "",
+                    home: $("input[id='Home-ID']").val() || "",
+                    dob: $("input[placeholder='D / M / Y']").val() || "",
+                    email: $("input[placeholder='Emaid-ID']").val() || "",
+                    spouse: $("input[placeholder='Name-Spouse']").val() || "",
+                    emergencyContact: $("input[placeholder='Emergency-Contact']").val() || "",
+                    emergencyPhone: $("input[placeholder='Phone-ID']").val() || "",
+                    primarySubscriberName: $("input[id='SubscriberName']").val() || "",
+                    primaryPolicyNumber: $("input[id='IDtxt']").val() || "",
+                    primaryIdNumber: $("input[id='Policy']").val() || "",
+                    primarySubscriberDob: $("input[id='DOBtxt']").val() || "",
+                    primaryEmployer: $("input[id='Employertxt']").val() || "",
+                    primaryInsCo: $("input[id='Insurtxt']").val() || "",
+                    primaryRelationship: $("input[id='relnshpsbsbr']").val() || "",
+                    secondarySubscriberName: $("input[id='Suscriber-Name']").val() || "",
+                    secondaryPolicyNumber: $("input[placeholder='PolicyName_txt']").val() || "",
+                    secondaryIdNumber: $("input[placeholder='txtID_name']").val() || "",
+                    secondarySubscriberDob: $("input[placeholder='DMY_DOB']").val() || "",
+                    secondaryEmployer: $("input[placeholder='Employees_cnd']").val() || "",
+                    secondaryInsCo: $("input[placeholder='InsuranceNo_txt']").val() || "",
+                    secondaryRelationship: $("input[placeholder='relation_subscriber']").val() || "",
+                    signature: $(".signature-section input[type='text']").eq(0).val() || "",
+                    printName: $(".signature-section input[type='text']").eq(1).val() || "",
+                    date: $(".signature-section input[type='text']").eq(2).val() || ""
+                };
 
-            const physicianName = $('#physician-name').val();
-            const physicianPhone = $('#physician-phone').val();
-            const lastPhysicalDate = $('#last-physical-date').val();
-            const medicalCondition = $('#medical-condition').val();
-            const medicationDrug = $('#medication-drug').val();
-            const medicationReason = $('#medication-reason').val();
-            const supplement = $('#supplement').val();
-            const supplementReason = $('#supplement-reason').val();
-            const drugAllergies = $('#drug-allergies').val();
-            const latexAllergies = $('#latex-allergies').val();
-            const bruiseBleed = $('#bruise-bleed').val();
-            const antibiotics = $('#antibiotics').val();
-            const antibioticsReason = $('#antibiotics-reason').val();
-            const medicalConditions = Array.from($('input[name="medical-condition"]:checked')).map(checkbox => checkbox.value);
+                const physicianName = $('#physician-name').val() || "";
+                const physicianPhone = $('#physician-phone').val() || "";
+                const lastPhysicalDate = $('#last-physical-date').val() || "";
+                const medicalCondition = $('#medical-condition-treat').val() || "";
+                const medicationDrug = $('#medication-drug-time').val() || "";
+                const medicationReason = $('#medication-reason').val() || "";
+                const supplement = $('#supplement').val() || "";
+                const supplementReason = $('#supplement-reason').val() || "";
+                const drugAllergies = $('#drug-allergies').val() || "";
+                const latexAllergies = $('#latex-allergies').val() || "";
+                const bruiseBleed = $('#bruise-bleed').val() || "";
+                const antibiotics_smoke = $('#antibiotics-smoke').val() || "";
+                const antibioticsReason = $('#antibiotics-reason').val() || "";
+                const Pregnent_reason = $('#Pregnent-reason').val() || "";
+                const Prednisone_reason = $('#Prednisone-reason').val() || "";
+                
+                const medicalConditions = Array.from($('input[name="medical-condition"]:checked')).map(checkbox => checkbox.value);
 
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                const addHeader = (doc) => {
+                    const logoPath = 'img/asset 0.png';
+                    const logoWidth = 50;
+                    const logoHeight = 20;
+                    doc.addImage(logoPath, 'PNG', 150, 10, logoWidth, logoHeight);
 
-            alert('Button clicked! Initiating PDF.');
+                    const headerTitle = 'Stone Bridge Dentistry';
+                    doc.setFontSize(14);
+                    doc.text(headerTitle, 10, 10);
 
-            const logoPath = 'img/asset 0.png';
-            const logoWidth = 50;
-            const logoHeight = 20;
-            doc.addImage(logoPath, 'PNG', 10, 10, logoWidth, logoHeight, { align: 'right' });
+                    const addressContent = `1 Market Lane, Unit 9\nWasaga Beach, On\nL9Z 0B6\nreception.stonebridgedentistry@gmail.com\nTel: 705-422-2490   Fax: 705-422-2493\n\n`;
+                    doc.setFontSize(10);
+                    doc.text(addressContent, 10, 20);
 
-            const headerTitle = 'Stone Bridge Dentistry';
-            doc.setFontSize(14);
-            doc.text(headerTitle, doc.internal.pageSize.getWidth() / 2, 20, { align: 'left' });
+                    doc.setFontSize(14);
+                    doc.text('NEW PATIENT FORM', doc.internal.pageSize.getWidth() / 2, 50, { align: 'center' });
 
-            const addressContent = `1 Market Lane, Unit 9\nWasaga Beach, On\nL9Z 0B6\nreception.stonebridgedentistry@gmail.com\nTel: 705-422-2490   Fax: 705-422-2493\n\n `;
-            doc.setFontSize(10);
-            doc.text(addressContent, 10, 40);
+                    doc.setLineWidth(0.5);
+                    doc.line(10, 55, 200, 55);
+                };
 
-            doc.setFontSize(14);
-            doc.text('NEW PATIENT FORM', 60, 70, { align: 'center' });
+                // Add header to the first page
+                addHeader(doc);
+                /*// Adding the header
+                doc.setFontSize(18);
+                doc.text('STONEBRIDGE DENTISTRY', 105, 20, { align: 'center' });
+                doc.setFontSize(12);
+                doc.text(`1 Market Lane, Unit 9\nWasaga Beach, On\nL9Z 0B6\nreception.stonebridgedentistry@gmail.com\nTel: 705-422-2490   Fax: 705-422-2493`, 105, 30, { align: 'center' });
+                doc.setFontSize(16);
+                doc.text('NEW PATIENT FORM', 105, 60, { align: 'center' });*/
 
-            alert('Button clicked! Header section of PDF.');
+                // Adding the horizontal line
+                doc.setLineWidth(0.5);
+                doc.line(10, 65, 200, 65);
 
-            doc.setFontSize(12);
-            doc.text(`Name: ${formData.firstName} ${formData.initial} ${formData.lastName}`, 10, 80);
-            doc.text(`Address: ${formData.street}, Apt ${formData.apt}, ${formData.city}, ${formData.prov}, ${formData.postalCode}`, 10, 90);
-            doc.text(`Cell#: ${formData.cell}`, 10, 100);
-            doc.text(`Home#: ${formData.home}`, 10, 110);
-            doc.text(`Date of Birth: ${formData.dob}`, 10, 120);
-            doc.text(`Email: ${formData.email}`, 10, 130);
-            doc.text(`Name of Spouse/Parents/Guardian: ${formData.spouse}`, 10, 140);
-            doc.text(`Emergency Contact: ${formData.emergencyContact}`, 10, 150);
-            doc.text(`Phone#: ${formData.emergencyPhone}`, 10, 160);
+                // Patient Information
+                doc.setFontSize(12);
+                doc.text('Patient Information (please print)', 10, 70);
 
-            alert('Button clicked! Patient information section of PDF.');
+                // Title
+                doc.setFontSize(10);
+                doc.text('Title:', 10, 80);
+                doc.text(formData.title, 35, 80);
 
-            doc.setFontSize(12);
-            doc.text('Financial Information:', 10, 180);
-            doc.autoTable({
-                startY: 190,
-                head: [['Primary Insurance', '', '', '', '', '', '']],
-                body: [
-                    [
-                        'Subscriber Name:', formData.primarySubscriberName, 'Policy#:', formData.primaryPolicyNumber,
-                        'Ins Co.:', formData.primaryInsCo, 'Relationship:', formData.primaryRelationship
+                // Adding Name Section with Line
+                doc.setFontSize(10);
+                doc.text('Name:', 10, 90);
+                doc.text(formData.firstName, 50, 87);
+                doc.text(formData.initial, 100, 87);
+                doc.text(formData.lastName, 150, 87);
+                doc.line(35, 89, 200, 89); // Line for the name
+                doc.text('First', 50, 95);
+                doc.text('Initial', 100, 95);
+                doc.text('Last', 150, 95);
+
+                // Adding Address Section with Line
+                doc.text('Address:', 10, 110);
+                doc.line(35, 110, 200, 110); // Line for the address
+                doc.setFontSize(10);
+                doc.text('Street', 40, 115);
+                doc.text('Apt', 70, 115);
+                doc.text('City', 100, 115);
+                doc.text('Prov', 130, 115);
+                doc.text('Postal Code', 160, 115);
+                doc.text(formData.street, 40, 105);
+                doc.text(formData.apt, 70, 105);
+                doc.text(formData.city, 100, 105);
+                doc.text(formData.prov, 130, 105);
+                doc.text(formData.postalCode, 160, 105);
+
+                // Adding Cell and Home in One Line
+                doc.text('Cell:', 10, 130);
+                doc.line(25, 130, 100, 130); // Line for the cell
+                doc.text(formData.cell, 25, 125);
+                doc.text('Home:', 105, 130);
+                doc.line(125, 130, 200, 130); // Line for the home
+                doc.text(formData.home, 125, 125);
+
+                // Adding Date of Birth and Email
+                doc.text('Date of Birth:', 10, 145);
+                doc.line(35, 145, 100, 145); // Line for the date of birth
+                doc.text(formData.dob, 35, 140);
+                doc.text('Email:', 105, 145);
+                doc.line(125, 145, 200, 145); // Line for the email
+                doc.text(formData.email, 125, 140);
+
+                // Adding Name of Spouse/Parent/Guardian
+                doc.text('Name of Spouse/Parent/Guardian:', 10, 160);
+                doc.line(70, 160, 200, 160); // Line for the spouse/parent/guardian
+                doc.text(formData.spouse, 70, 160);
+
+                // Adding Emergency Contact and Phone
+                doc.text('Emergency Contact:', 10, 175);
+                doc.line(45, 175, 100, 175); // Line for the emergency contact
+                doc.text(formData.emergencyContact, 45, 182);
+                doc.text('Phone:', 105, 175);
+                doc.line(118, 175, 200, 175); // Line for the phone
+                doc.text(formData.emergencyPhone, 118, 182);
+
+                // Financial Information
+                doc.text('Financial Information', 10, 190);
+                doc.autoTable({
+                    startY: 195,
+                    head: [['Labels', 'Primary Insurance', 'Secondary Insurance']],
+                    body: [
+                        ['Subscriber Name', formData.primarySubscriberName, formData.secondarySubscriberName],
+                        ['Policy', formData.primaryPolicyNumber, formData.secondaryPolicyNumber],
+                        ['ID', formData.primaryIdNumber, formData.secondaryIdNumber],
+                        ['Subscriber DOB', formData.primarySubscriberDob, formData.secondarySubscriberDob],
+                        ['Employer', formData.primaryEmployer, formData.secondaryEmployer],
+                        ['Ins Co.', formData.primaryInsCo, formData.secondaryInsCo],
+                        ['Relationship', formData.primaryRelationship, formData.secondaryRelationship],
+                        [{ content: 'Our office is happy to file claims electronically on your behalf, so that in many cases, we will receive your insurance reimbursement. As such, payment of your dental visit is expected at the time of service should there be any balances. Please let your front desk staff know ahead of time, in the event that you are unable to make payment when it is due, so that other options can be discussed with you at that time.', colSpan: 3 }]
                     ],
-                    [
-                        'ID#:', formData.primaryIdNumber, 'Subscriber DOB:', formData.primarySubscriberDob,
-                        'Employer:', formData.primaryEmployer, '', ''
-                    ],
-                    [
-                        'Secondary Insurance', '', '', '', '', '', ''
-                    ],
-                    [
-                        'Subscriber Name:', formData.secondarySubscriberName, 'Policy#:', formData.secondaryPolicyNumber,
-                        'Ins Co.:', formData.secondaryInsCo, 'Relationship:', formData.secondaryRelationship
-                    ],
-                    [
-                        'ID#:', formData.secondaryIdNumber, 'Subscriber DOB:', formData.secondarySubscriberDob,
-                        'Employer:', formData.secondaryEmployer, '', ''
-                    ]
-                ],
-                theme: 'grid',
-                styles: {
-                    cellPadding: 1,
-                    fontSize: 10,
-                    fontStyle: 'normal',
-                    overflow: 'linebreak',
-                    halign: 'center'
-                }
-            });
+                    theme: 'grid',
+                    styles: { fontSize: 10, cellPadding: 2 }
+                });
 
-            alert('Button clicked! Financial information section of PDF.');
+                // Add a new page for Medical History
+                doc.addPage();
 
-            // Medical Conditions Section
-            doc.setFontSize(14);
-            doc.text('Patient Medical Conditions', 10, doc.autoTable.previous.finalY + 20);
+                // Medical History Section
+                doc.setFontSize(12);
 
-            // Define table columns and rows
-            const columns = ['Condition 1', 'Condition 2', 'Condition 3'];
-            const data = [];
+                doc.text('Medical History : (Confidential as Per PIPEDA Legislation)', 10, 20);
+                doc.setFontSize(10);
+                // Name of Family Physician
+                doc.text('Name of Family Physician', 10, 30);
+                doc.line(60, 30, 200, 30);
+                doc.text(physicianName, 60, 30);
 
-            // Iterate through each checkbox and add to table data
-            $('input[name="medical-condition"]').each(function (index) {
-                const condition = $(this).parent().text().trim();
-                const checked = $(this).is(':checked') ? '[X]' : '[ ]';
+                // Phone
+                doc.text('Phone', 10, 40);
+                doc.line(25, 40, 200, 40);
+                doc.text(physicianPhone, 25, 40);
 
-                if (index % 3 === 0) {
-                    data.push([]);
-                }
+                // Date of Last Physical
+                doc.text('Date of Last Physical', 10, 50);
+                doc.line(55, 50, 200, 50);
+                doc.text(lastPhysicalDate, 55, 50);
 
-                data[Math.floor(index / 3)].push(checked + ' ' + condition);
-            });
+                // Are you being treated for any medical condition?
+                doc.text('Are you being treated for any medical condition? If so, which', 10, 60);
+                doc.line(10, 68, 200, 68);
+                doc.text(medicalCondition, 20, 90);
 
-            // Add table using autoTable plugin
-            doc.autoTable({
-                startY: doc.autoTable.previous.finalY + 30,
-                head: [columns],
-                body: data,
-                theme: 'grid',
-                styles: {
-                    cellPadding: 1,
-                    fontSize: 10,
-                    fontStyle: 'normal',
-                    overflow: 'linebreak',
-                    halign: 'center',
-                    valign: 'middle'
-                },
-                columnStyles: {
-                    0: { cellWidth: 60 },
-                    1: { cellWidth: 60 },
-                    2: { cellWidth: 60 }
-                }
-            });
+                // Are you taking any drugs or medications at this time?
+                doc.text('Are you taking any drugs or medications at this time?', 10, 75);
+                doc.line(10, 80, 200, 80);
+                doc.text(medicationDrug, 20, 90);
 
-            alert('Button clicked! Medical conditions section of PDF.');
+                // Drug and Reason
+                doc.text('Drug:', 10, 90);
+                doc.line(20, 90, 90, 90);
+                doc.text(medicationDrug, 20, 90);
+                doc.text('Reason:', 95, 90);
+                doc.line(115, 90, 200, 90);
+                doc.text(medicationReason, 115, 90);
 
-            doc.text(`Name of Physician: ${physicianName}`, 10, doc.autoTable.previous.finalY + 20);
-            doc.text(`Phone: ${physicianPhone}`, 10, doc.autoTable.previous.finalY + 30);
-            doc.text(`Date of Last Physical: ${lastPhysicalDate}`, 10, doc.autoTable.previous.finalY + 40);
-            doc.text(`Current Medication: ${medicationDrug}`, 10, doc.autoTable.previous.finalY + 50);
-            doc.text(`Reason for Medication: ${medicationReason}`, 10, doc.autoTable.previous.finalY + 60);
-            doc.text(`Supplements: ${supplement}`, 10, doc.autoTable.previous.finalY + 70);
-            doc.text(`Reason for Supplements: ${supplementReason}`, 10, doc.autoTable.previous.finalY + 80);
-            doc.text(`Drug Allergies: ${drugAllergies}`, 10, doc.autoTable.previous.finalY + 90);
-            doc.text(`Latex Allergies: ${latexAllergies}`, 10, doc.autoTable.previous.finalY + 100);
-            doc.text(`Do you bruise or bleed easily? ${bruiseBleed}`, 10, doc.autoTable.previous.finalY + 110);
-            doc.text(`Currently taking antibiotics? ${antibiotics}`, 10, doc.autoTable.previous.finalY + 120);
-            doc.text(`Reason for antibiotics: ${antibioticsReason}`, 10, doc.autoTable.previous.finalY + 130);
+                // Are you taking any Herbal or Vitamin Supplements?
+                doc.text('Are you taking any Herbal or Vitamin Supplements?', 10, 100);
+                doc.line(10, 105, 200, 105);
 
-            alert('Button clicked! Final sections of PDF.');
+                // Supplement and Reason
+                doc.text('Supplement:', 10, 115);
+                doc.line(30, 115, 90, 115);
+                doc.text(supplement, 30, 115);
+                doc.text('Reason:', 95, 115);
+                doc.line(115, 115, 200, 115);
+                doc.text(supplementReason, 115, 115);
 
-            doc.setFontSize(12);
-            doc.text('Signature:', 10, doc.autoTable.previous.finalY + 150);
-            doc.text(`Signature: ${formData.signature}`, 10, doc.autoTable.previous.finalY + 160);
-            doc.text(`Print Name: ${formData.printName}`, 10, doc.autoTable.previous.finalY + 170);
-            doc.text(`Date: ${formData.date}`, 10, doc.autoTable.previous.finalY + 180);
+                // Do you have any drug allergies or adverse effects?
+                doc.text('Do you have any drug allergies or adverse effects?', 10, 125);
+                doc.line(10, 130, 200, 130);
+                doc.text(drugAllergies, 10, 130);
 
-            alert('Button clicked! Saving PDF.');
-            
-            doc.save('generated_pdf.pdf');
+                // Any Latex, Nickel, or General Anesthesia Allergies?
+                doc.text('Any Latex, Nickel, or General Anesthesia Allergies?', 10, 140);
+                doc.line(10, 145, 200, 145);
+                doc.text(latexAllergies, 10, 145);
+
+                // Do you bruise easily or bleed for a prolonged period of time?
+                doc.text('Do you bruise easily or bleed for a prolonged period of time?', 10, 155);
+                doc.line(10, 160, 200, 160);
+                doc.text(bruiseBleed, 10, 160);
+
+                // Do you smoke? If so, how much per day, and how long?
+                doc.text('Do you smoke? If so, how much per day, and how long?', 10, 170);
+                doc.line(10, 175, 200, 175);
+                doc.text(antibiotics_smoke, 10, 175);
+
+                // Have you ever fainted, had shortness of breath or chest pains?
+                doc.text('Have you ever fainted, had shortness of breath or chest pains?', 10, 185);
+                doc.line(10, 190, 200, 190);
+                doc.text(antibioticsReason, 10, 190);
+
+                // Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/NO
+                doc.text('Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/NO', 10, 200);
+                doc.line(10, 205, 200, 205);
+                doc.text(Pregnent_reason, 10, 205);
+
+                // Have you in the past, or are currently taking cortisone-based medications such as Prednisone
+                doc.text('Have you in the past, or are currently taking cortisone-based medications such as Prednisone', 10, 215);
+                doc.line(10, 220, 200, 220);
+                doc.text(Prednisone_reason, 10, 220);
+                // Add a new page for Medical History and Medical Conditions
+                
+                doc.addPage();
+
+                // Adding the Medical Conditions section with checkboxes
+                doc.setFontSize(12);
+                doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 30);
+                doc.setFontSize(10);
+                // Draw border for Medical Conditions section
+                doc.rect(5, 25, 200, 190);
+
+                const medicalConditionsColumns = [
+                    ['Artificial Joints', 'Asthma', 'Malignant'],
+                    ['Anemia', 'Circulation Problems', 'Hypothermia'],
+                    ['Bone Density Meds', 'Cortisone/Steroids', 'Mental Nervous Disorder'],
+                    ['Blood Thinner Meds', 'Drug/Alcohol Dependency', 'Mitral Valve Prolapse'],
+                    ['Cancer', 'Eating Disorder', 'Organ Transplants'],
+                    ['Radiation', 'Epilepsy', 'Psychiatric Disorder'],
+                    ['Chemotherapy', 'Glaucoma', 'Rheumatic Fever'],
+                    ['Diabetic', 'Head/Neck Injury', 'Sickle Cell'],
+                    ['Infective Endocarditis', 'Herpes', 'Sinus Problem'],
+                    ['Hep A/B/C', 'Hodgkin Disease', 'Thyroid Problem'],
+                    ['H.I.V Positive', 'Hyperglycemia', 'Tuberculosis'],
+                    ['Hemophilia', 'Jaundice', 'Ulcers'],
+                    ['Blood Pressure H / L', 'Kidney Disease', 'Other'],
+                    ['Pacemaker', 'Liver Disease', ''],
+                    ['Stroke', 'Lung Disease', ''],
+                    ['Heart Issues', '', '']
+                ];
+
+                const drawCheckbox = (doc, x, y, checked) => {
+                    doc.rect(x, y, 4, 4); // Draw the square
+                    if (checked) {
+                        doc.line(x, y, x + 4, y + 4); // Draw the checkmark
+                        doc.line(x + 4, y, x, y + 4);
+                    }
+                };
+
+                const checkboxColumnWidth = 60;
+                const checkboxRowHeight = 7;
+                let startY = 35;
+
+                medicalConditionsColumns.forEach((row, rowIndex) => {
+                    row.forEach((condition, colIndex) => {
+                        if (condition) {
+                            drawCheckbox(doc, 10 + colIndex * checkboxColumnWidth, startY, medicalConditions.includes(condition));
+                            doc.text(condition, 16 + colIndex * checkboxColumnWidth, startY + 3);
+                        }
+                    });
+                    startY += checkboxRowHeight;
+                });
+
+                doc.text('List Recent Surgeries or hospital visits:', 10, startY + 10);
+                doc.line(10, startY + 15, 200, startY + 15); // Line for recent surgeries
+
+                // Add a new page for Dental History
+                doc.addPage();
+
+                // Dental History Section
+                doc.setFontSize(14);
+                doc.text('Dental History:', 10, 20);
+                doc.setFontSize(10);
+                alert('values are getting');
+                // Assuming you already have a PDF document object named `doc`
+
+                // Questions for Dental History
+                const dentalHistoryQuestions = [
+                    'Last Dental Checkup and Cleaning? How Frequently do you visit?',
+                    'Do you usually take antibiotics before a procedure?',
+                    'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
+                    'Do you have a history of Gum Disease? Treated? Untreated?',
+                    'Have you seen a Periodontist? If so, when?',
+                    'Are your teeth sensitive to Sweets? If so, when?',
+                    'Have you been diagnosed with TAU (Jaw Joint) problems? If so, when? Treated/Untreated?',
+                    'Does your Jaw Joints "Click" or "Pop" when you open?',
+                    'Are you aware if you grind or clench your teeth at night?',
+                    'Have you had orthodontic work done (braces)?',
+                    'Do you wear any oral appliances? Removable or Fixed?',
+                    'Have you professionally whitened your teeth before? Yes No',
+                    'Are you happy with your smile?'
+                ];
+
+                // Collect form values
+                const answers = getFormValues();
+
+                // Initial startY position
+                let startYY = 30;
+
+                // Iterate over each question and answer
+                dentalHistoryQuestions.forEach((question, index) => {
+                    // Print question
+                    doc.setFontSize(12);
+                    doc.text(question, 10, startYY);
+
+                    // Print answer
+                    doc.setFontSize(10);
+                    doc.text(answers[`answer${index + 1}`] || '', 110, startYY);
+
+                    // Add line under the answer
+                    doc.line(110, startYY + 2, 200, startYY + 2);
+
+                    // Increment startY for the next question
+                    startYY += 15;
+                });
+
+                // Add a new page for Consent or other sections as needed
+                doc.addPage();
+
+                // Consent Section
+                doc.setFontSize(10);
+                const consentText = `GENERAL RELEASE: I, the undersigned, certify that the information contained in the medical and dental history is correct to the best of my knowledge. I consent to the release of medical information from my medical doctor, or other healthcare providers, if required by this dental office. I authorize this dental office to perform diagnostic procedures as may be required to determine necessary treatment. I understand that payment for my dental treatment is due at the time of service unless otherwise arranged in advance with office management. I understand that I am responsible for my account with this dental office, and that all of my dependents, and I will not allow payments to be in arrears.
+
+We need to have your consent to begin communicating with you by text or email.
+Email and text messaging allows us to communicate efficiently for the benefit of our patients. At the same time, we recognize the risk if addressed to the wrong person or accessed improperly while in storage or during transmission.
+HIPAA requires that providers take reasonable steps to protect against these risks but acknowledges that a balance must be struck between the need to secure personal information and the need to ensure that clinicians can efficiently exchange important patient care information. Stonebridge Dentistry has implemented such measures through obtaining informed consent from patients using any potentially unencrypted electronic format.
+By signing this form, you give consent to our office to communicate with you via`;
+
+                doc.text(consentText, 10, 20, { maxWidth: 190, align: 'left' });
+
+                // Function to draw consent checkbox
+                const drawConsentCheckbox = (x, y, label) => {
+                    doc.rect(x, y, 4, 4); // Draw the square
+                    doc.text(label, x + 6, y + 3);
+                };
+
+
+                drawConsentCheckbox(10, 92, 'Text your mobile number');
+                doc.text('Mobile number:', 70, 95);
+                doc.line(100, 95, 200, 95); // Line for the mobile number
+
+                drawConsentCheckbox(10, 102, 'Email your email address');
+                doc.text('Email Address:', 70, 105);
+                doc.line(100, 105, 200, 105); // Line for the email address
+
+                drawConsentCheckbox(10, 112, 'Both text & Email address');
+
+                drawConsentCheckbox(10, 122, 'Neither Text nor Email');
+
+                // Signature, Print Name, Date
+                doc.text('Signature', 10, 140);
+                doc.line(30, 140, 75, 140);
+
+                doc.text('Print Name', 80, 140);
+                doc.line(100, 140, 150, 140);
+
+                doc.text('Date', 155, 140);
+                doc.line(165, 140, 200, 140);
+
+
+                // Save the PDF
+                doc.save('appointment-details.pdf');
+                alert('PDF generated successfully!');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('An error occurred while generating the PDF. Please check the console for details.');
+            }
         });
     });
 </script>
 
+<script>
+  // Function to retrieve form values
+function getFormValues() {
+    return {
+        "Checkup-name": document.getElementById("Checkup-name")?.value || '',
+        "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
+        "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
+        "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
+        "Gum-Disease": document.getElementById("Gum-Disease")?.value || '',
+        "Treated": document.getElementById("Treated")?.value || '',
+        "Untreated": document.getElementById("Untreated")?.value || '',
+        "Periodontist-name": document.getElementById("Periodontist-name")?.value || '',
+        "Periodontist-when": document.getElementById("Periodontist-when")?.value || '',
+        "sensitive-Sweets": document.getElementById("sensitive-Sweets")?.value || '',
+        "sensitive-when": document.getElementById("sensitive-when")?.value || '',
+        "diagnosed-TAU": document.getElementById("diagnosed-TAU")?.value || '',
+        "TAU-when": document.getElementById("TAU-when")?.value || '',
+        "Treated-Untreated": document.getElementById("Treated-Untreated")?.value || '',
+        "medication-reason": document.getElementById("medication-reason")?.value || '',
+        "clench-teeth": document.getElementById("clench-teeth")?.value || '',
+        "orthodontic": document.getElementById("orthodontic")?.value || '',
+        "oral-appliances": document.getElementById("oral-appliances")?.value || '',
+        "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
+        "Whitened-Sweets": document.getElementById("Whitened-Sweets")?.value || '',
+        "Whitened-No": document.getElementById("Whitened-No")?.value || '',
+        "supplement-reason": document.getElementById("supplement-reason")?.value || ''
+    };
+}
+
+
+</script>
 
 
 
@@ -13208,13 +13467,13 @@
                             <div class="column"><input type="text" placeholder="Prov"></div>
                             <div class="column"><input type="text" placeholder="Postal Code"></div>
                         </div>
-                        <label>Cell#</label><input type="text">
-                        <label>Home#</label><input type="text">
+                        <label>Cell#</label><input type="text" id="cell-ID">
+                        <label>Home#</label><input type="text" id="Home-ID">
                         <label>Date of birth</label><input type="text" placeholder="D / M / Y">
-                        <label>Email</label><input type="text">
-                        <label>Name of spouse/Parents/Guardian</label><input type="text">
-                        <label>Emergency contact</label><input type="text">
-                        <label>Phone#</label><input type="text">
+                        <label>Email</label><input type="text" placeholder="Emaid-ID">
+                        <label>Name of spouse/Parents/Guardian</label><input type="text" placeholder="Name-Spouse">
+                        <label>Emergency contact</label><input type="text" placeholder="Emergency-Contact">
+                        <label>Phone#</label><input type="text" id="Phone-ID">
                         <br>
                         <div class="inline-group">
                             <label>Name of family Physician</label>
@@ -13233,36 +13492,36 @@
                             <div class="column insurance-column" style="flex: 1; padding: 10px; border-right: 1px solid black;">
                                 <h3>Primary Insurance</h3>
                                 <label style="display: block; margin-bottom: 5px;">Subscriber Name</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="SubscriberName" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Policy #</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="Policy" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Id #</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="IDtxt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Subscriber Date of Birth (D/M/Y)</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="DOBtxt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Employer</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="Employertxt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Ins Co.</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="Insurtxt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Relationship to Subscriber</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="relnshpsbsbr" style="display: block; width: 100%; margin-bottom: 10px;">
                             </div>
                             <div class="column insurance-column" style="flex: 1; padding: 10px;">
                                 <h3>Secondary Insurance</h3>
                                 <label style="display: block; margin-bottom: 5px;">Subscriber Name</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="Suscriber-Name" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Policy #</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="PolicyName_txt" placeholder="PolicyName_txt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Id #</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="txtID_name" placeholder="txtID_name" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Subscriber Date of Birth (D/M/Y)</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="DMY_DOB" placeholder="DMY_DOB" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Employer</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="Employees_cnd" placeholder="Employees_cnd" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Ins Co.</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="InsuranceNo_txt" placeholder="InsuranceNo_txt" style="display: block; width: 100%; margin-bottom: 10px;">
                                 <label style="display: block; margin-bottom: 5px;">Relationship to Subscriber</label>
-                                <input type="text" style="display: block; width: 100%; margin-bottom: 10px;">
+                                <input type="text" id="relation_subscriber" placeholder="relation_subscriber" style="display: block; width: 100%; margin-bottom: 10px;">
                             </div>
                         </div>
                         <p class="note" style="margin-top: 10px;">Our office is happy to file claims electronically on your behalf, so that in many cases, we will receive your insurance reimbursement.<br>
@@ -13280,20 +13539,21 @@
                             <label>Date of last physical</label>
                             <input type="text" id="last-physical-date">
                         </div>
-                        <label>Are you being treated for any medical condition? If so, which?</label><input type="text" id="medical-condition">
+                        <label>Are you being treated for any medical condition? If so, which?</label><input type="text" id="medical-condition-treat">
                         <label>Are you taking any drugs or medications at this time?</label>
-                        <label>Drug:</label><input type="text" id="medication-drug">
+                        <label>Drug:</label><input type="text" id="medication-drug-time">
                         <label>Reason:</label><input type="text" id="medication-reason">
                         <label>Are you taking any Herbal or Vitamin Supplements?</label>
                         <label>Supplement:</label><input type="text" id="supplement">
                         <label>Reason:</label><input type="text" id="supplement-reason">
                         <label>Do you have any drug allergies or adverse effects? (Penicillin, Sulfonamide, Aspirin, Codeine, Local Anesthetic)</label><input type="text" id="drug-allergies">
                         <label>Any Latex, Nickel, or General Anesthesia Allergies?</label><input type="text" id="latex-allergies">
-                        <label>Do you bruise easily or bleed for a long time following an injury or surgery?</label><input type="text" id="bruise-bleed">
-                        <label>Have you ever been advised to take antibiotics before dental treatment? Yes/No</label><input type="text" id="antibiotics">
-                        <label>If yes, why?</label><input type="text" id="antibiotics-reason">
-                        <label>Do you have or have you had any of the following?</label>
-                        <div class="table">
+                        <label>Do you bruise easily or bleed for a prolonged period of time? </label><input type="text" id="bruise-bleed">
+                        <label>Do you smoke? If so, how much per day, and how long?</label><input type="text" id="antibiotics_smoke">
+                        <label>Have you ever fainted, had shortness of breath or chest pains? </label><input type="text" id="antibiotics-reason">
+                        <label>Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/ NO</label><input type="text" id="Pregnent-reason">
+                        <label>Have you in the past, or are currently taking cortisone-based medications such as Prednisone? </label><input type="text" id="Prednisone-reason">
+                        <div class="table" id="tblmedcndtn">
                             <div class="column">
                                 <ul>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Artificial Joints"> Artificial Joints </label></li>
@@ -13344,6 +13604,65 @@
                                 </ul>
                             </div>
                         </div>
+                        <h4>Dental History:</h4>
+                        <div class="inline-group">
+                            <label>Last Dental Checkup and Cleaning?</label>
+                            <input type="text" id="Checkup-name">
+                            <label>How Frequently do you visit?</label>
+                            <input type="text" id="Frequently-visit">
+                        </div>
+                        <label>Do you usually take antibiotics before a procedure?</label>
+                        <input type="text" id="antibiotics-condition">
+                        <label>Are you looking for Comprehensive Dental Care, or Emergency Care Only?</label>
+                        <input type="text" id="Comprehensive-Dental">
+                        <div class="inline-group">
+                            <label>Do you have a history of Gum Disease?</label>
+                            <input type="text" id="Gum-Disease">
+                            <label>Treated?</label>
+                            <input type="text" id="Treated">
+                            <label>Untreated?</label>
+                            <input type="text" id="Untreated">
+                        </div>
+                        <div class="inline-group">
+                            <label>Have you seen a Periodontist?</label>
+                            <input type="text" id="Periodontist-name">
+                            <label>If so, when?</label>
+                            <input type="text" id="Periodontist-when">
+                        </div>
+                        <div class="inline-group">
+                            <label>Are your teeth sensitive to Sweets?</label>
+                            <input type="text" id="sensitive-Sweets">
+                            <label>If so, when?</label>
+                            <input type="text" id="sensitive-when">
+                        </div>
+                        <div class="inline-group">
+                            <label>Have you been diagnosed with TAU (Jaw Joint) problems?</label>
+                            <input type="text" id="diagnosed-TAU">
+                            <label>If so, when?</label>
+                            <input type="text" id="TAU-when">
+                            <label>Treated/Untreated?</label>
+                            <input type="text" id="Treated-Untreated" placeholder="Treated-Untreated">
+                        </div>
+                        <label>Does your Jaw Joints "Click" or "Pop' when you open?</label>
+                        <input type="text" id="medication-reason">
+                        <label>Are you aware If you grind or clench your teeth at night?</label>
+                        <input type="text" id="clench-teeth">
+                        <label>Have you had orthodontic work done (braces)?</label>
+                        <input type="text" id="orthodontic">
+                        <div class="inline-group">
+                            <label>Do you wear any oral appliances?</label>
+                            <input type="text" id="oral-appliances">
+                            <label>Removable or Fixed?</label>
+                            <input type="text" id="Removable-Fixed">
+                        </div>
+                        <div class="inline-group">
+                            <label>Have you Professionally Whitened your teeth before? Yes</label>
+                            <input type="text" id="Whitened-Sweets">
+                            <label>No</label>
+                            <input type="text" id="Whitened-No">
+                        </div>
+                        <label>Are you happy with your smile?</label>
+                        <input type="text" id="supplement-reason">                        
                     </section>
             
                     <section class="section">
