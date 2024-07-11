@@ -805,9 +805,38 @@
                 // Dental History Section
                 doc.setFontSize(14);
                 doc.text('Dental History:', 10, 20);
-                doc.setFontSize(10);
+                doc.setFontSize(8);
                 alert('values are getting');
                 // Assuming you already have a PDF document object named `doc`
+
+
+                 // Function to retrieve form values
+                function getFormValues() {
+                    return {
+                        "Checkup-name": document.getElementById("Checkup-name")?.value || '',
+                        "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
+                        "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
+                        "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
+                        "Gum-Disease": document.getElementById("Gum-Disease")?.value || '',
+                        "Treated": document.getElementById("Treated")?.value || '',
+                        "Untreated": document.getElementById("Untreated")?.value || '',
+                        "Periodontist-name": document.getElementById("Periodontist-name")?.value || '',
+                        "Periodontist-when": document.getElementById("Periodontist-when")?.value || '',
+                        "sensitive-Sweets": document.getElementById("sensitive-Sweets")?.value || '',
+                        "sensitive-when": document.getElementById("sensitive-when")?.value || '',
+                        "diagnosed-TAU": document.getElementById("diagnosed-TAU")?.value || '',
+                        "TAU-when": document.getElementById("TAU-when")?.value || '',
+                        "Treated-Untreated": document.getElementById("Treated-Untreated")?.value || '',
+                        "medication-reason": document.getElementById("medication-reason")?.value || '',
+                        "clench-teeth": document.getElementById("clench-teeth")?.value || '',
+                        "orthodontic": document.getElementById("orthodontic")?.value || '',
+                        "oral-appliances": document.getElementById("oral-appliances")?.value || '',
+                        "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
+                        "Whitened-Sweets": document.getElementById("Whitened-Sweets")?.value || '',
+                        "Whitened-No": document.getElementById("Whitened-No")?.value || '',
+                        "supplement-reason": document.getElementById("supplement-reason")?.value || ''
+                    };
+                }
 
                 // Questions for Dental History
                 const dentalHistoryQuestions = [
@@ -816,7 +845,7 @@
                     'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
                     'Do you have a history of Gum Disease? Treated? Untreated?',
                     'Have you seen a Periodontist? If so, when?',
-                    'Are your teeth sensitive to Sweets? If so, when?',
+                    'Are your teeth sensitive to Sweets? Hot? Cold?',
                     'Have you been diagnosed with TAU (Jaw Joint) problems? If so, when? Treated/Untreated?',
                     'Does your Jaw Joints "Click" or "Pop" when you open?',
                     'Are you aware if you grind or clench your teeth at night?',
@@ -826,8 +855,11 @@
                     'Are you happy with your smile?'
                 ];
 
+
+                doc.setFontSize(12);
+
                 // Collect form values
-                const answers = getFormValues();
+                const answersReceived = getFormValues();
 
                 // Initial startY position
                 let startYY = 30;
@@ -840,7 +872,7 @@
 
                     // Print answer
                     doc.setFontSize(10);
-                    doc.text(answers[`answer${index + 1}`] || '', 110, startYY);
+                    doc.text(answersReceived[`answer${index + 1}`] || '', 110, startYY);
 
                     // Add line under the answer
                     doc.line(110, startYY + 2, 200, startYY + 2);
@@ -848,6 +880,7 @@
                     // Increment startY for the next question
                     startYY += 15;
                 });
+
 
                 // Add a new page for Consent or other sections as needed
                 doc.addPage();
@@ -904,37 +937,8 @@ By signing this form, you give consent to our office to communicate with you via
     });
 </script>
 
-<script>
-  // Function to retrieve form values
-function getFormValues() {
-    return {
-        "Checkup-name": document.getElementById("Checkup-name")?.value || '',
-        "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
-        "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
-        "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
-        "Gum-Disease": document.getElementById("Gum-Disease")?.value || '',
-        "Treated": document.getElementById("Treated")?.value || '',
-        "Untreated": document.getElementById("Untreated")?.value || '',
-        "Periodontist-name": document.getElementById("Periodontist-name")?.value || '',
-        "Periodontist-when": document.getElementById("Periodontist-when")?.value || '',
-        "sensitive-Sweets": document.getElementById("sensitive-Sweets")?.value || '',
-        "sensitive-when": document.getElementById("sensitive-when")?.value || '',
-        "diagnosed-TAU": document.getElementById("diagnosed-TAU")?.value || '',
-        "TAU-when": document.getElementById("TAU-when")?.value || '',
-        "Treated-Untreated": document.getElementById("Treated-Untreated")?.value || '',
-        "medication-reason": document.getElementById("medication-reason")?.value || '',
-        "clench-teeth": document.getElementById("clench-teeth")?.value || '',
-        "orthodontic": document.getElementById("orthodontic")?.value || '',
-        "oral-appliances": document.getElementById("oral-appliances")?.value || '',
-        "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
-        "Whitened-Sweets": document.getElementById("Whitened-Sweets")?.value || '',
-        "Whitened-No": document.getElementById("Whitened-No")?.value || '',
-        "supplement-reason": document.getElementById("supplement-reason")?.value || ''
-    };
-}
 
-
-</script>
+    
 
 
 
