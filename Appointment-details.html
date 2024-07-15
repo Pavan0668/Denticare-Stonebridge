@@ -662,7 +662,8 @@
 
                 // Medical History Section
                 doc.setFontSize(12);
-
+                // Set checkbox color to dark black
+                doc.setDrawColor(0, 0, 0); // Set color to dark black
                 doc.text('Medical History : (Confidential as Per PIPEDA Legislation)', 10, 20);
                 doc.setFontSize(10);
                 // Name of Family Physician
@@ -13495,12 +13496,17 @@ By signing this form, you give consent to our office to communicate with you via
             </section>
             <br><br>
             <div class="container" id="medical-form">
-                <header class="header">
-                    <h1>Stone Bridge Dentistry</h1>
-                    <p>1 Market Lane, Unit 9<br>Wasaga Beach, On<br>L9Z 0B6</p>
-                    <p>reception.stonebridgedentistry@gmail.com</p>
-                    <p>Tel: 705-422-2490 &nbsp; Fax: 705-422-2493</p>
-                </header>
+                <header class="header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="text-align: left;">
+                        <h3 style="font-weight: bold;">Stone Bridge Dentistry</h3>
+                        <div style="text-align: center;font-weight: bold;">
+                            <p>1 Market Lane, Unit 9<br>Wasaga Beach, On<br>L9Z 0B6</p>
+                        </div>
+                        <p>reception.stonebridgedentistry@gmail.com</p>
+                        <p>Tel: 705-422-2490 &nbsp;&nbsp;&nbsp;&nbsp;<span></span> Fax: 705-422-2493</p>
+                    </div>
+                    <img src="img/asset 0.png" alt="Logo" style="height: 50px; width: auto;margin-left: 200x;" />
+                </header>                
                 <hr>
                 <form class="form">
                     <section class="section">
