@@ -802,15 +802,7 @@
                 // Add a new page for Dental History
                 doc.addPage();
 
-                // Dental History Section
-                doc.setFontSize(14);
-                doc.text('Dental History:', 10, 20);
-                doc.setFontSize(8);
-                alert('values are getting');
-                // Assuming you already have a PDF document object named `doc`
 
-
-                 // Function to retrieve form values
                 function getFormValues() {
                     return {
                         "Checkup-name": document.getElementById("Checkup-name")?.value || '',
@@ -837,6 +829,10 @@
                         "supplement-reason": document.getElementById("supplement-reason")?.value || ''
                     };
                 }
+                // Dental History Section
+                doc.setFontSize(14);
+                doc.text('Dental History:', 10, 20);
+                doc.setFontSize(8);
 
                 // Questions for Dental History
                 const dentalHistoryQuestions = [
@@ -855,11 +851,15 @@
                     'Are you happy with your smile?'
                 ];
 
-
-                doc.setFontSize(12);
-
                 // Collect form values
                 const answersReceived = getFormValues();
+
+                // Display form values in alert for testing
+                let message = "Form Values:\n";
+                for (const key in answersReceived) {
+                    message += `${key}: ${answersReceived[key]}\n`;
+                }
+                alert(message);
 
                 // Initial startY position
                 let startYY = 30;
@@ -867,12 +867,36 @@
                 // Iterate over each question and answer
                 dentalHistoryQuestions.forEach((question, index) => {
                     // Print question
-                    doc.setFontSize(12);
+                    doc.setFontSize(10);
                     doc.text(question, 10, startYY);
 
                     // Print answer
+                    const answerKeys = [
+                        "Checkup-name",
+                        "Frequently-visit",
+                        "antibiotics-condition",
+                        "Comprehensive-Dental",
+                        "Gum-Disease",
+                        "Treated",
+                        "Untreated",
+                        "Periodontist-name",
+                        "Periodontist-when",
+                        "sensitive-Sweets",
+                        "sensitive-when",
+                        "diagnosed-TAU",
+                        "TAU-when",
+                        "Treated-Untreated",
+                        "medication-reason",
+                        "clench-teeth",
+                        "orthodontic",
+                        "oral-appliances",
+                        "Removable-Fixed",
+                        "Whitened-Sweets",
+                        "Whitened-No",
+                        "supplement-reason"
+                    ];
                     doc.setFontSize(10);
-                    doc.text(answersReceived[`answer${index + 1}`] || '', 110, startYY);
+                    doc.text(answersReceived[answerKeys[index]] || '', 110, startYY);
 
                     // Add line under the answer
                     doc.line(110, startYY + 2, 200, startYY + 2);
@@ -936,15 +960,6 @@ By signing this form, you give consent to our office to communicate with you via
         });
     });
 </script>
-
-
-    
-
-
-
-
-
-
 
 
 
@@ -13609,64 +13624,64 @@ By signing this form, you give consent to our office to communicate with you via
                             </div>
                         </div>
                         <h4>Dental History:</h4>
-                        <div class="inline-group">
-                            <label>Last Dental Checkup and Cleaning?</label>
-                            <input type="text" id="Checkup-name">
-                            <label>How Frequently do you visit?</label>
-                            <input type="text" id="Frequently-visit">
-                        </div>
-                        <label>Do you usually take antibiotics before a procedure?</label>
-                        <input type="text" id="antibiotics-condition">
-                        <label>Are you looking for Comprehensive Dental Care, or Emergency Care Only?</label>
-                        <input type="text" id="Comprehensive-Dental">
-                        <div class="inline-group">
-                            <label>Do you have a history of Gum Disease?</label>
-                            <input type="text" id="Gum-Disease">
-                            <label>Treated?</label>
-                            <input type="text" id="Treated">
-                            <label>Untreated?</label>
-                            <input type="text" id="Untreated">
-                        </div>
-                        <div class="inline-group">
-                            <label>Have you seen a Periodontist?</label>
-                            <input type="text" id="Periodontist-name">
-                            <label>If so, when?</label>
-                            <input type="text" id="Periodontist-when">
-                        </div>
-                        <div class="inline-group">
-                            <label>Are your teeth sensitive to Sweets?</label>
-                            <input type="text" id="sensitive-Sweets">
-                            <label>If so, when?</label>
-                            <input type="text" id="sensitive-when">
-                        </div>
-                        <div class="inline-group">
-                            <label>Have you been diagnosed with TAU (Jaw Joint) problems?</label>
-                            <input type="text" id="diagnosed-TAU">
-                            <label>If so, when?</label>
-                            <input type="text" id="TAU-when">
-                            <label>Treated/Untreated?</label>
-                            <input type="text" id="Treated-Untreated" placeholder="Treated-Untreated">
-                        </div>
-                        <label>Does your Jaw Joints "Click" or "Pop' when you open?</label>
-                        <input type="text" id="medication-reason">
-                        <label>Are you aware If you grind or clench your teeth at night?</label>
-                        <input type="text" id="clench-teeth">
-                        <label>Have you had orthodontic work done (braces)?</label>
-                        <input type="text" id="orthodontic">
-                        <div class="inline-group">
-                            <label>Do you wear any oral appliances?</label>
-                            <input type="text" id="oral-appliances">
-                            <label>Removable or Fixed?</label>
-                            <input type="text" id="Removable-Fixed">
-                        </div>
-                        <div class="inline-group">
-                            <label>Have you Professionally Whitened your teeth before? Yes</label>
-                            <input type="text" id="Whitened-Sweets">
-                            <label>No</label>
-                            <input type="text" id="Whitened-No">
-                        </div>
-                        <label>Are you happy with your smile?</label>
-                        <input type="text" id="supplement-reason">                        
+    <div class="inline-group">
+        <label>Last Dental Checkup and Cleaning?</label>
+        <input type="text" id="Checkup-name">
+        <label>How Frequently do you visit?</label>
+        <input type="text" id="Frequently-visit">
+    </div>
+    <label>Do you usually take antibiotics before a procedure?</label>
+    <input type="text" id="antibiotics-condition">
+    <label>Are you looking for Comprehensive Dental Care, or Emergency Care Only?</label>
+    <input type="text" id="Comprehensive-Dental">
+    <div class="inline-group">
+        <label>Do you have a history of Gum Disease?</label>
+        <input type="text" id="Gum-Disease">
+        <label>Treated?</label>
+        <input type="text" id="Treated">
+        <label>Untreated?</label>
+        <input type="text" id="Untreated">
+    </div>
+    <div class="inline-group">
+        <label>Have you seen a Periodontist?</label>
+        <input type="text" id="Periodontist-name">
+        <label>If so, when?</label>
+        <input type="text" id="Periodontist-when">
+    </div>
+    <div class="inline-group">
+        <label>Are your teeth sensitive to Sweets?</label>
+        <input type="text" id="sensitive-Sweets">
+        <label>If so, when?</label>
+        <input type="text" id="sensitive-when">
+    </div>
+    <div class="inline-group">
+        <label>Have you been diagnosed with TAU (Jaw Joint) problems?</label>
+        <input type="text" id="diagnosed-TAU">
+        <label>If so, when?</label>
+        <input type="text" id="TAU-when">
+        <label>Treated/Untreated?</label>
+        <input type="text" id="Treated-Untreated" placeholder="Treated-Untreated">
+    </div>
+    <label>Does your Jaw Joints "Click" or "Pop' when you open?</label>
+    <input type="text" id="medication-reason">
+    <label>Are you aware If you grind or clench your teeth at night?</label>
+    <input type="text" id="clench-teeth">
+    <label>Have you had orthodontic work done (braces)?</label>
+    <input type="text" id="orthodontic">
+    <div class="inline-group">
+        <label>Do you wear any oral appliances?</label>
+        <input type="text" id="oral-appliances">
+        <label>Removable or Fixed?</label>
+        <input type="text" id="Removable-Fixed">
+    </div>
+    <div class="inline-group">
+        <label>Have you Professionally Whitened your teeth before? Yes</label>
+        <input type="text" id="Whitened-Sweets">
+        <label>No</label>
+        <input type="text" id="Whitened-No">
+    </div>
+    <label>Are you happy with your smile?</label>
+    <input type="text" id="supplement-reason">                        
                     </section>
             
                     <section class="section">
