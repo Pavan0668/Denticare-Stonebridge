@@ -869,7 +869,13 @@
                     // Print question
                     doc.setFontSize(10);
                     doc.text(question, 10, startYY);
-
+                    // Print answer on the next line for specific questions
+                    const nextLineQuestions = [
+                        'Last Dental Checkup and Cleaning? How Frequently do you visit?',
+                        'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
+                        'Have you been diagnosed with TAU (Jaw Joint) problems? If so, when? Treated/Untreated?'
+                    ];
+                    
                     // Print answer
                     const answerKeys = [
                         "Checkup-name",
@@ -896,7 +902,15 @@
                         "supplement-reason"
                     ];
                     doc.setFontSize(10);
-                    doc.text(answersReceived[answerKeys[index]] || '', 110, startYY);
+                    //doc.text(answersReceived[answerKeys[index]] || '', 110, startYY);
+
+                    if (nextLineQuestions.includes(question)) {
+                        startYY += 5;  // Increment startY for next line
+                        doc.text(answersReceived[answerKeys[index]] || '', 10, startYY);
+                        doc.line(10, startYY + 2, 100, startYY + 2);
+                    } else {
+                        doc.text(answersReceived[answerKeys[index]] || '', 110, startYY);
+                    }
 
                     // Add line under the answer
                     doc.line(110, startYY + 2, 200, startYY + 2);
