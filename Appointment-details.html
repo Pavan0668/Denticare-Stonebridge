@@ -621,40 +621,40 @@
                 doc.text('City', 100, 115);
                 doc.text('Prov', 130, 115);
                 doc.text('Postal Code', 160, 115);
-                doc.text(formData.street, 40, 105);
-                doc.text(formData.apt, 70, 105);
-                doc.text(formData.city, 100, 105);
-                doc.text(formData.prov, 130, 105);
-                doc.text(formData.postalCode, 160, 105);
+                doc.text(formData.street, 40, 108);
+                doc.text(formData.apt, 70, 108);
+                doc.text(formData.city, 100, 108);
+                doc.text(formData.prov, 130, 108);
+                doc.text(formData.postalCode, 160, 108);
 
                 // Adding Cell and Home in One Line
                 doc.text('Cell:', 10, 130);
                 doc.line(25, 130, 100, 130); // Line for the cell
-                doc.text(formData.cell, 25, 125);
+                doc.text(formData.cell, 25, 127);
                 doc.text('Home:', 105, 130);
                 doc.line(125, 130, 200, 130); // Line for the home
-                doc.text(formData.home, 125, 125);
+                doc.text(formData.home, 125, 127);
 
                 // Adding Date of Birth and Email
                 doc.text('Date of Birth:', 10, 145);
                 doc.line(35, 145, 100, 145); // Line for the date of birth
-                doc.text(formData.dob, 35, 140);
+                doc.text(formData.dob, 35, 142);
                 doc.text('Email:', 105, 145);
                 doc.line(125, 145, 200, 145); // Line for the email
-                doc.text(formData.email, 125, 140);
+                doc.text(formData.email, 125, 142);
 
                 // Adding Name of Spouse/Parent/Guardian
                 doc.text('Name of Spouse/Parent/Guardian:', 10, 160);
                 doc.line(70, 160, 200, 160); // Line for the spouse/parent/guardian
-                doc.text(formData.spouse, 70, 160);
+                doc.text(formData.spouse, 66, 160);
 
                 // Adding Emergency Contact and Phone
                 doc.text('Emergency Contact:', 10, 175);
                 doc.line(45, 175, 100, 175); // Line for the emergency contact
-                doc.text(formData.emergencyContact, 45, 182);
+                doc.text(formData.emergencyContact, 42, 175);
                 doc.text('Phone:', 105, 175);
-                doc.line(118, 175, 200, 175); // Line for the phone
-                doc.text(formData.emergencyPhone, 118, 182);
+                doc.line(115, 175, 200, 175); // Line for the phone
+                doc.text(formData.emergencyPhone, 118, 175);
 
                 // Financial Information
                 doc.text('Financial Information', 10, 190);
@@ -972,34 +972,64 @@ By signing this form, you give consent to our office to communicate with you via
 
                 doc.text(consentText, 10, 20, { maxWidth: 190, align: 'left' });
 
+                // Capture form inputs with null/undefined checks
+                const mobileNumber = document.getElementById('mobile-number') ? document.getElementById('mobile-number').value : '';
+                const emailAddress = document.getElementById('email-address') ? document.getElementById('email-address').value : '';
+                const signature = document.getElementById('signature') ? document.getElementById('signature').value : '';
+                const printName = document.getElementById('print-name') ? document.getElementById('print-name').value : '';
+                const date = document.getElementById('date') ? document.getElementById('date').value : '';
+
+                // Checkbox statuses with null checks
+                const isTextChecked = document.getElementById('communication-text') ? document.getElementById('communication-text').checked : false;
+                const isEmailChecked = document.getElementById('communication-email') ? document.getElementById('communication-email').checked : false;
+                const isBothChecked = document.getElementById('Both-email') ? document.getElementById('Both-email').checked : false;
+                const isNeitherChecked = document.getElementById('Neither-email') ? document.getElementById('Neither-email').checked : false;
+
                 // Function to draw consent checkbox
-                const drawConsentCheckbox = (x, y, label) => {
+                const drawConsentCheckbox = (x, y, label, checked) => {
                     doc.rect(x, y, 4, 4); // Draw the square
+                    if (checked) {
+                        doc.line(x, y, x + 4, y + 4); // Draw the checkmark
+                        doc.line(x + 4, y, x, y + 4);
+                    }
                     doc.text(label, x + 6, y + 3);
                 };
 
-
-                drawConsentCheckbox(10, 92, 'Text your mobile number');
-                doc.text('Mobile number:', 70, 95);
-                doc.line(100, 95, 200, 95); // Line for the mobile number
-
-                drawConsentCheckbox(10, 102, 'Email your email address');
-                doc.text('Email Address:', 70, 105);
-                doc.line(100, 105, 200, 105); // Line for the email address
-
-                drawConsentCheckbox(10, 112, 'Both text & Email address');
-
-                drawConsentCheckbox(10, 122, 'Neither Text nor Email');
+                drawConsentCheckbox(10, 110, 'Text your mobile number', isTextChecked);
+                if (isTextChecked && mobileNumber) {
+                    doc.text(mobileNumber, 70, 110);
+                }
+                drawConsentCheckbox(10, 120, 'Email your email address', isEmailChecked);
+                if (isEmailChecked && emailAddress) {
+                    doc.text(emailAddress, 70, 120);
+                }
+                drawConsentCheckbox(10, 130, 'Both text & Email address', isBothChecked);
+                drawConsentCheckbox(10, 140, 'Neither Text nor Email', isNeitherChecked);
 
                 // Signature, Print Name, Date
-                doc.text('Signature', 10, 140);
-                doc.line(30, 140, 75, 140);
+                const lineY = 160; // Base Y position for the line
 
-                doc.text('Print Name', 80, 140);
-                doc.line(100, 140, 150, 140);
+                doc.text('Signature', 10, lineY);
+                doc.line(30, lineY, 70, lineY);
+                if (signature) {
+                    const textY = lineY - 2; // Adjust Y position for signature text (2 units above line)
+                    doc.text(signature, 30, textY); // Add signature value if not empty
+                }
 
-                doc.text('Date', 155, 140);
-                doc.line(165, 140, 200, 140);
+                doc.text('Print Name', 80, lineY);
+                doc.line(100, lineY, 145, lineY);
+                if (printName) {
+                    const textY = lineY - 2; // Adjust Y position for print name text (2 units above line)
+                    doc.text(printName, 100, textY); // Add print name value if not empty
+                }
+
+                doc.text('Date', 155, lineY);
+                doc.line(165, lineY, 195, lineY);
+                if (date) {
+                    const textY = lineY - 2; // Adjust Y position for date text (2 units above line)
+                    doc.text(date, 165, textY); // Add date value if not empty
+                }
+
 
 
                 // Save the PDF
@@ -13528,7 +13558,7 @@ By signing this form, you give consent to our office to communicate with you via
                 <hr>
                 <form class="form">
                     <section class="section">
-                        <h2>Patient Information (please print)</h2>
+                        <h2>NEW PATIENT FORM</h2>
                         <label>Title: Mr/Mrs/Ms/Miss/Mast Name:</label>
                         <div class="row">
                             <div class="column"><input type="text" placeholder="First"></div>
@@ -13549,7 +13579,7 @@ By signing this form, you give consent to our office to communicate with you via
                         <label>Email</label><input type="text" placeholder="Emaid-ID">
                         <label>Name of spouse/Parents/Guardian</label><input type="text" placeholder="Name-Spouse">
                         <label>Emergency contact</label><input type="text" placeholder="Emergency-Contact">
-                        <label>Phone#</label><input type="text" id="Phone-ID">
+                        <label>Phone#</label><input type="text" id="Phone-ID" placeholder="Phone-ID">
                         <br>
                         <div class="inline-group">
                             <label>Name of family Physician</label>
@@ -13826,13 +13856,16 @@ By signing this form, you give consent to our office to communicate with you via
                         </div>
                         <div class="signature-section">
                             <div>
-                                <label>Signature</label><input type="text">
+                                <label for="signature">Signature</label>
+                                <input type="text" id="signature">
                             </div>
                             <div>
-                                <label>Print Name</label><input type="text">
+                                <label for="print-name">Print Name</label>
+                                <input type="text" id="print-name">
                             </div>
                             <div>
-                                <label>Date</label><input type="text" placeholder="D / M / Y">
+                                <label for="date">Date</label>
+                                <input type="text" id="date" placeholder="D / M / Y">
                             </div>
                         </div>
                     </section>
