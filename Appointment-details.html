@@ -541,23 +541,41 @@
                 const doc = new jsPDF();
                 const addHeader = (doc) => {
                     const logoPath = 'img/asset 0.png';
-                    const logoWidth = 50;
-                    const logoHeight = 20;
-                    doc.addImage(logoPath, 'PNG', 150, 10, logoWidth, logoHeight);
+                    const logoWidth = 70;
+                    const logoHeight = 30;
+                    doc.addImage(logoPath, 'PNG', 120, 10, logoWidth, logoHeight);
 
-                    const headerTitle = 'Stone Bridge Dentistry';
+                    const headerTitle = 'STONEBRIDGE DENTISTRY';
                     doc.setFontSize(14);
+                    doc.setFont("helvetica", "bold");
                     doc.text(headerTitle, 10, 10);
 
-                    const addressContent = `1 Market Lane, Unit 9\nWasaga Beach, On\nL9Z 0B6\nreception.stonebridgedentistry@gmail.com\nTel: 705-422-2490   Fax: 705-422-2493\n\n`;
+                    // Address formatting
                     doc.setFontSize(10);
-                    doc.text(addressContent, 10, 20);
+                    doc.setFont("helvetica", "bold");
+                    doc.text('1 Market Lane, Unit 9', 10, 20);
+                    doc.text('Wasaga Beach, ON', 10, 25);
+                    doc.text('L9Z 0B6', 10, 30);
+
+                    // Email
+                    doc.setFont("helvetica", "normal");
+                    doc.setTextColor(0, 0, 255);
+                    doc.text('reception.stonebridgedentistry@gmail.com', 10, 35);
+
+                    // Phone and Fax
+                    doc.setFont("helvetica", "normal");
+                    doc.setTextColor(0, 0, 0);
+                    doc.text('Tel: 705-422-2490', 10, 45);
+                    doc.text('Fax: 705-422-2493', 43, 45); // Adjusted x-coordinate for horizontal alignment
+
+
+
 
                     doc.setFontSize(14);
                     doc.text('NEW PATIENT FORM', doc.internal.pageSize.getWidth() / 2, 50, { align: 'center' });
 
-                    doc.setLineWidth(0.5);
-                    doc.line(10, 55, 200, 55);
+                    //doc.setLineWidth(0.5);
+                    //doc.line(10, 55, 200, 55);
                 };
 
                 // Add header to the first page
@@ -13498,13 +13516,13 @@ By signing this form, you give consent to our office to communicate with you via
             <div class="container" id="medical-form">
                 <header class="header" style="display: flex; justify-content: space-between; align-items: center; padding-left: 20px;">
                     <div style="text-align: left;">
-                        <h3 style="font-weight: bold; margin: 0;">Stone Bridge Dentistry</h3>
+                        <h4 style="font-weight: bold; margin: 0;">STONEBRIDGE DENTISTRY</h4>
                         <div style="text-align: center; font-weight: bold; margin: 0;">
-                            <p>1 Market Lane, Unit 9<br>Wasaga Beach, ON<br>L9Z 0B6</p>
-                        </div>                        
-                        <p style="color: blue; text-decoration: underline;">reception.stonebridgedentistry@gmail.com</p>
-                        <p>Tel: 705-422-2490 &nbsp; | &nbsp; Fax: 705-422-2493</p>
-                    </div>
+                            <p style="margin: 0;">1 Market Lane, Unit 9<br>Wasaga Beach, ON L9Z 0B6</p>
+                        </div>
+                        <p style="color: blue; text-decoration: underline; margin: 5px 0;">reception.stonebridgedentistry@gmail.com</p>
+                        <p style="margin: 5px 0;">Tel: 705-422-2490 &nbsp; | &nbsp; Fax: 705-422-2493</p>
+                    </div>                    
                     <img src="img/asset 0.png" alt="Logo" style="height: 100px; width: 300px; margin-left: 20px;" />
                 </header>                               
                 <hr>
