@@ -651,10 +651,10 @@
                 // Adding Emergency Contact and Phone
                 doc.text('Emergency Contact:', 10, 175);
                 doc.line(45, 175, 100, 175); // Line for the emergency contact
-                doc.text(formData.emergencyContact || '', 42, 170); // Adjusted Y-coordinate for alignment
+                doc.text(formData.emergencyContact || '', 45, 170); // Adjusted Y-coordinate for alignment
                 doc.text('Phone:', 105, 175);
                 doc.line(115, 175, 200, 175); // Line for the phone
-                doc.text(formData.emergencyPhone || '', 118, 170); // Adjusted Y-coordinate for alignment
+                doc.text(formData.emergencyPhone || '', 120, 170); // Adjusted Y-coordinate for alignment
 
 
 
@@ -718,11 +718,11 @@
                 doc.text(medicationDrug, 20, 90);
                 doc.text('Reason:', 95, 90);
                 doc.line(115, 90, 200, 90);
-                doc.text(medicationReason, 115, 90);
+                doc.text(medicationReason, 112, 90);
 
                 // Are you taking any Herbal or Vitamin Supplements?
                 doc.text('Are you taking any Herbal or Vitamin Supplements?', 10, 100);
-                doc.line(10, 105, 200, 105);
+                //doc.line(10, 105, 200, 105);
 
                 // Supplement and Reason
                 doc.text('Supplement:', 10, 115);
@@ -730,7 +730,7 @@
                 doc.text(supplement, 30, 115);
                 doc.text('Reason:', 95, 115);
                 doc.line(115, 115, 200, 115);
-                doc.text(supplementReason, 115, 115);
+                doc.text(supplementReason, 112, 115);
 
                 // Do you have any drug allergies or adverse effects?
                 doc.text('Do you have any drug allergies or adverse effects?', 10, 125);
