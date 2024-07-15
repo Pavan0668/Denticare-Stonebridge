@@ -646,15 +646,18 @@
                 // Adding Name of Spouse/Parent/Guardian
                 doc.text('Name of Spouse/Parent/Guardian:', 10, 160);
                 doc.line(70, 160, 200, 160); // Line for the spouse/parent/guardian
-                doc.text(formData.spouse, 66, 160);
+                doc.text(formData.spouse || '', 66, 155); // Adjusted Y-coordinate for alignment
 
                 // Adding Emergency Contact and Phone
                 doc.text('Emergency Contact:', 10, 175);
                 doc.line(45, 175, 100, 175); // Line for the emergency contact
-                doc.text(formData.emergencyContact, 42, 175);
+                doc.text(formData.emergencyContact || '', 42, 170); // Adjusted Y-coordinate for alignment
                 doc.text('Phone:', 105, 175);
                 doc.line(115, 175, 200, 175); // Line for the phone
-                doc.text(formData.emergencyPhone, 118, 175);
+                doc.text(formData.emergencyPhone || '', 118, 170); // Adjusted Y-coordinate for alignment
+
+
+
 
                 // Financial Information
                 doc.text('Financial Information', 10, 190);
@@ -13581,14 +13584,14 @@ By signing this form, you give consent to our office to communicate with you via
                         <label>Emergency contact</label><input type="text" placeholder="Emergency-Contact">
                         <label>Phone#</label><input type="text" id="Phone-ID" placeholder="Phone-ID">
                         <br>
-                        <div class="inline-group">
+                        <!-- <div class="inline-group">
                             <label>Name of family Physician</label>
                             <input type="text">
                             <label>Phone</label>
                             <input type="text">
                             <label>Date of last physical</label>
                             <input type="text">
-                        </div>
+                        </div> -->
                         <label>Who can we thank for referring you?</label><input type="text">
                     </section>
                     <section class="section" style="border: 1px solid black; padding: 10px;">
