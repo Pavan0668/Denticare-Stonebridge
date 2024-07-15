@@ -745,28 +745,31 @@
                 doc.line(10, 220, 200, 220);
                 doc.text(Prednisone_reason, 10, 220);
                 // Add a new page for Medical History and Medical Conditions
-                
+
                 doc.addPage();
 
                 // Adding the Medical Conditions section with checkboxes
                 doc.setFontSize(12);
                 doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 30);
                 doc.setFontSize(10);
+
                 // Draw border for Medical Conditions section
                 doc.rect(5, 25, 200, 190);
 
+                // Set checkbox color to dark black
+                doc.setDrawColor(0, 0, 0); // Set color to dark black
                 const medicalConditionsColumns = [
                     ['Artificial Joints', 'Asthma', 'Malignant'],
                     ['Anemia', 'Circulation Problems', 'Hypothermia'],
-                    ['Bone Density Meds', 'Cortisone/Steroids', 'Mental Nervous Disorder'],
-                    ['Blood Thinner Meds', 'Drug/Alcohol Dependency', 'Mitral Valve Prolapse'],
+                    ['Bone Density', 'Cortisone/Steroids', 'Mental Nervous Disorder'],
+                    ['Blood Thinner', 'Drug/Alcohol Dependency', 'Mitral Valve Prolapse'],
                     ['Cancer', 'Eating Disorder', 'Organ Transplants'],
                     ['Radiation', 'Epilepsy', 'Psychiatric Disorder'],
                     ['Chemotherapy', 'Glaucoma', 'Rheumatic Fever'],
                     ['Diabetic', 'Head/Neck Injury', 'Sickle Cell'],
                     ['Infective Endocarditis', 'Herpes', 'Sinus Problem'],
                     ['Hep A/B/C', 'Hodgkin Disease', 'Thyroid Problem'],
-                    ['H.I.V Positive', 'Hyperglycemia', 'Tuberculosis'],
+                    ['HIV Positive', 'Hyperglycemia', 'Tuberculosis'],
                     ['Hemophilia', 'Jaundice', 'Ulcers'],
                     ['Blood Pressure H / L', 'Kidney Disease', 'Other'],
                     ['Pacemaker', 'Liver Disease', ''],
@@ -786,15 +789,31 @@
                 const checkboxRowHeight = 7;
                 let startY = 35;
 
+                // Collecting checked values
+                const getCheckedValues = () => {
+                    const checkboxes = document.querySelectorAll('input[name="medical-condition"]');
+                    const checkedValues = [];
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            checkedValues.push(checkbox.value);
+                        }
+                    });
+                    return checkedValues;
+                };
+
+                const checkedValues = getCheckedValues();
+
                 medicalConditionsColumns.forEach((row, rowIndex) => {
                     row.forEach((condition, colIndex) => {
                         if (condition) {
-                            drawCheckbox(doc, 10 + colIndex * checkboxColumnWidth, startY, medicalConditions.includes(condition));
+                            const checked = checkedValues.includes(condition);
+                            drawCheckbox(doc, 10 + colIndex * checkboxColumnWidth, startY, checked);
                             doc.text(condition, 16 + colIndex * checkboxColumnWidth, startY + 3);
                         }
                     });
                     startY += checkboxRowHeight;
                 });
+
 
                 doc.text('List Recent Surgeries or hospital visits:', 10, startY + 10);
                 doc.line(10, startY + 15, 200, startY + 15); // Line for recent surgeries
