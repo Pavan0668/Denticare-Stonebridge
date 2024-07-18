@@ -772,14 +772,14 @@
 
                 // Adding the Medical Conditions section with checkboxes
                 doc.setFontSize(12);
-                doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 30);
+                doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 20); // Move the heading outside of the box
                 doc.setFontSize(10);
 
                 // Draw border for Medical Conditions section
                 const sectionX = 5;
-                const sectionY = 25;
+                const sectionY = 30; // Adjusting startY for the box placement
                 const sectionWidth = 200;
-                const sectionHeight = 190;
+                const sectionHeight = 170;
                 doc.rect(sectionX, sectionY, sectionWidth, sectionHeight);
 
                 // Set checkbox color to dark black
@@ -847,16 +847,23 @@
                     doc.line(sectionX + i * checkboxColumnWidth, sectionY, sectionX + i * checkboxColumnWidth, sectionY + sectionHeight);
                 }
 
+                // Add horizontal line below the Medical Conditions heading
+                //doc.line(sectionX, 28, sectionX + sectionWidth, 28);
+
                 // Add the recent surgeries or hospital visits section
                 startY += 10;
-                //doc.line(sectionX + 5, startY + 15, sectionX + sectionWidth - 5, startY + 10);
                 doc.text('List Recent Surgeries or Hospital \nVisits:', sectionX + 5, startY);
                 const recentSurgeries = document.getElementById('recentSurgeries').value;
                 doc.text(recentSurgeries, sectionX + 5, startY + 10);
-                //doc.line(sectionX + 5, startY + 15, sectionX + sectionWidth - 5, startY + 15);
+
+                // Add horizontal line above the recent surgeries label
+                doc.line(sectionX, startY - 5, sectionX + sectionWidth, startY - 5);
+
+
 
                 // Add a line to separate sections if needed
-                doc.line(sectionX + 5, startY + 25, sectionX + sectionWidth - 5, startY + 25);
+                //doc.line(sectionX + 5, startY + 25, sectionX + sectionWidth - 5, startY + 25);
+
 
 
 
