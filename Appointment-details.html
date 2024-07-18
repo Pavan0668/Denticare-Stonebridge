@@ -776,10 +776,15 @@
                 doc.setFontSize(10);
 
                 // Draw border for Medical Conditions section
-                doc.rect(5, 25, 200, 190);
+                const sectionX = 5;
+                const sectionY = 25;
+                const sectionWidth = 200;
+                const sectionHeight = 190;
+                doc.rect(sectionX, sectionY, sectionWidth, sectionHeight);
 
                 // Set checkbox color to dark black
                 doc.setDrawColor(0, 0, 0); // Set color to dark black
+
                 const medicalConditionsColumns = [
                     ['Artificial Joints', 'Asthma', 'Malignant'],
                     ['Anemia', 'Circulation Problems', 'Hypothermia'],
@@ -809,7 +814,7 @@
 
                 const checkboxColumnWidth = 60;
                 const checkboxRowHeight = 7;
-                let startY = 35;
+                let startY = sectionY + 10;
 
                 // Collecting checked values
                 const getCheckedValues = () => {
@@ -825,20 +830,35 @@
 
                 const checkedValues = getCheckedValues();
 
+                // Draw the columns and their content
                 medicalConditionsColumns.forEach((row, rowIndex) => {
                     row.forEach((condition, colIndex) => {
                         if (condition) {
                             const checked = checkedValues.includes(condition);
-                            drawCheckbox(doc, 10 + colIndex * checkboxColumnWidth, startY, checked);
-                            doc.text(condition, 16 + colIndex * checkboxColumnWidth, startY + 3);
+                            drawCheckbox(doc, sectionX + 5 + colIndex * checkboxColumnWidth, startY, checked);
+                            doc.text(condition, sectionX + 11 + colIndex * checkboxColumnWidth, startY + 3);
                         }
                     });
                     startY += checkboxRowHeight;
                 });
 
+                // Draw vertical lines for the table columns
+                for (let i = 0; i <= medicalConditionsColumns[0].length; i++) {
+                    doc.line(sectionX + i * checkboxColumnWidth, sectionY, sectionX + i * checkboxColumnWidth, sectionY + sectionHeight);
+                }
 
-                doc.text('List Recent Surgeries or hospital visits:', 10, startY + 10);
-                doc.line(10, startY + 15, 200, startY + 15); // Line for recent surgeries
+                // Add the recent surgeries or hospital visits section
+                startY += 10;
+                //doc.line(sectionX + 5, startY + 15, sectionX + sectionWidth - 5, startY + 10);
+                doc.text('List Recent Surgeries or Hospital \nVisits:', sectionX + 5, startY);
+                const recentSurgeries = document.getElementById('recentSurgeries').value;
+                doc.text(recentSurgeries, sectionX + 5, startY + 10);
+                //doc.line(sectionX + 5, startY + 15, sectionX + sectionWidth - 5, startY + 15);
+
+                // Add a line to separate sections if needed
+                doc.line(sectionX + 5, startY + 25, sectionX + sectionWidth - 5, startY + 25);
+
+
 
                 // Add a new page for Dental History
                 doc.addPage();
@@ -1002,8 +1022,13 @@ By signing this form, you give consent to our office to communicate with you via
                     doc.rect(x, y, width, height); // Draw the rectangle
                     drawConsentCheckbox(x + 2, y + 7, checked); // Draw the checkbox inside the rectangle
                     doc.text(label, x + 8, y + 11); // Adjust label position within the rectangle
+
+                    // Draw vertical line
+                    const verticalLineX = x + (width / 2);
+                    doc.line(verticalLineX, y, verticalLineX, y + height);
+
                     if (value) {
-                        doc.text(value, x + 80, y + 11); // Adjust value position within the rectangle
+                        doc.text(value, verticalLineX + 5, y + 11); // Adjust value position within the rectangle
                     }
                 };
 
@@ -1012,6 +1037,7 @@ By signing this form, you give consent to our office to communicate with you via
                 drawBorderedBox(10, 130, 150, 20, 'Email your email address', emailAddress, isEmailChecked);
                 drawBorderedBox(10, 150, 150, 20, 'Both text & Email address', '', isBothChecked);
                 drawBorderedBox(10, 170, 150, 20, 'Neither Text nor Email', '', isNeitherChecked);
+
 
 
 
@@ -13714,8 +13740,11 @@ By signing this form, you give consent to our office to communicate with you via
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Malignant"> Malignant </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition" value="Hypothermia"> Hypothermia </label></li>
                                 </ul>
+                            </div>
+                            <div class="column">
                                 <ul style="text-decoration: underline;">
                                     <li>List recent surgeries or hospital visits.</li>
+                                    <li><textarea id="recentSurgeries" name="recent-surgeries" rows="5" cols="30"></textarea></li>
                                 </ul>
                             </div>
                         </div>
