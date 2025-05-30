@@ -923,11 +923,11 @@
                         ['Blood Thinner', 'Drug/Alcohol Dependency', 'Mitral Valve Prolapse'],
                         ['Cancer', 'Eating Disorder', 'Organ Transplants'],
                         ['Radiation', 'Epilepsy', 'Psychiatric Disorder'],
-                        ['Chemotherapy', 'Glaucoma', 'Rheumatic Fever'],
-                        ['Diabetic', 'Head/Neck Injury', 'Sickle Cell'],
-                        ['Infective Endocarditis', 'Herpes', 'Sinus Problem'],
+                        ['Chemotherapy','Diabetic','Infective Endocarditis','Glaucoma', 'Rheumatic Fever'],
+                        ['Head/Neck Injury', 'Sickle Cell'],
+                        ['Herpes', 'Sinus Problem'],
                         ['Hep A/B/C', 'Hodgkin Disease', 'Thyroid Problem'],
-                        ['HIV Positive', 'Hyperglycemia', 'Tuberculosis'],
+                        ['H.I.V Positive', 'Hyperglycemia', 'Tuberculosis'],
                         ['Hemophilia', 'Jaundice', 'Ulcers'],
                         ['Blood Pressure H / L', 'Kidney Disease', 'Other'],
                         ['Pacemaker', 'Liver Disease', ''],
@@ -1000,9 +1000,8 @@
 
                     // Add a new page for Dental History
                     doc.addPage();
+                    generatePDF(doc);
 
-
-                    // Function to handle toggling between Yes and No checkboxes for the 'whitened teeth' question
                     function toggleWhitenedWhen() {
                         const whitenedYes = document.getElementById('whitened-teeth-yes');
                         const whitenedNo = document.getElementById('whitened-teeth-no');
@@ -1017,91 +1016,132 @@
                         }
                     }
 
-                    // Updated getFormValues function to include the additional questions
+
                     function getFormValues() {
                         return {
                             "Checkup-name": document.getElementById("Checkup-name")?.value || '',
                             "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
                             "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
                             "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
-                            "Gum-Disease": document.getElementById("treated-checkbox").checked ? "Yes" : (document.getElementById("untreated-checkbox").checked ? "No" : ''),
-                            "Treated-When": document.getElementById("treated-when").value || '',
-                            "Periodontist": document.getElementById("seen-periodontist-yes").checked ? "Yes" : (document.getElementById("seen-periodontist-no").checked ? "No" : ''),
-                            "Periodontist-When": document.getElementById("Periodontist-when").value || '',
-                            "Sensitive-Sweets": document.getElementById("sensitive-sweets-yes").checked ? "Yes" : (document.getElementById("sensitive-sweets-no").checked ? "No" : ''),
-                            "Sensitive-When": document.getElementById("sensitive-when").value || '',
-                            "TMJ-Problems": document.getElementById("diagnosed-jaw-yes").checked ? "Yes" : (document.getElementById("diagnosed-jaw-no").checked ? "No" : ''),
-                            "TMJ-When": document.getElementById("JAW-when").value || '',
-
-                            // New fields
-                            "Jaw-Click-Pop": document.getElementById("medication-reason").value || '',
-                            "Clench-Teeth": document.getElementById("clench-teeth").value || '',
-                            "Orthodontic-Work": document.getElementById("orthodontic").value || '',
-                            "Oral-Appliances": document.getElementById("oral-appliances").value || '',
-                            "Removable-Fixed": document.getElementById("Removable-Fixed").value || '',
-                            "Whitened-Teeth": document.getElementById("whitened-teeth-yes").checked ? "Yes" : (document.getElementById("whitened-teeth-no").checked ? "No" : ''),
-                            "Whitened-When": document.getElementById("Whitened-when").value || '',
-                            "Happy-With-Smile": document.getElementById("supplement-reason").value || ''
+                            "Gum-Disease": document.getElementById("treated-checkbox").checked ? "Yes" :
+                                (document.getElementById("untreated-checkbox").checked ? "No" : ''),
+                            "Treated-When": document.getElementById("treated-when")?.value || '',
+                            "Periodontist": document.getElementById("seen-periodontist-yes").checked ? "Yes" :
+                                (document.getElementById("seen-periodontist-no").checked ? "No" : ''),
+                            "Periodontist-When": document.getElementById("Periodontist-when")?.value || '',
+                            "Sensitive-Sweets": document.getElementById("sensitive-sweets-yes").checked ? "Yes" :
+                                (document.getElementById("sensitive-sweets-no").checked ? "No" : ''),
+                            "Sensitive-When": document.getElementById("sensitive-when")?.value || '',
+                            "TMJ-Problems": document.getElementById("diagnosed-jaw-yes").checked ? "Yes" :
+                                (document.getElementById("diagnosed-jaw-no").checked ? "No" : ''),
+                            "TMJ-When": document.getElementById("JAW-when")?.value || '',
+                            "Jaw-Click-Pop": document.getElementById("medication-reason")?.value || '',
+                            "Clench-Teeth": document.getElementById("clench-teeth")?.value || '',
+                            "Orthodontic-Work": document.getElementById("orthodontic")?.value || '',
+                            "Oral-Appliances": document.getElementById("oral-appliances")?.value || '',
+                            "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
+                            "Whitened-Teeth": document.getElementById("whitened-teeth-yes").checked ? "Yes" :
+                                (document.getElementById("whitened-teeth-no").checked ? "No" : ''),
+                            "Whitened-When": document.getElementById("Whitened-when")?.value || '',
+                            "Happy-With-Smile": document.getElementById("supplement-reason")?.value || ''
                         };
                     }
 
-                    // Updated PDF generation
-                    function generatePDF(doc) {
-                        doc.setFontSize(14);
-                        doc.text('Dental History:', 10, 20);
-                        doc.setFontSize(8);
+                   function generatePDF(doc) {
+    const answers = {
+        "Checkup-name": document.getElementById("Checkup-name")?.value || '',
+        "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
+        "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
+        "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
 
-                        const dentalHistoryQuestions = [
-                            'Last Dental Checkup and Cleaning? How Frequently do you visit?',
-                            'Do you usually take antibiotics before a procedure?',
-                            'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
-                            'Do you have a history of Gum Disease? Yes? No?',
-                            'Have you seen a Periodontist? If Yes, when?',
-                            'Are your teeth sensitive to Sweets? Yes? No?',
-                            'Have you been diagnosed with TMJ (Jaw Joint) problems? If Yes, when? Treated/Untreated?',
-                            'Does your Jaw Joints "Click" or "Pop" when you open?',
-                            'Are you aware if you grind or clench your teeth at night?',
-                            'Have you had orthodontic work done (braces)?',
-                            'Do you wear any oral appliances? Removable or Fixed?',
-                            'Have you professionally whitened your teeth before? Yes No',
-                            'Are you happy with your smile?'
-                        ];
+        "Gum-Disease": (document.getElementById("treated-checkbox")?.checked ? "Yes" : document.getElementById("untreated-checkbox")?.checked ? "No" : ''),
+        "Treated-When": document.getElementById("treated-when")?.value || '',
 
-                        const answersReceived = getFormValues();
-                        let startY = 30;
+        "Periodontist": (document.getElementById("seen-periodontist-yes")?.checked ? "Yes" : document.getElementById("seen-periodontist-no")?.checked ? "No" : ''),
+        "Periodontist-When": document.getElementById("Periodontist-when")?.value || '',
 
-                        dentalHistoryQuestions.forEach((question, index) => {
-                            doc.setFontSize(10);
-                            doc.text(question, 10, startY);
+        "Sensitive-Sweets": (document.getElementById("sensitive-sweets-yes")?.checked ? "Yes" : document.getElementById("sensitive-sweets-no")?.checked ? "No" : ''),
+        "Sensitive-When": document.getElementById("sensitive-when")?.value || '',
 
-                            const nextLineQuestions = [
-                                'Last Dental Checkup and Cleaning? How Frequently do you visit?',
-                                'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
-                                'Have you been diagnosed with TMJ (Jaw Joint) problems? If so, when? Treated/Untreated?'
-                            ];
+        "TMJ-Problems": (document.getElementById("diagnosed-jaw-yes")?.checked ? "Yes" : document.getElementById("diagnosed-jaw-no")?.checked ? "No" : ''),
+        "TMJ-When": document.getElementById("JAW-when")?.value || '',
 
-                            // Map the correct answers from answersReceived based on index
-                            const answerKeys = [
-                                "Checkup-name", "Frequently-visit", "antibiotics-condition", "Comprehensive-Dental",
-                                "Gum-Disease", "Treated-When", "Periodontist", "Periodontist-When",
-                                "Sensitive-Sweets", "Sensitive-When", "TMJ-Problems", "TMJ-When",
-                                "Jaw-Click-Pop", "Clench-Teeth", "Orthodontic-Work", "Oral-Appliances",
-                                "Removable-Fixed", "Whitened-Teeth", "Whitened-When", "Happy-With-Smile"
-                            ];
+        "Jaw-Click-Pop": document.getElementById("medication-reason")?.value || '',
+        "Clench-Teeth": document.getElementById("clench-teeth")?.value || '',
+        "Orthodontic-Work": document.getElementById("orthodontic")?.value || '',
+        "Oral-Appliances": document.getElementById("oral-appliances")?.value || '',
+        "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
 
-                            doc.setFontSize(10);
-                            if (nextLineQuestions.includes(question)) {
-                                startY += 5;  // Increment startY for next line answers
-                                doc.text(answersReceived[answerKeys[index]] || '', 10, startY);
-                                doc.line(10, startY + 2, 100, startY + 2);
-                            } else {
-                                doc.text(answersReceived[answerKeys[index]] || '', 110, startY);
-                            }
+        "Whitened-Teeth": (document.getElementById("whitened-teeth-yes")?.checked ? "Yes" : document.getElementById("whitened-teeth-no")?.checked ? "No" : ''),
+        "Whitened-When": document.getElementById("Whitened-when")?.value || '',
 
-                            doc.line(110, startY + 2, 200, startY + 2);
-                            startY += 15; // Increment startY for the next question
-                        });
-                    }
+        "Happy-With-Smile": document.getElementById("supplement-reason")?.value || ''
+    };
+
+    const questions = [
+        'Last Dental Checkup and Cleaning?',
+        'How Frequently do you visit?',
+        'Do you usually take antibiotics before a procedure?',
+        'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
+        'Do you have a history of Gum Disease?',
+        'If Treated, when?',
+        'Have you seen a Periodontist?',
+        'If Yes, when?',
+        'Are your teeth sensitive to Sweets?',
+        'If Yes, when?',
+        'Have you been diagnosed with TMJ (Jaw Joint) problems?',
+        'If Yes, when?',
+        'Does your Jaw Joints "Click" or "Pop" when you open?',
+        'Are you aware if you grind or clench your teeth at night?',
+        'Have you had orthodontic work done (braces)?',
+        'Do you wear any oral appliances?',
+        'Removable or Fixed?',
+        'Have you professionally whitened your teeth before?',
+        'If Yes, when?',
+        'Are you happy with your smile?'
+    ];
+
+    const keys = [
+        "Checkup-name", "Frequently-visit", "antibiotics-condition", "Comprehensive-Dental",
+        "Gum-Disease", "Treated-When", "Periodontist", "Periodontist-When",
+        "Sensitive-Sweets", "Sensitive-When", "TMJ-Problems", "TMJ-When",
+        "Jaw-Click-Pop", "Clench-Teeth", "Orthodontic-Work", "Oral-Appliances",
+        "Removable-Fixed", "Whitened-Teeth", "Whitened-When", "Happy-With-Smile"
+    ];
+
+    doc.setFontSize(14);
+    doc.text('Dental History:', 10, 20);
+    doc.setFontSize(9);
+
+    let y = 30;
+    let xLeft = 10;
+    let xRight = 105;
+
+    for (let i = 0; i < questions.length; i += 2) {
+        const q1 = questions[i];
+        const a1 = answers[keys[i]] || '';
+
+        const q2 = questions[i + 1];
+        const a2 = keys[i + 1] ? (answers[keys[i + 1]] || '') : '';
+
+        doc.text(`${i + 1}. ${q1}`, xLeft, y);
+        doc.text(`Ans: ${a1}`, xLeft, y + 5);
+
+        if (q2) {
+            doc.text(`${i + 2}. ${q2}`, xRight, y);
+            doc.text(`Ans: ${a2}`, xRight, y + 5);
+        }
+
+        y += 12;
+
+        if (y > 270) {
+            doc.addPage();
+            y = 20;
+        }
+    }
+}
+
+
 
 
                     // Add a new page for Consent or other sections as needed
@@ -4220,10 +4260,10 @@ By signing this form, you give consent to our office to communicate with you via
             content: attr(data-ico-essential);
         }
 
-        @font-face {
+        /* @font-face {
             font-family: "FontAwesome";
             src: url("https://denticare.bold-themes.com/allen/wp-content/themes/denticare/fonts/FontAwesome/FontAwesome.woff") format("woff"), url("https://denticare.bold-themes.com/allen/wp-content/themes/denticare/fonts/FontAwesome/FontAwesome.ttf") format("truetype");
-        }
+        } */
 
         *[data-ico-fontawesome]:before {
             font-family: FontAwesome;
@@ -13873,13 +13913,19 @@ By signing this form, you give consent to our office to communicate with you via
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Diabetic"> Diabetic </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
-                                                value="Infective"> Infective </label></li>
+                                                value="Infective Endocarditis"> Infective Endocarditis </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Endocarditis"> Endocarditis </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Hep A/B/C"> Hep A/B/C </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
-                                                value="HIV Positive"> H.I.V Positive </label></li>
+                                                value="H.I.V Positive"> H.I.V Positive </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Pacemaker">Pacemaker</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Thyroid Problem">Thyroid Problem</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Tuberculosis">Tuberculosis</label></li>
                                 </ul>
                             </div>
                             <div class="column">
@@ -13887,9 +13933,11 @@ By signing this form, you give consent to our office to communicate with you via
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Hemophilia"> Hemophilia </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
-                                                value="Blood Pressure H/L"> Blood Pressure H / L </label></li>
+                                                value="Blood Pressure H / L"> Blood Pressure H / L </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Pace Maker"> Pace Maker </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Sinus Problem">Sinus Problem</label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Stroke"> Stroke </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
@@ -13904,12 +13952,22 @@ By signing this form, you give consent to our office to communicate with you via
                                                 value="Drug/Alcohol Dependency"> Drug/Alcohol Dependency </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Eating Disorder"> Eating Disorder </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Mitral Valve Prolapse">Mitral Valve Prolapse</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Organ Transplants">Organ Transplants</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Psychiatric Disorder">Psychiatric Disorder</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Ulcers">Ulcers</label></li>
                                 </ul>
                             </div>
                             <div class="column">
                                 <ul>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Epilepsy"> Epilepsy </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Mental Nervous Disorder">Mental Nervous Disorder</label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Glaucoma"> Glaucoma </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
@@ -13929,9 +13987,13 @@ By signing this form, you give consent to our office to communicate with you via
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Lung Disease"> Lung Disease </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Sickle Cell">Sickle Cell</label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Malignant"> Malignant </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Hypothermia"> Hypothermia </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Other">Other</label></li>
                                 </ul>
                             </div>
                             <div class="column">
@@ -13987,7 +14049,61 @@ By signing this form, you give consent to our office to communicate with you via
                                 <input type="text" id="Periodontist-when" placeholder="Enter the date or time">
                             </div>
                         </div>
+<script>
+    function toggleWhitenedWhen() {
+        var yesCheckbox = document.getElementById('whitened-teeth-yes');
+        var whenSection = document.getElementById('whitened-when-section');
+        
+        // Show the "If Yes, when?" section if the Yes checkbox is checked
+        if (yesCheckbox.checked) {
+            whenSection.style.display = 'block';
+        } else {
+            whenSection.style.display = 'none';
+        }
+    }
+</script>
 
+<script>
+    function toggleJawWhen() {
+        var yesCheckbox = document.getElementById('diagnosed-jaw-yes');
+        var whenSection = document.getElementById('jaw-when-section');
+        
+        // Show the "If Yes, when?" section if the Yes checkbox is checked
+        if (yesCheckbox.checked) {
+            whenSection.style.display = 'block';
+        } else {
+            whenSection.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    function toggleTreatedWhen() {
+        var treatedCheckbox = document.getElementById('treated-checkbox');
+        var treatedWhenSection = document.getElementById('treated-when-section');
+        
+        // Show the "If Treated, when?" section if the Treated checkbox is checked
+        if (treatedCheckbox.checked) {
+            treatedWhenSection.style.display = 'block';
+        } else {
+            treatedWhenSection.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    function togglePeriodontistWhen() {
+        var yesCheckbox = document.getElementById('seen-periodontist-yes');
+        var whenSection = document.getElementById('periodontist-when-section');
+        
+        // Show the "If Yes, when?" section if the Yes checkbox is checked
+        if (yesCheckbox.checked) {
+            whenSection.style.display = 'block';
+        } else {
+            whenSection.style.display = 'none';
+        }
+    }
+</script>
                         <div class="inline-group">
                             <label>Are your teeth sensitive to Sweets?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
@@ -14004,7 +14120,19 @@ By signing this form, you give consent to our office to communicate with you via
                                 <input type="text" id="sensitive-when" placeholder="Enter the date or time">
                             </div>
                         </div>
-
+<script>
+    function toggleSensitiveWhen() {
+        var yesCheckbox = document.getElementById('sensitive-sweets-yes');
+        var whenSection = document.getElementById('sensitive-when-section');
+        
+        // Show the "If so, when?" section if the Yes checkbox is checked
+        if (yesCheckbox.checked) {
+            whenSection.style.display = 'block';
+        } else {
+            whenSection.style.display = 'none';
+        }
+    }
+</script>
                         <div class="inline-group">
                             <label>Have you been diagnosed with TMJ (Jaw Joint)
                                 problems?</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -14060,7 +14188,19 @@ By signing this form, you give consent to our office to communicate with you via
                                 <input type="text" id="Whitened-when" placeholder="Enter the date or time">
                             </div>
                         </div>
-                        
+                        <script> function toggleWhitenedWhen() {
+                        const whitenedYes = document.getElementById('whitened-teeth-yes');
+                        const whitenedNo = document.getElementById('whitened-teeth-no');
+                        const whitenedWhenSection = document.getElementById('whitened-when-section');
+
+                        if (whitenedYes.checked) {
+                            whitenedNo.checked = false;
+                            whitenedWhenSection.style.display = 'block';
+                        } else if (whitenedNo.checked) {
+                            whitenedYes.checked = false;
+                            whitenedWhenSection.style.display = 'none';
+                        }
+                    }</script>
                         <div>
                             <label>Are you happy with your smile?</label>
                             <input type="text" id="supplement-reason" placeholder="Enter details">
@@ -14168,11 +14308,21 @@ By signing this form, you give consent to our office to communicate with you via
                 </form>
                 <hr>
             </div>
-            <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Submit
-                Form</button>
+            <button class="btn btn-primary" id="btnDownloadprt" style="float: right;margin-right: 100px">Download Form</button>
+            <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Submit Form</button>
             <br>
         </div>
+
         <script>
+            document.getElementById("btnDownloadprt").addEventListener("click", function () {
+                const link = document.createElement("a");
+                link.href = "../img/Stonebridge Dentistry 1.pdf";
+                link.download = "Stonebridge Dentistry 1.pdf"; // Optional: rename the file
+                link.click();
+            });
+        </script>
+
+        <!-- <script>
             // Function to generate PDF
             function generatePDF() {
                 // Create a new jsPDF instance
@@ -14199,7 +14349,7 @@ By signing this form, you give consent to our office to communicate with you via
 
             // Event listener for the button click
             document.getElementById('btnGeneratePDF').addEventListener('click', generatePDF);
-        </script>
+        </script> -->
 
         <!-- <script>
             document.getElementById('printPDF').addEventListener('click', function (e) {
@@ -14682,9 +14832,9 @@ By signing this form, you give consent to our office to communicate with you via
         <script type="text/javascript"
             src="https://denticare.bold-themes.com/allen/wp-content/themes/denticare/framework/js/header.misc.js?ver=6.5.3"
             id="denticare-header-misc-js"></script>
-        <script type="text/javascript"
+        <!-- <script type="text/javascript"
             src="https://denticare.bold-themes.com/allen/wp-content/themes/denticare/framework/js/misc.js?ver=6.5.3"
-            id="denticare-misc-js"></script>
+            id="denticare-misc-js"></script> -->
         <script type="text/javascript" id="wc-cart-fragments-js-extra">
             /* <![CDATA[ */
             var wc_cart_fragments_params = { "ajax_url": "\/allen\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/allen\/?wc-ajax=%%endpoint%%", "cart_hash_key": "wc_cart_hash_03e0c7bf27fa2e05735f82b4a66d219c", "fragment_name": "wc_fragments_03e0c7bf27fa2e05735f82b4a66d219c", "request_timeout": "5000" };
@@ -14716,14 +14866,14 @@ By signing this form, you give consent to our office to communicate with you via
         <script type="text/javascript"
             src="https://denticare.bold-themes.com/allen/wp-content/plugins/bold-page-builder/content_elements/bt_bb_masonry_image_grid/bt_bb_masonry_image_grid.js?ver=4.8.8"
             id="bt_bb_image_grid-js"></script>
-        <script type="text/javascript" id="bt_bb_content_slider_jsbt_bb_content_slider_97832-js-extra">
+        <!-- <script type="text/javascript" id="bt_bb_content_slider_jsbt_bb_content_slider_97832-js-extra">
             /* <![CDATA[ */
             var slider_object = { "slider_id": "bt_bb_content_slider_97832" };
             /* ]]> */
         </script>
         <script type="text/javascript"
             src="https://denticare.bold-themes.com/allen/wp-content/themes/denticare/bold-page-builder/content_elements/bt_bb_content_slider/bt_bb_content_slider.js?ver=6.5.3"
-            id="bt_bb_content_slider_jsbt_bb_content_slider_97832-js"></script>
+            id="bt_bb_content_slider_jsbt_bb_content_slider_97832-js"></script> -->
         <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsdbQUq1QaP-0yXrNtClJ5nfoTIFxFVo8&amp;loading=async&amp;callback=window.bt_bb_init_all_maps&amp;ver=6.5.3"
             id="gmaps_api-js" async="async" data-wp-strategy="async"></script>

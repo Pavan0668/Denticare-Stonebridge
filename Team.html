@@ -12739,7 +12739,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 	<script>
 		// Ensure the hamburger menu toggles correctly
 		$(document).ready(function () {
@@ -13327,7 +13327,61 @@
 					}
 				</style>
 
+<script>
+	// Initialize EmailJS
+	(function () {
+		emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
+		console.log("EmailJS initialized.");
+	})();
 
+	document.addEventListener("DOMContentLoaded", function () {
+		console.log("DOM loaded.");
+
+		document.getElementById("contactForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // Prevent the form from reloading the page
+
+			// Collect form values
+			const firstName = document.getElementById("firstName").value;
+			const lastName = document.getElementById("lastName").value;
+			const email = document.getElementById("email").value;
+			const phone = document.getElementById("phone").value;
+			const message = document.getElementById("message").value;
+
+			console.log("Collected Data:", { firstName, lastName, email, phone, message });
+
+			// Map form values to EmailJS template variables
+			const templateParams = {
+				to_name: firstName, // Replace with the recipient's name
+				first_name: firstName,
+				last_name: lastName,
+				email: email,
+				phone: phone,
+				message: message,
+			};
+
+			console.log("Template Parameters:", templateParams);
+
+			// Send the email
+			emailjs
+				.send("service_5acopmj", "template_2etv5om", templateParams)
+				.then(
+					function (response) {
+						alert("Email sent successfully!");
+						console.log("SUCCESS!", response.status, response.text);
+						document.getElementById("contactForm").reset(); // Reset the form
+					},
+					function (error) {
+						alert("Failed to send email. Please try again.");
+						console.error("FAILED...", error);
+					}
+				)
+				.catch((error) => {
+					alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
+					console.error("Unexpected Error:", error);
+				});
+		});
+	});
+</script>
 				<br>
 				<section id="bt_bb_section6658036a7b280"
 				class="bt_bb_section bt_bb_layout_boxed_1400 bt_bb_vertical_align_top bt_bb_top_spacing_medium bt_bb_bottom_spacing_large"
@@ -13976,7 +14030,7 @@
 
 				<!-- Right Side Contact Form -->
 				<div class="right-side-content">
-					<form class="contact-form">
+					<form id="contactForm" class="contact-form">
 						<h2 class="form-title">Contact Us</h2>
 
 						<!-- First and Last Name Fields -->

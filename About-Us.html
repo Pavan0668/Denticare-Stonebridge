@@ -13277,34 +13277,39 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive"
 				style="display: flex; justify-content: flex-end;">
 				<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; ">
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="index.html"
 							style="font-size: 16px; padding: 5px 10px;">Home</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="About-Us.html"
 							style="font-size: 16px; padding: 5px 10px;">About Us</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="Services.html"
 							style="font-size: 16px; padding: 5px 10px;">Services</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="Team.html" style="font-size: 16px; padding: 5px 10px;">Our
 							Team</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="Testimonials.html"
 							style="font-size: 16px; padding: 5px 10px;">Testimonials</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="Technology.html"
 							style="font-size: 16px; padding: 5px 10px;">Our Office</a>
 					</li>
-					<li class="nav-item" style="margin-right: 20px;">
+					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-links" href="Contact-Us.html"
 							style="font-size: 16px; padding: 5px 10px;">Contact</a>
 					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-links" href="Appointment-details.html"
+							style="font-size: 16px; padding: 5px 10px;">Appointment</a>
+					</li>
+					
 				</ul>
 			</div>
 		</div>
@@ -13372,6 +13377,62 @@
 			}
 		}
 	</style>
+
+<script>
+	// Initialize EmailJS
+	(function () {
+		emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
+		console.log("EmailJS initialized.");
+	})();
+
+	document.addEventListener("DOMContentLoaded", function () {
+		console.log("DOM loaded.");
+
+		document.getElementById("contactForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // Prevent the form from reloading the page
+
+			// Collect form values
+			const firstName = document.getElementById("firstName").value;
+			const lastName = document.getElementById("lastName").value;
+			const email = document.getElementById("email").value;
+			const phone = document.getElementById("phone").value;
+			const message = document.getElementById("message").value;
+
+			console.log("Collected Data:", { firstName, lastName, email, phone, message });
+
+			// Map form values to EmailJS template variables
+			const templateParams = {
+				to_name: firstName, // Replace with the recipient's name
+				first_name: firstName,
+				last_name: lastName,
+				email: email,
+				phone: phone,
+				message: message,
+			};
+
+			console.log("Template Parameters:", templateParams);
+
+			// Send the email
+			emailjs
+				.send("service_5acopmj", "template_2etv5om", templateParams)
+				.then(
+					function (response) {
+						alert("Email sent successfully!");
+						console.log("SUCCESS!", response.status, response.text);
+						document.getElementById("contactForm").reset(); // Reset the form
+					},
+					function (error) {
+						alert("Failed to send email. Please try again.");
+						console.error("FAILED...", error);
+					}
+				)
+				.catch((error) => {
+					alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
+					console.error("Unexpected Error:", error);
+				});
+		});
+	});
+</script>
 
 	<div class="btContentWrap btClear">
 		<div class="btContentHolder">
@@ -13732,7 +13793,7 @@
 
 					<!-- Right Side Contact Form -->
 					<div class="right-side-content">
-						<form class="contact-form">
+						<form id="contactForm" class="contact-form">
 							<h2 class="form-title">Contact Us</h2>
 
 							<!-- First and Last Name Fields -->
