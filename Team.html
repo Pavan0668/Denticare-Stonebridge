@@ -13059,6 +13059,12 @@
 				margin-right: 20px;
 			}
 		}
+		 @media (max-width: 768px) {
+          .appointment-buttons {
+          flex-direction: column !important;
+          align-items: flex-start;
+           }
+         }
 	</style>
 
 
@@ -13079,12 +13085,16 @@
 							</span>
 						</a>
 						<!-- Book Appointment Button -->
-						<a href="Contact-New.html" class="book-appointment-btn"
-                            style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
-                            Book Appointment
-                        </a>
-                         <a class="nav-link" class="book-appointment-btn" href="Appointment-details.html"
-                            style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">APPOINTMENT FORM</a>
+						<div class="appointment-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <a href="Contact-New.html" class="book-appointment-btn"
+                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                Book Appointment
+                            </a>
+                            <a href="Appointment-details.html" class="book-appointment-btn"
+                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                APPOINTMENT FORM
+                            </a>
+                        </div>
 					</div>
 				</div>
 			</div>
