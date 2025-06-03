@@ -13670,18 +13670,6 @@ By signing this form, you give consent to our office to communicate with you via
 	</script>
 
 	<style>
-		.top-bar {
-			background-color: blue;
-			padding: 5px 0;
-
-		}
-
-		.top-bar a {
-			text-decoration: none;
-			color: white;
-		}
-      
-
 		@keyframes pendulum {
 			0% {
 				transform: rotate(0deg);
@@ -13713,10 +13701,15 @@ By signing this form, you give consent to our office to communicate with you via
 			color: #FFFFFF;
 			font-size: 14px;
 		}
-		
+
+		.nav-link {
+			color: #000;
+		}
+
 		/* For small screens (max-width: 768px), make the navbar items hidden and show the hamburger menu */
 		@media (max-width: 768px) {
-			/* Style for navigation items */ 
+
+			/* Style for navigation items */
 			.nav-item a {
 				display: inline-block;
 				/* Inline element with block behavior */
@@ -13726,10 +13719,10 @@ By signing this form, you give consent to our office to communicate with you via
 				/* Adjust font size for readability */
 				font-weight: 500;
 				/* Slightly bold for emphasis */
-			
+
 				/* White text on hover */
 				/* Professional blue color */
-				
+
 				/* Remove underline */
 				border: 2px solid transparent;
 				/* No visible border initially */
@@ -13739,53 +13732,56 @@ By signing this form, you give consent to our office to communicate with you via
 				/* Transparent background by default */
 			}
 
-			.navbar-collapse .nav-links {
-                padding: 10px 15px;
-                /* Add spacing around each menu item */
-                color: #FFFFFF;
-                /* Black text color */
-                font-size: 16px;
-                text-transform: uppercase;
-                /* Font size for better visibility */
+			.navbar-collapse .nav-link {
+				padding: 10px 15px;
+				/* Add spacing around each menu item */
+				color: #FFFFFF;
+				/* Black text color */
+				/* Font size for better visibility */
+				text-align: left;
+				font-size: 16px;
+				text-transform: uppercase;
+				/* Font size for better visibility */
 				font-family: sans-serif;
-                text-align: left;
-                /* Center-align text */
-                /* text-decoration: none; */
-                /* Remove underline */
-                width: 100%;
-                /* Ensure each link spans full width */
-				/* display: inline-block; */
-            }
-			
+				width: 100%;
+			}
+
+			.navbar-collapse .nav-link:hover {
+				/* background-color: #e9ecef; */
+				/* Subtle gray background on hover */
+				/* color: #2CB5E5; */
+				/* Highlight color for text */
+				border-radius: 5px;
+				/* Optional: Rounded corners for hover effect */
+			}
 
 			.navbar-collapse {
 				display: none;
-                white-space: nowrap;
-                /* Initially hidden */
-                flex-direction: column;
-                /* Align items vertically */
-                align-items: center;
-				font-family: sans-serif;
-                /* Center-align the menu items */
-                justify-content: center;
-                /* Center-align vertically */
-                background-color: #4579BA;
-                /* White background */
-                width: 100%;
-                /* Full width of the parent container */
-                position: absolute;
-                /* Position the menu below the navbar */
-                top: 100%;
-                /* Position it directly below the navbar */
-                left: 0;
-                /* Align to the left edge */
-                z-index: 1000;
-                /* Ensure it appears above other content */
-                border-top: 1px solid #ddd;
-                /* Optional: Add a subtle border for separation */
-                padding: 10px 0;
-                /* Add padding for vertical spacing */
-                padding-left: 40px;
+				white-space: nowrap;
+				/* Initially hidden */
+				flex-direction: column;
+				/* Align items vertically */
+				align-items: center;
+				/* Center-align the menu items */
+				justify-content: center;
+				/* Center-align vertically */
+				background-color: #4579BA;
+				/* White background */
+				width: 100%;
+				/* Full width of the parent container */
+				position: absolute;
+				/* Position the menu below the navbar */
+				top: 100%;
+				/* Position it directly below the navbar */
+				left: 0;
+				/* Align to the left edge */
+				z-index: 1000;
+				/* Ensure it appears above other content */
+				border-top: 1px solid #ddd;
+				/* Optional: Add a subtle border for separation */
+				padding: 10px 0;
+				/* Add padding for vertical spacing */
+				padding-left: 40px;
 			}
 		}
 
@@ -13863,134 +13859,184 @@ By signing this form, you give consent to our office to communicate with you via
 				max-width: 100%;
 				justify-content: space-between;
 			}
-		
 
 
 
-		/* Display the hamburger menu */
-		.navbar-toggler {
-			display: block;
-                /* Ensure visibility */
-                background: transparent;
-                /* Transparent background */
-                border: none;
-                /* Remove default border */
-                padding: 10px;
-                /* Add padding for spacing */
-                cursor: pointer;
-                /* Pointer cursor */
-                padding-right: 30px;
-		}
 
-		/* Custom styling for the hamburger icon (circular) */
-		.navbar-toggler-icon {
-			width: 30px;
-                /* Adjust size for a cleaner look */
-                height: 3px;
-                /* Thin line for a modern feel */
-                background-color: #034CAE;
-                /* Dark blue color */
-                position: relative;
-                /* Relative positioning for pseudo-elements */
-                transition: all 0.3s ease;
-                /* Smooth transition */
-		}
-
-		.navbar-toggler-icon::before,
-		.navbar-toggler-icon::after {
-			content: '';
-                position: absolute;
-                width: 30px;
-                /* Match width of main line */
-                height: 3px;
-                /* Thin line for consistency */
-                background-color: #034CAE;
-                /* Dark blue color */
-                transition: all 0.3s ease;
-                /* Smooth transition */
-		}
-
-		.navbar-toggler-icon::before {
-			top: -8px;
-			/* Position above main line */
-		}
-
-		.navbar-toggler-icon::after {
-			top: 8px;
-                /* Position below main line */
-		}
-		.navbar-toggler.collapsed .navbar-toggler-icon
-		{
-			background-color: transparent;
-			/* Hide main line */
-		}
-
-		/* Add a cross (X) effect on click */
-		.navbar-toggler.collapsed .navbar-toggler-icon::before {
-			transform: rotate(45deg);
-                /* Rotate to form X */
-                top: 0;
-                /* Align with center */
-		}
-
-		.navbar-toggler.collapsed .navbar-toggler-icon::after {
-			transform: rotate(-45deg);
-                /* Rotate to form X */
-                top: 0;
-                /* Align with center */
-		}
-
-		.contact-details {
-			display: flex;
-			justify-content: flex-end;
-			flex-direction: column;
-			gap: 10px;
-		}
-
-		/* Navbar items are stacked vertically on small screens */
-		.navbar-nav {
-			flex-direction: column;
-			width: 100%;
-			text-align: center;
-
-		}
-
-		.nav-links {
-			padding: 10px 20px;
-
-		}
-
-		
-
-		/* Book Appointment button */
-		.book-appointment-btn {
-			height: 30px;
-			font-size: 12px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 150px;
-			background-color: #1D9BF0;
-			color: #FFFFFF;
-			margin-right: 20px;
-		}
-	}
-
-		/* For large screens (desktop) */
-		@media (min-width: 769px) {
-			.navbar-collapse {
-				display: flex;
-			}
-
+			/* Display the hamburger menu */
 			.navbar-toggler {
-				display: none;
+				display: block;
+				/* Ensure visibility */
+				background: transparent;
+				/* Transparent background */
+				border: none;
+				/* Remove default border */
+				padding: 10px;
+				/* Add padding for spacing */
+				cursor: pointer;
+				/* Pointer cursor */
+				padding-right: 30px;
+			}
+
+			/* Custom styling for the hamburger icon (circular) */
+			.navbar-toggler-icon {
+				width: 30px;
+				/* Adjust size for a cleaner look */
+				height: 3px;
+				/* Thin line for a modern feel */
+				background-color: #034CAE;
+				/* Dark blue color */
+				position: relative;
+				/* Relative positioning for pseudo-elements */
+				transition: all 0.3s ease;
+				/* Smooth transition */
+			}
+
+			.navbar-toggler-icon::before,
+			.navbar-toggler-icon::after {
+				content: '';
+				position: absolute;
+				width: 30px;
+				/* Match width of main line */
+				height: 3px;
+				/* Thin line for consistency */
+				background-color: #034CAE;
+				/* Dark blue color */
+				transition: all 0.3s ease;
+				/* Smooth transition */
+			}
+
+			.navbar-toggler-icon::before {
+				top: -8px;
+				/* Position above main line */
+			}
+
+			.navbar-toggler-icon::after {
+				top: 8px;
+				/* Position below main line */
+			}
+
+			.navbar-toggler.collapsed .navbar-toggler-icon {
+				background-color: transparent;
+				/* Hide main line */
+			}
+
+			/* Add a cross (X) effect on click */
+			.navbar-toggler.collapsed .navbar-toggler-icon::before {
+				transform: rotate(45deg);
+				/* Rotate to form X */
+				top: 0;
+				/* Align with center */
+			}
+
+			.navbar-toggler.collapsed .navbar-toggler-icon::after {
+				transform: rotate(-45deg);
+				/* Rotate to form X */
+				top: 0;
+				/* Align with center */
+			}
+
+			.contact-details {
+				display: flex;
+				justify-content: flex-end;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			/* Navbar items are stacked vertically on small screens */
+			.navbar-nav {
+				flex-direction: column;
+				width: 100%;
+				text-align: center;
+
+			}
+
+			.nav-link {
+				padding: 10px 20px;
+
+			}
+
+
+
+			/* Book Appointment button */
+			.book-appointment-btn {
+				height: 30px;
+				font-size: 12px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 150px;
+				background-color: #1D9BF0;
+				color: #FFFFFF;
+				margin-right: 20px;
 			}
 		}
+		@media (max-width: 768px) {
+          .appointment-buttons {
+          flex-direction: column !important;
+          align-items: flex-start;
+           }
+         }
 	</style>
 
+<script>
+	// Initialize EmailJS
+	(function () {
+		emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
+		console.log("EmailJS initialized.");
+	})();
+
+	document.addEventListener("DOMContentLoaded", function () {
+		console.log("DOM loaded.");
+
+		document.getElementById("contactForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // Prevent the form from reloading the page
+
+			// Collect form values
+			const firstName = document.getElementById("firstName").value;
+			const lastName = document.getElementById("lastName").value;
+			const email = document.getElementById("email").value;
+			const phone = document.getElementById("phone").value;
+			const message = document.getElementById("message").value;
+
+			console.log("Collected Data:", { firstName, lastName, email, phone, message });
+
+			// Map form values to EmailJS template variables
+			const templateParams = {
+				to_name: firstName, // Replace with the recipient's name
+				first_name: firstName,
+				last_name: lastName,
+				email: email,
+				phone: phone,
+				message: message,
+			};
+
+			console.log("Template Parameters:", templateParams);
+
+			// Send the email
+			emailjs
+				.send("service_5acopmj", "template_2etv5om", templateParams)
+				.then(
+					function (response) {
+						alert("Email sent successfully!");
+						console.log("SUCCESS!", response.status, response.text);
+						document.getElementById("contactForm").reset(); // Reset the form
+					},
+					function (error) {
+						alert("Failed to send email. Please try again.");
+						console.error("FAILED...", error);
+					}
+				)
+				.catch((error) => {
+					alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
+					console.error("Unexpected Error:", error);
+				});
+		});
+	});
+</script>
 
 	<!-- Top Bar -->
-	<div class="top-bar" style="background-color: #4579BA; padding: 5px 0;padding-right: 160px;">
+	<div class="top-bar" style="background-color: #4579BA; padding: 5px 0;padding-right: 110px;">
 		<div class="containerss">
 			<div class="row" style="display: flex; justify-content: space-between; align-items: center;">
 				<div class="social2" style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
@@ -14001,15 +14047,20 @@ By signing this form, you give consent to our office to communicate with you via
 							style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;">
 
 							<span class="btIconWidgetTitle" style="font-size: 14px; font-weight: bold; color: #FFFFFF;">
-								<i class="fas fa-phone-alt fa-rotate-90" style="color: #FFFFFF; font-size: 14px;"></i>
-								(705) 422-2490
+								<i class="fas fa-phone-alt" style="color: #FFFFFF; font-size: 14px;"></i> (705) 422-2490
 							</span>
 						</a>
 						<!-- Book Appointment Button -->
-						<a href="Contact-New.html" class="book-appointment-btn"
-							style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #2C2D78; color: #FFBD0D; text-decoration: none; border-radius: 5px;">
-							Book Appointment
-						</a>
+						<div class="appointment-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <a href="Contact-New.html" class="book-appointment-btn"
+                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                Book Appointment
+                            </a>
+                            <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
+                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                APPOINTMENT FORM
+                            </a>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -14018,75 +14069,82 @@ By signing this form, you give consent to our office to communicate with you via
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;">
-		<div class="container-new" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-			<!-- Logo aligned to the left -->
-			<a class="navbar-brand" href="index.html" style="display: flex; align-items: center; padding-left: -10px;">
-				<img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
-			</a>
-			<!-- Hamburger Menu Button (visible on small devices) -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!-- Navbar items aligned to the right -->
-			<div class="collapse navbar-collapse" id="navbarResponsive"
-				style="display: flex; justify-content: flex-center;">
-				<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; ">
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="index.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Home</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="About-Us.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">About Us</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Services.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Services</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Team.html" style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Our
-							Team</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Testimonials.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Testimonials</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Technology.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Our Office</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Contact-Us.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Contact</a>
-					</li>
-					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-links" href="Appointment-details.html"
-							style="font-size: 14px;text-transform: uppercase; padding: 5px 10px;">Appointment</a>
-					</li>
-					
-				</ul>
+	<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;padding-left:130px;">
+			<div class="containereeeee"
+				style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+				<!-- Logo aligned to the left -->
+				<a class="navbar-brand" href="index.html"
+					style="display: flex; align-items: center; padding-right: 160px;">
+					<img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
+				</a>
+				<!-- Hamburger Menu Button (visible on small devices) -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- Navbar items aligned to the right -->
+				<div class="collapse navbar-collapse" id="navbarResponsive"
+					style="display: flex; ">
+					<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; list-style: none;">
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="index.html"
+								style="font-size: 16px; padding: 5px 10px;">HOME</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="About-Us.html"
+								style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="Services.html"
+								style="font-size: 16px; padding: 5px 10px;">SERVICES</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="Team.html" style="font-size: 16px; padding: 5px 10px;">OUR
+								TEAM</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="Testimonials.html"
+								style="font-size: 16px; padding: 5px 10px;">TESTIMONIALS</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="Technology.html"
+								style="font-size: 16px; padding: 5px 10px;">OUR OFFICE</a>
+						</li>
+						<li class="nav-item" style="margin-right: 5px;">
+							<a class="nav-link" href="Contact-Us.html"
+								style="font-size: 16px; padding: 5px 10px;">CONTACT</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
+
+
+		<style>
+			.nav-link
+			{
+				color: #000;
+			}
+			.nav-link:hover {
+				text-decoration: none;
+				/* Remove default underline */
+				border-top: 2px solid #034CAE;
+				/* Top underline */
+				border-bottom: 2px solid #034CAE;
+				/* Bottom underline */
+				color: #2CB5E5;
+				border-top: 50%;
+				/* Position the top border at the middle */
+				border-bottom: 50%;
+				/* Position the top border at the middle */
+			}
+		</style>
 
 
 	<style>
-		.nav-links
-		{
-			color: black;
-			font-family: sans-serif;
-            text-transform: uppercase; 
-			white-space: nowrap;
-		}
-		.nav-item
-		{
-			color: black;
-
-		}
-		.nav-links:hover {
-			
+		.nav-link:hover {
+			text-decoration: none;
 			/* Remove default underline */
 			border-top: 2px solid #034CAE;
 			/* Top underline */
@@ -14098,7 +14156,6 @@ By signing this form, you give consent to our office to communicate with you via
 			border-bottom: 50%;
 			/* Position the top border at the middle */
 		}
-		
 	</style>
         <div class="btContentWrap btClear">
             <section
@@ -14107,9 +14164,9 @@ By signing this form, you give consent to our office to communicate with you via
                 <div style="text-align: center;">
                     <header class="bt_bb_headline bt_bb_superheadline_outside bt_bb_subheadline bt_bb_size_large"
                         data-bt-override-class="{}">
-                        <h1 class="bt_bb_headline_tag" style="font-size: 100px;font-weight: bold;color: black;">
+                        <h1 class="bt_bb_headline_tag" style="font-size: 100px;font-weight: bold;color: black;padding-top:80px;">
                             <span class="bt_bb_headline_content">
-                                <span>Appointment Details</span>
+                                <span>APPOINTMENT</span>
                             </span>
                         </h1>
                     </header>
