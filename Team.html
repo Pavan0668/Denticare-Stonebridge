@@ -16,25 +16,7 @@
 		var dataLayer = dataLayer || [];
 	</script>
 	<style>
-		.container:hover .middle {
-			opacity: 1;
-			/* Show overlay */
-		}
-
-		.container:hover img {
-			transform: scale(1.05);
-			/* Scale up the image */
-			opacity: 0.7;
-			/* Fade out the image */
-		}
-
-		.container:hover+.description {
-			display: block;
-			/* Show the description on hover */
-			animation: fadeIn 0.5s;
-			/* Add fade-in animation */
-		}
-
+	
 		@keyframes fadeIn {
 			from {
 				opacity: 0;
@@ -12790,6 +12772,10 @@
 			font-size: 14px;
 		}
 
+		.nav-link {
+			color: #000;
+		}
+
 		/* For small screens (max-width: 768px), make the navbar items hidden and show the hamburger menu */
 		@media (max-width: 768px) {
 
@@ -12821,17 +12807,13 @@
 				/* Add spacing around each menu item */
 				color: #FFFFFF;
 				/* Black text color */
+				/* Font size for better visibility */
+				text-align: left;
 				font-size: 16px;
 				text-transform: uppercase;
 				/* Font size for better visibility */
 				font-family: sans-serif;
-				text-align: left;
-				/* Center-align text */
-				/* text-decoration: none; */
-				/* Remove underline */
 				width: 100%;
-				/* Ensure each link spans full width */
-				/* display: inline-block; */
 			}
 
 			.navbar-collapse .nav-link:hover {
@@ -13059,7 +13041,7 @@
 				margin-right: 20px;
 			}
 		}
-		 @media (max-width: 768px) {
+		@media (max-width: 768px) {
           .appointment-buttons {
           flex-direction: column !important;
           align-items: flex-start;
@@ -13122,8 +13104,7 @@
 						<a class="nav-link" href="index.html" style="font-size: 16px; padding: 5px 10px;">HOME</a>
 					</li>
 					<li class="nav-item" style="margin-right: 5px;">
-						<a class="nav-link" href="About-Us.html" style="font-size: 16px; padding: 5px 10px;">ABOUT
-							US</a>
+						<a class="nav-link" href="About-Us.html" style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
 					</li>
 					<li class="nav-item" style="margin-right: 5px;">
 						<a class="nav-link" href="Services.html"
