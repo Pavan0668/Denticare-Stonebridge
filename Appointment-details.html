@@ -923,17 +923,18 @@
                         ['Blood Thinner', 'Drug/Alcohol Dependency', 'Mitral Valve Prolapse'],
                         ['Cancer', 'Eating Disorder', 'Organ Transplants'],
                         ['Radiation', 'Epilepsy', 'Psychiatric Disorder'],
-                        ['Chemotherapy','Diabetic','Infective Endocarditis','Glaucoma', 'Rheumatic Fever'],
-                        ['Head/Neck Injury', 'Sickle Cell'],
-                        ['Herpes', 'Sinus Problem'],
+                        ['Chemotherapy', 'Diabetic', 'Infective Endocarditis'],
+                        ['Glaucoma', 'Rheumatic Fever', 'Head/Neck Injury'],
+                        ['Sickle Cell', 'Herpes', 'Sinus Problem'],
                         ['Hep A/B/C', 'Hodgkin Disease', 'Thyroid Problem'],
                         ['H.I.V Positive', 'Hyperglycemia', 'Tuberculosis'],
                         ['Hemophilia', 'Jaundice', 'Ulcers'],
                         ['Blood Pressure H / L', 'Kidney Disease', 'Other'],
                         ['Pacemaker', 'Liver Disease', ''],
                         ['Stroke', 'Lung Disease', ''],
-                        ['Heart Issues', '', '']
+                        ['Heart Issues', 'Endocarditis', '']
                     ];
+
 
                     const drawCheckbox = (doc, x, y, checked) => {
                         doc.rect(x, y, 4, 4); // Draw the square
@@ -1047,116 +1048,170 @@
                         };
                     }
 
-                   function generatePDF(doc) {
-    const answers = {
-        "Checkup-name": document.getElementById("Checkup-name")?.value || '',
-        "Frequently-visit": document.getElementById("Frequently-visit")?.value || '',
-        "antibiotics-condition": document.getElementById("antibiotics-condition")?.value || '',
-        "Comprehensive-Dental": document.getElementById("Comprehensive-Dental")?.value || '',
+                    function generatePDF(doc) {
+                        const getVal = (id) => document.getElementById(id)?.value || '';
+                        const getYesNo = (yesId, noId) =>
+                            document.getElementById(yesId)?.checked ? 'Yes' :
+                                document.getElementById(noId)?.checked ? 'No' : '';
 
-        "Gum-Disease": (document.getElementById("treated-checkbox")?.checked ? "Yes" : document.getElementById("untreated-checkbox")?.checked ? "No" : ''),
-        "Treated-When": document.getElementById("treated-when")?.value || '',
+                        doc.setFont('helvetica');
+                        doc.setFontSize(11);
+                        doc.text('Dental History:', 10, 20);
+                        doc.setFontSize(8);
 
-        "Periodontist": (document.getElementById("seen-periodontist-yes")?.checked ? "Yes" : document.getElementById("seen-periodontist-no")?.checked ? "No" : ''),
-        "Periodontist-When": document.getElementById("Periodontist-when")?.value || '',
+                        let y = 28;
+                        const labelGap = 1.5;
+                        const rowHeight = 8;
 
-        "Sensitive-Sweets": (document.getElementById("sensitive-sweets-yes")?.checked ? "Yes" : document.getElementById("sensitive-sweets-no")?.checked ? "No" : ''),
-        "Sensitive-When": document.getElementById("sensitive-when")?.value || '',
+                        const underline = (text, x, y) => {
+                            const width = doc.getTextWidth(text || '________');
+                            doc.line(x, y + labelGap, x + width, y + labelGap);
+                        };
 
-        "TMJ-Problems": (document.getElementById("diagnosed-jaw-yes")?.checked ? "Yes" : document.getElementById("diagnosed-jaw-no")?.checked ? "No" : ''),
-        "TMJ-When": document.getElementById("JAW-when")?.value || '',
+                        const drawQA = (label, value, xLabel, xAnswer) => {
+                            doc.text(label, xLabel, y);
+                            doc.text(value, xAnswer, y);
+                            underline(value, xAnswer, y);
+                        };
 
-        "Jaw-Click-Pop": document.getElementById("medication-reason")?.value || '',
-        "Clench-Teeth": document.getElementById("clench-teeth")?.value || '',
-        "Orthodontic-Work": document.getElementById("orthodontic")?.value || '',
-        "Oral-Appliances": document.getElementById("oral-appliances")?.value || '',
-        "Removable-Fixed": document.getElementById("Removable-Fixed")?.value || '',
+                        const drawRow = (q1, val1, q2 = '', val2 = '') => {
+                            const answerX1 = 95; // Answer for question 1
+                            const labelX2 = answerX1 + doc.getTextWidth(val1 || '________') + 10; // Question 2 starts after Q1 answer
+                            const answerX2 = labelX2 + doc.getTextWidth(q2 || '________') + 5;
 
-        "Whitened-Teeth": (document.getElementById("whitened-teeth-yes")?.checked ? "Yes" : document.getElementById("whitened-teeth-no")?.checked ? "No" : ''),
-        "Whitened-When": document.getElementById("Whitened-when")?.value || '',
+                            drawQA(q1, val1, 10, answerX1);
+                            if (q2) drawQA(q2, val2, labelX2, answerX2);
+                            y += rowHeight;
+                        };
 
-        "Happy-With-Smile": document.getElementById("supplement-reason")?.value || ''
-    };
+                        // Questions in rows
+                        drawRow(
+                            'Last Dental Checkup and Cleaning?', getVal('Checkup-name'),
+                            'How Frequently do you visit?', getVal('Frequently-visit')
+                        );
 
-    const questions = [
-        'Last Dental Checkup and Cleaning?',
-        'How Frequently do you visit?',
-        'Do you usually take antibiotics before a procedure?',
-        'Are you looking for Comprehensive Dental Care, or Emergency Care Only?',
-        'Do you have a history of Gum Disease?',
-        'If Treated, when?',
-        'Have you seen a Periodontist?',
-        'If Yes, when?',
-        'Are your teeth sensitive to Sweets?',
-        'If Yes, when?',
-        'Have you been diagnosed with TMJ (Jaw Joint) problems?',
-        'If Yes, when?',
-        'Does your Jaw Joints "Click" or "Pop" when you open?',
-        'Are you aware if you grind or clench your teeth at night?',
-        'Have you had orthodontic work done (braces)?',
-        'Do you wear any oral appliances?',
-        'Removable or Fixed?',
-        'Have you professionally whitened your teeth before?',
-        'If Yes, when?',
-        'Are you happy with your smile?'
-    ];
+                        drawRow('Do you usually take antibiotics before a procedure?', getVal('antibiotics-condition'));
 
-    const keys = [
-        "Checkup-name", "Frequently-visit", "antibiotics-condition", "Comprehensive-Dental",
-        "Gum-Disease", "Treated-When", "Periodontist", "Periodontist-When",
-        "Sensitive-Sweets", "Sensitive-When", "TMJ-Problems", "TMJ-When",
-        "Jaw-Click-Pop", "Clench-Teeth", "Orthodontic-Work", "Oral-Appliances",
-        "Removable-Fixed", "Whitened-Teeth", "Whitened-When", "Happy-With-Smile"
-    ];
+                        const question = 'Are you looking for Comprehensive Dental Care, or Emergency Care Only?';
+                        doc.text(question, 10, y);
 
-    doc.setFontSize(14);
-    doc.text('Dental History:', 10, 20);
-    doc.setFontSize(9);
+                        const compDental = getVal('Comprehensive-Dental');
 
-    let y = 30;
-    let xLeft = 10;
-    let xRight = 105;
+                        // Calculate where the answer should start, right after the question
+                        const questionWidth = doc.getTextWidth(question);
+                        const answerX = 10 + questionWidth + 5; // 5px padding after question
 
-    for (let i = 0; i < questions.length; i += 2) {
-        const q1 = questions[i];
-        const a1 = answers[keys[i]] || '';
+                        doc.text(compDental, answerX, y);
+                        underline(compDental, answerX, y);
 
-        const q2 = questions[i + 1];
-        const a2 = keys[i + 1] ? (answers[keys[i + 1]] || '') : '';
-
-        doc.text(`${i + 1}. ${q1}`, xLeft, y);
-        doc.text(`Ans: ${a1}`, xLeft, y + 5);
-
-        if (q2) {
-            doc.text(`${i + 2}. ${q2}`, xRight, y);
-            doc.text(`Ans: ${a2}`, xRight, y + 5);
-        }
-
-        y += 12;
-
-        if (y > 270) {
-            doc.addPage();
-            y = 20;
-        }
-    }
-}
+                        y += rowHeight;
 
 
+                        // Gum Disease
+                        doc.text('Do you have a history of Gum Disease?', 10, y);
+                        const gumStatus = getYesNo('treated-checkbox', 'untreated-checkbox');
+                        doc.text(gumStatus, 100, y); underline(gumStatus, 100, y);
+
+                        if (gumStatus === 'Yes') {
+                            doc.text('Treated?', 140, y);
+                            doc.text('Untreated?', 170, y);
+                            const treatedWhen = getVal('treated-when');
+                            doc.text(treatedWhen, 210, y); underline(treatedWhen, 210, y);
+                        }
+                        y += rowHeight;
+
+                        // Periodontist
+                        doc.text('Have you seen a Periodontist?', 10, y);
+                        const seen = getYesNo('seen-periodontist-yes', 'seen-periodontist-no');
+                        doc.text(seen, 100, y); underline(seen, 100, y);
+
+                        if (seen === 'Yes') {
+                            doc.text('If Yes, when?', 140, y);
+                            const seenWhen = getVal('Periodontist-when');
+                            doc.text(seenWhen, 200, y); underline(seenWhen, 200, y);
+                        }
+                        y += rowHeight;
+
+                        // Sensitivity
+                        doc.text('Are your teeth sensitive to Sweets?', 10, y);
+                        const sweetSens = getYesNo('sensitive-sweets-yes', 'sensitive-sweets-no');
+                        doc.text(sweetSens, 100, y); underline(sweetSens, 100, y);
+
+                        if (sweetSens === 'Yes') {
+                            doc.text('Hot?', 130, y);
+                            doc.text('Cold?', 150, y);
+                            const sensitivity = getVal('sensitive-when');
+                            doc.text(sensitivity, 180, y); underline(sensitivity, 180, y);
+                        }
+                        y += rowHeight;
+
+
+                        doc.text('Have you been diagnosed with TMJ (Jaw Joint) problems?', 10, y);
+                        const tmj = getYesNo('diagnosed-jaw-yes', 'diagnosed-jaw-no');
+                        doc.text(tmj, 200, y); underline(tmj, 200, y);
+                        y += rowHeight;
+
+                        drawRow('Does your Jaw Joints "Click" or "Pop" when you open?', getVal('jaw-click'));
+
+                        drawRow(
+                            'Are you aware If you grind or clench your teeth at night?', getYesNo('clench-teeth-yes', 'clench-teeth-no'),
+                            'Reason?', getVal('clench-teeth')
+                        );
+
+                        drawRow(
+                            'Have you had orthodontic work done (braces)?', getVal('orthodontic'),
+                            'Teeth Whitening?', getYesNo('whitened-teeth-yes', 'whitened-teeth-no')
+                        );
+
+                        drawRow(
+                            'Have you Professionally Whitened your teeth before?', getVal('Whitened-when'),
+                            'Do you wear any oral appliances?', getVal('oral-appliances')
+                        );
+
+                        doc.text('Are you happy with your smile?', 10, y);
+                        const smile = getVal('supplement-reason');
+                        doc.text(smile, 95, y); underline(smile, 95, y);
+
+                        doc.text('Removable or Fixed?', 170, y);
+                        const fixed = getVal('Removable-Fixed');
+                        doc.text(fixed, 250, y); underline(fixed, 250, y);
+                        y += rowHeight;
+                    }
 
 
                     // Add a new page for Consent or other sections as needed
                     doc.addPage();
+                    // Set up fonts and title
+                    doc.setFont('Arial');
+                    doc.setFontSize(16);
 
-                    // Consent Section
+                    const consentSignatureText = 'Consent, Signature and Date';
+                    const pageWidth = doc.internal.pageSize.getWidth();
+                    const xCenter = pageWidth / 2;
+                    let y = 20;
+
+                    // Centered title
+                    doc.text(consentSignatureText, xCenter, y, { align: 'center' });
+
+                    // Add spacing after title
+                    y += 10;
+
+                    // Set smaller font for body text
                     doc.setFontSize(10);
+
                     const consentText = `GENERAL RELEASE: I, the undersigned, certify that the information contained in the medical and dental history is correct to the best of my knowledge. I consent to the release of medical information from my medical doctor, or other healthcare providers, if required by this dental office. I authorize this dental office to perform diagnostic procedures as may be required to determine necessary treatment. I understand that payment for my dental treatment is due at the time of service unless otherwise arranged in advance with office management. I understand that I am responsible for my account with this dental office, and that all of my dependents, and I will not allow payments to be in arrears.
+                          We need to have your consent to begin communicating with you by text or email.
+                          Email and text messaging allows us to communicate efficiently for the benefit of our patients. At the same time, we recognize the risk if addressed to the wrong person or accessed improperly while in storage or during transmission.
+                          HIPAA requires that providers take reasonable steps to protect against these risks but acknowledges that a balance must be struck between the need to secure personal information and the need to ensure that clinicians can efficiently exchange important patient care information. Stonebridge Dentistry has implemented such measures through obtaining informed consent from patients using any potentially unencrypted electronic format.
+                          By signing this form, you give consent to our office to communicate with you via`;
 
-We need to have your consent to begin communicating with you by text or email.
-Email and text messaging allows us to communicate efficiently for the benefit of our patients. At the same time, we recognize the risk if addressed to the wrong person or accessed improperly while in storage or during transmission.
-HIPAA requires that providers take reasonable steps to protect against these risks but acknowledges that a balance must be struck between the need to secure personal information and the need to ensure that clinicians can efficiently exchange important patient care information. Stonebridge Dentistry has implemented such measures through obtaining informed consent from patients using any potentially unencrypted electronic format.
-By signing this form, you give consent to our office to communicate with you via`;
+                    // Draw multiline text with wrapping
+                    doc.text(consentText, 10, y, {
+                        maxWidth: 190,
+                        align: 'left',
+                        lineHeightFactor: 1.5
+                    });
 
-                    doc.text(consentText, 10, 20, { maxWidth: 190, align: 'left' });
 
                     // Capture form inputs with null/undefined checks
                     const mobileNumber = document.getElementById('mobile-number') ? document.getElementById('mobile-number').value : '';
@@ -13653,510 +13708,512 @@ By signing this form, you give consent to our office to communicate with you via
 
 
         <script>
-		// Ensure the hamburger menu toggles correctly
-		$(document).ready(function () {
-			// Initially collapse the navbar
-			$('.navbar-collapse').hide();
+            // Ensure the hamburger menu toggles correctly
+            $(document).ready(function () {
+                // Initially collapse the navbar
+                $('.navbar-collapse').hide();
 
-			// Toggle the menu when the hamburger button is clicked
-			$('.navbar-toggler').click(function () {
-				// Toggle the collapsed state for the hamburger
-				$(this).toggleClass('collapsed');
-				// Show or hide the navbar items
-				$('#navbarResponsive').toggle();
-			});
-		});
+                // Toggle the menu when the hamburger button is clicked
+                $('.navbar-toggler').click(function () {
+                    // Toggle the collapsed state for the hamburger
+                    $(this).toggleClass('collapsed');
+                    // Show or hide the navbar items
+                    $('#navbarResponsive').toggle();
+                });
+            });
 
-	</script>
+        </script>
 
-	<style>
-		@keyframes pendulum {
-			0% {
-				transform: rotate(0deg);
-			}
+        <style>
+            @keyframes pendulum {
+                0% {
+                    transform: rotate(0deg);
+                }
 
-			25% {
-				transform: rotate(15deg);
-			}
+                25% {
+                    transform: rotate(15deg);
+                }
 
-			50% {
-				transform: rotate(0deg);
-			}
+                50% {
+                    transform: rotate(0deg);
+                }
 
-			75% {
-				transform: rotate(-15deg);
-			}
+                75% {
+                    transform: rotate(-15deg);
+                }
 
-			100% {
-				transform: rotate(0deg);
-			}
-		}
+                100% {
+                    transform: rotate(0deg);
+                }
+            }
 
-		.btIconWidgetTitle i {
-			display: inline-block;
-			animation: pendulum 2s infinite ease-in-out;
-			/* Adjust animation duration and easing */
-			transform-origin: top center;
-			/* Set rotation point */
-			color: #FFFFFF;
-			font-size: 14px;
-		}
+            .btIconWidgetTitle i {
+                display: inline-block;
+                animation: pendulum 2s infinite ease-in-out;
+                /* Adjust animation duration and easing */
+                transform-origin: top center;
+                /* Set rotation point */
+                color: #FFFFFF;
+                font-size: 14px;
+            }
 
-		.nav-link {
-			color: #000;
-		}
+            .nav-link {
+                color: #000;
+            }
 
-		/* For small screens (max-width: 768px), make the navbar items hidden and show the hamburger menu */
-		@media (max-width: 768px) {
+            /* For small screens (max-width: 768px), make the navbar items hidden and show the hamburger menu */
+            @media (max-width: 768px) {
 
-			/* Style for navigation items */
-			.nav-item a {
-				display: inline-block;
-				/* Inline element with block behavior */
-				padding: 8px 15px;
-				/* Increase padding for better spacing */
-				font-size: 16px;
-				/* Adjust font size for readability */
-				font-weight: 500;
-				/* Slightly bold for emphasis */
+                /* Style for navigation items */
+                .nav-item a {
+                    display: inline-block;
+                    /* Inline element with block behavior */
+                    padding: 8px 15px;
+                    /* Increase padding for better spacing */
+                    font-size: 16px;
+                    /* Adjust font size for readability */
+                    font-weight: 500;
+                    /* Slightly bold for emphasis */
 
-				/* White text on hover */
-				/* Professional blue color */
+                    /* White text on hover */
+                    /* Professional blue color */
 
-				/* Remove underline */
-				border: 2px solid transparent;
-				/* No visible border initially */
-				transition: all 0.3s ease;
-				/* Smooth transition */
-				/* background-color: transparent; */
-				/* Transparent background by default */
-			}
+                    /* Remove underline */
+                    border: 2px solid transparent;
+                    /* No visible border initially */
+                    transition: all 0.3s ease;
+                    /* Smooth transition */
+                    /* background-color: transparent; */
+                    /* Transparent background by default */
+                }
 
-			.navbar-collapse .nav-link {
-				padding: 10px 15px;
-				/* Add spacing around each menu item */
-				color: #FFFFFF;
-				/* Black text color */
-				/* Font size for better visibility */
-				text-align: left;
-				font-size: 16px;
-				text-transform: uppercase;
-				/* Font size for better visibility */
-				font-family: sans-serif;
-				width: 100%;
-			}
+                .navbar-collapse .nav-link {
+                    padding: 10px 15px;
+                    /* Add spacing around each menu item */
+                    color: #FFFFFF;
+                    /* Black text color */
+                    /* Font size for better visibility */
+                    text-align: left;
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    /* Font size for better visibility */
+                    font-family: sans-serif;
+                    width: 100%;
+                }
 
-			.navbar-collapse .nav-link:hover {
-				/* background-color: #e9ecef; */
-				/* Subtle gray background on hover */
-				/* color: #2CB5E5; */
-				/* Highlight color for text */
-				border-radius: 5px;
-				/* Optional: Rounded corners for hover effect */
-			}
+                .navbar-collapse .nav-link:hover {
+                    /* background-color: #e9ecef; */
+                    /* Subtle gray background on hover */
+                    /* color: #2CB5E5; */
+                    /* Highlight color for text */
+                    border-radius: 5px;
+                    /* Optional: Rounded corners for hover effect */
+                }
 
-			.navbar-collapse {
-				display: none;
-				white-space: nowrap;
-				/* Initially hidden */
-				flex-direction: column;
-				/* Align items vertically */
-				align-items: center;
-				/* Center-align the menu items */
-				justify-content: center;
-				/* Center-align vertically */
-				background-color: #4579BA;
-				/* White background */
-				width: 100%;
-				/* Full width of the parent container */
-				position: absolute;
-				/* Position the menu below the navbar */
-				top: 100%;
-				/* Position it directly below the navbar */
-				left: 0;
-				/* Align to the left edge */
-				z-index: 1000;
-				/* Ensure it appears above other content */
-				border-top: 1px solid #ddd;
-				/* Optional: Add a subtle border for separation */
-				padding: 10px 0;
-				/* Add padding for vertical spacing */
-				padding-left: 40px;
-			}
-		}
+                .navbar-collapse {
+                    display: none;
+                    white-space: nowrap;
+                    /* Initially hidden */
+                    flex-direction: column;
+                    /* Align items vertically */
+                    align-items: center;
+                    /* Center-align the menu items */
+                    justify-content: center;
+                    /* Center-align vertically */
+                    background-color: #4579BA;
+                    /* White background */
+                    width: 100%;
+                    /* Full width of the parent container */
+                    position: absolute;
+                    /* Position the menu below the navbar */
+                    top: 100%;
+                    /* Position it directly below the navbar */
+                    left: 0;
+                    /* Align to the left edge */
+                    z-index: 1000;
+                    /* Ensure it appears above other content */
+                    border-top: 1px solid #ddd;
+                    /* Optional: Add a subtle border for separation */
+                    padding: 10px 0;
+                    /* Add padding for vertical spacing */
+                    padding-left: 40px;
+                }
+            }
 
-		@media (max-width: 768px) {
-			.top-bar {
-				padding: 12px 30px;
-				/* Add padding for smaller screens */
+            @media (max-width: 768px) {
+                .top-bar {
+                    padding: 12px 30px;
+                    /* Add padding for smaller screens */
 
-			}
+                }
 
-			.top-bar .containerss .row {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-				/* Ensure space between phone and button */
-				align-items: center;
-				/* Center align items horizontally */
-				gap: 20px;
-			}
+                .top-bar .containerss .row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    /* Ensure space between phone and button */
+                    align-items: center;
+                    /* Center align items horizontally */
+                    gap: 20px;
+                }
 
-			.top-bar .contact-details {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				gap: 10px;
-				/* Adjust spacing between elements */
-				flex-wrap: nowrap;
-				/* Prevent wrapping */
-			}
+                .top-bar .contact-details {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    /* Adjust spacing between elements */
+                    flex-wrap: nowrap;
+                    /* Prevent wrapping */
+                }
 
-			.top-bar .btn-phone {
-				display: flex;
-				align-items: center;
-				gap: 5px;
-				text-decoration: none;
-				color: inherit;
-				font-size: 14px;
-				font-weight: bold;
-				color: #FFFFFF;
-				white-space: nowrap;
-				/* Prevent text wrapping */
-			}
+                .top-bar .btn-phone {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    text-decoration: none;
+                    color: inherit;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #FFFFFF;
+                    white-space: nowrap;
+                    /* Prevent text wrapping */
+                }
 
-			.top-bar .btIconWidgetTitle {
-				font-size: 16px;
-				color: #FFFFFF;
-				padding-left: 50px;
-				/* display: inline-block; */
-				white-space: nowrap;
-			}
+                .top-bar .btIconWidgetTitle {
+                    font-size: 16px;
+                    color: #FFFFFF;
+                    padding-left: 50px;
+                    /* display: inline-block; */
+                    white-space: nowrap;
+                }
 
-			.top-bar .book-appointment-btn {
-				font-size: 14px;
-				height: 36px;
-				/* Adjust button height */
-				padding: 0 10px;
-				background-color: #2C2D78;
-				color: #FFBD0D;
-				border-radius: 5px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				text-decoration: none;
-				white-space: nowrap;
-				/* Prevent text wrapping */
-			}
+                .top-bar .book-appointment-btn {
+                    font-size: 14px;
+                    height: 36px;
+                    /* Adjust button height */
+                    padding: 0 10px;
+                    background-color: #2C2D78;
+                    color: #FFBD0D;
+                    border-radius: 5px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    white-space: nowrap;
+                    /* Prevent text wrapping */
+                }
 
-			.top-bar .contact-details i {
-				font-size: 14px;
-				color: #FFFFFF;
-			}
+                .top-bar .contact-details i {
+                    font-size: 14px;
+                    color: #FFFFFF;
+                }
 
-			/* Ensure the button and phone number fit horizontally */
-			.top-bar .contact-details {
-				max-width: 100%;
-				justify-content: space-between;
-			}
-
-
-
-
-			/* Display the hamburger menu */
-			.navbar-toggler {
-				display: block;
-				/* Ensure visibility */
-				background: transparent;
-				/* Transparent background */
-				border: none;
-				/* Remove default border */
-				padding: 10px;
-				/* Add padding for spacing */
-				cursor: pointer;
-				/* Pointer cursor */
-				padding-right: 30px;
-			}
-
-			/* Custom styling for the hamburger icon (circular) */
-			.navbar-toggler-icon {
-				width: 30px;
-				/* Adjust size for a cleaner look */
-				height: 3px;
-				/* Thin line for a modern feel */
-				background-color: #034CAE;
-				/* Dark blue color */
-				position: relative;
-				/* Relative positioning for pseudo-elements */
-				transition: all 0.3s ease;
-				/* Smooth transition */
-			}
-
-			.navbar-toggler-icon::before,
-			.navbar-toggler-icon::after {
-				content: '';
-				position: absolute;
-				width: 30px;
-				/* Match width of main line */
-				height: 3px;
-				/* Thin line for consistency */
-				background-color: #034CAE;
-				/* Dark blue color */
-				transition: all 0.3s ease;
-				/* Smooth transition */
-			}
-
-			.navbar-toggler-icon::before {
-				top: -8px;
-				/* Position above main line */
-			}
-
-			.navbar-toggler-icon::after {
-				top: 8px;
-				/* Position below main line */
-			}
-
-			.navbar-toggler.collapsed .navbar-toggler-icon {
-				background-color: transparent;
-				/* Hide main line */
-			}
-
-			/* Add a cross (X) effect on click */
-			.navbar-toggler.collapsed .navbar-toggler-icon::before {
-				transform: rotate(45deg);
-				/* Rotate to form X */
-				top: 0;
-				/* Align with center */
-			}
-
-			.navbar-toggler.collapsed .navbar-toggler-icon::after {
-				transform: rotate(-45deg);
-				/* Rotate to form X */
-				top: 0;
-				/* Align with center */
-			}
-
-			.contact-details {
-				display: flex;
-				justify-content: flex-end;
-				flex-direction: column;
-				gap: 10px;
-			}
-
-			/* Navbar items are stacked vertically on small screens */
-			.navbar-nav {
-				flex-direction: column;
-				width: 100%;
-				text-align: center;
-
-			}
-
-			.nav-link {
-				padding: 10px 20px;
-
-			}
+                /* Ensure the button and phone number fit horizontally */
+                .top-bar .contact-details {
+                    max-width: 100%;
+                    justify-content: space-between;
+                }
 
 
 
-			/* Book Appointment button */
-			.book-appointment-btn {
-				height: 30px;
-				font-size: 12px;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 150px;
-				background-color: #1D9BF0;
-				color: #FFFFFF;
-				margin-right: 20px;
-			}
-		}
-		@media (max-width: 768px) {
-          .appointment-buttons {
-          flex-direction: column !important;
-          align-items: flex-start;
-           }
-         }
-	</style>
 
-<script>
-	// Initialize EmailJS
-	(function () {
-		emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
-		console.log("EmailJS initialized.");
-	})();
+                /* Display the hamburger menu */
+                .navbar-toggler {
+                    display: block;
+                    /* Ensure visibility */
+                    background: transparent;
+                    /* Transparent background */
+                    border: none;
+                    /* Remove default border */
+                    padding: 10px;
+                    /* Add padding for spacing */
+                    cursor: pointer;
+                    /* Pointer cursor */
+                    padding-right: 30px;
+                }
 
-	document.addEventListener("DOMContentLoaded", function () {
-		console.log("DOM loaded.");
+                /* Custom styling for the hamburger icon (circular) */
+                .navbar-toggler-icon {
+                    width: 30px;
+                    /* Adjust size for a cleaner look */
+                    height: 3px;
+                    /* Thin line for a modern feel */
+                    background-color: #034CAE;
+                    /* Dark blue color */
+                    position: relative;
+                    /* Relative positioning for pseudo-elements */
+                    transition: all 0.3s ease;
+                    /* Smooth transition */
+                }
 
-		document.getElementById("contactForm").addEventListener("submit", function (event) {
-			event.preventDefault(); // Prevent the form from reloading the page
+                .navbar-toggler-icon::before,
+                .navbar-toggler-icon::after {
+                    content: '';
+                    position: absolute;
+                    width: 30px;
+                    /* Match width of main line */
+                    height: 3px;
+                    /* Thin line for consistency */
+                    background-color: #034CAE;
+                    /* Dark blue color */
+                    transition: all 0.3s ease;
+                    /* Smooth transition */
+                }
 
-			// Collect form values
-			const firstName = document.getElementById("firstName").value;
-			const lastName = document.getElementById("lastName").value;
-			const email = document.getElementById("email").value;
-			const phone = document.getElementById("phone").value;
-			const message = document.getElementById("message").value;
+                .navbar-toggler-icon::before {
+                    top: -8px;
+                    /* Position above main line */
+                }
 
-			console.log("Collected Data:", { firstName, lastName, email, phone, message });
+                .navbar-toggler-icon::after {
+                    top: 8px;
+                    /* Position below main line */
+                }
 
-			// Map form values to EmailJS template variables
-			const templateParams = {
-				to_name: firstName, // Replace with the recipient's name
-				first_name: firstName,
-				last_name: lastName,
-				email: email,
-				phone: phone,
-				message: message,
-			};
+                .navbar-toggler.collapsed .navbar-toggler-icon {
+                    background-color: transparent;
+                    /* Hide main line */
+                }
 
-			console.log("Template Parameters:", templateParams);
+                /* Add a cross (X) effect on click */
+                .navbar-toggler.collapsed .navbar-toggler-icon::before {
+                    transform: rotate(45deg);
+                    /* Rotate to form X */
+                    top: 0;
+                    /* Align with center */
+                }
 
-			// Send the email
-			emailjs
-				.send("service_5acopmj", "template_2etv5om", templateParams)
-				.then(
-					function (response) {
-						alert("Email sent successfully!");
-						console.log("SUCCESS!", response.status, response.text);
-						document.getElementById("contactForm").reset(); // Reset the form
-					},
-					function (error) {
-						alert("Failed to send email. Please try again.");
-						console.error("FAILED...", error);
-					}
-				)
-				.catch((error) => {
-					alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
-					console.error("Unexpected Error:", error);
-				});
-		});
-	});
-</script>
+                .navbar-toggler.collapsed .navbar-toggler-icon::after {
+                    transform: rotate(-45deg);
+                    /* Rotate to form X */
+                    top: 0;
+                    /* Align with center */
+                }
 
-	<!-- Top Bar -->
-	<div class="top-bar" style="background-color: #4579BA; padding: 5px 0;padding-right: 110px;">
-		<div class="containerss">
-			<div class="row" style="display: flex; justify-content: space-between; align-items: center;">
-				<div class="social2" style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
-					<!-- Contact Details -->
-					<div class="contact-details" style="display: flex; align-items: center; gap: 15px;">
-						<!-- Phone Number with Icon -->
-						<a href="tel:+17054222490" class="btn-phone"
-							style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;">
+                .contact-details {
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: column;
+                    gap: 10px;
+                }
 
-							<span class="btIconWidgetTitle" style="font-size: 14px; font-weight: bold; color: #FFFFFF;">
-								<i class="fas fa-phone-alt" style="color: #FFFFFF; font-size: 14px;"></i> (705) 422-2490
-							</span>
-						</a>
-						<!-- Book Appointment Button -->
-						<div class="appointment-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <a href="Contact-New.html" class="book-appointment-btn"
-                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
-                                Book Appointment
+                /* Navbar items are stacked vertically on small screens */
+                .navbar-nav {
+                    flex-direction: column;
+                    width: 100%;
+                    text-align: center;
+
+                }
+
+                .nav-link {
+                    padding: 10px 20px;
+
+                }
+
+
+
+                /* Book Appointment button */
+                .book-appointment-btn {
+                    height: 30px;
+                    font-size: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 150px;
+                    background-color: #1D9BF0;
+                    color: #FFFFFF;
+                    margin-right: 20px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .appointment-buttons {
+                    flex-direction: column !important;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+
+        <script>
+            // Initialize EmailJS
+            (function () {
+                emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
+                console.log("EmailJS initialized.");
+            })();
+
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("DOM loaded.");
+
+                document.getElementById("contactForm").addEventListener("submit", function (event) {
+                    event.preventDefault(); // Prevent the form from reloading the page
+
+                    // Collect form values
+                    const firstName = document.getElementById("firstName").value;
+                    const lastName = document.getElementById("lastName").value;
+                    const email = document.getElementById("email").value;
+                    const phone = document.getElementById("phone").value;
+                    const message = document.getElementById("message").value;
+
+                    console.log("Collected Data:", { firstName, lastName, email, phone, message });
+
+                    // Map form values to EmailJS template variables
+                    const templateParams = {
+                        to_name: firstName, // Replace with the recipient's name
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        phone: phone,
+                        message: message,
+                    };
+
+                    console.log("Template Parameters:", templateParams);
+
+                    // Send the email
+                    emailjs
+                        .send("service_5acopmj", "template_2etv5om", templateParams)
+                        .then(
+                            function (response) {
+                                alert("Email sent successfully!");
+                                console.log("SUCCESS!", response.status, response.text);
+                                document.getElementById("contactForm").reset(); // Reset the form
+                            },
+                            function (error) {
+                                alert("Failed to send email. Please try again.");
+                                console.error("FAILED...", error);
+                            }
+                        )
+                        .catch((error) => {
+                            alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
+                            console.error("Unexpected Error:", error);
+                        });
+                });
+            });
+        </script>
+
+        <!-- Top Bar -->
+        <div class="top-bar" style="background-color: #4579BA; padding: 5px 0;padding-right: 110px;">
+            <div class="containerss">
+                <div class="row" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="social2"
+                        style="flex: 1; display: flex; justify-content: flex-end; align-items: center;">
+                        <!-- Contact Details -->
+                        <div class="contact-details" style="display: flex; align-items: center; gap: 15px;">
+                            <!-- Phone Number with Icon -->
+                            <a href="tel:+17054222490" class="btn-phone"
+                                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;">
+
+                                <span class="btIconWidgetTitle"
+                                    style="font-size: 14px; font-weight: bold; color: #FFFFFF;">
+                                    <i class="fas fa-phone-alt" style="color: #FFFFFF; font-size: 14px;"></i> (705)
+                                    422-2490
+                                </span>
                             </a>
-                            <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
-                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
-                                APPOINTMENT FORM
-                            </a>
+                            <!-- Book Appointment Button -->
+                            <div class="appointment-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a href="Contact-New.html" class="book-appointment-btn"
+                                    style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                    Book Appointment
+                                </a>
+                                <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
+                                    style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+                                    APPOINTMENT FORM
+                                </a>
+                            </div>
                         </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-	<!-- Navigation -->
-	<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;padding-left:130px;">
-			<div class="containereeeee"
-				style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-				<!-- Logo aligned to the left -->
-				<a class="navbar-brand" href="index.html"
-					style="display: flex; align-items: center; padding-right: 160px;">
-					<img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
-				</a>
-				<!-- Hamburger Menu Button (visible on small devices) -->
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<!-- Navbar items aligned to the right -->
-				<div class="collapse navbar-collapse" id="navbarResponsive"
-					style="display: flex; ">
-					<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; list-style: none;">
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="index.html"
-								style="font-size: 16px; padding: 5px 10px;">HOME</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="About-Us.html"
-								style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Services.html"
-								style="font-size: 16px; padding: 5px 10px;">SERVICES</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Team.html" style="font-size: 16px; padding: 5px 10px;">OUR
-								TEAM</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Testimonials.html"
-								style="font-size: 16px; padding: 5px 10px;">TESTIMONIALS</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Technology.html"
-								style="font-size: 16px; padding: 5px 10px;">OUR OFFICE</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Contact-Us.html"
-								style="font-size: 16px; padding: 5px 10px;">CONTACT</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+        <!-- Navigation -->
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;padding-left:130px;">
+            <div class="containereeeee"
+                style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                <!-- Logo aligned to the left -->
+                <a class="navbar-brand" href="index.html"
+                    style="display: flex; align-items: center; padding-right: 160px;">
+                    <img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
+                </a>
+                <!-- Hamburger Menu Button (visible on small devices) -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar items aligned to the right -->
+                <div class="collapse navbar-collapse" id="navbarResponsive" style="display: flex; ">
+                    <ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; list-style: none;">
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="index.html" style="font-size: 16px; padding: 5px 10px;">HOME</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="About-Us.html"
+                                style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="Services.html"
+                                style="font-size: 16px; padding: 5px 10px;">SERVICES</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="Team.html" style="font-size: 16px; padding: 5px 10px;">OUR
+                                TEAM</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="Testimonials.html"
+                                style="font-size: 16px; padding: 5px 10px;">TESTIMONIALS</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="Technology.html" style="font-size: 16px; padding: 5px 10px;">OUR
+                                OFFICE</a>
+                        </li>
+                        <li class="nav-item" style="margin-right: 5px;">
+                            <a class="nav-link" href="Contact-Us.html"
+                                style="font-size: 16px; padding: 5px 10px;">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
 
-		<style>
-			.nav-link
-			{
-				color: #000;
-			}
-			.nav-link:hover {
-				text-decoration: none;
-				/* Remove default underline */
-				border-top: 2px solid #034CAE;
-				/* Top underline */
-				border-bottom: 2px solid #034CAE;
-				/* Bottom underline */
-				color: #2CB5E5;
-				border-top: 50%;
-				/* Position the top border at the middle */
-				border-bottom: 50%;
-				/* Position the top border at the middle */
-			}
-		</style>
+        <style>
+            .nav-link {
+                color: #000;
+            }
+
+            .nav-link:hover {
+                text-decoration: none;
+                /* Remove default underline */
+                border-top: 2px solid #034CAE;
+                /* Top underline */
+                border-bottom: 2px solid #034CAE;
+                /* Bottom underline */
+                color: #2CB5E5;
+                border-top: 50%;
+                /* Position the top border at the middle */
+                border-bottom: 50%;
+                /* Position the top border at the middle */
+            }
+        </style>
 
 
-	<style>
-		.nav-link:hover {
-			text-decoration: none;
-			/* Remove default underline */
-			border-top: 2px solid #034CAE;
-			/* Top underline */
-			border-bottom: 2px solid #034CAE;
-			/* Bottom underline */
-			color: #2CB5E5;
-			border-top: 50%;
-			/* Position the top border at the middle */
-			border-bottom: 50%;
-			/* Position the top border at the middle */
-		}
-	</style>
+        <style>
+            .nav-link:hover {
+                text-decoration: none;
+                /* Remove default underline */
+                border-top: 2px solid #034CAE;
+                /* Top underline */
+                border-bottom: 2px solid #034CAE;
+                /* Bottom underline */
+                color: #2CB5E5;
+                border-top: 50%;
+                /* Position the top border at the middle */
+                border-bottom: 50%;
+                /* Position the top border at the middle */
+            }
+        </style>
         <div class="btContentWrap btClear">
             <section
                 class="bt_bb_sectionn gutter bt_bb_vertical_align_top btPageHeadline bt_bb_background_image bt_bb_background_overlay_light_solid bt_bb_parallax btLightSkin"
@@ -14164,7 +14221,8 @@ By signing this form, you give consent to our office to communicate with you via
                 <div style="text-align: center;">
                     <header class="bt_bb_headline bt_bb_superheadline_outside bt_bb_subheadline bt_bb_size_large"
                         data-bt-override-class="{}">
-                        <h1 class="bt_bb_headline_tag" style="font-size: 100px;font-weight: bold;color: black;padding-top:80px;">
+                        <h1 class="bt_bb_headline_tag"
+                            style="font-size: 100px;font-weight: bold;color: black;padding-top:80px;">
                             <span class="bt_bb_headline_content">
                                 <span>APPOINTMENT</span>
                             </span>
@@ -14464,7 +14522,8 @@ By signing this form, you give consent to our office to communicate with you via
                         </div>
 
                         <div class="inline-group">
-                            <label>Have you seen a Periodontist?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>Have you seen a
+                                Periodontist?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
                                 <label for="seen-periodontist-yes">Yes</label>
@@ -14480,63 +14539,64 @@ By signing this form, you give consent to our office to communicate with you via
                                 <input type="text" id="Periodontist-when" placeholder="Enter the date or time">
                             </div>
                         </div>
-<script>
-    function toggleWhitenedWhen() {
-        var yesCheckbox = document.getElementById('whitened-teeth-yes');
-        var whenSection = document.getElementById('whitened-when-section');
-        
-        // Show the "If Yes, when?" section if the Yes checkbox is checked
-        if (yesCheckbox.checked) {
-            whenSection.style.display = 'block';
-        } else {
-            whenSection.style.display = 'none';
-        }
-    }
-</script>
+                        <script>
+                            function toggleWhitenedWhen() {
+                                var yesCheckbox = document.getElementById('whitened-teeth-yes');
+                                var whenSection = document.getElementById('whitened-when-section');
 
-<script>
-    function toggleJawWhen() {
-        var yesCheckbox = document.getElementById('diagnosed-jaw-yes');
-        var whenSection = document.getElementById('jaw-when-section');
-        
-        // Show the "If Yes, when?" section if the Yes checkbox is checked
-        if (yesCheckbox.checked) {
-            whenSection.style.display = 'block';
-        } else {
-            whenSection.style.display = 'none';
-        }
-    }
-</script>
+                                // Show the "If Yes, when?" section if the Yes checkbox is checked
+                                if (yesCheckbox.checked) {
+                                    whenSection.style.display = 'block';
+                                } else {
+                                    whenSection.style.display = 'none';
+                                }
+                            }
+                        </script>
 
-<script>
-    function toggleTreatedWhen() {
-        var treatedCheckbox = document.getElementById('treated-checkbox');
-        var treatedWhenSection = document.getElementById('treated-when-section');
-        
-        // Show the "If Treated, when?" section if the Treated checkbox is checked
-        if (treatedCheckbox.checked) {
-            treatedWhenSection.style.display = 'block';
-        } else {
-            treatedWhenSection.style.display = 'none';
-        }
-    }
-</script>
+                        <script>
+                            function toggleJawWhen() {
+                                var yesCheckbox = document.getElementById('diagnosed-jaw-yes');
+                                var whenSection = document.getElementById('jaw-when-section');
 
-<script>
-    function togglePeriodontistWhen() {
-        var yesCheckbox = document.getElementById('seen-periodontist-yes');
-        var whenSection = document.getElementById('periodontist-when-section');
-        
-        // Show the "If Yes, when?" section if the Yes checkbox is checked
-        if (yesCheckbox.checked) {
-            whenSection.style.display = 'block';
-        } else {
-            whenSection.style.display = 'none';
-        }
-    }
-</script>
+                                // Show the "If Yes, when?" section if the Yes checkbox is checked
+                                if (yesCheckbox.checked) {
+                                    whenSection.style.display = 'block';
+                                } else {
+                                    whenSection.style.display = 'none';
+                                }
+                            }
+                        </script>
+
+                        <script>
+                            function toggleTreatedWhen() {
+                                var treatedCheckbox = document.getElementById('treated-checkbox');
+                                var treatedWhenSection = document.getElementById('treated-when-section');
+
+                                // Show the "If Treated, when?" section if the Treated checkbox is checked
+                                if (treatedCheckbox.checked) {
+                                    treatedWhenSection.style.display = 'block';
+                                } else {
+                                    treatedWhenSection.style.display = 'none';
+                                }
+                            }
+                        </script>
+
+                        <script>
+                            function togglePeriodontistWhen() {
+                                var yesCheckbox = document.getElementById('seen-periodontist-yes');
+                                var whenSection = document.getElementById('periodontist-when-section');
+
+                                // Show the "If Yes, when?" section if the Yes checkbox is checked
+                                if (yesCheckbox.checked) {
+                                    whenSection.style.display = 'block';
+                                } else {
+                                    whenSection.style.display = 'none';
+                                }
+                            }
+                        </script>
                         <div class="inline-group">
-                            <label>Are your teeth sensitive to Sweets?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>Are your teeth sensitive to
+                                Sweets?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
                                 <label for="sensitive-sweets-yes">Yes</label>
                                 <input type="checkbox" id="sensitive-sweets-yes" name="sensitive-sweets"
@@ -14551,19 +14611,19 @@ By signing this form, you give consent to our office to communicate with you via
                                 <input type="text" id="sensitive-when" placeholder="Enter the date or time">
                             </div>
                         </div>
-<script>
-    function toggleSensitiveWhen() {
-        var yesCheckbox = document.getElementById('sensitive-sweets-yes');
-        var whenSection = document.getElementById('sensitive-when-section');
-        
-        // Show the "If so, when?" section if the Yes checkbox is checked
-        if (yesCheckbox.checked) {
-            whenSection.style.display = 'block';
-        } else {
-            whenSection.style.display = 'none';
-        }
-    }
-</script>
+                        <script>
+                            function toggleSensitiveWhen() {
+                                var yesCheckbox = document.getElementById('sensitive-sweets-yes');
+                                var whenSection = document.getElementById('sensitive-when-section');
+
+                                // Show the "If so, when?" section if the Yes checkbox is checked
+                                if (yesCheckbox.checked) {
+                                    whenSection.style.display = 'block';
+                                } else {
+                                    whenSection.style.display = 'none';
+                                }
+                            }
+                        </script>
                         <div class="inline-group">
                             <label>Have you been diagnosed with TMJ (Jaw Joint)
                                 problems?</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -14586,56 +14646,58 @@ By signing this form, you give consent to our office to communicate with you via
                             <label>Does your Jaw Joints "Click" or "Pop" when you open?</label>
                             <input type="text" id="medication-reason" placeholder="Enter details">
                         </div>
-                        
+
                         <div>
                             <label>Are you aware if you grind or clench your teeth at night?</label>
                             <input type="text" id="clench-teeth" placeholder="Enter details">
                         </div>
-                        
+
                         <div>
                             <label>Have you had orthodontic work done (braces)?</label>
                             <input type="text" id="orthodontic" placeholder="Enter details">
                         </div>
-                        
+
                         <div class="inline-group">
                             <label>Do you wear any oral appliances?</label>
                             <input type="text" id="oral-appliances" placeholder="Enter details">
                             <label>Removable or Fixed?</label>
                             <input type="text" id="Removable-Fixed" placeholder="Specify">
                         </div>
-                        
+
                         <div class="inline-group">
                             <label>Have you professionally whitened your teeth before?</label>
                             <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
                                 <label for="whitened-teeth-yes">Yes</label>
-                                <input type="checkbox" id="whitened-teeth-yes" name="whitened-teeth" onclick="toggleWhitenedWhen()">
-                        
+                                <input type="checkbox" id="whitened-teeth-yes" name="whitened-teeth"
+                                    onclick="toggleWhitenedWhen()">
+
                                 <label for="whitened-teeth-no">No</label>
-                                <input type="checkbox" id="whitened-teeth-no" name="whitened-teeth" onclick="toggleWhitenedWhen()">
+                                <input type="checkbox" id="whitened-teeth-no" name="whitened-teeth"
+                                    onclick="toggleWhitenedWhen()">
                             </div>
-                            
+
                             <div id="whitened-when-section" style="display: none; margin-top: 10px;">
                                 <label>If Yes, when?</label>
                                 <input type="text" id="Whitened-when" placeholder="Enter the date or time">
                             </div>
                         </div>
                         <script> function toggleWhitenedWhen() {
-                        const whitenedYes = document.getElementById('whitened-teeth-yes');
-                        const whitenedNo = document.getElementById('whitened-teeth-no');
-                        const whitenedWhenSection = document.getElementById('whitened-when-section');
+                                const whitenedYes = document.getElementById('whitened-teeth-yes');
+                                const whitenedNo = document.getElementById('whitened-teeth-no');
+                                const whitenedWhenSection = document.getElementById('whitened-when-section');
 
-                        if (whitenedYes.checked) {
-                            whitenedNo.checked = false;
-                            whitenedWhenSection.style.display = 'block';
-                        } else if (whitenedNo.checked) {
-                            whitenedYes.checked = false;
-                            whitenedWhenSection.style.display = 'none';
-                        }
-                    }</script>
+                                if (whitenedYes.checked) {
+                                    whitenedNo.checked = false;
+                                    whitenedWhenSection.style.display = 'block';
+                                } else if (whitenedNo.checked) {
+                                    whitenedYes.checked = false;
+                                    whitenedWhenSection.style.display = 'none';
+                                }
+                            }</script>
                         <div>
                             <label>Are you happy with your smile?</label>
                             <input type="text" id="supplement-reason" placeholder="Enter details">
-                        </div>                        
+                        </div>
                     </section>
 
                     <section class="section">
@@ -14739,8 +14801,10 @@ By signing this form, you give consent to our office to communicate with you via
                 </form>
                 <hr>
             </div>
-            <button class="btn btn-primary" id="btnDownloadprt" style="float: right;margin-right: 100px">Download Form</button>
-            <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Submit Form</button>
+            <button class="btn btn-primary" id="btnDownloadprt" style="float: right;margin-right: 100px">Download
+                Form</button>
+            <button class="btn btn-primary" id="btnsbmtrprt" style="float: right;margin-right: 100px">Submit
+                Form</button>
             <br>
         </div>
 
