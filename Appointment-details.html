@@ -903,18 +903,23 @@
 
                     // Adding the Medical Conditions section with checkboxes
                     doc.setFontSize(12);
-                    doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 20); // Move the heading outside of the box
-                    doc.setFontSize(10);
+                    doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 20);
 
-                    // Draw border for Medical Conditions section
+                    doc.setFontSize(9); // Reduced font size for better fit
+
                     const sectionX = 5;
-                    const sectionY = 30; // Adjusting startY for the box placement
+                    const sectionY = 30;
                     const sectionWidth = 200;
-                    const sectionHeight = 170;
+                    const sectionHeight = 150;
                     doc.rect(sectionX, sectionY, sectionWidth, sectionHeight);
 
-                    // Set checkbox color to dark black
-                    doc.setDrawColor(0, 0, 0); // Set color to dark black
+                    // Set checkbox color
+                    doc.setDrawColor(0, 0, 0);
+
+                    // Reduce column width to fit a 4th column
+                    const checkboxColumnWidth = 47;
+                    const checkboxRowHeight = 7;
+                    let startY = sectionY + 10;
 
                     const medicalConditionsColumns = [
                         ['Artificial Joints', 'Asthma', 'Malignant'],
@@ -935,20 +940,6 @@
                         ['Heart Issues', 'Endocarditis', '']
                     ];
 
-
-                    const drawCheckbox = (doc, x, y, checked) => {
-                        doc.rect(x, y, 4, 4); // Draw the square
-                        if (checked) {
-                            doc.line(x, y, x + 4, y + 4); // Draw the checkmark
-                            doc.line(x + 4, y, x, y + 4);
-                        }
-                    };
-
-                    const checkboxColumnWidth = 60;
-                    const checkboxRowHeight = 7;
-                    let startY = sectionY + 10;
-
-                    // Collecting checked values
                     const getCheckedValues = () => {
                         const checkboxes = document.querySelectorAll('input[name="medical-condition"]');
                         const checkedValues = [];
@@ -960,36 +951,66 @@
                         return checkedValues;
                     };
 
+                    const drawCheckbox = (doc, x, y, checked) => {
+                        doc.rect(x, y, 4, 4);
+                        if (checked) {
+                            doc.line(x, y, x + 4, y + 4);
+                            doc.line(x + 4, y, x, y + 4);
+                        }
+                    };
+
                     const checkedValues = getCheckedValues();
 
-                    // Draw the columns and their content
+                    // Draw 3 columns of checkboxes
                     medicalConditionsColumns.forEach((row, rowIndex) => {
                         row.forEach((condition, colIndex) => {
-                            if (condition) {
+                            if (condition && colIndex < 3) {
                                 const checked = checkedValues.includes(condition);
-                                drawCheckbox(doc, sectionX + 5 + colIndex * checkboxColumnWidth, startY, checked);
-                                doc.text(condition, sectionX + 11 + colIndex * checkboxColumnWidth, startY + 3);
+                                const xPos = sectionX + 5 + colIndex * checkboxColumnWidth;
+                                drawCheckbox(doc, xPos, startY, checked);
+                                doc.text(condition, xPos + 6, startY + 3);
                             }
                         });
                         startY += checkboxRowHeight;
                     });
 
-                    // Draw vertical lines for the table columns
-                    for (let i = 0; i <= medicalConditionsColumns[0].length; i++) {
+                    // Draw vertical lines for the 3 columns
+                    for (let i = 0; i <= 3; i++) {
                         doc.line(sectionX + i * checkboxColumnWidth, sectionY, sectionX + i * checkboxColumnWidth, sectionY + sectionHeight);
                     }
 
-                    // Add horizontal line below the Medical Conditions heading
-                    //doc.line(sectionX, 28, sectionX + sectionWidth, 28);
+                    // Add horizontal line above Recent Surgeries section
+                    startY += 5;
+                    //doc.line(sectionX, startY, sectionX + sectionWidth, startY);
 
-                    // Add the recent surgeries or hospital visits section
-                    startY += 10;
-                    doc.text('List Recent Surgeries or Hospital \nVisits:', sectionX + 5, startY);
-                    const recentSurgeries = document.getElementById('recentSurgeries').value;
-                    doc.text(recentSurgeries, sectionX + 5, startY + 10);
+                    // Add fourth column label
+                    doc.setFontSize(9);
 
-                    // Add horizontal line above the recent surgeries label
-                    doc.line(sectionX, startY - 5, sectionX + sectionWidth, startY - 5);
+// Coordinates for the 4th column
+const recentHeaderX = sectionX + 3 * checkboxColumnWidth + 5;
+const recentHeaderY = sectionY + 8;
+const fourthColWidth = sectionWidth - 3 * checkboxColumnWidth - 10;
+
+// Multiline heading
+const recentHeaderText = 'List Recent Surgeries\nor Hospital Visits:';
+const recentHeaderLines = doc.splitTextToSize(recentHeaderText, fourthColWidth);
+
+// Print the heading
+doc.text(recentHeaderLines, recentHeaderX, recentHeaderY);
+
+// Calculate the height of the heading
+const lineHeight = 4;  // You can adjust this if needed
+const headingHeight = recentHeaderLines.length * lineHeight;
+
+// Draw horizontal line below the heading
+const lineYD = recentHeaderY + headingHeight + 1; // 1 unit gap after heading
+doc.line(recentHeaderX, lineYD, recentHeaderX + fourthColWidth, lineYD);
+
+// Print the answer text with gap below the line
+const recentSurgeries = document.getElementById('recentSurgeries').value;
+const splitText = doc.splitTextToSize(recentSurgeries, fourthColWidth);
+const textY = lineYD + 5;  // Add gap after the line
+doc.text(splitText, recentHeaderX, textY);
 
 
 
@@ -1049,140 +1070,77 @@
                     }
 
                     function generatePDF(doc) {
-                        const getVal = (id) => document.getElementById(id)?.value || '';
-                        const getYesNo = (yesId, noId) =>
-                            document.getElementById(yesId)?.checked ? 'Yes' :
-                                document.getElementById(noId)?.checked ? 'No' : '';
+    const getVal = (id) => document.getElementById(id)?.value || '';
+    const getYesNo = (yesId, noId) =>
+        document.getElementById(yesId)?.checked ? 'Yes' :
+        document.getElementById(noId)?.checked ? 'No' : '';
 
-                        doc.setFont('helvetica');
-                        doc.setFontSize(11);
-                        doc.text('Dental History:', 10, 20);
-                        doc.setFontSize(8);
+    doc.setFont('helvetica');
+    doc.setFontSize(11);
+    doc.text('Dental History:', 10, 20);
+    doc.setFontSize(8);
 
-                        let y = 28;
-                        const labelGap = 1.5;
-                        const rowHeight = 8;
+    let y = 28;
+    const rowHeight = 8;
+    const labelX = 10;
+    const answerX = 130;
 
-                        const underline = (text, x, y) => {
-                            const width = doc.getTextWidth(text || '________');
-                            doc.line(x, y + labelGap, x + width, y + labelGap);
-                        };
+    const underline = (text, x, y) => {
+        const width = doc.getTextWidth(text || '________');
+        doc.line(x, y + 1.5, x + width, y + 1.5);
+    };
 
-                        const drawQA = (label, value, xLabel, xAnswer) => {
-                            doc.text(label, xLabel, y);
-                            doc.text(value, xAnswer, y);
-                            underline(value, xAnswer, y);
-                        };
+    const drawQnA = (question, answer) => {
+        doc.text(question, labelX, y);
+        doc.text(answer, answerX, y);
+        underline(answer, answerX, y);
+        y += rowHeight;
+    };
 
-                        const drawRow = (q1, val1, q2 = '', val2 = '') => {
-                            const answerX1 = 95; // Answer for question 1
-                            const labelX2 = answerX1 + doc.getTextWidth(val1 || '________') + 10; // Question 2 starts after Q1 answer
-                            const answerX2 = labelX2 + doc.getTextWidth(q2 || '________') + 5;
+    // One question per line format
+    drawQnA('Last Dental Checkup and Cleaning?', getVal('Checkup-name'));
+    drawQnA('How Frequently do you visit?', getVal('Frequently-visit'));
+    drawQnA('Do you usually take antibiotics before a procedure?', getVal('antibiotics-condition'));
+    drawQnA('Are you looking for Comprehensive Dental Care, or Emergency Care Only?', getVal('Comprehensive-Dental'));
+    drawQnA('Do you have a history of Gum Disease?', getYesNo('treated-checkbox', 'untreated-checkbox'));
 
-                            drawQA(q1, val1, 10, answerX1);
-                            if (q2) drawQA(q2, val2, labelX2, answerX2);
-                            y += rowHeight;
-                        };
+    const gumStatus = getYesNo('treated-checkbox', 'untreated-checkbox');
+    if (gumStatus === 'Yes') {
+        drawQnA('Treated When?', getVal('treated-when'));
+    }
 
-                        // Questions in rows
-                        drawRow(
-                            'Last Dental Checkup and Cleaning?', getVal('Checkup-name'),
-                            'How Frequently do you visit?', getVal('Frequently-visit')
-                        );
+    drawQnA('Have you seen a Periodontist?', getYesNo('seen-periodontist-yes', 'seen-periodontist-no'));
+    if (getYesNo('seen-periodontist-yes', 'seen-periodontist-no') === 'Yes') {
+        drawQnA('If Yes, when?', getVal('Periodontist-when'));
+    }
 
-                        drawRow('Do you usually take antibiotics before a procedure?', getVal('antibiotics-condition'));
+    drawQnA('Are your teeth sensitive to Sweets?', getYesNo('sensitive-sweets-yes', 'sensitive-sweets-no'));
+    if (getYesNo('sensitive-sweets-yes', 'sensitive-sweets-no') === 'Yes') {
+        drawQnA('Hot/Cold Sensitivity?', getVal('sensitive-when'));
+    }
 
-                        const question = 'Are you looking for Comprehensive Dental Care, or Emergency Care Only?';
-                        doc.text(question, 10, y);
+    drawQnA('Have you been diagnosed with TMJ (Jaw Joint) problems?', getYesNo('diagnosed-jaw-yes', 'diagnosed-jaw-no'));
+    drawQnA('Does your Jaw Joints "Click" or "Pop" when you open?', getVal('jaw-click'));
+    drawQnA('Are you aware If you grind or clench your teeth at night?', getYesNo('clench-teeth-yes', 'clench-teeth-no'));
+    drawQnA('Reason (if yes)?', getVal('clench-teeth'));
 
-                        const compDental = getVal('Comprehensive-Dental');
+    drawQnA('Have you had orthodontic work done (braces)?', getVal('orthodontic'));
+    drawQnA('Teeth Whitening done?', getYesNo('whitened-teeth-yes', 'whitened-teeth-no'));
+    
+    drawQnA('Do you wear any oral appliances?', getVal('oral-appliances'));
+    drawQnA('Removable or Fixed?', getVal('Removable-Fixed'));
+    drawQnA('Have you Professionally Whitened your teeth before?', getVal('Whitened-when'));
+    drawQnA('Are you happy with your smile?', getVal('supplement-reason'));
+    
+}
 
-                        // Calculate where the answer should start, right after the question
-                        const questionWidth = doc.getTextWidth(question);
-                        const answerX = 10 + questionWidth + 5; // 5px padding after question
-
-                        doc.text(compDental, answerX, y);
-                        underline(compDental, answerX, y);
-
-                        y += rowHeight;
-
-
-                        // Gum Disease
-                        doc.text('Do you have a history of Gum Disease?', 10, y);
-                        const gumStatus = getYesNo('treated-checkbox', 'untreated-checkbox');
-                        doc.text(gumStatus, 100, y); underline(gumStatus, 100, y);
-
-                        if (gumStatus === 'Yes') {
-                            doc.text('Treated?', 140, y);
-                            doc.text('Untreated?', 170, y);
-                            const treatedWhen = getVal('treated-when');
-                            doc.text(treatedWhen, 210, y); underline(treatedWhen, 210, y);
-                        }
-                        y += rowHeight;
-
-                        // Periodontist
-                        doc.text('Have you seen a Periodontist?', 10, y);
-                        const seen = getYesNo('seen-periodontist-yes', 'seen-periodontist-no');
-                        doc.text(seen, 100, y); underline(seen, 100, y);
-
-                        if (seen === 'Yes') {
-                            doc.text('If Yes, when?', 140, y);
-                            const seenWhen = getVal('Periodontist-when');
-                            doc.text(seenWhen, 200, y); underline(seenWhen, 200, y);
-                        }
-                        y += rowHeight;
-
-                        // Sensitivity
-                        doc.text('Are your teeth sensitive to Sweets?', 10, y);
-                        const sweetSens = getYesNo('sensitive-sweets-yes', 'sensitive-sweets-no');
-                        doc.text(sweetSens, 100, y); underline(sweetSens, 100, y);
-
-                        if (sweetSens === 'Yes') {
-                            doc.text('Hot?', 130, y);
-                            doc.text('Cold?', 150, y);
-                            const sensitivity = getVal('sensitive-when');
-                            doc.text(sensitivity, 180, y); underline(sensitivity, 180, y);
-                        }
-                        y += rowHeight;
-
-
-                        doc.text('Have you been diagnosed with TMJ (Jaw Joint) problems?', 10, y);
-                        const tmj = getYesNo('diagnosed-jaw-yes', 'diagnosed-jaw-no');
-                        doc.text(tmj, 200, y); underline(tmj, 200, y);
-                        y += rowHeight;
-
-                        drawRow('Does your Jaw Joints "Click" or "Pop" when you open?', getVal('jaw-click'));
-
-                        drawRow(
-                            'Are you aware If you grind or clench your teeth at night?', getYesNo('clench-teeth-yes', 'clench-teeth-no'),
-                            'Reason?', getVal('clench-teeth')
-                        );
-
-                        drawRow(
-                            'Have you had orthodontic work done (braces)?', getVal('orthodontic'),
-                            'Teeth Whitening?', getYesNo('whitened-teeth-yes', 'whitened-teeth-no')
-                        );
-
-                        drawRow(
-                            'Have you Professionally Whitened your teeth before?', getVal('Whitened-when'),
-                            'Do you wear any oral appliances?', getVal('oral-appliances')
-                        );
-
-                        doc.text('Are you happy with your smile?', 10, y);
-                        const smile = getVal('supplement-reason');
-                        doc.text(smile, 95, y); underline(smile, 95, y);
-
-                        doc.text('Removable or Fixed?', 170, y);
-                        const fixed = getVal('Removable-Fixed');
-                        doc.text(fixed, 250, y); underline(fixed, 250, y);
-                        y += rowHeight;
-                    }
 
 
                     // Add a new page for Consent or other sections as needed
                     doc.addPage();
-                    // Set up fonts and title
-                    doc.setFont('Arial');
+
+                    // Set up title font
+                    doc.setFont('helvetica', 'bold');
                     doc.setFontSize(16);
 
                     const consentSignatureText = 'Consent, Signature and Date';
@@ -1198,66 +1156,89 @@
 
                     // Set smaller font for body text
                     doc.setFontSize(10);
+                    doc.setFont('helvetica', 'normal');
 
-                    const consentText = `GENERAL RELEASE: I, the undersigned, certify that the information contained in the medical and dental history is correct to the best of my knowledge. I consent to the release of medical information from my medical doctor, or other healthcare providers, if required by this dental office. I authorize this dental office to perform diagnostic procedures as may be required to determine necessary treatment. I understand that payment for my dental treatment is due at the time of service unless otherwise arranged in advance with office management. I understand that I am responsible for my account with this dental office, and that all of my dependents, and I will not allow payments to be in arrears.
-                          We need to have your consent to begin communicating with you by text or email.
-                          Email and text messaging allows us to communicate efficiently for the benefit of our patients. At the same time, we recognize the risk if addressed to the wrong person or accessed improperly while in storage or during transmission.
-                          HIPAA requires that providers take reasonable steps to protect against these risks but acknowledges that a balance must be struck between the need to secure personal information and the need to ensure that clinicians can efficiently exchange important patient care information. Stonebridge Dentistry has implemented such measures through obtaining informed consent from patients using any potentially unencrypted electronic format.
-                          By signing this form, you give consent to our office to communicate with you via`;
+                    // Paragraph 1 - GENERAL RELEASE
+                    const paragraph1 = `GENERAL RELEASE: I, the undersigned, certify that the information contained in the medical and dental history is correct to the best of my knowledge. I consent to the release  of medical information from my  medical doctor, or other healthcare providers , if required  by this  dental  office.  I authorize  this  dental  office to  perform  diagnostic  procedures as may be required to determine necessary treatment. I understand that payment for my dental treatment is due at the time of service unless otherwise arranged in advance with office management. I understand that I am responsible for my account with this dental office, and that all of my dependents, and I will not allow payments to be in arrears.`;
 
-                    // Draw multiline text with wrapping
-                    doc.text(consentText, 10, y, {
-                        maxWidth: 190,
-                        align: 'left',
-                        lineHeightFactor: 1.5
-                    });
+                    // Paragraph 2 - Bold Line
+                    const boldLine = `We need to have your consent to begin communicating with you by text or email.`;
+
+                    // Paragraph 3
+                    const paragraph3 = `Email  and text  messaging  allows us to communicate  efficiently  for  the  benefit  of our  patients.  At  the  same  time,  we recognize the risk if addressed to the wrong person or accessed improperly while in storage or during transmission.`;
+
+                    // Paragraph 4
+                    const paragraph4 = `HIPAA requires that providers take reasonable steps to protect against these risks but acknowledges that a balance must be struck between the need to secure personal information and the need to ensure that clinicians can efficiently  exchange  important  patient  care  information. Stonebridge  Dentistry has  implemented  such measures through obtaining informed consent from patients using any potentially unencrypted electronic format.`;
+
+                    // Paragraph 5
+                    const paragraph5 = `By signing this form, you give consent to our office to communicate with you via`;
+
+                    // Function to render paragraph with proper spacing
+                    function renderParagraph(text, fontStyle = 'normal') {
+                        doc.setFont('helvetica', fontStyle);
+                        const lines = doc.splitTextToSize(text, 190);
+                        doc.text(lines, 10, y, { align: 'left' });
+                        y += lines.length * 4 + 4; // 5 lineHeight + 5 for paragraph gap
+                    }
+
+                    // Render paragraphs
+                    renderParagraph(paragraph1);          // Normal
+                    renderParagraph(boldLine, 'bold');    // Bold with one line break before
+                    renderParagraph(paragraph3);          // Normal
+                    renderParagraph(paragraph4);          // Normal
+                    renderParagraph(paragraph5);          // Normal
+
+
 
 
                     // Capture form inputs with null/undefined checks
-                    const mobileNumber = document.getElementById('mobile-number') ? document.getElementById('mobile-number').value : '';
-                    const emailAddress = document.getElementById('email-address') ? document.getElementById('email-address').value : '';
-                    const signature = document.getElementById('signature') ? document.getElementById('signature').value : '';
-                    const printName = document.getElementById('print-name') ? document.getElementById('print-name').value : '';
-                    const date = document.getElementById('date') ? document.getElementById('date').value : '';
+                    const mobileNumber = document.getElementById('mobile-number')?.value || '';
+                    const emailAddress = document.getElementById('email-address')?.value || '';
+                    const signature = document.getElementById('signature')?.value || '';
+                    const printName = document.getElementById('print-name')?.value || '';
+                    const date = document.getElementById('date')?.value || '';
 
-                    // Checkbox statuses with null checks
-                    const isTextChecked = document.getElementById('communication-text') ? document.getElementById('communication-text').checked : false;
-                    const isEmailChecked = document.getElementById('communication-email') ? document.getElementById('communication-email').checked : false;
-                    const isBothChecked = document.getElementById('Both-email') ? document.getElementById('Both-email').checked : false;
-                    const isNeitherChecked = document.getElementById('Neither-email') ? document.getElementById('Neither-email').checked : false;
+                    // Checkbox statuses
+                    const isTextChecked = document.getElementById('communication-text')?.checked || false;
+                    const isEmailChecked = document.getElementById('communication-email')?.checked || false;
 
-                    // Function to draw consent checkbox
-                    const drawConsentCheckbox = (x, y, checked) => {
-                        doc.rect(x, y, 4, 4); // Draw the square
-                        if (checked) {
-                            doc.line(x, y, x + 4, y + 4); // Draw the checkmark
-                            doc.line(x + 4, y, x, y + 4);
-                        }
+                    // Get page width
+                    const pageWidths = doc.internal.pageSize.getWidth();
+
+                    // Layout constants
+                    const margin = 10;
+                    const labelWidth = 100;
+                    const valueBoxWidth = pageWidths - labelWidth - 2 * margin;
+                    const boxHeight = 15;
+                    let ys = 100;
+
+                    // Function to draw label box (left side)
+                    const drawLabelBox = (x, y, width, height, label) => {
+                        doc.setDrawColor(0);
+                        doc.setFontSize(10);
+                        doc.rect(x, y, width, height);
+                        doc.text(label, x + 5, y + 10);
                     };
 
-                    // Function to draw a bordered box with horizontal alignment
-                    const drawBorderedBox = (x, y, width, height, label, value, checked) => {
-                        doc.rect(x, y, width, height); // Draw the rectangle
-                        drawConsentCheckbox(x + 2, y + 7, checked); // Draw the checkbox inside the rectangle
-                        doc.text(label, x + 8, y + 11); // Adjust label position within the rectangle
-
-                        // Draw vertical line
-                        const verticalLineX = x + (width / 2);
-                        doc.line(verticalLineX, y, verticalLineX, y + height);
-
-                        if (value) {
-                            doc.text(value, verticalLineX + 5, y + 11); // Adjust value position within the rectangle
-                        }
+                    // Function to draw value box (right side)
+                    const drawValueBox = (x, y, width, height, value) => {
+                        doc.setDrawColor(0);
+                        doc.setFontSize(10);
+                        doc.rect(x, y, width, height);
+                        doc.text(value || '', x + 5, y + 10); // Always show box, even if empty
                     };
 
-                    // Draw boxes with or without values and checked status
-                    drawBorderedBox(10, 110, 150, 20, 'Text your mobile number', mobileNumber, isTextChecked);
-                    drawBorderedBox(10, 130, 150, 20, 'Email your email address', emailAddress, isEmailChecked);
-                    drawBorderedBox(10, 150, 150, 20, 'Both text & Email address', '', isBothChecked);
-                    drawBorderedBox(10, 170, 150, 20, 'I do not wish to receive either text or email', '', isNeitherChecked);
+                    // Draw 4 left-side label boxes
+                    drawLabelBox(margin, ys, labelWidth, boxHeight, 'Text your mobile number');
+                    drawLabelBox(margin, ys + boxHeight, labelWidth, boxHeight, 'Email your email address');
+                    drawLabelBox(margin, ys + 2 * boxHeight, labelWidth, boxHeight, 'Both text & Email address');
+                    drawLabelBox(margin, ys + 3 * boxHeight, labelWidth, boxHeight, 'I do not wish to receive either text or email');
 
+                    // Draw 2 right-side value boxes (aligned next to labels)
+                    const valueX = margin + labelWidth; // No extra margin here!
 
-
+                    drawValueBox(valueX, ys, valueBoxWidth, boxHeight, isTextChecked ? mobileNumber : '');
+                    drawValueBox(valueX, ys + boxHeight, valueBoxWidth, boxHeight, isEmailChecked ? emailAddress : '');
 
                     // Signature, Print Name, Date
                     const lineY = 210; // Base Y position for the line
@@ -14496,7 +14477,7 @@
                         <h4>Dental History:</h4>
                         <div class="inline-group">
                             <label>Last Dental Checkup and Cleaning?</label>
-                            <input type="text" id="Checkup-name">
+                            <input type="date" id="Checkup-name">
                             <label>How Frequently do you visit?</label>
                             <input type="text" id="Frequently-visit">
                         </div>
@@ -14768,14 +14749,14 @@
                                     <div class="form-group" style="margin-bottom: 10px;">
                                         <div style="border: 1px solid black; padding: 5px; margin-bottom: 5px;">
                                             <input type="tel" id="mobile-number" name="mobile-number"
-                                                placeholder="Text your mobile number"
+                                                placeholder="Enter Your Mobile Number"
                                                 style="width: calc(100% - 160px);">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div style="border: 1px solid black; padding: 5px;">
                                             <input type="email" id="email-address" name="email-address"
-                                                placeholder="Email your email address"
+                                                placeholder="Enter Your Email Id"
                                                 style="width: calc(100% - 160px);">
                                         </div>
                                     </div>
