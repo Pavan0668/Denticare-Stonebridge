@@ -1323,11 +1323,11 @@
                     drawLabelBox(margin, ys + boxHeight, labelWidth, boxHeight, 'Email Address');
                     drawCheckboxNew(margin + labelWidth - 10, ys + boxHeight + 5, isEmailChecked);
 
-                    drawLabelBox(margin, ys + 2 * boxHeight, labelWidth, boxHeight, 'Both Mobile & Email address');
+                    drawLabelBox(margin, ys + 2 * boxHeight, labelWidth, boxHeight, 'Both Call & Email address');
                     drawCheckboxNew(margin + labelWidth - 10, ys + 2 * boxHeight + 5, isBothChecked);
 
                     const isNoneChecked = !isTextChecked && !isEmailChecked && !isBothChecked;
-                    drawLabelBox(margin, ys + 3 * boxHeight, labelWidth, boxHeight, 'I do not wish to receive either Mobile or email');
+                    drawLabelBox(margin, ys + 3 * boxHeight, labelWidth, boxHeight, 'I do not wish to receive either Call or email');
                     drawCheckboxNew(margin + labelWidth - 10, ys + 3 * boxHeight + 5, isNoneChecked);
                     // Draw 2 right-side value boxes (aligned next to labels)
                     const valueX = margin + labelWidth; // No extra margin here!
@@ -14833,13 +14833,13 @@
                                             style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
                                             <input type="checkbox" id="Both-email" name="Both-method" value="Both"
                                                 style="margin-right: 10px;">
-                                            <label for="Both-email">Both text & Email address</label>
+                                            <label for="Both-email">Both Call & Email address</label>
                                         </div>
                                         <div
                                             style="border: 1px solid black; padding: 5px; margin-bottom: 5px; display: flex; align-items: center;">
                                             <input type="checkbox" id="Neither-email" name="Neither-method"
                                                 value="Neither" style="margin-right: 10px;">
-                                            <label for="Neither-email">I do not wish to receive either text or
+                                            <label for="Neither-email">I do not wish to receive either Call or
                                                 email</label>
                                         </div>
                                     </div>
