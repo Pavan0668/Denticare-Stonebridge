@@ -768,34 +768,34 @@
                     doc.text(formData.home, 125, 87);
 
                     // Adding Date of Birth and Email
-                    doc.text('Date of Birth:', 10, 105);
-                    doc.line(35, 105, 100, 105); // Line for the date of birth
-                    doc.text(formData.dob, 35, 102);
-                    doc.text('Email:', 105, 105);
-                    doc.line(125, 105, 200, 105); // Line for the email
-                    doc.text(formData.email, 125, 102);
+                    doc.text('Date of Birth:', 10, 97);
+                    doc.line(35, 97, 100, 97); // Line for the date of birth
+                    doc.text(formData.dob, 35, 95);
+                    doc.text('Email:', 105, 97);
+                    doc.line(125, 97, 200, 97); // Line for the email
+                    doc.text(formData.email, 125, 95);
 
                     // Adding Name of Spouse/Parent/Guardian
-                    doc.text('Name of Spouse/Parent/Guardian:', 10, 115);
-                    doc.line(70, 115, 200, 115); // Line for the spouse/parent/guardian
-                    doc.text(formData.spouse || '', 70, 112); // Adjusted Y-coordinate for alignment
+                    doc.text('Name of Spouse/Parent/Guardian:', 10, 105);
+                    doc.line(70, 105, 200, 105); // Line for the spouse/parent/guardian
+                    doc.text(formData.spouse || '', 70, 102); // Adjusted Y-coordinate for alignment
 
                     // Adding Emergency Contact and Phone
-                    doc.text('Emergency Contact:', 10, 130);
-                    doc.line(45, 130, 100, 130); // Line for the emergency contact
-                    doc.text(formData.emergencyContact || '', 45, 125); // Adjusted Y-coordinate for alignment
-                    doc.text('Phone:', 105, 130);
-                    doc.line(117, 130, 200, 130); // Line for the phone
-                    doc.text(formData.emergencyPhone || '', 120, 125); // Adjusted Y-coordinate for alignment
+                    doc.text('Emergency Contact:', 10, 115);
+                    doc.line(45, 115, 100, 115); // Line for the emergency contact
+                    doc.text(formData.emergencyContact || '', 45, 113); // Adjusted Y-coordinate for alignment
+                    doc.text('Phone:', 105, 115);
+                    doc.line(117, 115, 200, 115); // Line for the phone
+                    doc.text(formData.emergencyPhone || '', 120, 113); // Adjusted Y-coordinate for alignment
 
 
 
                     // Financial Information (compressed version)
                     doc.setFontSize(9);
-                    doc.text('Financial Information', 10, 138); // Move title slightly up
+                    doc.text('Financial Information', 10, 120); // Move title slightly up
 
                     doc.autoTable({
-                        startY: 140, // Tighten spacing between title and table
+                        startY: 122, // Tighten spacing between title and table
                         head: [['Labels', 'Primary Insurance', 'Secondary Insurance']],
                         body: [
                             ['Subscriber Name', formData.primarySubscriberName, formData.secondarySubscriberName],
@@ -885,7 +885,7 @@
                     doc.text(label2, label2X, yStart);
 
                     const label2Width = doc.getTextWidth(label2);
-                  
+
                     yStart += 7; // Maintain minimal vertical spacing
 
 
@@ -908,38 +908,38 @@
                     doc.text(supplementReason, 112, yStart - 2);
                     yStart += 6;  // Instead of 15
 
-                   // 3. Questions & Answers (Drug allergies etc.)
-const startX = 10;
-const lineGap = 10; // Reduced vertical space
-let yF = yStart;
+                    // 3. Questions & Answers (Drug allergies etc.)
+                    const startX = 10;
+                    const lineGap = 10; // Reduced vertical space
+                    let yF = yStart;
 
-const pageWidthing = 200; // or doc.internal.pageSize.getWidth() - marginRight if dynamic
+                    const pageWidthing = 200; // or doc.internal.pageSize.getWidth() - marginRight if dynamic
 
-const questionsAndAnswers = [
-    ['Do you have any drug allergies or adverse effects?', drugAllergies || ''],
-    ['Any Latex, Nickel, or General Anesthesia Allergies?', latexAllergies || ''],
-    ['Do you bruise easily or bleed for a prolonged period of time?', bruiseBleed || ''],
-    ['Do you smoke? If so, how much per day, and how long?', antibiotics_smoke || ''],
-    ['Have you ever fainted, had shortness of breath or chest pains?', antibioticsReason || '']
-];
+                    const questionsAndAnswers = [
+                        ['Do you have any drug allergies or adverse effects?', drugAllergies || ''],
+                        ['Any Latex, Nickel, or General Anesthesia Allergies?', latexAllergies || ''],
+                        ['Do you bruise easily or bleed for a prolonged period of time?', bruiseBleed || ''],
+                        ['Do you smoke? If so, how much per day, and how long?', antibiotics_smoke || ''],
+                        ['Have you ever fainted, had shortness of breath or chest pains?', antibioticsReason || '']
+                    ];
 
-questionsAndAnswers.forEach(([question, answer]) => {
-    // Draw question
-    doc.text(question, startX, yF);
+                    questionsAndAnswers.forEach(([question, answer]) => {
+                        // Draw question
+                        doc.text(question, startX, yF);
 
-    // Calculate where question ends
-    const questionWidth = doc.getTextWidth(question);
-    const lineStartX = startX + questionWidth + 2; // small padding
-    const lineEndX = pageWidthing;
+                        // Calculate where question ends
+                        const questionWidth = doc.getTextWidth(question);
+                        const lineStartX = startX + questionWidth + 2; // small padding
+                        const lineEndX = pageWidthing;
 
-    // Draw underline from end of label to page edge
-    doc.line(lineStartX, yF + 2, lineEndX, yF + 2);
+                        // Draw underline from end of label to page edge
+                        doc.line(lineStartX, yF + 2, lineEndX, yF + 2);
 
-    // Draw answer just after line start
-    doc.text(String(answer), lineStartX + 1, yF - 2);
+                        // Draw answer just after line start
+                        doc.text(String(answer), lineStartX + 1, yF - 2);
 
-    yF += lineGap;
-});
+                        yF += lineGap;
+                    });
 
 
 
@@ -948,7 +948,7 @@ questionsAndAnswers.forEach(([question, answer]) => {
                     doc.addPage();
                     // Set initial Y position before medical condition section
                     let yStarting = 10;
-                    doc.setFontSize(10);
+                    doc.setFontSize(9);
 
                     // Question 1: Pregnancy, Nursing, Birth Control
                     let q1 = 'Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/NO';
@@ -977,7 +977,7 @@ questionsAndAnswers.forEach(([question, answer]) => {
                     const sectionX = 5;
                     const sectionY = 30;
                     const sectionWidth = 200;
-                    const sectionHeight = 125;
+                    const sectionHeight = 115;
                     doc.rect(sectionX, sectionY, sectionWidth, sectionHeight);
 
                     // Set checkbox color
@@ -1056,32 +1056,32 @@ questionsAndAnswers.forEach(([question, answer]) => {
 
                     // Coordinates for the 4th column
                     // Coordinates for the 4th column label
-const recentHeaderX = sectionX + 3 * checkboxColumnWidth + 5;
-const recentHeaderY = sectionY + 8;
-const fourthColWidth = sectionWidth - 3 * checkboxColumnWidth - 10;
+                    const recentHeaderX = sectionX + 3 * checkboxColumnWidth + 5;
+                    const recentHeaderY = sectionY + 8;
+                    const fourthColWidth = sectionWidth - 3 * checkboxColumnWidth - 10;
 
-const recentHeaderText = 'List Recent Surgeries\nor Hospital Visits:';
-const recentHeaderLines = doc.splitTextToSize(recentHeaderText, fourthColWidth);
-doc.text(recentHeaderLines, recentHeaderX, recentHeaderY);
+                    const recentHeaderText = 'List Recent Surgeries\nor Hospital Visits:';
+                    const recentHeaderLines = doc.splitTextToSize(recentHeaderText, fourthColWidth);
+                    doc.text(recentHeaderLines, recentHeaderX, recentHeaderY);
 
-const lineHeight = 4;
-const headingHeight = recentHeaderLines.length * lineHeight;
+                    const lineHeight = 4;
+                    const headingHeight = recentHeaderLines.length * lineHeight;
 
-const lineYD = recentHeaderY + headingHeight + 1;
-doc.line(recentHeaderX, lineYD, recentHeaderX + fourthColWidth, lineYD);
+                    const lineYD = recentHeaderY + headingHeight + 1;
+                    doc.line(recentHeaderX, lineYD, recentHeaderX + fourthColWidth, lineYD);
 
-// Add the multiline surgery input
-const recentSurgeries = document.getElementById('recentSurgeries').value;
-const splitText = doc.splitTextToSize(recentSurgeries, fourthColWidth);
-const textY = lineYD + 5;
-doc.text(splitText, recentHeaderX, textY);
+                    // Add the multiline surgery input
+                    const recentSurgeries = document.getElementById('recentSurgeries').value;
+                    const splitText = doc.splitTextToSize(recentSurgeries, fourthColWidth);
+                    const textY = lineYD + 5;
+                    doc.text(splitText, recentHeaderX, textY);
 
-// ❗️Calculate final Y after the entire section
-const surgeryTextHeight = splitText.length * 5;
-const lastYOfMedical = Math.max(startY, textY + surgeryTextHeight);
+                    // ❗️Calculate final Y after the entire section
+                    const surgeryTextHeight = splitText.length * 5;
+                    const lastYOfMedical = Math.max(startY, textY + surgeryTextHeight);
 
-// ➕ Add buffer space and call generatePDF
-generatePDF(doc, lastYOfMedical + 15);
+                    // ➕ Add buffer space and call generatePDF
+                    generatePDF(doc, lastYOfMedical + 5);
 
 
 
@@ -1091,7 +1091,7 @@ generatePDF(doc, lastYOfMedical + 15);
                     //doc.line(sectionX + 5, startY + 25, sectionX + sectionWidth - 5, startY + 25);
 
 
-                    
+
 
                     // Add a new page for Dental History
                     //doc.addPage();
@@ -1142,7 +1142,7 @@ generatePDF(doc, lastYOfMedical + 15);
                         };
                     }
 
-                    function generatePDF(doc, startY = 28) {
+                    function generatePDF(doc, startY = 20) {
                         const getVal = (id) => document.getElementById(id)?.value || '';
                         const getYesNo = (yesId, noId) =>
                             document.getElementById(yesId)?.checked ? 'Yes' :
@@ -1153,7 +1153,7 @@ generatePDF(doc, lastYOfMedical + 15);
                         doc.text('Dental History:', 10, startY);  // use dynamic Y
                         doc.setFontSize(10);
 
-                        let y = startY + 8;  // small gap after heading
+                        let y = startY + 8; // small gap after heading
                         const rowHeight = 8;
                         const labelX = 10;
                         const answerX = 130;
@@ -1163,14 +1163,14 @@ generatePDF(doc, lastYOfMedical + 15);
                             doc.line(x, y + 1.5, x + width, y + 1.5);
                         };
 
-                        const drawQnA = (question, answer) => {
+                        const drawQnA = (question, answer, advanceY = true) => {
                             doc.text(question, labelX, y);
                             doc.text(answer, answerX, y);
                             underline(answer, answerX, y);
-                            y += rowHeight;
+                            if (advanceY) y += rowHeight; // move only when needed
                         };
 
-                        // One question per line format
+                        // Question/Answer pairs
                         drawQnA('Last Dental Checkup and Cleaning?', getVal('Checkup-name'));
                         drawQnA('How Frequently do you visit?', getVal('Frequently-visit'));
                         drawQnA('Do you usually take antibiotics before a procedure?', getVal('antibiotics-condition'));
@@ -1195,17 +1195,15 @@ generatePDF(doc, lastYOfMedical + 15);
                         drawQnA('Have you been diagnosed with TMJ (Jaw Joint) problems?', getYesNo('diagnosed-jaw-yes', 'diagnosed-jaw-no'));
                         drawQnA('Does your Jaw Joints "Click" or "Pop" when you open?', getVal('medication-reason'));
                         drawQnA('Are you aware If you grind or clench your teeth at night?', getVal('clench-teeth'));
-                        // drawQnA('Reason (if yes)?', getVal('clench-teeth'));
-
                         drawQnA('Have you had orthodontic work done (braces)?', getVal('orthodontic'));
                         drawQnA('Teeth Whitening done?', getYesNo('whitened-teeth-yes', 'whitened-teeth-no'));
 
                         drawQnA('Do you wear any oral appliances?', getVal('oral-appliances'));
                         drawQnA('Removable or Fixed?', getVal('Removable-Fixed'));
-                        drawQnA('Have you Professionally Whitened your teeth before?', getVal('Whitened-when'));
+                        drawQnA('Have you Professionally Whitened your teeth before?',  getYesNo('whitened-teeth-yes', 'whitened-teeth-no'));
                         drawQnA('Are you happy with your smile?', getVal('supplement-reason'));
-
                     }
+
 
 
 
@@ -1274,6 +1272,7 @@ generatePDF(doc, lastYOfMedical + 15);
                     // Checkbox statuses
                     const isTextChecked = document.getElementById('communication-text')?.checked || false;
                     const isEmailChecked = document.getElementById('communication-email')?.checked || false;
+                    const isBothChecked = document.getElementById('Both-email')?.checked || false;
 
                     // Get page width
                     const pageWidths = doc.internal.pageSize.getWidth();
@@ -1310,9 +1309,11 @@ generatePDF(doc, lastYOfMedical + 15);
                     // Draw 2 right-side value boxes (aligned next to labels)
                     const valueX = margin + labelWidth; // No extra margin here!
 
-                    drawValueBox(valueX, ys, valueBoxWidth, boxHeight, isTextChecked ? mobileNumber : '');
-                    drawValueBox(valueX, ys + boxHeight, valueBoxWidth, boxHeight, isEmailChecked ? emailAddress : '');
+                    // Draw mobile number
+                    drawValueBox(valueX, ys, valueBoxWidth, boxHeight, (isTextChecked || isBothChecked) ? mobileNumber : '');
 
+                    // Draw email address
+                    drawValueBox(valueX, ys + boxHeight, valueBoxWidth, boxHeight, (isEmailChecked || isBothChecked) ? emailAddress : '');
                     // Signature, Print Name, Date
                     const lineY = 210; // Base Y position for the line
 
@@ -14488,6 +14489,8 @@ generatePDF(doc, lastYOfMedical + 15);
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Asthma"> Asthma </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
+                                                value="Rheumatic Fever"> Rheumatic Fever </label></li>
+                                    <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Circulation Problems"> Circulation Problems </label></li>
                                     <li><label class="checkbox-label"><input type="checkbox" name="medical-condition"
                                                 value="Cortisone/Steroids"> Cortisone/Steroids </label></li>
@@ -14829,8 +14832,7 @@ generatePDF(doc, lastYOfMedical + 15);
                                     <div class="form-group">
                                         <div style="border: 1px solid black; padding: 5px;">
                                             <input type="email" id="email-address" name="email-address"
-                                                placeholder="Enter Your Email Id"
-                                                style="width: calc(100% - 160px);">
+                                                placeholder="Enter Your Email Id" style="width: calc(100% - 160px);">
                                         </div>
                                     </div>
                                 </div>
