@@ -828,91 +828,149 @@
                     //doc.addPage();
 
                     // 2. Start Medical History after the table
-let yStart = doc.lastAutoTable.finalY + 10;
-doc.setFontSize(9);
-doc.setDrawColor(0, 0, 0);
+                    let yStart = doc.lastAutoTable.finalY + 6;
+                    doc.setFontSize(9);
+                    doc.setDrawColor(0, 0, 0);
 
-doc.text('Medical History : (Confidential as Per PIPEDA Legislation)', 10, yStart);
-yStart += 10;
+                    doc.text('Medical History : (Confidential as Per PIPEDA Legislation)', 10, yStart);
+                    yStart += 8;
 
-doc.text('Name of Family Physician', 10, yStart);
-doc.line(60, yStart, 200, yStart);
-doc.text(physicianName, 60, yStart - 2);
-yStart += 10;
+                    // Set Y starting position
+                    //let yStart = 240; // Adjust as needed based on your layout
 
-doc.text('Phone', 10, yStart);
-doc.line(25, yStart, 200, yStart);
-doc.text(physicianPhone, 25, yStart - 2);
-yStart += 10;
+                    doc.setFontSize(9);
 
-doc.text('Date of Last Physical', 10, yStart);
-doc.line(55, yStart, 200, yStart);
-doc.text(lastPhysicalDate, 55, yStart - 2);
-yStart += 10;
+                    // --- Column positions ---
+                    const col1X = 10;    // Label 1 start
+                    const col1ValX = 52; // Value 1 underline start (reduced gap)
 
-doc.text('Are you being treated for any medical condition? If so, which', 10, yStart);
-doc.line(10, yStart + 8, 200, yStart + 8);
-doc.text(medicalCondition, 20, yStart + 6);
-yStart += 15;
+                    const col2X = 95;    // Label 2 start (closer to col1ValX)
+                    const col2ValX = 112; // Value 2 underline start
 
-doc.text('Are you taking any drugs or medications at this time?', 10, yStart);
-doc.line(10, yStart + 5, 200, yStart + 5);
-doc.text(medicationDrug, 100, yStart + 3);
-yStart += 12;
+                    const col3X = 140;   // Label 3 start
+                    const col3ValX = 175; // Value 3 underline start
 
-doc.text('Drug:', 10, yStart);
-doc.line(20, yStart, 90, yStart);
-doc.text(medicationDrug, 22, yStart - 2);
-doc.text('Reason:', 95, yStart);
-doc.line(115, yStart, 200, yStart);
-doc.text(medicationReason, 117, yStart - 2);
-yStart += 10;
+                    // All on same row with tighter spacing
+                    doc.text('Name of Family Physician', col1X, yStart);
+                    doc.line(col1ValX, yStart, col1ValX + 30, yStart); // Underline
+                    doc.text(physicianName, col1ValX, yStart - 2);     // Value above line
 
-doc.text('Are you taking any Herbal or Vitamin Supplements?', 10, yStart);
-yStart += 10;
+                    doc.text('Phone', col2X, yStart);
+                    doc.line(col2ValX, yStart, col2ValX + 22, yStart); // Underline
+                    doc.text(physicianPhone, col2ValX, yStart - 2);    // Value above line
 
-doc.text('Supplement:', 10, yStart);
-doc.line(33, yStart, 90, yStart);
-doc.text(supplement, 33, yStart - 2);
-doc.text('Reason:', 95, yStart);
-doc.line(110, yStart, 200, yStart);
-doc.text(supplementReason, 112, yStart - 2);
-yStart += 15;
+                    doc.text('Date of Last Physical', col3X, yStart);
+                    doc.line(col3ValX, yStart, col3ValX + 25, yStart); // Underline
+                    doc.text(lastPhysicalDate, col3ValX, yStart - 2);  // Value above line
 
-// 3. Questions & Answers (Drug allergies etc.)
+                    yStart += 10;
+                    // First question - tighter gap
+                    const label1 = 'Are you being treated for any medical condition? If so, which';
+                    const label1X = 10;
+
+                    doc.text(label1, label1X, yStart);
+
+                    const label1Width = doc.getTextWidth(label1);
+                    const line1StartX = label1X + label1Width + 1; // Reduced from +3 to +1
+                    const line1EndX = 200;
+
+                    doc.line(line1StartX, yStart, line1EndX, yStart);
+                    doc.text(medicalCondition, line1StartX + 2, yStart - 2);
+                    yStart += 10; // Reduced vertical gap from 12 to 10
+
+                    // Second question - tighter gap
+                    const label2 = 'Are you taking any drugs or medications at this time?';
+                    const label2X = 10;
+
+                    doc.text(label2, label2X, yStart);
+
+                    const label2Width = doc.getTextWidth(label2);
+                  
+                    yStart += 7; // Maintain minimal vertical spacing
+
+
+                    doc.text('Drug:', 10, yStart);
+                    doc.line(20, yStart, 93, yStart);
+                    doc.text(medicationDrug, 24, yStart - 2);
+                    doc.text('Reason:', 95, yStart);
+                    doc.line(115, yStart, 200, yStart);
+                    doc.text(medicationReason, 117, yStart - 2);
+                    yStart += 10;
+
+                    doc.text('Are you taking any Herbal or Vitamin Supplements?:-', 10, yStart);
+                    yStart += 7;
+
+                    doc.text('Supplement:', 10, yStart);
+                    doc.line(33, yStart, 90, yStart);
+                    doc.text(supplement, 33, yStart - 2);
+                    doc.text('Reason:', 95, yStart);
+                    doc.line(110, yStart, 200, yStart);
+                    doc.text(supplementReason, 112, yStart - 2);
+                    yStart += 6;  // Instead of 15
+
+                   // 3. Questions & Answers (Drug allergies etc.)
 const startX = 10;
-const answerColumnX = 160;
-const lineGap = 12;
-const maxLineWidth = 80;
+const lineGap = 10; // Reduced vertical space
 let yF = yStart;
+
+const pageWidthing = 200; // or doc.internal.pageSize.getWidth() - marginRight if dynamic
 
 const questionsAndAnswers = [
     ['Do you have any drug allergies or adverse effects?', drugAllergies || ''],
     ['Any Latex, Nickel, or General Anesthesia Allergies?', latexAllergies || ''],
     ['Do you bruise easily or bleed for a prolonged period of time?', bruiseBleed || ''],
     ['Do you smoke? If so, how much per day, and how long?', antibiotics_smoke || ''],
-    ['Have you ever fainted, had shortness of breath or chest pains?', antibioticsReason || ''],
-    ['Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/NO', Pregnent_reason || ''],
-    ['Have you in the past, or are currently taking cortisone-based medications such as Prednisone', Prednisone_reason || '']
+    ['Have you ever fainted, had shortness of breath or chest pains?', antibioticsReason || '']
 ];
 
 questionsAndAnswers.forEach(([question, answer]) => {
+    // Draw question
     doc.text(question, startX, yF);
-    const displayAnswer = String(answer);
-    doc.text(displayAnswer, answerColumnX, yF);
-    const answerWidth = Math.max(doc.getTextWidth(displayAnswer), maxLineWidth);
-    doc.line(answerColumnX, yF + 2, answerColumnX + answerWidth, yF + 2);
+
+    // Calculate where question ends
+    const questionWidth = doc.getTextWidth(question);
+    const lineStartX = startX + questionWidth + 2; // small padding
+    const lineEndX = pageWidthing;
+
+    // Draw underline from end of label to page edge
+    doc.line(lineStartX, yF + 2, lineEndX, yF + 2);
+
+    // Draw answer just after line start
+    doc.text(String(answer), lineStartX + 1, yF - 2);
+
     yF += lineGap;
 });
+
 
 
                     // Add a new page for Medical History and Medical Conditions
 
                     doc.addPage();
+                    // Set initial Y position before medical condition section
+                    let yStarting = 10;
+                    doc.setFontSize(10);
 
-                    // Adding the Medical Conditions section with checkboxes
-                    doc.setFontSize(12);
-                    doc.text('Do you have or have you ever had any of the following medical conditions?', 10, 20);
+                    // Question 1: Pregnancy, Nursing, Birth Control
+                    let q1 = 'Women: Are you pregnant? YES/NO, Nursing? YES/NO, Using Birth control? YES/NO';
+                    doc.text(q1, 10, yStarting);
+                    let q1Width = doc.getTextWidth(q1);
+                    doc.line(10 + q1Width + 2, yStarting, 200, yStarting); // Underline
+                    doc.text(Pregnent_reason || '', 10 + q1Width + 4, yStarting - 2);
+
+                    yStarting += 8; // minimal line spacing
+
+                    // Question 2: Cortisone / Prednisone
+                    let q2 = 'Have you in the past, or are currently taking cortisone-based medications such as Prednisone';
+                    doc.text(q2, 10, yStarting);
+                    let q2Width = doc.getTextWidth(q2);
+                    doc.line(10 + q2Width + 2, yStarting, 200, yStarting); // Underline
+                    doc.text(Prednisone_reason || '', 10 + q2Width + 4, yStarting - 2);
+
+                    yStarting += 10; // leave space before medical section
+
+                    // Now continue with the medical condition section
+                    doc.setFontSize(10);
+                    doc.text('Do you have or have you ever had any of the following medical conditions?', 10, yStarting);
 
                     doc.setFontSize(9); // Reduced font size for better fit
 
@@ -14807,7 +14865,7 @@ generatePDF(doc, lastYOfMedical + 15);
         <script>
             document.getElementById("btnDownloadprt").addEventListener("click", function () {
                 const link = document.createElement("a");
-                link.href = "../img/Stonebridge Dentistry 1.pdf";
+                link.href = "img/Stonebridge Dentistry 1.pdf";
                 link.download = "Stonebridge Dentistry 1.pdf"; // Optional: rename the file
                 link.click();
             });
