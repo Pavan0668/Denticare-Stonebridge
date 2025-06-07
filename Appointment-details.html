@@ -1300,12 +1300,35 @@
                         doc.text(value || '', x + 5, y + 10); // Always show box, even if empty
                     };
 
-                    // Draw 4 left-side label boxes
-                    drawLabelBox(margin, ys, labelWidth, boxHeight, 'Text your mobile number');
-                    drawLabelBox(margin, ys + boxHeight, labelWidth, boxHeight, 'Email your email address');
-                    drawLabelBox(margin, ys + 2 * boxHeight, labelWidth, boxHeight, 'Both text & Email address');
-                    drawLabelBox(margin, ys + 3 * boxHeight, labelWidth, boxHeight, 'I do not wish to receive either text or email');
+                    // Checkbox rendering helper
+                    // Checkbox rendering helper with cross
+                    // Checkbox rendering helper with cross
+                   // Checkbox rendering helper with tick only if checked
+                    const drawCheckboxNew = (x, y, isChecked) => {
+                        const size = 5; // Checkbox size
+                        doc.setDrawColor(0); // Black border
+                        doc.rect(x, y, size, size); // Draw checkbox border
 
+                        if (isChecked) {
+                            doc.setFontSize(10); // Larger font for better visibility
+                            doc.setFont('Webdings'); // Use Webdings font for the tick
+                            doc.text('Y', x + size / 2, y + size / 2 + 1, { align: 'center' }); // 'a' in Webdings is a checkmark
+                            doc.setFont('helvetica', 'normal'); // Reset font to default
+                        }
+                    };
+
+                    drawLabelBox(margin, ys, labelWidth, boxHeight, 'Mobile Number');
+                    drawCheckboxNew(margin + labelWidth - 10, ys + 5, isTextChecked);
+
+                    drawLabelBox(margin, ys + boxHeight, labelWidth, boxHeight, 'Email Address');
+                    drawCheckboxNew(margin + labelWidth - 10, ys + boxHeight + 5, isEmailChecked);
+
+                    drawLabelBox(margin, ys + 2 * boxHeight, labelWidth, boxHeight, 'Both Mobile & Email address');
+                    drawCheckboxNew(margin + labelWidth - 10, ys + 2 * boxHeight + 5, isBothChecked);
+
+                    const isNoneChecked = !isTextChecked && !isEmailChecked && !isBothChecked;
+                    drawLabelBox(margin, ys + 3 * boxHeight, labelWidth, boxHeight, 'I do not wish to receive either Mobile or email');
+                    drawCheckboxNew(margin + labelWidth - 10, ys + 3 * boxHeight + 5, isNoneChecked);
                     // Draw 2 right-side value boxes (aligned next to labels)
                     const valueX = margin + labelWidth; // No extra margin here!
 
