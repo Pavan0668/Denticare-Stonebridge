@@ -13019,27 +13019,107 @@
 
 		<div class="btContentWrap btClear">
 			<section
-				class="bt_bb_sectionn gutter bt_bb_vertical_align_top btPageHeadline bt_bb_background_image bt_bb_background_overlay_light_solid bt_bb_parallax btLightSkin"
-				style="background-image:url(img/Dentist_Images/NewImg6.jpeg); height: 300px; display: flex; justify-content: center; align-items: center; color: white;">
-				<div style="text-align: center;">
-					<header class="bt_bb_headline bt_bb_superheadline_outside bt_bb_subheadline bt_bb_size_large"
-						data-bt-override-class="{}">
-						<!-- <h1 class="bt_bb_headline_tag" style="font-size: 60px;font-weight: bold;color: black;">
-							<span class="bt_bb_headline_content">
-								<span>Testimonials</span>
-							</span>
-						</h1> -->
-					</header>
-				</div>
-			</section>
+  style="
+    background-image: url('img/Dentist_Images/NewImg6.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+  ">
+  <!-- translucent card with subtle blur, accent bar and shadow -->
+  <div style="
+      max-width: 1100px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.9));
+      border-radius: 12px;
+      padding: 26px 36px;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.15);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      border-left: 6px solid #2CB5E5;
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    ">
 
+    <!-- left accent column (optional small visual) -->
+    <div style="width:6px; flex:0 0 6px;"></div>
 
+    <!-- content -->
+    <div style="flex:1; text-align:left;">
+      <h2 style="
+          margin:0 0 12px 0;
+          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+          font-weight:700;
+          font-size: clamp(20px, 2.2vw, 26px);
+          color:#0b3a49;
+          letter-spacing:0.2px;
+        ">
+        Testimonials — Stonebridge Dentistry
+      </h2>
+
+      <p style="
+          margin:0 0 12px 0;
+          color:#12232b;
+          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+          font-size: clamp(14px, 1.6vw, 17px);
+          line-height:1.65;
+        ">
+        At <strong style="color:#0b566a;">Stonebridge Dentistry</strong>, nothing means more to us than the trust and support of our patients. We are proud to care for such a wonderful community and are truly grateful for the kind words we receive every day.
+      </p>
+
+      <p style="
+          margin:0 0 12px 0;
+          color:#12232b;
+          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+          font-size: clamp(14px, 1.5vw, 16px);
+          line-height:1.6;
+        ">
+        Our patients often share how our experienced team, advanced technology, and compassionate approach have made a difference in their dental care — from routine check-ups to advanced treatments. These stories inspire us to keep delivering the highest level of care in a comfortable, friendly environment.
+      </p>
+
+      <p style="
+          margin:0;
+          color:#12232b;
+          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+          font-size: clamp(14px, 1.4vw, 15px);
+          line-height:1.6;
+        ">
+        Here are just a few testimonials from patients who have experienced the Stonebridge difference.
+      </p>
+    </div>
+
+    <!-- optional CTA on the right -->
+    <div style="flex:0 0 200px; display:flex; align-items:center; justify-content:center;">
+      <a href="/Contact-New.html" style="
+          display:inline-block;
+          text-decoration:none;
+          background: linear-gradient(90deg,#2CB5E5,#2B87F7);
+          color:#fff;
+          padding:10px 16px;
+          border-radius:8px;
+          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+          font-weight:700;
+          box-shadow:0 6px 18px rgba(43,135,247,0.22);
+          font-size:14px;
+        ">
+        Book Appointment
+      </a>
+    </div>
+  </div>
+</section>
+
+		
+		
+		
 			<div class="btContentHolder">
-
-
+		
+		
 				<div class="bt_bb_cell">
-					<div class="bt_bb_row_wrapper"
-						style="background-color: lightgrey; padding: 20px; border-radius: 8px;">
+					<div class="bt_bb_row_wrapper" style="background-color: lightgrey; padding: 20px; border-radius: 8px;">
 						<header class="bt_bb_headline bt_bb_color_scheme_8 bt_bb_dash_none bt_bb_size_extralarge"
 							style="margin-bottom: 1px;">
 							<h4 class="bt_bb_headline_tag" style="text-align: center;"><span
@@ -13047,7 +13127,7 @@
 										<strong>Testimonials</strong></span></span></h4>
 						</header>
 						<br>
-
+		
 						<div class="testimonial-container">
 							<div class="testimonial-card animate-slide">
 								<div class="testimonial-header">
@@ -13106,7 +13186,7 @@
 									treated like a person the service was
 									amazing and I recommend that you make
 									the switch to Stonebridge Dentistry
-
+		
 									Thanks for everything you did and do
 									Sincerely Satisfied Customer
 								</p>
@@ -13134,7 +13214,7 @@
 								</p>
 							</div>
 						</div>
-
+		
 						<style>
 							/* General container styling */
 							.testimonial-container {
@@ -13148,7 +13228,7 @@
 								flex-wrap: wrap;
 								/* Ensures cards stack on smaller screens */
 							}
-
+		
 							/* Card styling */
 							.testimonial-card {
 								width: 300px;
@@ -13167,13 +13247,13 @@
 								animation: slideIn 0.8s ease-out forwards;
 								/* Animation effect */
 							}
-
+		
 							.testimonial-card:hover {
 								transform: scale(1.05);
 								/* Scale slightly on hover */
 								box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 							}
-
+		
 							/* Header styling */
 							.testimonial-header {
 								display: flex;
@@ -13181,18 +13261,18 @@
 								align-items: center;
 								margin-bottom: 15px;
 							}
-
+		
 							.testimonial-name {
 								font-size: 18px;
 								font-weight: bold;
 								color: #2c3e50;
 							}
-
+		
 							.testimonial-stars .star {
 								font-size: 18px;
 								color: #f39c12;
 							}
-
+		
 							/* Text styling */
 							.testimonial-text {
 								font-size: 14px;
@@ -13200,44 +13280,44 @@
 								color: #555;
 								text-align: justify;
 							}
-
+		
 							/* Keyframes for slide-in animation */
 							@keyframes slideIn {
 								from {
 									opacity: 0;
 									transform: translateX(-50px);
 								}
-
+		
 								to {
 									opacity: 1;
 									transform: translateX(0);
 								}
 							}
-
+		
 							/* Stagger the animation for each card */
 							.testimonial-card:nth-child(1) {
 								animation-delay: 0s;
 							}
-
+		
 							.testimonial-card:nth-child(2) {
 								animation-delay: 0.3s;
 							}
-
+		
 							.testimonial-card:nth-child(3) {
 								animation-delay: 0.6s;
 							}
-
+		
 							.testimonial-card:nth-child(4) {
 								animation-delay: 0.9s;
 							}
-
+		
 							/* Media queries for responsiveness */
 							@media screen and (max-width: 768px) {
 								.testimonial-card {
 									width: 100%;
 									height: auto;
 								}
-
+		
 								.testimonial-container {
 									flex-direction: column;
 									/* Stack cards vertically */
@@ -13245,42 +13325,42 @@
 									/* Center align the cards */
 								}
 							}
-
+		
 							@media screen and (max-width: 480px) {
 								.testimonial-card {
 									padding: 15px;
 									font-size: 12px;
 								}
-
+		
 								.testimonial-name {
 									font-size: 16px;
 								}
-
+		
 								.testimonial-text {
 									font-size: 12px;
 								}
 							}
 						</style>
-
+		
 					</div>
-
+		
 				</div>
-
-
+		
+		
 				<section id="section664fb57da0b30" class="responsive-section">
 					<!-- Left Side Content -->
 					<div class="left-side-content">
 						<div class="left-side-background">
 							<div class="appointment-box">
 								<h3 class="appointment-title">Book Appointment</h3>
-
+		
 								<!-- Call Us button -->
 								<div class="call-button">
 									<a href="tel:+17054222490" class="buttons call-us" style="color: white;">
 										<i class="fas fa-phone"></i> (705) 422-2490
 									</a>
 								</div>
-
+		
 								<!-- Email Us button -->
 								<div class="email-button">
 									<a href="mailto:reception.Stonebridgedentistry@gmail.com" class="buttons email-us"
@@ -13291,12 +13371,12 @@
 							</div>
 						</div>
 					</div>
-
+		
 					<!-- Right Side Contact Form -->
 					<div class="right-side-content">
 						<form id="contactForm" class="contact-form">
 							<h2 class="form-title">Contact Us</h2>
-
+		
 							<!-- First and Last Name Fields -->
 							<div class="name-fields">
 								<div class="form-field">
@@ -13308,25 +13388,25 @@
 									<input type="text" id="lastName" name="lastName" required>
 								</div>
 							</div>
-
+		
 							<!-- Email Field -->
 							<div class="form-field">
 								<label for="email">Email *</label>
 								<input type="email" id="email" name="email" required>
 							</div>
-
+		
 							<!-- Phone Field -->
 							<div class="form-field">
 								<label for="phone">Phone</label>
 								<input type="tel" id="phone" name="phone">
 							</div>
-
+		
 							<!-- Message Field -->
 							<div class="form-field">
 								<label for="message">Write a Message</label>
 								<textarea id="message" name="message" rows="4"></textarea>
 							</div>
-
+		
 							<!-- Submit Button -->
 							<button type="submit" class="submit-button">
 								Submit
@@ -13334,8 +13414,8 @@
 						</form>
 					</div>
 				</section>
-
-
+		
+		
 				<!-- Media Queries for Mobile -->
 				<style>
 					@media only screen and (max-width: 767px) {
@@ -13344,35 +13424,35 @@
 							/* Stack items vertically on small screens */
 							height: auto;
 						}
-
+		
 						.bt_bb_section664fb57da0b30>div {
 							width: 100%;
 							/* Make sure both columns are full width on mobile */
 							padding: 15px;
 						}
-
+		
 						.bt_bb_section664fb57da0b30>div:first-child {
 							background-image: none;
 							/* Remove background blur on mobile for better readability */
 						}
-
+		
 						.bt_bb_section664fb57da0b30>div:last-child {
 							background-image: none;
 							/* Remove background blur on mobile for better readability */
 						}
-
+		
 						form {
 							width: 90%;
 							/* Adjust form width for mobile */
 						}
-
+		
 						.bt_bb_column {
 							width: 100%;
 							/* Ensure columns take up full width */
 						}
 					}
 				</style>
-
+		
 				<style>
 					/* General Styling */
 					* {
@@ -13380,11 +13460,11 @@
 						padding: 0;
 						box-sizing: border-box;
 					}
-
+		
 					body {
 						font-family: Arial, sans-serif;
 					}
-
+		
 					/* Section Styles */
 					.responsive-section {
 						display: flex;
@@ -13393,16 +13473,16 @@
 						height: 120vh;
 						background-color: #A9A9A9;
 						padding: 0;
-
+		
 					}
-
+		
 					/* Left Side Content */
 					.left-side-content {
 						flex: 1;
 						padding: 0;
 						height: 120vh;
 					}
-
+		
 					.left-side-background {
 						background-image: url(img/Dentist_Images/NewImg1.jpeg);
 						background-size: cover;
@@ -13413,7 +13493,7 @@
 						align-items: center;
 						position: relative;
 					}
-
+		
 					.appointment-box {
 						background-color: rgba(255, 255, 255, 0.8);
 						padding: 20px;
@@ -13422,12 +13502,12 @@
 						text-align: center;
 						width: 500px;
 					}
-
+		
 					.appointment-title {
 						font-size: 24px;
 						color: #000;
 					}
-
+		
 					/* Button Styles */
 					.buttons {
 						display: inline-block;
@@ -13448,13 +13528,13 @@
 						white-space: nowrap;
 						/* Prevent text from wrapping */
 					}
-
+		
 					/* Call Us Button */
 					.call-us {
 						margin-bottom: 15px;
 						/* Adds space below the call button */
 					}
-
+		
 					/* Email Us Button */
 					.email-us {
 						margin-bottom: 15px;
@@ -13462,11 +13542,11 @@
 						white-space: nowrap;
 						/* Ensures the email address fits inside the button */
 					}
-
+		
 					.button i {
 						margin-right: 10px;
 					}
-
+		
 					/* Right Side Contact Form */
 					.right-side-content {
 						flex: 1;
@@ -13481,7 +13561,7 @@
 						justify-content: center;
 						align-items: center;
 					}
-
+		
 					.contact-form {
 						background-color: rgba(255, 255, 255, 0.9);
 						padding: 30px;
@@ -13491,7 +13571,7 @@
 						font-family: 'Arial', sans-serif;
 						width: 500px;
 					}
-
+		
 					.form-title {
 						font-size: 24px;
 						color: #003478;
@@ -13499,18 +13579,18 @@
 						padding-top: 10px;
 						text-align: center;
 					}
-
+		
 					.form-field {
 						margin-bottom: 20px;
 					}
-
+		
 					.form-field label {
 						display: block;
 						font-size: 14px;
 						color: #003478;
 						margin-bottom: 5px;
 					}
-
+		
 					.form-field input,
 					.form-field textarea {
 						width: 100%;
@@ -13520,7 +13600,7 @@
 						outline: none;
 						font-size: 0.850rem;
 					}
-
+		
 					/* Button Styles */
 					.submit-button {
 						background-color: #003478;
@@ -13534,43 +13614,43 @@
 						border-radius: 5px;
 						transition: background-color 0.3s ease;
 					}
-
+		
 					/* Responsive Design */
 					@media (max-width: 768px) {
 						.responsive-section {
 							flex-direction: column;
 							height: auto;
 						}
-
+		
 						.left-side-background,
 						.right-side-content {
 							height: auto;
 						}
-
+		
 						.appointment-box,
 						.contact-form {
 							width: 90%;
 							margin: 10px;
 						}
-
+		
 						.name-fields {
 							flex-direction: column;
 						}
-
+		
 						.form-field {
 							width: 100%;
 						}
-
+		
 						.buttons {
 							font-size: 12px;
 						}
-
+		
 						.form-title {
 							font-size: 20px;
 						}
 					}
 				</style>
-
+		
 			</div><!-- /contentHolder -->
 		</div><!-- /contentWrap -->
 

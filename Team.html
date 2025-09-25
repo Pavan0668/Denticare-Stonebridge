@@ -13158,72 +13158,112 @@
 			<div class="btContent">
 				<div class="bt_bb_wrapper">
 					<section id="bt_bb_section6658036a7a51b"
-						class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_middle bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal"
-						data-bt-override-class="null">
+  class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_middle bt_bb_top_spacing_normal bt_bb_bottom_spacing_normal"
+  data-bt-override-class="null"
+  style="position:relative; --hero-h:700px; width:100%; box-sizing:border-box; overflow:hidden;">
 
-						<div class="bt_bb_background_image_holder_wrapper" style="padding-top: 10px;">
-							<div class="bt_bb_background_image_holder btLazyLoadBackground"
-								data-background_image_src="img/front-view-young.jpg" data-parallax-zoom-start="2"
-								data-parallax-zoom-end="1" data-parallax-blur-start="0" data-parallax-blur-end="0"
-								data-parallax-opacity-start="1" data-parallax-opacity-end="1"
-								style=" background-image: url('img/front-view-young.jpg');">
-							</div>
-						</div>
+  <!-- BACKGROUND IMAGE: full-bleed, taller hero -->
+  <div class="bt_bb_background_image_holder_wrapper"
+       style="position:absolute; inset:0 0 auto 0; height:var(--hero-h); overflow:hidden; z-index:0;">
+    <div class="bt_bb_background_image_holder btLazyLoadBackground"
+         data-background_image_src="img/front-view-young.jpg"
+         style="
+           background-image:url('img/front-view-young.jpg');
+           background-size:cover;
+           background-position:center right;
+           background-repeat:no-repeat;
+           width:100%;
+           height:100%;
+           filter:none;
+         ">
+    </div>
+    <!-- optional subtle overlay to improve text contrast (reduce opacity to taste) -->
+    <div style="position:absolute; inset:0; background:rgba(6,37,46,0.35);"></div>
+  </div>
 
-						<div class="bt_bb_port">
-							<div class="bt_bb_cell">
-								<div class="bt_bb_cell_inners">
-									<!-- <div class="bt_bb_row_wrapper">
-											<div class="bt_bb_row" data-bt-override-class="{}">
-												<div class="bt_bb_column col-xxl-12 col-xl-12 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
-													data-width="12" data-bt-override-class="{}">
-													<div class="bt_bb_column_content">
+  <!-- CONTENT PORT: sits above the background -->
+  <div class="bt_bb_port" style="position:relative; z-index:2; width:100%; box-sizing:border-box;">
+    <div class="bt_bb_cell">
+      <div class="bt_bb_cell_inners">
 
-													</div>
-												</div>
-											</div>
-										</div> -->
+        <!-- BANNER ROW: align items vertically and allow the row to match the hero height -->
+        <div style="
+            display:flex;
+            flex-wrap:wrap;
+            align-items:stretch;
+            width:100%;
+            box-sizing:border-box;
+            padding:0;
+            min-height:var(--hero-h);        /* ensures content area equals background height */
+          ">
 
-									<div class="bt_bb_row_wrapper">
-										<div class="bt_bb_row" data-bt-override-class="{}">
-											<div class="bt_bb_column col-xxl-6 col-xl-6 bt_bb_vertical_align_middle bt_bb_align_center bt_bb_padding_normal bt_bb_animation_fade_in animate"
-												data-width="6" data-bt-override-class="{}">
-												<div class="bt_bb_column_content">
-													<header
-														class="bt_bb_headline bt_bb_font_weight_bolder bt_bb_color_scheme_17 bt_bb_dash_none bt_bb_size_extralarge bt_bb_align_inherit bt_bb_dash_type_none"
-														style="text-align: center; --primary-color:#054D75; --secondary-color:#85B5DD; margin-bottom: 30px;">
-														<h1 class="bt_bb_headline_tag">
-															<span class="bt_bb_headline_content">
-																<span><small>Stonebridge</small><br />Specialized
-																	Team</span>
-															</span>
-														</h1>
-														<br>
-														<div class="bt_bb_text btAccentQuote"></div>
-														<blockquote
-															style="font-family: 'Yantramanav', Arial, Helvetica, sans-serif; font-size: larger; text-align: center;color: black;">
-															<p>We are a team of dentists, hygienists, and
-																receptionists who work together to ensure that you
-																receive the best treatment that you require at a
-																time that suits you.</p>
-														</blockquote>
-													</header>
-												</div>
-											</div>
-										</div>
+          <!-- LEFT: TEXT (no card/background) -->
+          <div style="
+              flex:1 1 55%;
+              min-width:280px;
+              box-sizing:border-box;
+              padding:64px 48px 64px 56px;
+              display:flex;
+              flex-direction:column;
+              justify-content:flex-start;
+              color:#ffffff;                  /* white text on image */
+              text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            ">
+            <h1 style="
+                font-family:'Segoe UI', Arial, sans-serif;
+                font-size:40px;
+                font-weight:700;
+                margin:0 0 18px 0;
+                line-height:1.05;
+              ">
+              Meet Our Experienced Dental Team
+            </h1>
 
-										<div class="bt_bb_column col-xxl-6 col-xl-6 bt_bb_vertical_align_top bt_bb_align_left bt_bb_padding_normal"
-											data-width="6" data-bt-override-class="{}">
-											<div class="bt_bb_column_content"></div>
-										</div>
+            <div style="font-family:'Segoe UI', Arial, sans-serif; font-size:16px; line-height:1.65; max-width:720px;">
+              <p style="margin:0 0 12px 0;">
+                At Stonebridge Dentistry, our greatest strength is our team. With decades of combined experience, our doctors,
+                hygienists, assistants, and administrative staff are dedicated to providing exceptional care in a comfortable,
+                welcoming environment.
+              </p>
 
-										<div class="bt_bb_separator bt_bb_border_style_none"
-											data-bt-override-class="null"></div>
-									</div>
-								</div>
-							</div><!-- cell_inner -->
-						</div><!-- cell -->
-					</section>
+              <p style="margin:0 0 12px 0;">
+                Each member of our team brings a wealth of knowledge, skill, and compassion to every patient interaction. From
+                preventive care to advanced treatments, we work together to ensure you receive the highest level of dentistry
+                tailored to your needs.
+              </p>
+
+              <p style="margin:0 0 12px 0;">
+                What sets us apart is not only our clinical expertise, but also the relationships we build with our patients. We take
+                the time to listen, answer questions, and make sure every visit is as stress-free and positive as possible.
+              </p>
+
+              <p style="margin:0;">
+                When you choose Stonebridge Dentistry, you’re choosing a team that combines professional excellence with genuine care —
+                and a team that has proudly served the community of Wasaga Beach and surrounding areas for many years.
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT: empty spacer so image shows to the right (background handles the actual image) -->
+          <div style="
+              flex:1 1 45%;
+              min-width:240px;
+              box-sizing:border-box;
+              padding:0;
+              display:block;
+            ">
+            <!-- intentionally blank: the background image is full-bleed and the right column is only spacing -->
+          </div>
+
+        </div>
+        <!-- /BANNER ROW -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
 				</div><!-- port -->
 
 				<!-- Media Queries for Mobile -->
