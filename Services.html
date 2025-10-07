@@ -13350,69 +13350,70 @@
 				margin-right: 20px;
 			}
 		}
+
 		@media (max-width: 768px) {
-          .appointment-buttons {
-          flex-direction: column !important;
-          align-items: flex-start;
-           }
-         }
+			.appointment-buttons {
+				flex-direction: column !important;
+				align-items: flex-start;
+			}
+		}
 	</style>
 
-<script>
-	// Initialize EmailJS
-	(function () {
-		emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
-		console.log("EmailJS initialized.");
-	})();
+	<script>
+		// Initialize EmailJS
+		(function () {
+			emailjs.init("nKLixbMIL5YapwWbe"); // Replace with your EmailJS public key
+			console.log("EmailJS initialized.");
+		})();
 
-	document.addEventListener("DOMContentLoaded", function () {
-		console.log("DOM loaded.");
+		document.addEventListener("DOMContentLoaded", function () {
+			console.log("DOM loaded.");
 
-		document.getElementById("contactForm").addEventListener("submit", function (event) {
-			event.preventDefault(); // Prevent the form from reloading the page
+			document.getElementById("contactForm").addEventListener("submit", function (event) {
+				event.preventDefault(); // Prevent the form from reloading the page
 
-			// Collect form values
-			const firstName = document.getElementById("firstName").value;
-			const lastName = document.getElementById("lastName").value;
-			const email = document.getElementById("email").value;
-			const phone = document.getElementById("phone").value;
-			const message = document.getElementById("message").value;
+				// Collect form values
+				const firstName = document.getElementById("firstName").value;
+				const lastName = document.getElementById("lastName").value;
+				const email = document.getElementById("email").value;
+				const phone = document.getElementById("phone").value;
+				const message = document.getElementById("message").value;
 
-			console.log("Collected Data:", { firstName, lastName, email, phone, message });
+				console.log("Collected Data:", { firstName, lastName, email, phone, message });
 
-			// Map form values to EmailJS template variables
-			const templateParams = {
-				to_name: firstName, // Replace with the recipient's name
-				first_name: firstName,
-				last_name: lastName,
-				email: email,
-				phone: phone,
-				message: message,
-			};
+				// Map form values to EmailJS template variables
+				const templateParams = {
+					to_name: firstName, // Replace with the recipient's name
+					first_name: firstName,
+					last_name: lastName,
+					email: email,
+					phone: phone,
+					message: message,
+				};
 
-			console.log("Template Parameters:", templateParams);
+				console.log("Template Parameters:", templateParams);
 
-			// Send the email
-			emailjs
-				.send("service_5acopmj", "template_2etv5om", templateParams)
-				.then(
-					function (response) {
-						alert("Email sent successfully!");
-						console.log("SUCCESS!", response.status, response.text);
-						document.getElementById("contactForm").reset(); // Reset the form
-					},
-					function (error) {
-						alert("Failed to send email. Please try again.");
-						console.error("FAILED...", error);
-					}
-				)
-				.catch((error) => {
-					alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
-					console.error("Unexpected Error:", error);
-				});
+				// Send the email
+				emailjs
+					.send("service_5acopmj", "template_2etv5om", templateParams)
+					.then(
+						function (response) {
+							alert("Email sent successfully!");
+							console.log("SUCCESS!", response.status, response.text);
+							document.getElementById("contactForm").reset(); // Reset the form
+						},
+						function (error) {
+							alert("Failed to send email. Please try again.");
+							console.error("FAILED...", error);
+						}
+					)
+					.catch((error) => {
+						alert(`Unexpected error occurred: ${JSON.stringify(error)}`);
+						console.error("Unexpected Error:", error);
+					});
+			});
 		});
-	});
-</script>
+	</script>
 
 	<!-- Top Bar -->
 	<div class="top-bar" style="background-color: #4579BA; padding: 5px 0;padding-right: 128px;">
@@ -13431,15 +13432,15 @@
 						</a>
 						<!-- Book Appointment Button -->
 						<div class="appointment-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <a href="Contact-New.html" class="book-appointment-btn"
-                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
-                                Book Appointment
-                            </a>
-                            <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
-                                style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
-                                APPOINTMENT FORM
-                            </a>
-                        </div>
+							<a href="Contact-New.html" class="book-appointment-btn"
+								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+								Book Appointment
+							</a>
+							<a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
+								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+								APPOINTMENT FORM
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -13449,76 +13450,73 @@
 
 	<!-- Navigation -->
 	<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;">
-			<div class="container"
-				style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
-				<!-- Logo aligned to the left -->
-				<a class="navbar-brand" href="index.html"
-					style="display: flex; align-items: center; padding-left: -10px;">
-					<img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
-				</a>
-				<!-- Hamburger Menu Button (visible on small devices) -->
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<!-- Navbar items aligned to the right -->
-				<div class="collapse navbar-collapse" id="navbarResponsive"
-					style="display: flex; justify-content: flex-end;">
-					<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; list-style: none;">
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="index.html"
-								style="font-size: 16px; padding: 5px 10px;text-transform:uppercase;">HOME</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="About-Us.html"
-								style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Services.html"
-								style="font-size: 16px; padding: 5px 10px;">SERVICES</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Team.html" style="font-size: 16px; padding: 5px 10px;">OUR
-								TEAM</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Testimonials.html"
-								style="font-size: 16px; padding: 5px 10px;">TESTIMONIALS</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Technology.html"
-								style="font-size: 16px; padding: 5px 10px;">OUR OFFICE</a>
-						</li>
-						<li class="nav-item" style="margin-right: 5px;">
-							<a class="nav-link" href="Contact-Us.html"
-								style="font-size: 16px; padding: 5px 10px;">CONTACT</a>
-						</li>
-					</ul>
-				</div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav" style="padding: 10px 0;">
+		<div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+			<!-- Logo aligned to the left -->
+			<a class="navbar-brand" href="index.html" style="display: flex; align-items: center; padding-left: -10px;">
+				<img src="img/asset 0.png" alt="logo" style="height: 85px; width: auto;" />
+			</a>
+			<!-- Hamburger Menu Button (visible on small devices) -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- Navbar items aligned to the right -->
+			<div class="collapse navbar-collapse" id="navbarResponsive"
+				style="display: flex; justify-content: flex-end;">
+				<ul class="navbar-nav ml-auto" style="display: flex; margin: 0; padding: 0; list-style: none;">
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="index.html"
+							style="font-size: 16px; padding: 5px 10px;text-transform:uppercase;">HOME</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="About-Us.html" style="font-size: 16px; padding: 5px 10px;">ABOUT</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="Services.html"
+							style="font-size: 16px; padding: 5px 10px;">SERVICES</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="Team.html" style="font-size: 16px; padding: 5px 10px;">OUR
+							TEAM</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="Testimonials.html"
+							style="font-size: 16px; padding: 5px 10px;">TESTIMONIALS</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="Technology.html" style="font-size: 16px; padding: 5px 10px;">OUR
+							OFFICE</a>
+					</li>
+					<li class="nav-item" style="margin-right: 5px;">
+						<a class="nav-link" href="Contact-Us.html"
+							style="font-size: 16px; padding: 5px 10px;">CONTACT</a>
+					</li>
+				</ul>
 			</div>
-		</nav>
+		</div>
+	</nav>
 
 
-		<style>
-			.nav-link
-			{
-				color: #000;
-			}
-			.nav-link:hover {
-				text-decoration: none;
-				/* Remove default underline */
-				border-top: 2px solid #034CAE;
-				/* Top underline */
-				border-bottom: 2px solid #034CAE;
-				/* Bottom underline */
-				color: #2CB5E5;
-				border-top: 50%;
-				/* Position the top border at the middle */
-				border-bottom: 50%;
-				/* Position the top border at the middle */
-			}
-		</style>
+	<style>
+		.nav-link {
+			color: #000;
+		}
+
+		.nav-link:hover {
+			text-decoration: none;
+			/* Remove default underline */
+			border-top: 2px solid #034CAE;
+			/* Top underline */
+			border-bottom: 2px solid #034CAE;
+			/* Bottom underline */
+			color: #2CB5E5;
+			border-top: 50%;
+			/* Position the top border at the middle */
+			border-bottom: 50%;
+			/* Position the top border at the middle */
+		}
+	</style>
 
 
 	<style>
@@ -13546,10 +13544,9 @@
 						class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top bt_bb_background_overlay_light_solid">
 						<div class="bt_bb_background_image_holder_wrapper">
 							<div class="bt_bb_background_image_holder btLazyLoadBackground bt_bb_parallax"
-								data-background_image_src="img/Dentist_Images/NewImg3.jpeg" data-parallax="0.7"
-								data-parallax-offset="0" data-parallax-zoom-start="1" data-parallax-zoom-end="1"
-								data-parallax-blur-start="0" data-parallax-blur-end="0" data-parallax-opacity-start="1"
-								data-parallax-opacity-end="1"
+								data-background_image_src="img/Dentist_Images/NewImg3.jpeg" data-parallax="0.7" data-parallax-offset="0"
+								data-parallax-zoom-start="1" data-parallax-zoom-end="1" data-parallax-blur-start="0"
+								data-parallax-blur-end="0" data-parallax-opacity-start="1" data-parallax-opacity-end="1"
 								style="background-image: url(&#039;https://denticare.bold-themes.com/allen/wp-content/plugins/bold-page-builder/img/blank.gif&#039;);">
 							</div>
 						</div>
@@ -13577,32 +13574,39 @@
 												<i class="fas fa-tooth service-icon"></i>
 												<p class="service-title">Comprehensive Exams</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;" onclick="document.getElementById('hygiene-modal').style.display='block';">
+											<div class="service-item" style="--delay: 1s;"
+												onclick="document.getElementById('hygiene-modal').style.display='block';">
 												<i class="fas fa-shield-alt service-icon"></i>
 												<p class="service-title">Hygiene Services</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s;"
+												onclick="document.getElementById('Tooth-Coloured-modal').style.display='block';">
 												<i class="fas fa-fill service-icon"></i>
 												<p class="service-title">Tooth Coloured Fillings</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s;"
+												onclick="document.getElementById('Crowns-Bridges-modal').style.display='block';">
 												<i class="fas fa-crown service-icon"></i>
 												<p class="service-title">Crowns and Bridges</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s; cursor:pointer;"
+												onclick="document.getElementById('Root-Canal-modal').style.display='block';">
 												<i class="fas fa-procedures service-icon"></i>
 												<p class="service-title">Root Canal Treatments</p>
 											</div>
 											<!-- Second Row of Service Items -->
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s; cursor:pointer;"
+												onclick="document.getElementById('Dentures-modal').style.display='block';">
 												<i class="fas fa-tooth service-icon"></i>
 												<p class="service-title">Dentures</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s; cursor:pointer;"
+												onclick="document.getElementById('Orthodontics-modal').style.display='block';">
 												<i class="fas fa-teeth service-icon"></i>
 												<p class="service-title">Orthodontics</p>
 											</div>
-											<div class="service-item" style="--delay: 1s;">
+											<div class="service-item" style="--delay: 1s; cursor:pointer;"
+												onclick="document.getElementById('Invisalign-modal').style.display='block';">
 												<i class="fas fa-align-center service-icon"></i>
 												<p class="service-title">Invisalign</p>
 											</div>
@@ -13614,8 +13618,8 @@
 							</div>
 						</div>
 					</section>
-	
-	
+
+
 					<header class="bt_bb_headline bt_bb_color_scheme_8 bt_bb_dash_none bt_bb_size_extralarge"
 						style="margin-bottom: 1px;">
 						<h4 class="bt_bb_headline_tag" style="text-align: center;"><span
@@ -13623,7 +13627,7 @@
 									<strong>Testimonials</strong></span></span></h4>
 					</header>
 					<br>
-	
+
 					<div class="testimonial-container">
 						<div class="testimonial-card animate-slide">
 							<div class="testimonial-header">
@@ -13713,7 +13717,7 @@
 							</p>
 						</div>
 					</div>
-	
+
 					<style>
 						/* General container styling */
 						.testimonial-container {
@@ -13728,7 +13732,7 @@
 							/* Ensures cards stack on smaller screens */
 							margin-bottom: 10px;
 						}
-	
+
 						/* Card styling */
 						.testimonial-card {
 							width: 300px;
@@ -13747,13 +13751,13 @@
 							animation: slideIn 0.8s ease-out forwards;
 							/* Animation effect */
 						}
-	
+
 						.testimonial-card:hover {
 							transform: scale(1.05);
 							/* Scale slightly on hover */
 							box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 						}
-	
+
 						/* Header styling */
 						.testimonial-header {
 							display: flex;
@@ -13761,18 +13765,18 @@
 							align-items: center;
 							margin-bottom: 15px;
 						}
-	
+
 						.testimonial-name {
 							font-size: 18px;
 							font-weight: bold;
 							color: #2c3e50;
 						}
-	
+
 						.testimonial-stars .star {
 							font-size: 18px;
 							color: #f39c12;
 						}
-	
+
 						/* Text styling */
 						.testimonial-text {
 							font-size: 14px;
@@ -13780,38 +13784,38 @@
 							color: #555;
 							text-align: justify;
 						}
-	
+
 						/* Keyframes for slide-in animation */
 						@keyframes slideIn {
 							from {
 								opacity: 0;
 								transform: translateX(-50px);
 							}
-	
+
 							to {
 								opacity: 1;
 								transform: translateX(0);
 							}
 						}
-	
+
 						/* Stagger the animation for each card */
 						.testimonial-card:nth-child(1) {
 							animation-delay: 0s;
 						}
-	
+
 						.testimonial-card:nth-child(2) {
 							animation-delay: 0.3s;
 						}
-	
+
 						.testimonial-card:nth-child(3) {
 							animation-delay: 0.6s;
 						}
-	
+
 						.testimonial-card:nth-child(4) {
 							animation-delay: 0.9s;
 						}
 					</style>
-	
+
 					<style>
 						/* General Styling */
 						* {
@@ -13819,11 +13823,11 @@
 							padding: 0;
 							box-sizing: border-box;
 						}
-	
+
 						body {
 							font-family: Arial, sans-serif;
 						}
-	
+
 						/* Section Styles */
 						.responsive-section {
 							display: flex;
@@ -13832,16 +13836,16 @@
 							height: 120vh;
 							background-color: #A9A9A9;
 							padding: 0;
-	
+
 						}
-	
+
 						/* Left Side Content */
 						.left-side-content {
 							flex: 1;
 							padding: 0;
 							height: 120vh;
 						}
-	
+
 						.left-side-background {
 							background-image: url(img/Dentist_Images/NewImg1.jpeg);
 							background-size: cover;
@@ -13852,7 +13856,7 @@
 							align-items: center;
 							position: relative;
 						}
-	
+
 						.appointment-box {
 							background-color: rgba(255, 255, 255, 0.8);
 							padding: 20px;
@@ -13861,12 +13865,12 @@
 							text-align: center;
 							width: 500px;
 						}
-	
+
 						.appointment-title {
 							font-size: 24px;
 							color: #000;
 						}
-	
+
 						/* Button Styles */
 						.buttons {
 							display: inline-block;
@@ -13887,13 +13891,13 @@
 							white-space: nowrap;
 							/* Prevent text from wrapping */
 						}
-	
+
 						/* Call Us Button */
 						.call-us {
 							margin-bottom: 15px;
 							/* Adds space below the call button */
 						}
-	
+
 						/* Email Us Button */
 						.email-us {
 							margin-bottom: 15px;
@@ -13901,11 +13905,11 @@
 							white-space: nowrap;
 							/* Ensures the email address fits inside the button */
 						}
-	
+
 						.button i {
 							margin-right: 10px;
 						}
-	
+
 						/* Right Side Contact Form */
 						.right-side-content {
 							flex: 1;
@@ -13920,7 +13924,7 @@
 							justify-content: center;
 							align-items: center;
 						}
-	
+
 						.contact-form {
 							background-color: rgba(255, 255, 255, 0.9);
 							padding: 30px;
@@ -13930,7 +13934,7 @@
 							font-family: 'Arial', sans-serif;
 							width: 500px;
 						}
-	
+
 						.form-title {
 							font-size: 24px;
 							color: #003478;
@@ -13938,18 +13942,18 @@
 							padding-top: 10px;
 							text-align: center;
 						}
-	
+
 						.form-field {
 							margin-bottom: 20px;
 						}
-	
+
 						.form-field label {
 							display: block;
 							font-size: 14px;
 							color: #003478;
 							margin-bottom: 5px;
 						}
-	
+
 						.form-field input,
 						.form-field textarea {
 							width: 100%;
@@ -13959,7 +13963,7 @@
 							outline: none;
 							font-size: 0.850rem;
 						}
-	
+
 						/* Button Styles */
 						.submit-button {
 							background-color: #003478;
@@ -13973,37 +13977,37 @@
 							border-radius: 5px;
 							transition: background-color 0.3s ease;
 						}
-	
+
 						/* Responsive Design */
 						@media (max-width: 768px) {
 							.responsive-section {
 								flex-direction: column;
 								height: auto;
 							}
-	
+
 							.left-side-background,
 							.right-side-content {
 								height: auto;
 							}
-	
+
 							.appointment-box,
 							.contact-form {
 								width: 90%;
 								margin: 10px;
 							}
-	
+
 							.name-fields {
 								flex-direction: column;
 							}
-	
+
 							.form-field {
 								width: 100%;
 							}
-	
+
 							.buttons {
 								font-size: 12px;
 							}
-	
+
 							.form-title {
 								font-size: 20px;
 							}
@@ -14015,30 +14019,30 @@
 							<div class="left-side-background">
 								<div class="appointment-box">
 									<h3 class="appointment-title">Book Appointment</h3>
-	
+
 									<!-- Call Us button -->
 									<div class="call-button">
 										<a href="tel:+17054222490" class="buttons call-us" style="color: white;">
 											<i class="fas fa-phone"></i> (705) 422-2490
 										</a>
 									</div>
-	
+
 									<!-- Email Us button -->
 									<div class="email-button">
-										<a href="mailto:reception.Stonebridgedentistry@gmail.com" class="buttons email-us"
-											style="color: white;">
+										<a href="mailto:reception.Stonebridgedentistry@gmail.com"
+											class="buttons email-us" style="color: white;">
 											<i class="fas fa-envelope"></i> reception.Stonebridgedentistry@gmail.com
 										</a>
 									</div>
 								</div>
 							</div>
 						</div>
-	
+
 						<!-- Right Side Contact Form -->
 						<div class="right-side-content">
 							<form id="contactForm" class="contact-form">
 								<h2 class="form-title">Contact Us</h2>
-	
+
 								<!-- First and Last Name Fields -->
 								<div class="name-fields">
 									<div class="form-field">
@@ -14050,25 +14054,25 @@
 										<input type="text" id="lastName" name="lastName" required>
 									</div>
 								</div>
-	
+
 								<!-- Email Field -->
 								<div class="form-field">
 									<label for="email">Email *</label>
 									<input type="email" id="email" name="email" required>
 								</div>
-	
+
 								<!-- Phone Field -->
 								<div class="form-field">
 									<label for="phone">Phone</label>
 									<input type="tel" id="phone" name="phone">
 								</div>
-	
+
 								<!-- Message Field -->
 								<div class="form-field">
 									<label for="message">Write a Message</label>
 									<textarea id="message" name="message" rows="4"></textarea>
 								</div>
-	
+
 								<!-- Submit Button -->
 								<button type="submit" class="submit-button">
 									Submit
@@ -14076,8 +14080,8 @@
 							</form>
 						</div>
 					</section>
-	
-	
+
+
 					<!-- Media Queries for Mobile -->
 					<style>
 						@media only screen and (max-width: 767px) {
@@ -14086,35 +14090,35 @@
 								/* Stack items vertically on small screens */
 								height: auto;
 							}
-	
+
 							.bt_bb_section664fb57da0b30>div {
 								width: 100%;
 								/* Make sure both columns are full width on mobile */
 								padding: 15px;
 							}
-	
+
 							.bt_bb_section664fb57da0b30>div:first-child {
 								background-image: none;
 								/* Remove background blur on mobile for better readability */
 							}
-	
+
 							.bt_bb_section664fb57da0b30>div:last-child {
 								background-image: none;
 								/* Remove background blur on mobile for better readability */
 							}
-	
+
 							form {
 								width: 90%;
 								/* Adjust form width for mobile */
 							}
-	
+
 							.bt_bb_column {
 								width: 100%;
 								/* Ensure columns take up full width */
 							}
 						}
 					</style>
-	
+
 				</div>
 			</div>
 			<!-- /boldthemes_content -->
@@ -14135,7 +14139,8 @@
 				style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">
 				Comprehensive Exams</h2>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				At Stonebridge Dentistry, we believe prevention is the key to a healthy smile. That’s why we start with a
+				At Stonebridge Dentistry, we believe prevention is the key to a healthy smile. That’s why we start with
+				a
 				comprehensive dental exam — a complete check-up that looks at more than just your teeth.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
@@ -14144,45 +14149,283 @@
 				happening below the surface, making it easier to spot issues early before they become bigger problems.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				As part of every exam, we complete an intraoral scan of your teeth. This digital scan creates a precise 3D
+				As part of every exam, we complete an intraoral scan of your teeth. This digital scan creates a precise
+				3D
 				model of your mouth, allowing us to track even the smallest changes in your teeth and bite. By repeating
-				this scan every year, we can closely monitor your oral health over time and catch potential concerns before
+				this scan every year, we can closely monitor your oral health over time and catch potential concerns
+				before
 				they progress.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
 				We’ll also examine your bite, jaw, and soft tissues, and screen for oral cancer as part of your exam.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				After your exam, we’ll go over everything with you in clear, simple terms, answer your questions, and create
+				After your exam, we’ll go over everything with you in clear, simple terms, answer your questions, and
+				create
 				a personalized plan to keep your smile healthy.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
-				Comprehensive exams aren’t just about finding problems — they’re about protecting your long-term oral health
+				Comprehensive exams aren’t just about finding problems — they’re about protecting your long-term oral
+				health
 				and giving you peace of mind.
 			</p>
 		</div>
 	</div>
-	<div id="hygiene-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: none; justify-content: center !important; align-items: center !important;">
-    <div style="background: #fff; width: 90%; max-width: 800px; min-height: 400px; padding: 30px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); position: relative; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-        <span style="position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #555; transition: color 0.2s;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#555'" onclick="document.getElementById('hygiene-modal').style.display='none';">&times;</span>
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">Cleanings & Hygiene Services</h2>
-        <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-            Keeping your smile healthy starts with regular professional cleanings. Even with good brushing and flossing at home, plaque and tartar can build up in hard-to-reach areas — and that’s where our dental hygiene team comes in.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-            During your cleaning, our gentle and experienced hygienists remove plaque, tartar, and surface stains to help keep your teeth and gums healthy. We also perform regular probing, which means measuring the pockets around your gums. This helps us monitor your gum health, check for early signs of gum disease, and make sure your gums stay strong and healthy.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-            In addition, we’ll carefully check for cavities or other concerns so we can catch them early, when they’re easiest to treat.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-            Our hygiene services go beyond just cleaning — we provide personalized tips and guidance so you can take the best possible care of your teeth at home. Whether it’s choosing the right toothbrush, improving flossing habits, or learning how diet affects your oral health, we’re here to support you every step of the way.
-        </p>
-        <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
-            Regular dental cleanings not only keep your smile looking great, but they also play a big role in protecting your overall health. At Stonebridge Dentistry, we make your hygiene visits comfortable, thorough, and tailored to your needs.
-        </p>
-    </div>
+	<div id="hygiene-modal"
+		style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; display: none; justify-content: center !important; align-items: center !important;">
+		<div
+			style="background: #fff; width: 90%; max-width: 800px; min-height: 400px; padding: 30px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); position: relative; text-align: left; display: flex; flex-direction: column; justify-content: center;">
+			<span
+				style="position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #555; transition: color 0.2s;"
+				onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#555'"
+				onclick="document.getElementById('hygiene-modal').style.display='none';">&times;</span>
+			<h2
+				style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">
+				Cleanings & Hygiene Services</h2>
+			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+				Keeping your smile healthy starts with regular professional cleanings. Even with good brushing and
+				flossing at home, plaque and tartar can build up in hard-to-reach areas — and that’s where our dental
+				hygiene team comes in.
+			</p>
+			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+				During your cleaning, our gentle and experienced hygienists remove plaque, tartar, and surface stains to
+				help keep your teeth and gums healthy. We also perform regular probing, which means measuring the
+				pockets around your gums. This helps us monitor your gum health, check for early signs of gum disease,
+				and make sure your gums stay strong and healthy.
+			</p>
+			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+				In addition, we’ll carefully check for cavities or other concerns so we can catch them early, when
+				they’re easiest to treat.
+			</p>
+			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+				Our hygiene services go beyond just cleaning — we provide personalized tips and guidance so you can take
+				the best possible care of your teeth at home. Whether it’s choosing the right toothbrush, improving
+				flossing habits, or learning how diet affects your oral health, we’re here to support you every step of
+				the way.
+			</p>
+			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
+				Regular dental cleanings not only keep your smile looking great, but they also play a big role in
+				protecting your overall health. At Stonebridge Dentistry, we make your hygiene visits comfortable,
+				thorough, and tailored to your needs.
+			</p>
+		</div>
+	</div>
+<div id="Tooth-Coloured-modal"
+     style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+  <div style="background: #fff; width: 90%; max-width: 800px; min-height: 400px; 
+              padding: 30px; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.3); 
+              position: relative; text-align: left; display: flex; flex-direction: column;">
+
+    <!-- Close button -->
+    <span onclick="document.getElementById('Tooth-Coloured-modal').style.display='none';"
+          style="position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #555; transition: color 0.2s;"
+          onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#555'">&times;</span>
+
+    <!-- Modal content -->
+    <h2 style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">
+      Cleanings & Hygiene Services
+    </h2>
+    <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+      At Stonebridge Dentistry, we use tooth-coloured fillings (also called composite fillings) to restore teeth that have cavities or minor damage.
+    </p>
+    <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+      Unlike traditional silver fillings, these fillings are made from a strong, durable material that blends naturally with your teeth — so your smile looks healthy and seamless.
+    </p>
+    <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+      During treatment, we carefully clean away any decay and place the filling to rebuild the tooth’s strength and function.
+    </p>
+    <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
+      Because tooth-coloured fillings bond directly to the tooth, they require less drilling than older materials and help preserve more of your natural tooth structure.
+    </p>
+    <p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
+      The result is a filling that’s safe, long-lasting, and virtually invisible. Whether it’s a new cavity or replacing an old metal filling, tooth-coloured fillings give you both protection and a natural-looking smile.
+    </p>
+  </div>
 </div>
+
+	<div id="Crowns-Bridges-modal"
+		style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);">
+		<div
+			style="background:#fff; margin:5% auto; padding:30px; border-radius:8px; max-width:800px; position:relative; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+
+			<!-- Close button -->
+			<span onclick="document.getElementById('Crowns-Bridges-modal').style.display='none';"
+				style="position:absolute; top:15px; right:20px; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+
+			<!-- Modal content -->
+			<h2 style="margin-top:0; color:#1a73e8;">Dental Bridges</h2>
+			<p style="line-height:1.6; color:#333;">
+				A dental bridge is a reliable way to replace one or more missing teeth and restore your smile. As the
+				name suggests, a bridge “bridges” the gap left by missing teeth using a custom-made replacement tooth
+				(or teeth) that is securely anchored to the natural teeth or dental implants on either side.
+				Bridges not only improve the look of your smile but also help restore proper chewing, speaking, and bite
+				alignment. They also prevent neighboring teeth from shifting out of place, which can cause future dental
+				problems.
+				Each bridge is designed to blend in naturally with your surrounding teeth, giving you a strong,
+				long-lasting, and seamless solution. With proper care, a dental bridge can serve you well for many
+				years.
+				At Stonebridge Dentistry, we create bridges that are customized for comfort, function, and a natural
+				appearance — so you can smile confidently again.
+			</p>
+
+			<h2 style="color:#1a73e8;">Dental Crowns</h2>
+			<p style="line-height:1.6; color:#333;">
+				A dental crown is a custom-made “cap” that fits over a tooth to restore its strength, shape, and natural
+				appearance. Crowns are often used when a tooth is badly decayed, cracked, worn down, or has been treated
+				with a root canal. They can also be placed on top of a dental implant to replace a missing tooth.
+				Crowns are made from strong, durable materials — such as porcelain or ceramic — that closely match the
+				color of your natural teeth. This means they not only protect and strengthen your tooth but also blend
+				in seamlessly with your smile.
+				Getting a crown helps restore proper chewing, improves comfort, and protects the tooth from further
+				damage. With proper care, crowns can last for many years, providing both function and beauty.
+				At Stonebridge Dentistry, we take pride in creating crowns that are precise, comfortable, and
+				natural-looking, so you can smile and eat with confidence.
+			</p>
+		</div>
+	</div>
+
+	<div id="Root-Canal-modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);">
+  <div style="background:#fff; margin:5% auto; padding:30px; border-radius:8px; max-width:800px; position:relative; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+    
+    <!-- Close button -->
+    <span onclick="document.getElementById('Root-Canal-modal').style.display='none';" 
+          style="position:absolute; top:15px; right:20px; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+    
+    <!-- Modal content -->
+    <h2 style="margin-top:0; color:#1a73e8;">Root Canal Treatments</h2>
+    <p style="line-height:1.6; color:#333;">
+      A root canal may sound intimidating, but at <strong>Stonebridge Dentistry</strong>, we make the process comfortable, precise, and stress-free. Root canals are designed to save teeth that are infected or badly decayed, relieving pain and preventing the need for extraction.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      We’re proud to have Dr. Rishi, who has extensive experience performing root canal treatments and a true passion for this area of dentistry. He takes great care in every step of the procedure, combining skill and attention to detail to ensure excellent results. Many of our patients are pleasantly surprised by how smooth and comfortable their treatment feels under his care.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      At our office, root canals aren’t something to fear — they’re a reliable, effective way to get you out of pain and back to enjoying your healthy smile.
+    </p>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="Dentures-modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);">
+  <div style="background:#fff; margin:5% auto; padding:30px; border-radius:8px; max-width:800px; position:relative; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+    
+    <!-- Close button -->
+    <span onclick="document.getElementById('Dentures-modal').style.display='none';" 
+          style="position:absolute; top:15px; right:20px; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+    
+    <!-- Modal content -->
+    <h2 style="margin-top:0; color:#1a73e8;">Partial & Complete Dentures</h2>
+    <p style="line-height:1.6; color:#333;">
+      At <strong>Stonebridge Dentistry</strong>, we know how important a healthy, confident smile is. For patients who are missing some or all of their teeth, dentures are an excellent way to restore function, comfort, and appearance.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Partial dentures are designed to replace several missing teeth while fitting in seamlessly with your natural ones. They help improve chewing, speech, and appearance while preventing remaining teeth from shifting out of place.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Complete dentures replace all of the teeth in either the upper or lower jaw (or both), giving you back your smile and the ability to eat and speak with confidence. Our team ensures a natural look and a comfortable fit tailored to your needs.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      For added stability, we also offer implant-supported dentures. These dentures attach securely to dental implants placed in the jawbone, providing exceptional comfort and eliminating worries about slipping or shifting. Many patients find implant-supported dentures feel more natural and allow them to enjoy a wider variety of foods.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Whether you need a partial, complete, or implant-supported denture, our goal is to create a solution that restores your smile and improves your quality of life.
+    </p>
+  </div>
+</div>
+
+<div id="Orthodontics-modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);">
+  <div style="background:#fff; margin:5% auto; padding:30px; border-radius:8px; max-width:800px; position:relative; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+    
+    <!-- Close button -->
+    <span onclick="document.getElementById('Orthodontics-modal').style.display='none';" 
+          style="position:absolute; top:15px; right:20px; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+    
+    <!-- Modal content -->
+    <h2 style="margin-top:0; color:#1a73e8;">Nightguards</h2>
+    <p style="line-height:1.6; color:#333;">
+      If you grind or clench your teeth at night (a condition called bruxism), you may wake up with sore jaws, headaches, or worn-down teeth. Over time, grinding can lead to cracks, chips, or other serious dental problems.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      A custom nightguard is a simple and effective way to protect your teeth while you sleep. Unlike store-bought options, our professionally made nightguards are designed to fit your mouth comfortably and securely, making them easier to wear and more effective at preventing damage.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Nightguards not only protect your teeth from wear and fractures, but they can also help reduce jaw discomfort and improve your overall sleep quality.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      At <strong>Stonebridge Dentistry</strong>, we create nightguards that are durable, comfortable, and tailored just for you — so you can rest easy knowing your smile is protected.
+    </p>
+  </div>
+</div>
+<div id="Invisalign-modal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.6);">
+  <div style="background:#fff; margin:5% auto; padding:30px; border-radius:8px; max-width:800px; position:relative; box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+    
+    <!-- Close button -->
+    <span onclick="document.getElementById('Invisalign-modal').style.display='none';" 
+          style="position:absolute; top:15px; right:20px; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+    
+    <!-- Modal content -->
+    <h2 style="margin-top:0; color:#1a73e8;">Invisalign® Clear Aligners</h2>
+    <p style="line-height:1.6; color:#333;">
+      If you’ve ever wanted straighter teeth without the look and feel of traditional braces, <strong>Invisalign®</strong> clear aligners may be the perfect solution. Invisalign uses a series of virtually invisible, removable aligners that gradually move your teeth into their ideal position.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Because the aligners are clear and custom-made, most people won’t even notice you’re wearing them. They’re also removable, which means you can eat the foods you love and brush and floss with ease — without the restrictions or challenges that come with metal braces.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      At <strong>Stonebridge Dentistry</strong>, we’ll create a personalized treatment plan using advanced digital scans to map out your smile transformation. Throughout your treatment, you’ll switch to a new set of aligners every couple of weeks, each one bringing you closer to your dream smile.
+    </p>
+    <p style="line-height:1.6; color:#333;">
+      Invisalign is a comfortable, discreet, and effective way to straighten teeth for both teens and adults. Whether you’re looking to fix crowding, gaps, or bite issues, Invisalign can help you achieve a healthier, more confident smile.
+    </p>
+  </div>
+</div>
+<script>
+window.onclick = function(event) {
+    // Crowns & Bridges modal
+    var crownsModal = document.getElementById('Crowns-Bridges-modal');
+    if (event.target == crownsModal) {
+        crownsModal.style.display = "none";
+    }
+
+    // Root Canal modal
+    var rootCanalModal = document.getElementById('Root-Canal-modal');
+    if (event.target == rootCanalModal) {
+        rootCanalModal.style.display = "none";
+    }
+	var InvisalignModal = document.getElementById('Invisalign-modal');
+    if (event.target == InvisalignModal) {
+        InvisalignModal.style.display = "none";
+    }
+	var OrthodonticsModal = document.getElementById('Orthodontics-modal');
+    if (event.target == OrthodonticsModal) {
+        OrthodonticsModal.style.display = "none";
+    }
+	var DenturesModal = document.getElementById('Dentures-modal');
+    if (event.target == DenturesModal) {
+        DenturesModal.style.display = "none";
+    }
+    var CrownsModal = document.getElementById('Crowns-Bridges-modal');
+    if (event.target == CrownsModal) {
+        CrownsModal.style.display = "none";
+    }
+	var ToothModal = document.getElementById('Tooth-Coloured-modal');
+    if (event.target == ToothModal) {
+        ToothModal.style.display = "none";
+    }
+	var hygieneModal = document.getElementById('hygiene-modal');
+    if (event.target == hygieneModal) {
+        hygieneModal.style.display = "none";
+    }
+	
+	var modalModal = document.getElementById('modal');
+    if (event.target == modalModal) {
+        modalModal.style.display = "none";
+    }
+};
+</script>
+
 
 	<footer class="footer" style="margin-top: 0px;padding-top: 0px;">
 		<!-- Section 1 -->
