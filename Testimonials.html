@@ -12934,10 +12934,12 @@
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 Book Appointment
                             </a>
+                            <!-- APPOINTMENT FORM disabled from top-bar (above navbar) - uncomment to re-enable
                             <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 APPOINTMENT FORM
                             </a>
+                            -->
                         </div>
 						</div>
 					</div>
@@ -13020,9 +13022,7 @@
 		<div class="btContentWrap btClear">
 			<section
   style="
-    background-image: url('img/Dentist_Images/NewImg6.jpeg');
-    background-size: cover;
-    background-position: center;
+    background-color: #0F3958;
     min-height: 320px;
     display: flex;
     align-items: center;
@@ -13033,47 +13033,31 @@
   <div style="
       max-width: 1100px;
       width: 100%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,250,0.9));
+      background: #22506B;
       border-radius: 12px;
       padding: 26px 36px;
       box-shadow: 0 10px 30px rgba(16,24,40,0.15);
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
-      border-left: 6px solid #2CB5E5;
+      display: block;
+      border: 2px solid #154361;
       -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
     ">
 
-    <!-- left accent column (optional small visual) -->
-    <div style="width:6px; flex:0 0 6px;"></div>
-
     <!-- content -->
     <div style="flex:1; text-align:left;">
-      <h2 style="
-          margin:0 0 12px 0;
-          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-          font-weight:700;
-          font-size: clamp(20px, 2.2vw, 26px);
-          color:#0b3a49;
-          letter-spacing:0.2px;
-        ">
-        Testimonials — Stonebridge Dentistry
-      </h2>
-
       <p style="
           margin:0 0 12px 0;
-          color:#12232b;
+          color:#ffffff;
           font-family: 'Segoe UI', Roboto, Arial, sans-serif;
           font-size: clamp(14px, 1.6vw, 17px);
           line-height:1.65;
         ">
-        At <strong style="color:#0b566a;">Stonebridge Dentistry</strong>, nothing means more to us than the trust and support of our patients. We are proud to care for such a wonderful community and are truly grateful for the kind words we receive every day.
+        At <strong style="color:#ffffff;">Stonebridge Dentistry</strong>, nothing means more to us than the trust and support of our patients. We are proud to care for such a wonderful community and are truly grateful for the kind words we receive every day.
       </p>
 
       <p style="
           margin:0 0 12px 0;
-          color:#12232b;
+          color:#ffffff;
           font-family: 'Segoe UI', Roboto, Arial, sans-serif;
           font-size: clamp(14px, 1.5vw, 16px);
           line-height:1.6;
@@ -13083,7 +13067,7 @@
 
       <p style="
           margin:0;
-          color:#12232b;
+          color:#ffffff;
           font-family: 'Segoe UI', Roboto, Arial, sans-serif;
           font-size: clamp(14px, 1.4vw, 15px);
           line-height:1.6;
@@ -13092,23 +13076,6 @@
       </p>
     </div>
 
-    <!-- optional CTA on the right -->
-    <div style="flex:0 0 200px; display:flex; align-items:center; justify-content:center;">
-      <a href="/Contact-New.html" style="
-          display:inline-block;
-          text-decoration:none;
-          background: linear-gradient(90deg,#2CB5E5,#2B87F7);
-          color:#fff;
-          padding:10px 16px;
-          border-radius:8px;
-          font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-          font-weight:700;
-          box-shadow:0 6px 18px rgba(43,135,247,0.22);
-          font-size:14px;
-        ">
-        Book Appointment
-      </a>
-    </div>
   </div>
 </section>
 
@@ -13119,10 +13086,10 @@
 		
 		
 				<div class="bt_bb_cell">
-					<div class="bt_bb_row_wrapper" style="background-color: lightgrey; padding: 20px; border-radius: 8px;">
+					<div class="bt_bb_row_wrapper" style="background-color: #0F3958; padding: 20px; border-radius: 8px; border-top: 2px solid #ffffff;">
 						<header class="bt_bb_headline bt_bb_color_scheme_8 bt_bb_dash_none bt_bb_size_extralarge"
 							style="margin-bottom: 1px;">
-							<h4 class="bt_bb_headline_tag" style="text-align: center;"><span
+							<h4 class="bt_bb_headline_tag" style="text-align: center; color: #ffffff;"><span
 									class="bt_bb_headline_content"><span><b>Client</b>
 										<strong>Testimonials</strong></span></span></h4>
 						</header>
@@ -13217,6 +13184,11 @@
 		
 						<style>
 							/* General container styling */
+							.bt_bb_row_wrapper .bt_bb_headline_tag,
+							.bt_bb_row_wrapper .bt_bb_headline_tag span {
+								color: #ffffff !important;
+							}
+
 							.testimonial-container {
 								display: flex;
 								gap: 20px;
@@ -13233,12 +13205,12 @@
 							.testimonial-card {
 								width: 300px;
 								height: 325px;
-								background: #ffffff;
+								background: #22506B;
 								box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 								border-radius: 10px;
 								padding: 20px;
 								text-align: left;
-								color: #333;
+								color: #ffffff;
 								border: ridge;
 								opacity: 0;
 								/* Hidden before animation */
@@ -13265,19 +13237,19 @@
 							.testimonial-name {
 								font-size: 18px;
 								font-weight: bold;
-								color: #2c3e50;
+								color: #ffffff;
 							}
 		
 							.testimonial-stars .star {
 								font-size: 18px;
-								color: #f39c12;
+								color: #ffffff;
 							}
 		
 							/* Text styling */
 							.testimonial-text {
 								font-size: 14px;
 								line-height: 1.6;
-								color: #555;
+								color: #ffffff;
 								text-align: justify;
 							}
 		
@@ -13661,7 +13633,9 @@
 					<span style="color: #054D75;">Stonebridge</span>
 					<span style="color: #85B5DD;">Dentistry</span>
 				</h3>
-				<p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+				<!-- FOOTER-TAGLINE-DISABLED: hidden, keep for re-enable
+            <p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+            -->
 				<div class="contact-info" style="display: flex; justify-content: center; align-items: center;">
 					<div class="contact-item">
 						<i class="fa fa-phone" aria-hidden="true"></i>
@@ -13679,7 +13653,8 @@
 			</div>
 
 			<!-- Section 2 -->
-			<div class="footer-section footer-section-2">
+			<!-- FOOTER-ABOUT-DISABLED: About section hidden, keep for re-enable
+<div class="footer-section footer-section-2">
 				<h3 class="footer-heading">About</h3>
 				<ul class="footer-nav">
 					<li><a href="Team.html" style="font-size: 14px;">Our Dental Team</a></li>
@@ -13688,6 +13663,7 @@
 					<li><a href="About-Us.html" style="font-size: 14px;">About</a></li>
 				</ul>
 			</div>
+-->
 
 			<!-- Section 3 -->
 			<div class="footer-section footer-section-3">
@@ -13740,13 +13716,14 @@
 				background-color: #003478;
 				/* Footer background color */
 				color: #ffffff;
-				padding: 5px 10px;
+				padding: 12px 16px;
 				position: relative;
+            text-align: center;
 			}
 
 			.menu-footer-menu-container {
 				display: flex;
-				justify-content: flex-end;
+				justify-content: center;
 				/* Align navigation to the right */
 				margin: 0 auto;
 				max-width: 1200px;
@@ -13755,11 +13732,14 @@
 			.menu {
 				list-style: none;
 				display: flex;
+ 			justify-content: center;
 				flex-wrap: wrap;
+            align-items: center;
 				/* Ensure responsive wrapping */
-				gap: 15px;
+				gap: 15px 28px;
 				padding: 0;
-				margin: 0;
+				margin: 0 auto;
+            text-align: center;
 			}
 
 			.menu-items {
@@ -13786,7 +13766,7 @@
 				}
 
 				.menu {
-					gap: 10px;
+					gap: 10px 18px;
 					font-size: 12px;
 				}
 			}
@@ -13805,8 +13785,9 @@
 
 			.footer {
 				display: flex;
-				justify-content: space-between;
+				justify-content: space-evenly;
 				align-items: flex-start;
+ 			flex-wrap: wrap;
 				background-color: #f3f3f3;
 				padding: 20px;
 				padding-left: 60px;
@@ -13826,13 +13807,13 @@
 			}
 
 			.footer-section-2 {
-				flex: 0.5;
+				display: none !important; flex: 0.5;
 				height: 200px;
 				/* background-color: #e8f7ff; */
 			}
 
 			.footer-section-3 {
-				flex: 1.5;
+				flex: 1;
 				height: 250px;
 				/* background-color: #fffbe8; */
 			}
@@ -14180,6 +14161,16 @@
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsdbQUq1QaP-0yXrNtClJ5nfoTIFxFVo8&amp;loading=async&amp;callback=window.bt_bb_init_all_maps&amp;ver=6.5.3"
 			id="gmaps_api-js" async="async" data-wp-strategy="async"></script>
 
+<style>
+  .responsive-section { height: auto !important; min-height: 620px; padding: 40px 20px; gap: 20px; align-items: stretch; background-image: url(img/Dentist_Images/NewImg1.jpeg); background-size: cover; background-position: center; background-repeat: no-repeat; }
+  .left-side-content, .left-side-background, .right-side-content { height: auto !important; min-height: 540px; }
+  .left-side-background, .right-side-content { background-image: none; background-color: transparent; }
+  .contact-form { width: min(500px, 100%); max-width: 100%; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .responsive-section { min-height: 0; padding: 20px 10px; }
+    .left-side-content, .left-side-background, .right-side-content { min-height: 0; }
+  }
+</style>
 </body>
 
 </html>

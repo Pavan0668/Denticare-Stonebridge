@@ -32,9 +32,11 @@
         .services-container {
             display: flex;
             justify-content: center;
+            align-items: stretch;
             flex-wrap: wrap;
             gap: 30px;
             max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Service item animation */
@@ -52,8 +54,8 @@
         .service-item {
             width: 180px;
             height: 180px;
-            border-radius: 50%;
-            background-color: #2CB5E5;
+            border-radius: 0;
+            background-color: #214F69;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -72,10 +74,15 @@
 
         /* ✅ EXPAND ON HOVER */
         .service-item:hover {
-            transform: scale(1.18);
+            transform: translateY(-6px) scale(1.08);
             background-color: #2B87F7;
             box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
             z-index: 10;
+        }
+
+        .service-item:active {
+            transform: translateY(2px) scale(0.96);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .service-title {
@@ -13459,10 +13466,12 @@
 								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
 								Book Appointment
 							</a>
+							<!-- APPOINTMENT FORM disabled from top-bar (above navbar) - uncomment to re-enable
 							<a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
 								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
 								APPOINTMENT FORM
 							</a>
+							-->
 						</div>
 					</div>
 				</div>
@@ -13683,7 +13692,7 @@
 										</div>
 										</br></br>
 										<!-- <p>Implants and implant supported crowns, bridges and dentures</p> -->
-										<p>Call us today to book an appointment!</p>
+										<!-- <p>Call us today to book an appointment!</p> -->
 									</section>
 								</div>
 							</div>
@@ -13691,6 +13700,7 @@
 					</section>
 
 
+					<section class="testimonials-section">
 					<header class="bt_bb_headline bt_bb_color_scheme_8 bt_bb_dash_none bt_bb_size_extralarge" style="margin-bottom: 1px;">
 						<h4 class="bt_bb_headline_tag" style="text-align: center;"><span class="bt_bb_headline_content"><span><b>Client</b>
 									<strong>Testimonials</strong></span></span></h4>
@@ -13789,6 +13799,16 @@
 
 					<style>
 						/* General container styling */
+						.testimonials-section {
+							background-color: #154463;
+							padding: 32px 20px 40px;
+						}
+
+						.testimonials-section .bt_bb_headline_tag,
+						.testimonials-section .bt_bb_headline_tag span {
+							color: #ffffff !important;
+						}
+
 						.testimonial-container {
 							display: flex;
 							gap: 20px;
@@ -13806,12 +13826,12 @@
 						.testimonial-card {
 							width: 300px;
 							height: 325px;
-							background: #ffffff;
+							background: #214F6A;
 							box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 							border-radius: 10px;
 							padding: 20px;
 							text-align: left;
-							color: #333;
+							color: #ffffff;
 							border: ridge;
 							opacity: 0;
 							/* Hidden before animation */
@@ -13838,7 +13858,7 @@
 						.testimonial-name {
 							font-size: 18px;
 							font-weight: bold;
-							color: #2c3e50;
+							color: #ffffff;
 						}
 
 						.testimonial-stars .star {
@@ -13850,7 +13870,7 @@
 						.testimonial-text {
 							font-size: 14px;
 							line-height: 1.6;
-							color: #555;
+							color: #ffffff;
 							text-align: justify;
 						}
 
@@ -13884,6 +13904,7 @@
 							animation-delay: 0.9s;
 						}
 					</style>
+					</section>
 
 					<style>
 						/* General Styling */
@@ -14201,46 +14222,28 @@
     z-index: 1000;display: none; justify-content: center;align-items: center;">
 		  <div
   style="
-    background: #fff;width: 90%;max-width: 800px;max-height: 85vh;
-    padding: 30px;border-radius: 12px;box-shadow: 0 6px 12px rgba(0,0,0,0.3);position: relative;
-    overflow-y: auto;">
+    background: #fff;width: 90%;max-width: 800px;
+    padding: 30px;border-radius: 12px 12px 12px 12px;box-shadow: 0 6px 12px rgba(0,0,0,0.3);position: relative;
+    overflow: hidden;">
 			<span
   style="
     position: sticky;top: 0;float: right;font-size: 1.8rem;cursor: pointer;color: #555;
-    background: #fff;z-index: 10;"onmouseover="this.style.color='#007bff'"onmouseout="this.style.color='#555'"onclick="closeModal()">&times;</span>
+    background: transparent;z-index: 10;"onmouseover="this.style.color='#007bff'"onmouseout="this.style.color='#555'"onclick="closeModal()">&times;</span>
 			<h2
 				style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">
 				Comprehensive Exams</h2>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				At Stonebridge Dentistry, we believe prevention is the key to a healthy smile. That’s why we start with
-				a
-				comprehensive dental exam — a complete check-up that looks at more than just your teeth.
+				At Stonebridge Dentistry, a comprehensive exam is a complete check-up designed to protect your smile and
+				maintain your long-term oral health.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				During your exam, our team carefully checks your teeth, gums, and mouth for any signs of cavities, gum
-				disease, or other concerns. We also take digital X-rays (when needed) to get a clear picture of what’s
-				happening below the surface, making it easier to spot issues early before they become bigger problems.
-			</p>
-			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				As part of every exam, we complete an intraoral scan of your teeth. This digital scan creates a precise
-				3D
-				model of your mouth, allowing us to track even the smallest changes in your teeth and bite. By repeating
-				this scan every year, we can closely monitor your oral health over time and catch potential concerns
-				before
-				they progress.
-			</p>
-			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				We’ll also examine your bite, jaw, and soft tissues, and screen for oral cancer as part of your exam.
-			</p>
-			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				After your exam, we’ll go over everything with you in clear, simple terms, answer your questions, and
-				create
-				a personalized plan to keep your smile healthy.
+				During the exam, our team checks your teeth, gums, bite, jaw, and soft tissues for cavities, gum disease,
+				and other concerns. When needed, digital X-rays and an intraoral scan help us monitor your oral health
+				accurately and identify issues early.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
-				Comprehensive exams aren’t just about finding problems — they’re about protecting your long-term oral
-				health
-				and giving you peace of mind.
+				We explain our findings clearly, answer your questions, and create a personalized plan to keep your smile
+				healthy.
 			</p>
 		</div>
 	</div>
@@ -14250,40 +14253,26 @@
     display: none;justify-content: center;align-items: center;">
 		  <div
     style="
-      background: #fff;width: 90%;max-width: 800px;max-height: 85vh;
-      padding: 30px;border-radius: 12px;box-shadow: 0 6px 12px rgba(0,0,0,0.3);position: relative;overflow-y: auto;">
+      background: #fff;width: 90%;max-width: 800px;
+      padding: 30px;border-radius: 12px 12px 12px 12px;box-shadow: 0 6px 12px rgba(0,0,0,0.3);position: relative;overflow: hidden;">
 			<span
   style="position: sticky;top: 0;float: right;font-size: 1.8rem;
-    cursor: pointer;color: #555;background: #fff;z-index: 10;"
+    cursor: pointer;color: #555;background: transparent;z-index: 10;"
   onmouseover="this.style.color='#007bff'"onmouseout="this.style.color='#555'"onclick="closeHygieneModal()">&times;</span>
 			<h2
 				style="font-size: 1.8rem; font-weight: 700; color: #007bff; margin: 0 0 20px; text-align: center; letter-spacing: 0.5px;">
 				Cleanings & Hygiene Services</h2>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				Keeping your smile healthy starts with regular professional cleanings. Even with good brushing and
-				flossing at home, plaque and tartar can build up in hard-to-reach areas — and that’s where our dental
-				hygiene team comes in.
+				Regular professional cleanings help remove plaque, tartar, and surface stains that brushing and flossing
+				may miss, keeping your teeth and gums healthy.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				During your cleaning, our gentle and experienced hygienists remove plaque, tartar, and surface stains to
-				help keep your teeth and gums healthy. We also perform regular probing, which means measuring the
-				pockets around your gums. This helps us monitor your gum health, check for early signs of gum disease,
-				and make sure your gums stay strong and healthy.
-			</p>
-			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				In addition, we’ll carefully check for cavities or other concerns so we can catch them early, when
-				they’re easiest to treat.
-			</p>
-			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0 0 15px;">
-				Our hygiene services go beyond just cleaning — we provide personalized tips and guidance so you can take
-				the best possible care of your teeth at home. Whether it’s choosing the right toothbrush, improving
-				flossing habits, or learning how diet affects your oral health, we’re here to support you every step of
-				the way.
+				Our hygienists gently check your gums, measure the spaces around them, and look for early signs of gum
+				disease, cavities, or other concerns so they can be addressed early.
 			</p>
 			<p style="font-size: 1rem; color: #444; line-height: 1.8; margin: 0;">
-				Regular dental cleanings not only keep your smile looking great, but they also play a big role in
-				protecting your overall health. At Stonebridge Dentistry, we make your hygiene visits comfortable,
-				thorough, and tailored to your needs.
+				We also provide personalized advice for brushing, flossing, and daily care, making every hygiene visit
+				comfortable, thorough, and tailored to your needs.
 			</p>
 		</div>
 	</div>
@@ -14543,7 +14532,9 @@ window.onclick = function(event) {
 				<span style="color: #054D75;">Stonebridge</span>
 				<span style="color: #85B5DD;">Dentistry</span>
 			</h3>
-			<p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+			<!-- FOOTER-TAGLINE-DISABLED: hidden, keep for re-enable
+            <p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+            -->
 			<div class="contact-info" style="display: flex; justify-content: center; align-items: center;">
 				<div class="contact-item">
 					<i class="fa fa-phone" aria-hidden="true"></i>
@@ -14561,7 +14552,8 @@ window.onclick = function(event) {
 		</div>
 
 		<!-- Section 2 -->
-		<div class="footer-section footer-section-2">
+		<!-- FOOTER-ABOUT-DISABLED: About section hidden, keep for re-enable
+<div class="footer-section footer-section-2">
 			<h3 class="footer-heading">About</h3>
 			<ul class="footer-nav">
 				<li><a href="Team.html" style="font-size: 14px;">Our Dental Team</a></li>
@@ -14570,6 +14562,7 @@ window.onclick = function(event) {
 				<li><a href="About-Us.html" style="font-size: 14px;">About</a></li>
 			</ul>
 		</div>
+-->
 
 		<!-- Section 3 -->
 		<div class="footer-section footer-section-3">
@@ -14622,13 +14615,14 @@ window.onclick = function(event) {
 			background-color: #003478;
 			/* Footer background color */
 			color: #ffffff;
-			padding: 5px 10px;
+			padding: 12px 16px;
 			position: relative;
+            text-align: center;
 		}
 
 		.menu-footer-menu-container {
 			display: flex;
-			justify-content: flex-end;
+			justify-content: center;
 			/* Align navigation to the right */
 			margin: 0 auto;
 			max-width: 1200px;
@@ -14637,11 +14631,14 @@ window.onclick = function(event) {
 		.menu {
 			list-style: none;
 			display: flex;
+ 			justify-content: center;
 			flex-wrap: wrap;
+            align-items: center;
 			/* Ensure responsive wrapping */
-			gap: 15px;
+			gap: 15px 28px;
 			padding: 0;
-			margin: 0;
+			margin: 0 auto;
+            text-align: center;
 		}
 
 		.menu-items {
@@ -14668,7 +14665,7 @@ window.onclick = function(event) {
 			}
 
 			.menu {
-				gap: 10px;
+				gap: 10px 18px;
 				font-size: 12px;
 			}
 		}
@@ -14687,8 +14684,9 @@ window.onclick = function(event) {
 
 		.footer {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-evenly;
 			align-items: flex-start;
+ 			flex-wrap: wrap;
 			background-color: #f3f3f3;
 			padding: 20px;
 			padding-left: 60px;
@@ -14708,13 +14706,13 @@ window.onclick = function(event) {
 		}
 
 		.footer-section-2 {
-			flex: 0.5;
+			display: none !important; flex: 0.5;
 			height: 200px;
 			/* background-color: #e8f7ff; */
 		}
 
 		.footer-section-3 {
-			flex: 1.5;
+			flex: 1;
 			height: 250px;
 			/* background-color: #fffbe8; */
 		}
@@ -15099,6 +15097,15 @@ window.onclick = function(event) {
 	<script type="text/javascript"
 		src="https://denticare.bold-themes.com/allen/wp-content/themes/denticare/bold-page-builder/content_elements/bt_bb_content_slider/bt_bb_content_slider.js?ver=6.5.3"
 		id="bt_bb_content_slider_jsbt_bb_content_slider_46450-js"></script>
+<style>
+  .responsive-section { height: auto !important; min-height: 620px; padding: 40px 20px; gap: 20px; align-items: stretch; }
+  .left-side-content, .left-side-background, .right-side-content { height: auto !important; min-height: 540px; }
+  .contact-form { width: min(500px, 100%); max-width: 100%; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .responsive-section { min-height: 0; padding: 20px 10px; }
+    .left-side-content, .left-side-background, .right-side-content { min-height: 0; }
+  }
+</style>
 </body>
 
 </html>

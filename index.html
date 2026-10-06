@@ -12991,10 +12991,12 @@
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 Book Appointment
                             </a>
+                            <!-- APPOINTMENT FORM disabled from top-bar (above navbar) - uncomment to re-enable
                             <a href="Appointment-details.html" target="_blank" class="book-appointment-btn"
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 APPOINTMENT FORM
                             </a>
+                            -->
                         </div>
 
                     </div>
@@ -13134,7 +13136,7 @@
     <div class="btContentWrap btClear" style="margin-top: 0;">
 
         <div class="carousel-tabs" id="carousel-ta"
-            style="padding-top: 0; padding-bottom: 0; margin-top: -20px; margin-bottom: -30px;margin-right:30px;">
+            style="padding-top: 0; padding-bottom: 0; margin-top: -20px; margin-bottom: -30px;">
             <ul class="carousel-nav">
                 <li class="tab active" data-slide="0">
                     Accepting New Patients
@@ -13149,60 +13151,107 @@
         </div>
 
         <style>
-            .carousel-nav {
-                display: flex;
-                justify-content: space-between;
-                margin: 0;
-                padding: 0;
-                padding-left: 200px;
-                width: 1200px;
-                /* accepting new patient  */
-                text-align: center;
-                justify-content: center;
-                align-items: center;
+            /* Scoped centering fix for top info tabs - responsive on all browsers/devices */
+            #carousel-ta.carousel-tabs {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 15px;
+                box-sizing: border-box;
             }
 
-            .carousel-nav .tab {
-                flex: 1;
+            #carousel-ta .carousel-nav {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                gap: 10px;
+                margin: 0 auto;
+                padding: 0;
+                width: 100%;
+                max-width: 1100px;
+                list-style: none;
                 text-align: center;
-                font-size: 20px;
-                height: 50px;
-                padding: 10px;
-                margin: 0 5px;
-                background-color: #85B5DD;
-                color: #FFFFFF;
+                box-sizing: border-box;
+            }
+
+            #carousel-ta .carousel-nav .tab {
+                flex: 1 1 0;
+                min-width: 0;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                text-align: center;
+                font-size: 20px;
+                line-height: 1.3;
+                min-height: 50px;
+                height: auto;
+                padding: 10px 12px;
+                margin: 0;
+                background-color: #85B5DD;
+                color: #FFFFFF;
+                box-sizing: border-box;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+
+            @media (max-width: 992px) {
+                #carousel-ta .carousel-nav {
+                    max-width: 100%;
+                }
+
+                #carousel-ta .carousel-nav .tab,
+                #carousel-ta .carousel-nav .tab.show {
+                    font-size: 18px;
+                }
             }
 
             @media (max-width: 768px) {
-                .carousel-nav {
-                    flex-direction: column;
-                    align-items: center;
-                    padding-left: 20px;
-                    width: 400px;
+                #carousel-ta.carousel-tabs {
+                    padding: 0 12px;
                 }
 
-                .carousel-nav .tab {
+                #carousel-ta .carousel-nav {
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    max-width: 520px;
+                    gap: 8px;
+                }
+
+                #carousel-ta .carousel-nav .tab,
+                #carousel-ta .carousel-nav .tab.show {
                     width: 100%;
-                    font-size: 18px;
-                    margin: 5px 0;
-                    padding-right: 20px;
+                    max-width: 100%;
+                    flex: none;
+                    font-size: 17px;
+                    margin: 0;
+                    min-height: 48px;
                 }
             }
 
             @media (max-width: 480px) {
-                .carousel-nav {
-                    flex-direction: column;
-                    align-items: center;
-                    width: 350px;
+                #carousel-ta .carousel-nav {
+                    max-width: 100%;
                 }
 
-                .carousel-nav .tab {
-                    width: 100%;
-                    font-size: 18px;
-                    margin: 5px 0;
+                #carousel-ta .carousel-nav .tab,
+                #carousel-ta .carousel-nav .tab.show {
+                    font-size: 16px;
+                    min-height: 46px;
+                    padding: 10px;
+                }
+            }
+
+            /* Fallback for browsers without flex gap support */
+            @supports not (gap: 10px) {
+                #carousel-ta .carousel-nav .tab {
+                    margin: 0 5px;
+                }
+
+                @media (max-width: 768px) {
+                    #carousel-ta .carousel-nav .tab {
+                        margin: 4px 0;
+                    }
                 }
             }
         </style>
@@ -15327,12 +15376,15 @@
                         font-size: 14px;
                     }
                 </style>
+                <div id="home-client-testimonials"
+                    style="background-color: #133F5D; padding: 40px 20px; margin-top: 20px;">
                 <br><br>
                 <header class="bt_bb_headline bt_bb_color_scheme_8 bt_bb_dash_none bt_bb_size_extralarge"
                     style="margin-bottom: 1px;">
-                    <h4 class="bt_bb_headline_tag" style="text-align: center;"><span
-                            class="bt_bb_headline_content"><span><b>Client</b>
-                                <strong>Testimonials</strong></span></span></h4>
+                    <h4 class="bt_bb_headline_tag" style="text-align: center; color: #FFFFFF;"><span
+                            class="bt_bb_headline_content" style="color: #FFFFFF;"><span style="color: #FFFFFF;"><b
+                                    style="color: #FFFFFF;">Client</b>
+                                <strong style="color: #FFFFFF;">Testimonials</strong></span></span></h4>
                 </header>
                 <br>
 
@@ -15573,6 +15625,39 @@
                     }
                 </style>
 
+                <style>
+                    /* Scoped colors for Home Client Testimonials only - below team cards */
+                    #home-client-testimonials .testimonial-container {
+                        background-color: transparent !important;
+                    }
+
+                    #home-client-testimonials .testimonial-card {
+                        background-color: #204B68 !important;
+                        background: #204B68 !important;
+                        color: #FFFFFF !important;
+                        border-color: rgba(255, 255, 255, 0.25) !important;
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35) !important;
+                    }
+
+                    #home-client-testimonials .testimonial-name,
+                    #home-client-testimonials .testimonial-text,
+                    #home-client-testimonials .testimonial-header,
+                    #home-client-testimonials .testimonial-card p,
+                    #home-client-testimonials .testimonial-card h4,
+                    #home-client-testimonials .bt_bb_headline_tag,
+                    #home-client-testimonials .bt_bb_headline_content,
+                    #home-client-testimonials .bt_bb_headline_content span,
+                    #home-client-testimonials .bt_bb_headline_content b,
+                    #home-client-testimonials .bt_bb_headline_content strong {
+                        color: #FFFFFF !important;
+                    }
+
+                    #home-client-testimonials .testimonial-stars .star {
+                        color: #F5C518 !important;
+                    }
+                </style>
+                </div><!-- /#home-client-testimonials -->
+
                 <!-- <section id="bt_bb_section6657ed3317d7d"
                         class="bt_bb_section bt_bb_layout_boxed_1200 bt_bb_vertical_align_top"
                         style="margin-top: -1.85em; z-index: 3; position: relative;" data-bt-override-class="null">
@@ -15699,45 +15784,42 @@
                 </section>               
 
                 <section id="banner-section"
-    style="background-image: url('img/Dentist_Images/NewImg6.jpeg'); background-size: cover; background-position: center; min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 60px 20px; position: relative;">
-    
-    <!-- Dark overlay for better text contrast -->
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.45) 100%);"></div>
+    style="background-color: #22516A; background-image: none; min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 60px 20px; position: relative;">
     
     <!-- Content container -->
-    <div style="position: relative; z-index: 2; width: 90%; max-width: 900px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); padding: 50px 45px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.3);">
+    <div style="position: relative; z-index: 2; width: 90%; max-width: 900px; background-color: #22516A; padding: 50px 45px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.2);">
         
         <!-- Title -->
-        <h2 style="font-size: 2.5rem; font-weight: 700; margin: 0 0 25px; color: #2c3e50; text-align: center; letter-spacing: -0.5px; line-height: 1.2;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; margin: 0 0 25px; color: #FFFFFF; text-align: center; letter-spacing: -0.5px; line-height: 1.2;">
             Meet & Greet at Stonebridge Dentistry
         </h2>
         
         <!-- Decorative line -->
-        <div style="width: 80px; height: 4px; background: linear-gradient(90deg, #3498db, #2ecc71); margin: 0 auto 30px; border-radius: 2px;"></div>
+        <div style="width: 80px; height: 4px; background: #FFFFFF; margin: 0 auto 30px; border-radius: 2px; opacity: 0.9;"></div>
         
         <!-- Paragraph 1 -->
-        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #34495e; text-align: justify;">
-            We understand that choosing a dental office is an important decision, and we want you to feel completely comfortable before starting your care with us. That's why we offer a <strong>Meet & Greet appointment</strong> — a chance for new patients to visit our office, meet our team, and get to know us in a relaxed, no-pressure setting.
+        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #FFFFFF; text-align: justify;">
+            We understand that choosing a dental office is an important decision, and we want you to feel completely comfortable before starting your care with us. That's why we offer a <strong style="color: #FFFFFF;">Meet & Greet appointment</strong> — a chance for new patients to visit our office, meet our team, and get to know us in a relaxed, no-pressure setting.
         </p>
         
         <!-- Paragraph 2 -->
-        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #34495e; text-align: justify;">
+        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #FFFFFF; text-align: justify;">
             During your visit, you'll have the opportunity to tour our modern office, learn about the services we provide, and ask any questions you may have. You'll also get to meet Dr. Rishi and our friendly team, who are happy to explain how we can make your dental experience comfortable and personalized.
         </p>
         
         <!-- Paragraph 3 -->
-        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #34495e; text-align: justify;">
+        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 20px; color: #FFFFFF; text-align: justify;">
             This appointment is all about helping you feel confident and at ease, while giving you the chance to see what makes Stonebridge Dentistry different.
         </p>
         
         <!-- Paragraph 4 -->
-        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 30px; color: #34495e; text-align: justify;">
+        <p style="font-size: 1.05rem; line-height: 1.75; margin: 0 0 30px; color: #FFFFFF; text-align: justify;">
             We'd love to welcome you in and show you how our caring team and advanced technology can help you achieve a healthy, confident smile.
         </p>
         
         <!-- Optional CTA Button -->
         <div style="text-align: center;">
-            <a href="/Contact-New.html" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #3498db, #2ecc71); color: white; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <a href="/Contact-New.html" style="display: inline-block; padding: 15px 40px; background: #FFFFFF; color: #22516A; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
                 Schedule Your Visit
             </a>
         </div>
@@ -15793,7 +15875,11 @@
                                             <div class="hours">8AM-9PM</div>
                                         </div>
                                         <div class="working-hour">
-                                            <div class="day">Weekend</div>
+                                            <div class="day">Saturday</div>
+                                            <div class="hours">Closed</div>
+                                        </div>
+                                        <div class="working-hour">
+                                            <div class="day">Sunday</div>
                                             <div class="hours">Closed</div>
                                         </div>
                                     </div>
@@ -15840,7 +15926,7 @@
                         background-color: #fff;
                         padding: 20px;
                         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                        height: 580px;
+                        height: 470px;
                         background-color: rgb(255, 255, 255);
 
                     }
@@ -15855,7 +15941,7 @@
 
                     .map-container {
                         width: 100%;
-                        height: 450px;
+                        height: 340px;
                         padding: 10px;
                         box-sizing: border-box;
                         margin-bottom: 20px;
@@ -15883,7 +15969,7 @@
                         padding: 20px;
                         color: white;
                         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                        height: 580px;
+                        height: 470px;
 
 
                     }
@@ -15903,13 +15989,13 @@
                     .working-hours-inner {
                         display: flex;
                         flex-direction: column;
-                        gap: 15px;
+                        gap: 6px;
                     }
 
                     .working-hour {
                         display: flex;
                         justify-content: space-between;
-                        padding: 15px;
+                        padding: 6px 10px;
                     }
 
                     .working-hour .day {
@@ -15948,11 +16034,11 @@
                             /* Two columns */
                             grid-template-rows: repeat(6, auto);
                             /* Six rows for days and hours */
-                            grid-gap: 20px;
+                            grid-gap: 8px;
                         }
 
                         .working-hour {
-                            margin-bottom: 10px;
+                            margin-bottom: 4px;
                         }
 
                         .working-hour .day,
@@ -15978,7 +16064,9 @@
                 <span style="color: #054D75;">Stonebridge</span>
                 <span style="color: #85B5DD;">Dentistry</span>
             </h3>
+            <!-- FOOTER-TAGLINE-DISABLED: hidden, keep for re-enable
             <p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+            -->
             <div class="contact-info" style="display: flex; justify-content: center; align-items: center;">
                 <div class="contact-item">
                     <i class="fa fa-phone" aria-hidden="true"></i>
@@ -15996,7 +16084,8 @@
         </div>
 
         <!-- Section 2 -->
-        <div class="footer-section footer-section-2">
+        <!-- FOOTER-ABOUT-DISABLED: About section hidden, keep for re-enable
+<div class="footer-section footer-section-2">
             <h3 class="footer-heading">About</h3>
             <ul class="footer-nav">
                 <li><a href="Team.html" style="font-size: 14px;">Our Dental Team</a></li>
@@ -16005,6 +16094,7 @@
                 <li><a href="About-Us.html" style="font-size: 14px;">About</a></li>
             </ul>
         </div>
+-->
 
         <!-- Section 3 -->
         <div class="footer-section footer-section-3">
@@ -16057,14 +16147,15 @@
             background-color: #003478;
             /* Footer background color */
             color: #ffffff;
-            padding: 5px 10px;
+            padding: 12px 16px;
             position: relative;
+            text-align: center;
         }
 
         .menu-footer-menu-container {
             display: flex;
-            justify-content: flex-end;
-            /* Align navigation to the right */
+            justify-content: center;
+            /* Center navigation for all devices */
             margin: 0 auto;
             max-width: 1200px;
         }
@@ -16072,11 +16163,14 @@
         .menu {
             list-style: none;
             display: flex;
+ 			justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
             /* Ensure responsive wrapping */
-            gap: 15px;
+            gap: 15px 28px;
             padding: 0;
-            margin: 0;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .menu-items {
@@ -16103,7 +16197,7 @@
             }
 
             .menu {
-                gap: 10px;
+                gap: 10px 18px;
                 font-size: 12px;
             }
         }
@@ -16122,8 +16216,9 @@
 
         .footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: flex-start;
+ 			flex-wrap: wrap;
             background-color: #f3f3f3;
             padding: 20px;
             padding-left: 60px;
@@ -16143,13 +16238,13 @@
         }
 
         .footer-section-2 {
-            flex: 0.5;
+            display: none !important; flex: 0.5;
             height: 200px;
             /* background-color: #e8f7ff; */
         }
 
         .footer-section-3 {
-            flex: 1.5;
+            flex: 1;
             height: 250px;
             /* background-color: #fffbe8; */
         }
@@ -16478,6 +16573,15 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsdbQUq1QaP-0yXrNtClJ5nfoTIFxFVo8&amp;loading=async&amp;callback=window.bt_bb_init_all_maps&amp;ver=6.5.3"
         id="gmaps_api-js" async="async" data-wp-strategy="async"></script>
 
+<style>
+  .responsive-section { height: auto !important; min-height: 620px; padding: 40px 20px; gap: 20px; align-items: stretch; }
+  .left-side-content, .left-side-background, .right-side-content { height: auto !important; min-height: 540px; }
+  .contact-form { width: min(500px, 100%); max-width: 100%; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .responsive-section { min-height: 0; padding: 20px 10px; }
+    .left-side-content, .left-side-background, .right-side-content { min-height: 0; }
+  }
+</style>
 </body>
 
 </html>

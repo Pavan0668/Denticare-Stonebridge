@@ -12871,10 +12871,12 @@
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 Book Appointment
                             </a>
+                            <!-- APPOINTMENT FORM disabled from top-bar (above navbar) - uncomment to re-enable
                             <a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
                                 style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
                                 APPOINTMENT FORM
                             </a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -12980,10 +12982,10 @@
 
     <div class="btContentWrap btClear" style="margin-top: 0;padding:0px;">
         <div class="container"
-            style="display: flex; background-color: #A9A9A9; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding: 20px;">
-            <h1 style="color: #181818;">Our office</h1>
+            style="display: flex; width: 100%; max-width: none; margin: 0; background-color: #174765; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100vh; padding: 20px;">
+            <h1 style="color: #ffffff;">OUR OFFICE</h1>
             <div
-                style="max-width:800px;margin:0 auto 40px;text-align:center;line-height:1.8;color:#333;font-family:inherit;">
+                style="max-width:800px;margin:0 auto 40px;text-align:center;line-height:1.8;color:#ffffff;font-family:inherit;">
                 <p style="margin:0 0 12px;">
                     <strong>At Stonebridge Dentistry,</strong> we believe that exceptional dental care comes from
                     combining
@@ -13039,13 +13041,13 @@
                 <div class="feature-item"
                     style="background-color: #f8f8f8; padding: 20px; border-radius: 10px; max-width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <img src="img/Dentist_Images/NewImg3.jpeg" alt="Open Concept Office"
-                        style="width: 100%; height: 310px; border-radius: 10px;">
+                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
                     <h4>Open Concept Office</h4>
                 </div>
                 <div class="feature-item"
                     style="background-color: #f8f8f8; padding: 20px; border-radius: 10px; max-width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <img src="img/digital-xrays.jpg" alt="Digital X-rays"
-                        style="width: 100%; height: auto; border-radius: 10px;">
+                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
                     <h4>Digital X-rays</h4>
                     <p>Digital x-rays only need a fraction of the radiation needed for traditional x-rays. All of our
                         x-rays are
@@ -13054,7 +13056,7 @@
                 <div class="feature-item"
                     style="background-color: #f8f8f8; padding: 20px; border-radius: 10px; max-width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <img src="img/intra-oral-scanner.jpg" alt="Intra Oral Scanner"
-                        style="width: 100%; height: 200px; border-radius: 10px;">
+                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
                     <h4>Intra Oral Scanner</h4>
                     <p>The intra oral scanner takes a 3D scan of your teeth. It's a great educational tool. We have the
                         latest
@@ -13063,7 +13065,7 @@
                 <div class="feature-item"
                     style="background-color: #f8f8f8; padding: 20px; border-radius: 10px; max-width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <img src="img/laser-clinical.png" alt="Clinical Dental Laser Treatment"
-                        style="width: 100%; height: auto; border-radius: 10px;">
+                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
                     <h4>Laser Technology</h4>
                     <p>We use lasers regularly in our practice to reduce bleeding, manage pain from ulcers, and reduce
                         periodontal pockets by lowering bacterial loads.</p>
@@ -13071,7 +13073,7 @@
                 <div class="feature-item"
                     style="background-color: #f8f8f8; padding: 20px; border-radius: 10px; max-width: 350px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <img src="img/intra-oral-clinical.png" alt="Clinical Intra-oral Dental Imaging"
-                        style="width: 100%; height: auto; border-radius: 10px;">
+                        style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px;">
                     <h4>Intra Oral Cameras</h4>
                     <p>We use intra oral cameras to take pictures of your teeth and gums, allowing us to educate you
                         about
@@ -13154,24 +13156,26 @@
                 <!-- Media Queries for Mobile -->
                 <style>
                     @media only screen and (max-width: 767px) {
-                        #bt_bb_section664fb57da0b30 {
+                        .responsive-section {
                             flex-direction: column;
                             /* Stack items vertically on small screens */
                             height: auto;
+                            min-height: auto;
                         }
 
-                        .bt_bb_section664fb57da0b30>div {
+                        .responsive-section>div {
                             width: 100%;
                             /* Make sure both columns are full width on mobile */
                             padding: 15px;
+                            min-height: auto;
                         }
 
-                        .bt_bb_section664fb57da0b30>div:first-child {
+                        .responsive-section>div:first-child {
                             background-image: none;
                             /* Remove background blur on mobile for better readability */
                         }
 
-                        .bt_bb_section664fb57da0b30>div:last-child {
+                        .responsive-section>div:last-child {
                             background-image: none;
                             /* Remove background blur on mobile for better readability */
                         }
@@ -13205,9 +13209,12 @@
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
-                        height: 120vh;
-                        background-color: #A9A9A9;
-                        padding: 0;
+                        height: auto;
+                        min-height: 620px;
+                        background-color: #123D5A;
+                        padding: 40px 20px;
+                        gap: 20px;
+                        align-items: stretch;
 
                     }
 
@@ -13215,14 +13222,17 @@
                     .left-side-content {
                         flex: 1;
                         padding: 0;
-                        height: 120vh;
+                        height: auto;
+                        min-height: 540px;
                     }
 
                     .left-side-background {
-                        background-image: url(img/Dentist_Images/NewImg1.jpeg);
+                        background-image: none;
+                        background-color: #123D5A;
                         background-size: cover;
                         background-position: center;
-                        height: 120vh;
+                        height: 100%;
+                        min-height: 540px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -13286,12 +13296,14 @@
                     .right-side-content {
                         flex: 1;
                         padding: 10px;
-                        background-image: url(img/Dentist_Images/NewImg2.jpeg);
+                        background-image: none;
+                        background-color: #123D5A;
                         background-size: cover;
                         background-position: center;
                         filter: blur(-12px);
                         position: relative;
-                        height: 120vh;
+                        height: auto;
+                        min-height: 540px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -13304,7 +13316,9 @@
                         border-radius: 8px;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                         font-family: 'Arial', sans-serif;
-                        width: 500px;
+                        width: min(500px, 100%);
+                        max-width: 100%;
+                        margin: 0 auto;
                     }
 
                     .form-title {
@@ -13355,11 +13369,18 @@
                         .responsive-section {
                             flex-direction: column;
                             height: auto;
+                            min-height: auto;
+                            padding: 20px 10px;
                         }
 
                         .left-side-background,
                         .right-side-content {
                             height: auto;
+                            min-height: auto;
+                        }
+
+                        .left-side-content {
+                            min-height: auto;
                         }
 
                         .appointment-box,
@@ -13398,7 +13419,9 @@
                 <span style="color: #074E76;">Stonebridge</span>
                 <span style="color: #85B5DD;">Dentistry</span>
             </h3>
+            <!-- FOOTER-TAGLINE-DISABLED: hidden, keep for re-enable
             <p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+            -->
             <div class="contact-info" style="display: flex; justify-content: center; align-items: center;">
                 <div class="contact-item">
                     <i class="fa fa-phone" aria-hidden="true"></i>
@@ -13416,7 +13439,8 @@
         </div>
 
         <!-- Section 2 -->
-        <div class="footer-section footer-section-2">
+        <!-- FOOTER-ABOUT-DISABLED: About section hidden, keep for re-enable
+<div class="footer-section footer-section-2">
             <h3 class="footer-heading">About</h3>
             <ul class="footer-nav">
                 <li><a href="Team.html" style="font-size: 14px;">Our Dental Team</a></li>
@@ -13425,6 +13449,7 @@
                 <li><a href="About-Us.html" style="font-size: 14px;">About</a></li>
             </ul>
         </div>
+-->
 
         <!-- Section 3 -->
         <div class="footer-section footer-section-3">
@@ -13477,14 +13502,15 @@
             background-color: #003478;
             /* Footer background color */
             color: #ffffff;
-            padding: 5px 10px;
+            padding: 12px 16px;
             position: relative;
+            text-align: center;
         }
 
         .menu-footer-menu-container {
             display: flex;
-            justify-content: flex-end;
-            /* Align navigation to the right */
+            justify-content: center;
+            /* Center navigation for all devices */
             margin: 0 auto;
             max-width: 1200px;
         }
@@ -13492,11 +13518,14 @@
         .menu {
             list-style: none;
             display: flex;
+ 			justify-content: center;
             flex-wrap: wrap;
+            align-items: center;
             /* Ensure responsive wrapping */
-            gap: 15px;
+            gap: 15px 28px;
             padding: 0;
-            margin: 0;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .menu-items {
@@ -13523,7 +13552,7 @@
             }
 
             .menu {
-                gap: 10px;
+                gap: 10px 18px;
                 font-size: 12px;
             }
         }
@@ -13542,8 +13571,9 @@
 
         .footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: flex-start;
+ 			flex-wrap: wrap;
             background-color: #f3f3f3;
             padding: 20px;
             padding-left: 60px;
@@ -13563,13 +13593,13 @@
         }
 
         .footer-section-2 {
-            flex: 0.5;
+            display: none !important; flex: 0.5;
             height: 200px;
             /* background-color: #e8f7ff; */
         }
 
         .footer-section-3 {
-            flex: 1.5;
+            flex: 1;
             height: 250px;
             /* background-color: #fffbe8; */
         }

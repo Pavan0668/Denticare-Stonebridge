@@ -13072,10 +13072,12 @@
 								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
 								Book Appointment
 							</a>
+							<!-- APPOINTMENT FORM disabled from top-bar (above navbar) - uncomment to re-enable
 							<a href="Appointment-details.html" class="book-appointment-btn" target="_blank"
 								style="font-size: 14px; height: 30px; padding: 0 15px; display: flex; justify-content: center; align-items: center; background-color: #85B5DD; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
 								APPOINTMENT FORM
 							</a>
+							-->
 						</div>
 					</div>
 				</div>
@@ -14382,7 +14384,11 @@
 										<div class="hours">8AM-9PM</div>
 									</div>
 									<div class="working-hour">
-										<div class="day">Weekend</div>
+										<div class="day">Saturday</div>
+										<div class="hours">Closed</div>
+									</div>
+									<div class="working-hour">
+										<div class="day">Sunday</div>
 										<div class="hours">Closed</div>
 									</div>
 								</div>
@@ -14429,7 +14435,7 @@
 					background-color: #fff;
 					padding: 20px;
 					box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-					height: 580px;
+					height: 470px;
 					background-color: rgb(255, 255, 255);
 
 				}
@@ -14444,7 +14450,7 @@
 
 				.map-container {
 					width: 100%;
-					height: 450px;
+					height: 340px;
 					padding: 10px;
 					box-sizing: border-box;
 					margin-bottom: 20px;
@@ -14472,7 +14478,7 @@
 					padding: 20px;
 					color: white;
 					box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-					height: 580px;
+					height: 470px;
 
 
 				}
@@ -14492,13 +14498,13 @@
 				.working-hours-inner {
 					display: flex;
 					flex-direction: column;
-					gap: 15px;
+					gap: 6px;
 				}
 
 				.working-hour {
 					display: flex;
 					justify-content: space-between;
-					padding: 15px;
+					padding: 6px 10px;
 				}
 
 				.working-hour .day {
@@ -14537,11 +14543,11 @@
 						/* Two columns */
 						grid-template-rows: repeat(6, auto);
 						/* Six rows for days and hours */
-						grid-gap: 20px;
+						grid-gap: 8px;
 					}
 
 					.working-hour {
-						margin-bottom: 10px;
+						margin-bottom: 4px;
 					}
 
 					.working-hour .day,
@@ -14568,7 +14574,9 @@
 				<span style="color: #054D75;">Stonebridge</span>
 				<span style="color: #85B5DD;">Dentistry</span>
 			</h3>
-			<p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+			<!-- FOOTER-TAGLINE-DISABLED: hidden, keep for re-enable
+            <p class="footer-subtext">A team of dentists working to ensure you receive the best treatment.</p>
+            -->
 			<div class="contact-info" style="display: flex; justify-content: center; align-items: center;">
 				<div class="contact-item">
 					<i class="fa fa-phone" aria-hidden="true"></i>
@@ -14586,7 +14594,8 @@
 		</div>
 
 		<!-- Section 2 -->
-		<div class="footer-section footer-section-2">
+		<!-- FOOTER-ABOUT-DISABLED: About section hidden, keep for re-enable
+<div class="footer-section footer-section-2">
 			<h3 class="footer-heading">About</h3>
 			<ul class="footer-nav">
 				<li><a href="Team.html" style="font-size: 14px;">Our Dental Team</a></li>
@@ -14595,6 +14604,7 @@
 				<li><a href="About-Us.html" style="font-size: 14px;">About</a></li>
 			</ul>
 		</div>
+-->
 
 		<!-- Section 3 -->
 		<div class="footer-section footer-section-3">
@@ -14647,13 +14657,14 @@
 			background-color: #003478;
 			/* Footer background color */
 			color: #ffffff;
-			padding: 5px 10px;
+			padding: 12px 16px;
 			position: relative;
+            text-align: center;
 		}
 
 		.menu-footer-menu-container {
 			display: flex;
-			justify-content: flex-end;
+			justify-content: center;
 			/* Align navigation to the right */
 			margin: 0 auto;
 			max-width: 1200px;
@@ -14662,11 +14673,14 @@
 		.menu {
 			list-style: none;
 			display: flex;
+ 			justify-content: center;
 			flex-wrap: wrap;
+            align-items: center;
 			/* Ensure responsive wrapping */
-			gap: 15px;
+			gap: 15px 28px;
 			padding: 0;
-			margin: 0;
+			margin: 0 auto;
+            text-align: center;
 		}
 
 		.menu-items {
@@ -14693,7 +14707,7 @@
 			}
 
 			.menu {
-				gap: 10px;
+				gap: 10px 18px;
 				font-size: 12px;
 			}
 		}
@@ -14712,8 +14726,9 @@
 
 		.footer {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-evenly;
 			align-items: flex-start;
+ 			flex-wrap: wrap;
 			background-color: #f3f3f3;
 			padding: 20px;
 			padding-left: 60px;
@@ -14733,13 +14748,13 @@
 		}
 
 		.footer-section-2 {
-			flex: 0.5;
+			display: none !important; flex: 0.5;
 			height: 200px;
 			/* background-color: #e8f7ff; */
 		}
 
 		.footer-section-3 {
-			flex: 1.5;
+			flex: 1;
 			height: 250px;
 			/* background-color: #fffbe8; */
 		}
@@ -15069,6 +15084,15 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsdbQUq1QaP-0yXrNtClJ5nfoTIFxFVo8&amp;loading=async&amp;callback=window.bt_bb_init_all_maps&amp;ver=6.5.3"
 		id="gmaps_api-js" async="async" data-wp-strategy="async"></script>
 
+<style>
+  .responsive-section { height: auto !important; min-height: 620px; padding: 40px 20px; gap: 20px; align-items: stretch; }
+  .left-side-content, .left-side-background, .right-side-content { height: auto !important; min-height: 540px; }
+  .contact-form { width: min(500px, 100%); max-width: 100%; margin: 0 auto; }
+  @media (max-width: 768px) {
+    .responsive-section { min-height: 0; padding: 20px 10px; }
+    .left-side-content, .left-side-background, .right-side-content { min-height: 0; }
+  }
+</style>
 </body>
 
 </html>
