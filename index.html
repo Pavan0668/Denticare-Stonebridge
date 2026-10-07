@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-US" data-bt-theme="Denticare 1.3.4">
 
 <head>
@@ -13442,18 +13442,26 @@
                                                         </div>
                                                         <div class="bt_bb_content_slider_item bt_bb_column_background_image bt_bb_background_overlay_light_solid bt_bb_content_slider_item_responsive_overlay"
                                                             style="background-position: center top;;background-image:url(img/doctor-thinking-isolated.jpg);">
-                                                            <div class="bt_bb_content_slider_item_content content">
+                                                            <div class="bt_bb_content_slider_item_content content slide-doctor-thinking">
                                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_top_spacing_large bt_bb_bottom_spacing_normal"
                                                                     data-bt-override-class="null"></div>
                                                                 <div class="bt_bb_row_wrapper">
                                                                     <div class="bt_bb_row_inner"
                                                                         data-bt-override-class="{}">
-                                                                        <div class="bt_bb_column_inner col-xxl-6 col-xl-6 bt_bb_align_left bt_bb_vertical_align_top bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
+                                                                        <div class="bt_bb_column_inner col-xxl-6 col-xl-6 bt_bb_align_left bt_bb_vertical_align_top"
+                                                                            data-width="6" data-bt-override-class="{}">
+                                                                            <div class="bt_bb_column_inner_content">
+                                                                                <div
+                                                                                    class="bt_bb_column_inner_highlight">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="bt_bb_column_inner col-xxl-6 col-xl-6 bt_bb_align_right bt_bb_vertical_align_top bt_bb_padding_normal bt_bb_animation_fade_in bt_bb_animation_move_up animate"
                                                                             data-width="6" data-bt-override-class="{}">
                                                                             <div class="bt_bb_column_inner_content">
                                                                                 <header
                                                                                     class="bt_bb_headline bt_hero_xl bt_bb_font_weight_bolder bt_bb_color_scheme_17 bt_bb_dash_none bt_bb_size_huge bt_bb_align_inherit bt_bb_dash_type_none bt_hero_xl"
-                                                                                    style="--primary-color:#054D75; --secondary-color:#85B5DD;"
+                                                                                    style="--primary-color:#054D75; --secondary-color:#85B5DD; text-align: right;"
                                                                                     data-bt-override-class="{}">
                                                                                     <h1 class="bt_bb_headline_tag">
                                                                                         <span
@@ -13467,14 +13475,6 @@
                                                                                 <div class="bt_bb_separator bt_bb_border_style_none bt_bb_bottom_spacing_normal"
                                                                                     data-bt-override-class="null">
                                                                                 </div>
-                                                                                <div
-                                                                                    class="bt_bb_column_inner_highlight">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="bt_bb_column_inner col-xxl-6 col-xl-6 bt_bb_align_left bt_bb_vertical_align_top"
-                                                                            data-width="6" data-bt-override-class="{}">
-                                                                            <div class="bt_bb_column_inner_content">
                                                                                 <div
                                                                                     class="bt_bb_column_inner_highlight">
                                                                                 </div>
@@ -15705,11 +15705,11 @@
                                                     <strong>Stonebridge</strong></span></span></h4>
                                     </header>
 
-                                    <div class="bt_bb_text" style="margin-bottom: 5px;">
+                                    <!-- <div class="bt_bb_text" style="margin-bottom: 5px;">
                                         <p>Globally incubate standards compliant channels before scalable benefits.
                                             Quickly disseminate superior
                                             deliverables whereas web-enabled applications.</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -15732,7 +15732,7 @@
                                         <div class="bt_bb_service_content_title">Address</div>
                                         <div class="bt_bb_service_content_texts" style="color: #000; font-size: large;">
                                             <a href="https://www.google.com/maps/place/1+Market+Lane,+Unit+%239+Wasaga+Beach,+ON+L9Z+0B6,+Canada"
-                                                target="_blank" style="text-decoration: none; color: grey;">
+                                                target="_blank" style="text-decoration: underline; color: #1E90FF; font-weight: bold;">
                                                 1 Market Lane, Unit #9 Wasaga Beach, ON<br /> L9Z 0B6, Canada
                                             </a>
                                         </div>
@@ -15751,7 +15751,7 @@
                                     <div class="bt_bb_service_content">
                                         <div class="bt_bb_service_content_title">Book By Phone</div>
                                         <div class="bt_bb_service_content_text" style="color: #000; font-size: large;">
-                                            <a href="tel:+17054222490" style="text-decoration: none; color: inherit;">
+                                            <a href="tel:+17054222490" style="text-decoration: underline; color: #1E90FF; font-weight: bold;">
                                                 (705) 422-2490
                                             </a>
                                         </div>
@@ -15771,7 +15771,7 @@
                                         <div class="bt_bb_service_content_title">Email Us</div>
                                         <div class="bt_bb_service_content_text" style="color: #000; font-size: large;">
                                             <a href="mailto:reception.Stonebridgedentistry@gmail.com" target="_blank"
-                                                style="text-decoration: none; color: inherit;">
+                                                style="text-decoration: underline; color: #1E90FF; font-weight: bold;">
                                                 reception.Stonebridgedentistry@gmail.com
                                             </a>
                                         </div>
@@ -16580,6 +16580,64 @@
   @media (max-width: 768px) {
     .responsive-section { min-height: 0; padding: 20px 10px; }
     .left-side-content, .left-side-background, .right-side-content { min-height: 0; }
+  }
+  /* ===== Doctor Thinking Slide - move all content to far right ===== */
+  .slide-doctor-thinking .bt_bb_row_inner {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  /* Row 1: force header text right-aligned (not centered) */
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_headline,
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_headline_tag,
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_headline_content,
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_headline_content span,
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_headline_content small,
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(2) .bt_bb_column_inner_content {
+    text-align: right !important;
+  }
+  /* Row 2: reorder columns - empty(6) first, services(3+3) on right */
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(3) .bt_bb_column_inner:nth-child(1) { order: 2 !important; }
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(3) .bt_bb_column_inner:nth-child(2) { order: 3 !important; }
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(3) .bt_bb_column_inner:nth-child(3) { order: 1 !important; }
+  /* Row 3: reorder columns - empty(6) first, button(6) on right */
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(4) .bt_bb_column_inner:nth-child(1) { order: 2 !important; }
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(4) .bt_bb_column_inner:nth-child(2) { order: 1 !important; }
+  /* Right-align all text in services and button */
+  .slide-doctor-thinking .bt_bb_service,
+  .slide-doctor-thinking .bt_bb_service_content,
+  .slide-doctor-thinking .bt_bb_service_content_title,
+  .slide-doctor-thinking .bt_bb_service_content_text,
+  .slide-doctor-thinking .bt_bb_button {
+    text-align: right !important;
+  }
+  /* ===== Icons: push icon+content together to right edge ===== */
+  .slide-doctor-thinking .bt_bb_service {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+  .slide-doctor-thinking .bt_bb_service .bt_bb_icon_holder {
+    margin-left: auto !important;
+    margin-right: 12px !important;
+    flex-shrink: 0 !important;
+    float: none !important;
+  }
+  .slide-doctor-thinking .bt_bb_service .bt_bb_service_content {
+    flex: 0 1 auto !important;
+    text-align: right !important;
+    float: none !important;
+  }
+  /* ===== Button: push to right edge ===== */
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(4) .bt_bb_column_inner_content {
+    text-align: right !important;
+  }
+  .slide-doctor-thinking .bt_bb_row_wrapper:nth-child(4) .bt_bb_button {
+    display: inline-block !important;
+    float: right !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    text-align: right !important;
   }
 </style>
 </body>
